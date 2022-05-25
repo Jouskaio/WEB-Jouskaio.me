@@ -1,21 +1,21 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
 
-class PWADocument extends Document {
+class MyDocument extends Document {
   render() {
     return (
-      <Html lang="en">
+      <Html>
         <Head>
-          <link rel="manifest" href="/manifest.webmanifest" />
-          <link rel="apple-touch-icon" href="/icon-192x192.png" />
-          <meta name="theme-color" content="#fff" />
+          <link rel="manifest" href="/manifest.json" />
+          <link rel="apple-touch-icon" href="/icon-x128.png"></link>
+          <meta name="theme-color" content="#AA3C1E" />
         </Head>
         <body>
-          <Main />
-          <NextScript />
+        <Main />
+        <NextScript />
         </body>
       </Html>
     );
   }
 }
 
-export default PWADocument;
+export default MyDocument;
