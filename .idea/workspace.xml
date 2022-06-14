@@ -2,39 +2,51 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c2682701-76bf-49f6-94d9-be430f31ebce" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.env" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/alert.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/avatar.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/container.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/cover-image.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/date.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/footer.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/hero-post.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/intro.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/layout.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/markdown-styles.module.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/meta.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/more-stories.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/post-body.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/post-header.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/post-preview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/post-title.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/blog/section-separator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/api.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/constants.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/markdownToHtml.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/media.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/exit-preview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/api/preview.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/blog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/posts/[slug].js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/browserconfig.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/blog/Article/article.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/blog/Article/articles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/blog/Article/card.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/blog/Navigation/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/blog/api.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/blog/apolloClient.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/blog/article/article.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/blog/article/articles.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/lib/blog/category/categories.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/article/[slug].js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/alert.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/avatar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/container.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/cover-image.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/date.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/footer.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/hero-post.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/intro.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/layout.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/markdown-styles.module.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/meta.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/more-stories.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/post-body.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/post-header.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/post-preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/post-title.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/blog/section-separator.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/documentation/NEXT-commands.md" beforeDir="false" afterPath="$PROJECT_DIR$/documentation/NEXT-commands.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/api.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/constants.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/markdownToHtml.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/media.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/next.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/exit-preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/hello.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/api/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/blog.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/blog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/posts/[slug].js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -57,33 +69,41 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectId" id="29cAxNRxUQx1GCifuuZC7pgIizb" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/jouskaio/Documents/Project/Portfolio v2022/jouskaio-front/public",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.standard": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.standard": "",
-    "nodejs_package_manager_path": "yarn",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/jouskaio/Documents/Project/Portfolio v2022/jouskaio-front/pages/api&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.standard&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.standard&quot;: &quot;&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;yarn&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/home/jouskaio/.local/share/JetBrains/Toolbox/apps/WebStorm/ch-0/221.5787.30/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/blog" />
+      <recent name="$PROJECT_DIR$/components/blog/Navigation" />
+      <recent name="$PROJECT_DIR$/pages/api" />
       <recent name="$PROJECT_DIR$/pages" />
       <recent name="$PROJECT_DIR$" />
     </key>
@@ -116,6 +136,11 @@
       <workItem from="1653402249406" duration="1282000" />
       <workItem from="1653480009944" duration="52000" />
       <workItem from="1653480075161" duration="1761000" />
+      <workItem from="1654076947448" duration="762000" />
+      <workItem from="1654086065458" duration="2301000" />
+      <workItem from="1654160064559" duration="7477000" />
+      <workItem from="1654767562500" duration="2000" />
+      <workItem from="1655122910879" duration="11769000" />
     </task>
     <servers />
   </component>

@@ -3,13 +3,13 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    domains: ["localhost"],
+    domains: ["localhost"]
   },
 }
 module.exports = nextConfig
 
 // API call
-const pwaConfig = process.env.NODE_ENV !== 'production';
+const pwaConfig = process.env.NODE_ENV;
 const server = "http://localhost:1337";
 module.exports = server;
 
@@ -20,6 +20,6 @@ module.exports = withPWA({
     dest: "public",
     register: true,
     skipWaiting: true,
-    disable : !pwaConfig
+    disable :  !pwaConfig
   },
 });

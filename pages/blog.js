@@ -1,45 +1,24 @@
-import Container from '/components/blog/container'
-import MoreStories from '/components/blog/more-stories'
-import HeroPost from '/components/blog/hero-post'
-import Intro from '/components/blog/intro'
-import Layout from '/components/blog/layout'
-import { getAllPostsForHome } from '/lib/api'
-import Head from 'next/head'
-import { CMS_NAME } from '/lib/constants'
+import NavCategories from '/components/blog/Navigation/categories'
+import {ApolloProvider} from "@apollo/react-hooks";
+import {client} from "/lib/blog/apolloClient";
+import React from "react";
+import AllArticles from "../components/blog/Article/articles";
+import Link from "next/link";
+import Articles from "../components/blog/Article/articles";
+import Article from "./article/[slug]";
 
-export default function Blog({ allPosts, preview }) {
-  const heroPost = allPosts[0]
-  const morePosts = allPosts.slice(1)
-  return (
-    <>
-      <Layout preview={preview}>
-        <Head>
-          <title>Next.js Blog Example with {CMS_NAME}</title>
-        </Head>
-        <Container>
-          <p>Hello Test un dos tres</p>
-          <p>{heroPost}</p>
-          <Intro />
-          {heroPost && (
-            <HeroPost
-              title={heroPost.title}
-              coverImage={heroPost.coverImage}
-              date={heroPost.date}
-              author={heroPost.author}
-              slug={heroPost.slug}
-              excerpt={heroPost.excerpt}
-            />
-          )}
-          {morePosts.length > 0 && <MoreStories posts={morePosts} />}
-        </Container>
-      </Layout>
-    </>
-  )
-}
-
-export async function getStaticProps({ preview = null }) {
-  const allPosts = (await getAllPostsForHome(preview)) || []
-  return {
-    props: { allPosts, preview },
+// <AllArticles/>
+export default class Blog extends React.Component {
+  render() {
+    if(!client) {
+      return <p>Loading</p>
+    }
+    return (
+      <ApolloProvider client={client}>
+        <NavCategories/>
+        <Articles/>
+      </ApolloProvider>
+    );
   }
 }
+
