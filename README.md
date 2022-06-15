@@ -2,7 +2,7 @@
 
 ## Installation
 
-To run this application for the first time, make sure to execute `yarn i`, `npm run build`.
+To run this application for the first time, make sure to execute `yarn -i`, `npm run build`.
 
 - [Strapi - Build a blog with Next.JS](https://strapi.io/blog/build-a-blog-with-next-react-js-strapi)
 - [Strapi - Build a blog with React, Strapi and Apollo](https://strapi.io/blog/build-a-blog-with-react-strapi-and-apollo)
