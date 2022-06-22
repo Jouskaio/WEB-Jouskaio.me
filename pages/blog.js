@@ -2,7 +2,9 @@ import NavCategories from '/components/blog/Navigation/categories'
 import {ApolloProvider} from "@apollo/react-hooks";
 import {client} from "/lib/blog/apolloClient";
 import React from "react";
-import Articles from "../components/blog/Article/call-articles";
+import Query from "../lib/blog/api";
+import ARTICLES_QUERY from "../lib/blog/article/articles";
+import Article from "../components/blog/Article/list-article";
 
 // <AllArticles/>
 export default class Blog extends React.Component {
@@ -13,7 +15,13 @@ export default class Blog extends React.Component {
     return (
       <ApolloProvider client={client}>
         <NavCategories/>
-        <Articles/>
+        <div>
+          <Query query={ARTICLES_QUERY}>
+            {({data: {articles}}) => {
+              return <Article articles={articles.data}/>;
+            }}
+          </Query>
+        </div>
       </ApolloProvider>
     );
   }

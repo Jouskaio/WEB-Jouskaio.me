@@ -1,13 +1,13 @@
 import React from "react";
-import { useParams } from "react-router";
-import Query from "/lib/blog/api";
 import ReactMarkdown from "react-markdown";
 import Moment from "react-moment";
-
 import ARTICLE_QUERY from "/lib/blog/article/article";
+import {useRouter} from "next/router";
+import Query from "../../lib/blog/api";
 
 const Article = () => {
-  let { slug } = useParams();
+  const router = useRouter()
+  const { slug } = router.query
 
   return (
     <Query query={ARTICLE_QUERY} slug={slug}>

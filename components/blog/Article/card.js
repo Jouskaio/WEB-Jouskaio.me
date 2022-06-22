@@ -7,7 +7,7 @@ import {shimmer, toBase64} from "../Preload/preload-image";
 const Card = ({ article }) => {
 
   return (
-    <Link href={`/article/${article.attributes.slug}`} className="uk-link-reset">
+    <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`} className="uk-link-reset">
       <a>
         <div style={{position: 'relative', width: '300px', height: '300px' }}>
           {/**
