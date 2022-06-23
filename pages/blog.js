@@ -1,4 +1,5 @@
 import NavCategories from '/components/blog/Navigation/categories'
+// I don't know why but Apollo works only if with calls it with @apollo/react-hooks even with this module isn't downloaded unlike the other one @apollo/client
 import {ApolloProvider} from "@apollo/react-hooks";
 import React from "react";
 import {client} from "/lib/blog/apolloClient";

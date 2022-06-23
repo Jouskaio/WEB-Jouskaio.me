@@ -11,7 +11,7 @@ const Card = ({ article }) => {
    * @param e: detect element where is effected this event
    */
   return (
-    <Link href={`/article/[slug]`} as={`/article/${article.attributes.slug}`} className="uk-link-reset">
+    <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`} className="uk-link-reset">
       <a>
         <div style={{position: 'relative', width: '300px', height: '300px' }}>
           {/**
