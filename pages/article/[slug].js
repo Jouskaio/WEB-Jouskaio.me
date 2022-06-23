@@ -4,13 +4,20 @@ import Moment from "react-moment";
 import ARTICLE_QUERY from "/lib/blog/article/article";
 import {useRouter} from "next/router";
 import Query from "../../lib/blog/api";
+import {client} from "../../lib/blog/apolloClient";
+import {ApolloProvider} from "@apollo/react-hooks";
 
 const Article = () => {
   const router = useRouter()
   const { slug } = router.query
 
+  if(!client) {
+    return <p>Loading</p>
+  }
   return (
-    <Query query={ARTICLE_QUERY} slug={slug}>
+    <ApolloProvider client={client}>
+      <div>
+        <Query query={ARTICLE_QUERY} slug={slug}>
       {({ data: { articles } }) => {
         if (articles.data.length) {
           const imageUrl =
@@ -46,6 +53,8 @@ const Article = () => {
         }
       }}
     </Query>
+      </div>
+    </ApolloProvider>
   );
 };
 
