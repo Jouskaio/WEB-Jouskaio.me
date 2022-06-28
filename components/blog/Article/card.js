@@ -20,7 +20,8 @@ const Card = ({ article }) => {
            * Property :  objectFit="none" allows image to zoom in or zoom out depending on the windows size
            */}
           <Image loader={() => getStrapiMedia(article.attributes.image)} src={getStrapiMedia(article.attributes.image)} alt={article.attributes.image.url} height={300} layout="fill" placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`} />
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`}
+            style={{objectFit: 'contain'}}/>
         </div>
         <p id="category" className="uk-text-uppercase">
           {article.attributes.category.data.attributes.name}

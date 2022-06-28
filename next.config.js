@@ -8,18 +8,28 @@ const nextConfig = {
 }
 module.exports = nextConfig
 
-// API call
+// PWA
 const pwaConfig = process.env.NODE_ENV;
 const server = "https://jouskaio-me.herokuapp.com";
 module.exports = server;
-
-// PWA
-const withPWA = require("next-pwa");
-module.exports = withPWA({
+const withPWA = require("next-pwa")({
   pwa: {
     dest: "public",
     register: true,
     skipWaiting: true,
     disable :  !pwaConfig
-  },
+  }
 });
+
+// Bundle Analyzer : analyze performances of the application
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+})
+
+
+const withPlugins = require('next-compose-plugins')
+module.exports = withPlugins([
+  [withBundleAnalyzer],
+  [withPWA]
+  // your other plugins here
+])
