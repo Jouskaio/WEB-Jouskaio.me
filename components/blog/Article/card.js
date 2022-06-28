@@ -17,8 +17,9 @@ const Card = ({ article }) => {
           {/**
            * Source for blurData and placeholder strategy : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
            * Source for filling image strategy : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/layout-fill.js
+           * Property :  objectFit="none" allows image to zoom in or zoom out depending on the windows size
            */}
-          <Image loader={() => getStrapiMedia(article.attributes.image)} src={getStrapiMedia(article.attributes.image)} alt={article.attributes.image.url} height={100} layout="fill" objectFit="none" placeholder="blur"
+          <Image loader={() => getStrapiMedia(article.attributes.image)} src={getStrapiMedia(article.attributes.image)} alt={article.attributes.image.url} height={300} layout="fill" placeholder="blur"
             blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`} />
         </div>
         <p id="category" className="uk-text-uppercase">

@@ -15,11 +15,14 @@ const UseProcessor = ({content}) => {
   const [Content, setContent] = useState(Fragment);
   useEffect( () => {
     unified()
-      // PARSE
+      // PARSER
       // Specify that we have Markdown text
       .use(rehypeParse, {fragment: true})
+      // TRANSFORMERS
+      // COMPILER
       .use(rehypeReact, {createElement, Fragment})
       .process(content)
+      // OUTPUT
       .then((file) => {
         setContent(file.result)
       })

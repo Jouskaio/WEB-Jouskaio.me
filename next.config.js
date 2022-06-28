@@ -3,14 +3,14 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    domains: ["localhost"]
+    domains: ["jouskaio-me.herokuapp.com"]
   },
 }
 module.exports = nextConfig
 
 // API call
 const pwaConfig = process.env.NODE_ENV;
-const server = "http://localhost:1337";
+const server = "https://jouskaio-me.herokuapp.com";
 module.exports = server;
 
 // PWA
