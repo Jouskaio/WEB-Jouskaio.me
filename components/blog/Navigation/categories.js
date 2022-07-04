@@ -17,7 +17,7 @@ export default function NavCategories() {
                   return (
                     <li key={category.attributes.slug}>
                       <Link
-                        href={`/category/${category.attributes.slug}`}
+                        href={`/blog/category/[slug]`} as={`/blog/category/${category.attributes.slug}`}
                         className="uk-link-reset">
                         {category.attributes.name}
                       </Link>

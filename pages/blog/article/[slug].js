@@ -27,26 +27,26 @@ const Article = () => {
       <div>
         <Query query={ARTICLE_QUERY} slug={slug}>
           {({ data: { articles } }) => {
-          if (articles.data.length) {
-            return (
-              <div>
-                <h1>{articles.data[0].attributes.title}</h1>
-                <Moment format="MMM Do YYYY">
-                  {articles.data[0].attributes.published_at}
-                </Moment>
-                {/*<Image loader={() => getStrapiMedia(articles.data[0].attributes.image)} src={getStrapiMedia(articles.data[0].attributes.image)} alt={articles.data[0].attributes.image.data.attributes.url} height={10} layout="fill" objectFit="none" placeholder="blur"
-                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(10, 10))}`} />*/}
+            if (articles.data.length) {
+              return (
                 <div>
+                  <h1>{articles.data[0].attributes.title}</h1>
+                  <Moment format="MMM Do YYYY">
+                    {articles.data[0].attributes.published_at}
+                  </Moment>
+                  {/*<Image loader={() => getStrapiMedia(articles.data[0].attributes.image)} src={getStrapiMedia(articles.data[0].attributes.image)} alt={articles.data[0].attributes.image.data.attributes.url} height={10} layout="fill" objectFit="none" placeholder="blur"
+                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(10, 10))}`} />*/}
+                  <div>
                     {/*<ReactMarkdown
                       remarkPlugins={[remarkMath]}
                       escapeHtml={false}>{articles.data[0].attributes.content}</ReactMarkdown>*/}
-                  <UseProcessor content={articles.data[0].attributes.content}/>
-              </div>
-            </div>
-          );
-        }
-      }}
-    </Query>
+                    <UseProcessor content={articles.data[0].attributes.content}/>
+                  </div>
+                </div>
+              );
+            }
+          }}
+        </Query>
       </div>
     </ApolloProvider>
   );
