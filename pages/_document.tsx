@@ -5,13 +5,11 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <title>Manon Salsou - Jouskaio's portfolio 2022</title>
           <link rel="manifest" href="/manifest.json" />
           <link rel="apple-touch-icon" href="/icon-x128.png"></link>
           <meta name="theme-color" content="#AA3C1E" />
           {/*SEO tag*/}
           <link rel="preconnect" href="https://jouskaio-me.herokuapp.com"/>
-          <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0"/>
           <meta name="apple-mobile-web-app-capable" content="yes"/>
           <meta name="description" content=" Jouskaio.me is the official website of Manon Salsou to discover all of her projects and minds about web/mobile development, AR/VR/3D and latest innovations"/>
           <meta name="robots" content="max-image-preview:large"/>

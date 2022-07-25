@@ -1,9 +1,13 @@
 import React, {Fragment} from "react";
+// @ts-ignore
 import Moment from "react-moment";
+// @ts-ignore
 import ARTICLE_QUERY from "/lib/blog/article/article";
+// @ts-ignore
 import {useRouter} from "next/router";
 import Query, {getStrapiMedia} from "../../../lib/blog/api";
 import {client} from "../../../lib/blog/apolloClient";
+// @ts-ignore
 import {ApolloProvider} from "@apollo/react-hooks";
 import parse from "html-react-parser";
 import Image from "next/image";

@@ -1,8 +1,10 @@
 import React from "react";
-import Link from "next/link";
-import Image from "next/image";
 import {getStrapiMedia} from "../../../lib/blog/api";
 import {shimmer, toBase64} from "../Preload/preload-image";
+// @ts-ignore
+import Link from "next/link";
+// @ts-ignore
+import Image from "next/image";
 
 const Card = ({ article }) => {
   // METHOD
