@@ -12,7 +12,8 @@ module.exports = nextConfig
 const pwaConfig = process.env.NODE_ENV;
 const server = "https://jouskaio-me.herokuapp.com";
 module.exports = server;
-const withPWA = require("next-pwa")({
+const withPWA = require("next-pwa");
+module.exports = withPWA({
   pwa: {
     dest: "public",
     register: true,
@@ -29,7 +30,7 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 
 const withPlugins = require('next-compose-plugins')
 module.exports = withPlugins([
+  [withPWA],
   [withBundleAnalyzer],
-  [withPWA]
   // your other plugins here
 ])
