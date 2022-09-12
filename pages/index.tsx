@@ -1,6 +1,9 @@
+// @ts-ignore
 import Head from 'next/head'
+// @ts-ignore
 import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
+// @ts-ignore
 import Link from "next/link";
 
 export default function Home() {

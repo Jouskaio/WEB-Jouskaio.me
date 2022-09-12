@@ -1,8 +1,10 @@
 import React from "react";
-import Articles from "/components/blog/Article/list-article";
+import Articles from "../../../components/blog/Article/list-article";
 import Query from "../../../lib/blog/api";
-import CATEGORY_ARTICLES_QUERY from "/lib/blog/category/category-articles";
-import {ApolloProvider} from "@apollo/react-hooks";
+import CATEGORY_ARTICLES_QUERY from "../../../lib/blog/category/category-articles";
+// @ts-ignore
+import {ApolloProvider} from "@apollo/client";
+// @ts-ignore
 import {useRouter} from "next/router";
 import {client} from "../../../lib/blog/apolloClient";
 

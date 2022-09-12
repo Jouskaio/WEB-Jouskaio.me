@@ -1,3 +1,4 @@
+// @ts-ignore
 import gql from "graphql-tag";
 
 const ARTICLES_QUERY = gql`

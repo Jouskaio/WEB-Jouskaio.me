@@ -8,7 +8,7 @@ import {useRouter} from "next/router";
 import Query, {getStrapiMedia} from "../../../lib/blog/api";
 import {client} from "../../../lib/blog/apolloClient";
 // @ts-ignore
-import {ApolloProvider} from "@apollo/react-hooks";
+import {ApolloProvider} from "@apollo/client";
 //import parse from "html-react-parser";
 //import Image from "next/image";
 import {shimmer, toBase64} from "../../../components/blog/Preload/preload-image";

@@ -1,15 +1,18 @@
-import CATEGORIES_QUERY from "/lib/blog/category/categories";
-import Query from "/lib/blog/api";
+import CATEGORIES_QUERY from "../../../lib/blog/category/categories";
+import Query from "../../../lib/blog/api";
+// @ts-ignore
 import Link from "next/link";
 
 export default function NavCategories() {
-  return (
+  // @ts-ignore
+    // @ts-ignore
+    return (
     <section className="flex-col md:flex-row flex items-center md:justify-between mt-16 mb-16 md:mb-12">
       <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight md:pr-8">
         Blog.
       </h1>
-      <Query query={CATEGORIES_QUERY} id={null}>
-        {({data: {categories}}) => {
+      <Query query={CATEGORIES_QUERY} >
+          {({ data: { categories } }) => {
           return (
             <div className="uk-navbar-right">
               <ul className="uk-navbar-nav">
