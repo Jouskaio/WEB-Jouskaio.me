@@ -9,8 +9,8 @@ import Query, {getStrapiMedia} from "../../../lib/blog/api";
 import {client} from "../../../lib/blog/apolloClient";
 // @ts-ignore
 import {ApolloProvider} from "@apollo/react-hooks";
-import parse from "html-react-parser";
-import Image from "next/image";
+//import parse from "html-react-parser";
+//import Image from "next/image";
 import {shimmer, toBase64} from "../../../components/blog/Preload/preload-image";
 // All plugins for ReactMarkdown
 import UseProcessor from "../../../components/blog/Preload/preload-remark";
@@ -23,9 +23,6 @@ const Article = () => {
    * Source : https://codesandbox.io/s/b7437?file=/index.js:313-544
    *
    */
-  if (!client) {
-    return <p>Loading</p>
-  }
   return (
     <ApolloProvider client={client}>
       <div>
