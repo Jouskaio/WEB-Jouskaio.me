@@ -1,0 +1,32 @@
+.m-titleWithTag {
+  //width:420px;
+  //width: auto;
+
+  &__divTitle {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-items: baseline;
+  }
+
+  &__title {
+    padding-right: 4px;
+  }
+
+  &__divider {
+    display: block;
+    width: 8px;
+    height: 8px;
+    background-color: var(--text-color);
+    border-radius: 50%;
+    margin-right: 4px;
+  }
+
+  &__divTag {
+    display: flex;
+    transform: translateX(-35px);
+    flex-wrap: nowrap;
+    flex-direction: row-reverse;
+  }
+
+}

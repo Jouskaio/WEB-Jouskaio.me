@@ -8,10 +8,8 @@ import rehypeReact from 'rehype-react'
 import remarkParse from "remark-parse";
 // @ts-ignore
 import remarkRehype from "remark-rehype";
-import rehypeDocument from 'rehype-document';
-import rehypeFormat from 'rehype-format';
-import rehypeParse from 'rehype-parse'
-import rehypeStringify from "rehype-stringify";
+// @ts-ignore
+import rehypeParse from "rehype-parse"
 
 
 

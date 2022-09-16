@@ -18,6 +18,15 @@ For the first installation, be sure to run `yarn istall`, `next build` and then 
 
 ## Packages installed
 
-- 
+- `@types/component-emitter` because of an error while building the project.
+``` bash
+info  - Loaded env from /Users/jouskaio/Documents/Development/Projets/Portfolio/Jouskaio-Front/.env
+Failed to compile.
+
+Type error: Cannot find type definition file for 'component-emitter'.
+  The file is in the program because:
+    Entry point for implicit type library 'component-emitter'
+
+```
 
 

@@ -22,7 +22,7 @@ module.exports = withPWA({
   }
 });
 
-// Bundle Analyzer : analyze performances of the application
+// Bundle Analyzer: analyze performances of the application
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })

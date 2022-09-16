@@ -1,0 +1,54 @@
+.m-popupCategoryXXS {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  width: 100%;
+  padding: 16px;
+
+  &__mediaContainer {
+    display: block;
+    position: relative;
+    height: 230px;
+    width: 100%;
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 5px;
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 0;
+    left: 8px;
+    filter: inherit !important;
+    text-shadow: 0 0 5px #000000;
+  }
+
+  &__titleContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    width: 100%;
+    margin-top: 5px;
+  }
+
+  &__number {
+    margin-right: 16px;
+    //margin-left: 8px;
+    filter: brightness(70%);
+  }
+
+  &__textContainer {
+    /*width: 80%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;*/
+  }
+
+  &__title {
+    //width: 80%;
+  }
+
+  &__subtitle {
+
+  }
+}

@@ -1,0 +1,10 @@
+.a-icon {
+  width: 24px;
+  &:hover {
+    filter: var(--accent-color-filter);
+  }
+  & > svg > path:first-child {
+    filter: none;
+    filter: var(--accent-purple-filter);
+  }
+}
