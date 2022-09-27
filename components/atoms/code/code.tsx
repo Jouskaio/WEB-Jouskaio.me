@@ -8,7 +8,8 @@ import Highlight from "react-highlight"
 
 /**
  * Atom: Button
- * @param props : content, src
+ * @param props : content
+ * @augments
  */
 function Code(props) {
     // ATTRIBUTES

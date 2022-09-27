@@ -6,7 +6,8 @@ import Image from 'next/image'
 import Link from "next/link";
 import React from 'react';
 import Code from "../components/atoms/code/code";
-import Script from "next/script";
+import Icon from "../components/atoms/icon/icon";
+import Media from "../components/atoms/media/media";
 
 export default function Home() {
 
@@ -23,6 +24,7 @@ export default function Home() {
 
             <>
                 <Code content="&lt;h1&gt;Hello world&lt;/h1&gt;" language={"html"}/>
+                <Media classname={""} height={300} width={300} src={"https://static.pratique.fr/images/unsized/le/les-hiboux-et-les-chouettes-istock-com-carol-gray-209-1549011347.jpg"} alt={""} />
             </>
         </>
     )

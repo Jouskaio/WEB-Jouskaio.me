@@ -11,7 +11,7 @@ import {client} from "../../../lib/blog/apolloClient";
 import {ApolloProvider} from "@apollo/client";
 //import parse from "html-react-parser";
 //import Image from "next/image";
-import {shimmer, toBase64} from "../../../components/blog/Preload/preload-image";
+import {shimmer, toBase64} from "../../../components/atoms/media/preload-image";
 // All plugins for ReactMarkdown
 import UseProcessor from "../../../components/blog/Preload/preload-remark";
 

@@ -28,5 +28,3 @@ Type error: Cannot find type definition file for 'component-emitter'.
     Entry point for implicit type library 'component-emitter'
 
 ```
-
-
