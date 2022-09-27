@@ -4,17 +4,19 @@ import Link from 'next/link';
 
 // <Modal post= {postProps} user={userDetails}/>
 
+/**
+ * Atom: Button
+ * @param props : content, src
+ */
 function Button(props) {
     // ATTRIBUTES
-    let data = props.data
+    let content = props.content
     let src = props.src
 
     // METHODS
     return (
-        <Link href={src}><a className="a-button">{data}</a></Link>
+        <Link href={src}><a className="a-button">{content}</a></Link>
     );
-
-
 }
 
 export default Button;

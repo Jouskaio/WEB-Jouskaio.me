@@ -1,4 +1,8 @@
+// @ts-ignore
 import Document, { Html, Head, Main, NextScript } from "next/document";
+// @ts-ignore
+import Script from "next/script";
+import React from "react";
 
 class MyDocument extends Document {
   render() {
@@ -38,6 +42,8 @@ class MyDocument extends Document {
           <meta property="og:image:width" content="192"/>
           <meta property="og:image:height" content="192"/>
           <meta property="og:image" content="http://www.jouskaio.me/icon-x192.png"/>
+
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/felipec.min.css"/>
         </Head>
         <body>
         <Main />
