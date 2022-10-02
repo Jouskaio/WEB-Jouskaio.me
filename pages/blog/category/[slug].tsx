@@ -1,5 +1,5 @@
 import React from "react";
-import Articles from "../../../components/blog/Article/list-article";
+import Articles from "../../../components/layout/articles";
 import Query from "../../../lib/blog/api";
 import CATEGORY_ARTICLES_QUERY from "../../../lib/blog/category/category-articles";
 // @ts-ignore

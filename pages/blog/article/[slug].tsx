@@ -11,9 +11,9 @@ import {client} from "../../../lib/blog/apolloClient";
 import {ApolloProvider} from "@apollo/client";
 //import parse from "html-react-parser";
 //import Image from "next/image";
-import {shimmer, toBase64} from "../../../components/atoms/media/preload-image";
+import {shimmer, toBase64} from "../../../components/protons/preload/preload-image";
 // All plugins for ReactMarkdown
-import UseProcessor from "../../../components/blog/Preload/preload-remark";
+import UseProcessor from "../../../components/protons/preload/preload-remark";
 
 const Article = () => {
   const router = useRouter()

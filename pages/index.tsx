@@ -5,13 +5,18 @@ import Image from 'next/image'
 // @ts-ignore
 import Link from "next/link";
 import React from 'react';
-import TextH1 from "../components/atoms/text/textH1";
-import TextLink from "../components/atoms/text/textLink";
-import Text from "../components/atoms/text/text";
+import Sider, {IconObject} from "../components/molecule/navigation/sider";
 
 export default function Home() {
 
     //addLibrary('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
+    const icons = [
+        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
+        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
+        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
+        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
+    ];
+
 
     return (
         <>
@@ -23,7 +28,7 @@ export default function Home() {
             </Head>
 
             <>
-                <Text content={"IHEIU"} classname={""}/>
+                <Sider type={"--left"} icons={icons}/>
             </>
         </>
     )

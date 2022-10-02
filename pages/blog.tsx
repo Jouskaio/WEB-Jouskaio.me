@@ -4,8 +4,8 @@ import Query from "../lib/blog/api";
 // @ts-ignore
 import {ApolloProvider, useQuery} from "@apollo/client";
 import ARTICLES_QUERY from "../lib/blog/article/articles";
-import NavCategories from '../components/blog/Navigation/categories'
-import Article from "../components/blog/Article/list-article";
+import NavCategories from '../components/molecule/categories/categories'
+import Article from "../components/layout/articles";
 import React from "react";
 // <AllArticles/>
 export default class Blog extends React.Component {

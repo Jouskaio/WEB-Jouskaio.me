@@ -1,0 +1,80 @@
+<section role="main">
+
+    <!-- Slider -->
+    <div class="velo-slides" data-velo-slider="on" data-velo-theme="light">
+
+        {{#each slides}}
+            <!-- IMAGE -->
+            {{#ifEquals type "default"}}
+                <!-- Slide -->
+                <div class="velo-slide">
+                    <!-- Pretitle Hint -->
+                    <span class="velo-slider__hint"><span><span>{{prehint}}</span></span></span> <!-- Slide BG -->
+                    <div class="velo-slide__bg">
+                        <!-- Borders -->
+                        <span class="border"><span></span></span> <!-- Img -->
+                        <figure class="velo-slide__figure" style="background-image: url({{media}})"></figure>
+                    </div>
+
+                    <!-- Header -->
+                    <header class="velo-slide__header">
+                        <h3 class="velo-slide__title"><span class="oh"><span>{{title}}</span></span><span class="oh"><span>{{subtitle}}</span></span></h3>
+                        <p class="velo-slide__text"><span class="oh"><span>{{text}}</span></span></p>
+                        {{#ifEquals link ""}}
+                        {{else}}
+                            <span class="velo-slide__btn"><a class="btn-draw btn--white" href="{{link}}"><span class="btn-draw__text"><span>{{linkText}}</span></span></a></span>
+                        {{/ifEquals}}
+                    </header>
+                </div>
+            {{/ifEquals}}
+
+            <!-- VIDEO -->
+            {{#ifEquals type "video"}}
+                <!-- Slide - with Video -->
+                <div class="velo-slide">
+                    <!-- Pretitle Hint -->
+                    <span class="velo-slider__hint"><span><span>{{prehint}}</span></span></span>
+                    <!-- Slide BG -->
+                    <div class="velo-slide__bg">
+                        <!-- Borders -->
+                        <span class="border"><span></span></span> <!-- Img -->
+                        <figure class="velo-slide__figure" style="background-image: none"></figure>
+                        <div class="velo-slide__vid-wrap">
+                            <video autoplay="" class="velo-slide__vid" loop="" poster="">
+                                <source src="{{media}}" type="{{mediaType}}">
+                            </video>
+                        </div>
+                    </div><!-- Header -->
+                    <header class="velo-slide__header">
+                        <h3 class="velo-slide__title"><span class="oh"><span>{{title}}</span></span><span class="oh"><span>{{subtitle}}</span></span></h3>
+                        <p class="velo-slide__text"><span class="oh"><span>{{text}}</span></span></p>
+                        {{#ifEquals link ""}}
+                        {{else}}
+                            <span class="velo-slide__btn"><a class="btn-draw btn--white" href="{{link}}"><span class="btn-draw__text"><span>{{linkText}}</span></span></a></span>
+                        {{/ifEquals}}
+                    </header>
+                </div>
+            {{/ifEquals}}
+
+        {{/each}}
+
+        <!-- Slides Nav -->
+        <nav class="velo-slides-nav">
+            <ul class="velo-slides-nav__list">
+                <li>
+                    <a class="js-velo-slides-prev velo-slides-nav__prev inactive" href="#0"><i class="icon-up-arrow"></i></a>
+                </li>
+                <li>
+                    <a class="js-velo-slides-next velo-slides-nav__next" href="#0"><i class="icon-down-arrow"></i></a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.3.0/velocity.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.3.0/velocity.ui.js"></script>
+
+    <script type="module" src="{{path '/js/slider-scroll.js'}}"></script>
+
+
+</section>

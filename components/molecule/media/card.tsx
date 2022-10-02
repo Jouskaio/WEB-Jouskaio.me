@@ -1,6 +1,6 @@
 import React from "react";
 import {getStrapiMedia} from "../../../lib/blog/api";
-import {shimmer, toBase64} from "../../atoms/media/preload-image";
+import {shimmer, toBase64} from "../../protons/preload/preload-image";
 // @ts-ignore
 import Link from "next/link";
 // @ts-ignore

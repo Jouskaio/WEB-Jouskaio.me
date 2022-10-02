@@ -3,7 +3,7 @@ import React from "react";
 import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
-import {shimmer, toBase64} from "./preload-image";
+import {shimmer, toBase64} from "../../protons/preload/preload-image";
 import {getStrapiMedia} from "../../../lib/blog/api";
 
 function Media(props: { src: string; width: number; height: number; classname: string, alt: string }) {
