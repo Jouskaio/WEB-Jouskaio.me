@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function TextH4(props : {content : string, classname: string}) {
+export default function TextH4(props) {
     // ATTRIBUTES
     let content = props.content;
     let classname = props.classname;

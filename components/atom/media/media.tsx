@@ -6,7 +6,7 @@ import Image from "next/image";
 import {shimmer, toBase64} from "../../protons/preload/preload-image";
 import {getStrapiMedia} from "../../../lib/blog/api";
 
-function Media(props: { src: string; width: number; height: number; classname: string, alt: string }) {
+function Media(props) {
     // ATTRIBUTES
     let src = props.src
     let width = props.width

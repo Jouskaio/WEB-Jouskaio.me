@@ -8,7 +8,7 @@ import Image from "next/image";
  * Send information to this page
  * @param props
  */
-function PopCategoryXXS(props: {content: Array<string>, title: string, number: string, subtitle: string, media: string}) {
+function PopCategoryXXS(props) {
     // ATTRIBUTES
     let content = props.content
     let title = props.title

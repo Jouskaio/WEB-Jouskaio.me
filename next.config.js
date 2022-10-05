@@ -27,6 +27,17 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
+// Webpack
+module.exports = {
+  webpack: (
+    config,
+    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
+  ) => {
+    // Important: return the modified config
+    return config
+  }
+}
+
 
 const withPlugins = require('next-compose-plugins')
 module.exports = withPlugins([

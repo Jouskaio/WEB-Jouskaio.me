@@ -2,7 +2,7 @@ import React from "react";
 // @ts-ignore
 import Link from 'next/link';
 
-export default function TextLink(props : {content : string, classname: string, src: string}) {
+export default function TextLink(props) {
     // ATTRIBUTES
     let content = props.content;
     let classname = props.classname;

@@ -2,7 +2,7 @@ import React from "react";
 // @ts-ignore
 import Link from "next/link";
 
-function Icon(props: { href: string, src: string, classname: string, alt: string }) {
+function Icon(props) {
     // ATTRIBUTES
     let href = props.href;
     let src = props.src;

@@ -5,16 +5,16 @@ import Image from 'next/image'
 // @ts-ignore
 import Link from "next/link";
 import React from 'react';
-import Sider, {IconObject} from "../components/molecule/navigation/sider";
+import Side, {IconObject} from "../components/molecule/navigation/side";
 
 export default function Home() {
 
     //addLibrary('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
     const icons = [
-        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
-        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
-        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
-        new IconObject("/icons/pinterest.png", "Pinterest", "#", "m-sideGlobal__icon"),
+        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
     ];
 
 
@@ -28,7 +28,7 @@ export default function Home() {
             </Head>
 
             <>
-                <Sider type={"--left"} icons={icons}/>
+                <Side type={"--left"} icons={icons}/>
             </>
         </>
     )
