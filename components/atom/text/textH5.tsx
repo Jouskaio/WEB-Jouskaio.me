@@ -1,13 +1,16 @@
 import React from "react";
 
-export default function TextH5(props) {
-    // ATTRIBUTES
-    let content = props.content;
-    let classname = props.classname;
+/**
+ *
+ * @param props
+ * @param classname : string
+ * @constructor
+ */
+export default function TextH5(props, classname) {
     // METHODS
     return (
         <>
-            <h5 className={"a-titleH5 " + classname}>{content}</h5>
+            <h5 className={"a-titleH5 " + classname}>{props.children}</h5>
         </>
     );
 }

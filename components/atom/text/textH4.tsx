@@ -1,13 +1,16 @@
 import React from "react";
 
-export default function TextH4(props) {
-    // ATTRIBUTES
-    let content = props.content;
-    let classname = props.classname;
+/**
+ *
+ * @param props
+ * @param classname : string
+ * @constructor
+ */
+export default function TextH4(props, classname) {
     // METHODS
     return (
         <>
-            <h4 className={"a-titleH4 " + classname}>{content}</h4>
+            <h4 className={"a-titleH4 " + classname}>{props.children}</h4>
         </>
     );
 }

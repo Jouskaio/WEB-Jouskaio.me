@@ -2,13 +2,15 @@ import React from "react";
 // @ts-ignore
 import Link from "next/link";
 
-function Icon(props) {
-    // ATTRIBUTES
-    let href = props.href;
-    let src = props.src;
-    let classname = props.classname;
-    let alt = props.alt;
-
+/**
+ * Atom: Icon
+ * @param href : string
+ * @param src : string
+ * @param classname : string
+ * @param alt : string
+ * @constructor
+ */
+function Icon({href, src, classname, alt}) {
     // METHODS
     return (
         <>

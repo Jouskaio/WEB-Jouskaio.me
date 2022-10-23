@@ -6,12 +6,13 @@ import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
 
+/**
+ *
+ * @param article : Send information to this page
+ * @constructor
+ */
 const Card = ({ article }) => {
-  // METHOD
-  /**
-   * Send information to this page
-   * @param e: detect element where is effected this event
-   */
+
   return (
     <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`} className="uk-link-reset">
       <a>

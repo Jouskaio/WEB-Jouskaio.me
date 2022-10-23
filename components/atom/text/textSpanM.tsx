@@ -2,14 +2,17 @@ import React from "react";
 // @ts-ignore
 import Link from 'next/link';
 
-export default function TextSpanM(props) {
-    // ATTRIBUTES
-    let content = props.content;
-    let classname = props.classname;
+/**
+ *
+ * @param props
+ * @param classname : string
+ * @constructor
+ */
+export default function TextSpanM(props, classname) {
     // METHODS
     return (
         <>
-            <span className={"a-spanM " + classname}>{content}</span>
+            <span className={"a-spanM " + classname}>{props.children}</span>
         </>
     );
 }

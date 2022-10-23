@@ -44,6 +44,8 @@ class MyDocument extends Document {
           <meta property="og:image" content="http://www.jouskaio.me/icon-x192.png"/>
 
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/felipec.min.css"/>
+          <script type="text/jsx" src={"js/slider-scroll.js"} async/>
+
         </Head>
         <body>
         <Main />

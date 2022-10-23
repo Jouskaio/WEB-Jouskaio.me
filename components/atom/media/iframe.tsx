@@ -6,15 +6,18 @@ import Image from "next/image";
 import {shimmer, toBase64} from "../../protons/preload/preload-image";
 import {getStrapiMedia} from "../../../lib/blog/api";
 
-function Iframe(props) {
-    // ATTRIBUTES
-    let src = props.src
-    let width = props.width
-    let height = props.height
-    let classname = props.classname
-    let id = props.id
-    let title = props.title
-
+/**
+ * Atom: iFrame
+ *
+ * @param src : string
+ * @param width : number
+ * @param height : number
+ * @param classname : string
+ * @param id : string (to differentiate each animation)
+ * @param title : string
+ * @constructor
+ */
+function Iframe(src, width, height, classname, id, title) {
     // METHODS
     return (
         <>

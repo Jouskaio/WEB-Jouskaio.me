@@ -1,13 +1,16 @@
 import React from "react";
 
-export default function TextH3(props) {
-    // ATTRIBUTES
-    let content = props.content;
-    let classname = props.classname;
+/**
+ *
+ * @param props
+ * @param classname : string
+ * @constructor
+ */
+export default function TextH3(props, classname) {
     // METHODS
     return (
         <>
-            <h3 className={"a-titleH3 " + classname}>{content}</h3>
+            <h3 className={"a-titleH3 " + classname}>{props.children}</h3>
         </>
     );
 }

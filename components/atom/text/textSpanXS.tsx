@@ -2,14 +2,17 @@ import React from "react";
 // @ts-ignore
 import Link from 'next/link';
 
-export default function TextSpanXS(props) {
-    // ATTRIBUTES
-    let content = props.content;
-    let classname = props.classname;
+/**
+ *
+ * @param props
+ * @param classname : string
+ * @constructor
+ */
+export default function TextSpanXS(props, classname) {
     // METHODS
     return (
         <>
-            <span className={"a-spanXS " + classname}>{content}</span>
+            <span className={"a-spanXS " + classname}>{props.children}</span>
         </>
     );
 }

@@ -3,6 +3,10 @@ import Query from "../../../lib/blog/api";
 // @ts-ignore
 import Link from "next/link";
 
+/**
+ *
+ * @constructor
+ */
 export default function NavCategories() {
   // @ts-ignore
     // @ts-ignore

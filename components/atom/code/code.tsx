@@ -7,21 +7,18 @@ import Highlight from "react-highlight"
 // <Modal post= {postProps} user={userDetails}/>
 
 /**
- * Atom: Button
- * @param props : content
+ * Atom: Code
+ * @param props : string
+ * @param language: string
  * @augments
  */
-function Code(props) {
-    // ATTRIBUTES
-    let content = props.content
-    let language = props.language
-
+function Code(props, language) {
     // METHODS
     return (
         <>
             <Highlight className={"a-code " +
                 language}>
-                {content}
+                {props.children}
             </Highlight>
         </>
 

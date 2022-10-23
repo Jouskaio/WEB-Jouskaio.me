@@ -8,23 +8,19 @@ import Icon from "../../atom/icon/icon";
 /**
  * Send information to this page
  * @param props
- *
+ * @param icons : [{href: string, src: string, classname: string, alt: string}]
+ * @param type : string
  */
-function Side(props) {
-  // ATTRIBUTES
-  let icons = props.icons;
-  let type = props.type;
-
-  // METHOD
-  return (
+function Side({icons, type}) {
+    // METHOD
+    return (
     <nav className={"m-sideGlobal"+type}>
       {icons.map(function(icon, i) {
-        return <Icon href={icon.href} src={icon.src} classname={icon.classname} alt={icon.alt} key={i}/>;
+         return <Icon href={icon.href} src={icon.src} classname={icon.classname} alt={icon.alt} key={i}/>;
       })}
-      {/* > @icon src=src alt=alt href=href class=class*/}
       <nav className="m-sideGlobal__divider"></nav>
     </nav>
-  );
-};
+    );
+}
 
 export default Side;

@@ -5,6 +5,7 @@
   align-items: center; // Align on secondary axe
   position: fixed;
   bottom: 0;
+  z-index: 9999;
 
   &--right {
     display: flex;

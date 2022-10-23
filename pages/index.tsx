@@ -2,21 +2,12 @@
 import Head from 'next/head'
 // @ts-ignore
 import Image from 'next/image'
-// @ts-ignore
-import Link from "next/link";
 import React from 'react';
-import Side, {IconObject} from "../components/molecule/navigation/side";
+import Side from "../components/molecule/navigation/side";
+import Header from "../components/organisms/navigation/header";
+import TextLink from "../components/atom/text/textLink";
 
 export default function Home() {
-
-    //addLibrary('https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js')
-    const icons = [
-        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
-        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
-        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
-        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
-    ];
-
 
     return (
         <>
@@ -28,7 +19,50 @@ export default function Home() {
             </Head>
 
             <>
-                <Side type={"--left"} icons={icons}/>
+                <header className={"l-header"}>
+                    <Header
+                        height={32}
+                        source={"icons/logo.svg"}
+                        alt={"Description"}
+                        classname={"o-header__logo"}
+                        pages={[
+                        {
+                            name: "About",
+                            source: "/blog",
+                            class: "o-header__page"
+                        },
+                        {
+                            name: "Projects",
+                            source: "/blog",
+                            class: "o-header__page"
+                        },
+                        {
+                            name: "Blog",
+                            source: "/blog",
+                            class: "o-header__page"
+                        },
+                        {
+                            name: "Contact",
+                            source: "/blog",
+                            class: "o-header__page"
+                        }
+                    ]}/>
+                    <TextLink src="/blog" classname={"o-header__page"} content={"JDIJD"}/>
+                    <Side type={"--left"} icons={[
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                    ]}/>
+                    <Side type={"--right"} icons={[
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                        {src : "/icons/pinterest.png", alt: "Pinterest", href :"#", classname: "m-sideGlobal__icon"},
+                    ]}/>
+                </header>
+
+                <footer>Made with ♥ by @Jouskaio - 2022</footer>
             </>
         </>
     )

@@ -6,23 +6,20 @@ import Image from "next/image";
 
 /**
  * Send information to this page
- * @param props
+ * @param details : [string]
+ * @param title : string
+ * @param number : string
+ * @param subtitle : string
+ * @param media : string
  */
-function PopCategoryXXS(props) {
-    // ATTRIBUTES
-    let content = props.content
-    let title = props.title
-    let number = props.number
-    let subtitle = props.subtitle
-    let media = props.media
-
+function PopCategoryXXS(details, title, number, subtitle, media) {
     // METHOD
     return (
       <div className="m-popupCategoryXXS">
         <nav className="m-popupCategoryXXS__mediaContainer"
              style={{backgroundImage: "linear-gradient( rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.5) ), url("+media+")"}}>
           <p className="m-popupCategoryXXS__content a-spanXS">
-              {content.map((line) => <p key={line}>{line}</p>)}
+              {details.map((line) => <p key={line}>{line}</p>)}
           </p>
         </nav>
         <nav className="m-popupCategoryXXS__titleContainer">
