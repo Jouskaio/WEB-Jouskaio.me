@@ -771,10 +771,15 @@ html {
 }
 
 .a-titleH1 {
-  font-size: var(--font-size-XXL);
+  font-size: var(--font-size-XL);
   font-family: var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
+}
+@media (min-width: 980px) {
+  .a-titleH1 {
+    font-size: var(--font-size-XXL);
+  }
 }
 
 .a-titleH2 {
@@ -793,10 +798,15 @@ html {
 }
 
 .a-titleH4 {
-  font-size: var(--font-size-L);
+  font-size: var(--font-size-M);
   font-family: var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
+}
+@media (min-width: 980px) {
+  .a-titleH4 {
+    font-size: var(--font-size-L);
+  }
 }
 
 .a-titleH5 {
@@ -866,7 +876,11 @@ html {
   display: block;
   margin: 0 auto;
   border-radius: 15px;
-  width: 300px;
+}
+
+pre code.hljs {
+  overflow-x: hidden !important;
+  white-space: pre-wrap;
 }
 
 .a-icon {
@@ -1894,10 +1908,14 @@ h1, h2, h3, h4, h5, h6 {
     top: 0px;
   }
 }
+.l-home__a-sizeSection {
+  margin-left: 79px;
+  margin-right: 79px;
+}
 @media (min-width: 980px) {
   .l-home__a-sizeSection {
-    padding-left: 152px;
-    padding-right: 152px;
+    margin-left: 152px;
+    margin-right: 152px;
   }
 }
 .l-home__header {
@@ -1943,25 +1961,56 @@ h1, h2, h3, h4, h5, h6 {
 }
 .l-home__a-division {
   display: block;
-  margin: 0 auto;
   width: 60%;
   border: 1px solid var(--text-color);
+  margin-bottom: 8px;
+}
+@media (min-width: 980px) {
+  .l-home__a-division {
+    margin: 0 auto;
+    width: 35%;
+  }
 }
 .l-home__m-title {
   margin-top: 50px;
   width: 100%;
-  text-align: center;
+}
+@media (min-width: 980px) {
+  .l-home__m-title {
+    text-align: center;
+  }
+}
+.l-home__a-titleText {
+  text-align: left;
 }
 .l-home__a-span {
   color: var(--accent-color);
 }
 .l-home__a-logoProfile {
-  margin-left: 85%;
-  transform: translateY(-70%);
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row-reverse;
+  justify-items: flex-end;
+  margin-bottom: 35px;
+}
+@media (min-width: 980px) {
+  .l-home__a-logoProfile {
+    width: 50%;
+  }
 }
 .l-home__a-code {
-  width: 100%;
-  background-color: red;
+  width: 40%;
+}
+@media (min-width: 980px) {
+  .l-home__a-code {
+    width: 100%;
+  }
+}
+.l-home__a-buttonProfil {
+  display: block;
+  margin: 0 auto;
 }
 
 /*# sourceMappingURL=globals.css.map */

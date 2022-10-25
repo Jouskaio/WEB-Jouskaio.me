@@ -7,7 +7,7 @@ import React from "react";
  * @param classname : string
  * @constructor
  */
-export default function TextH1(props, classname) {
+export default function TextH1(props, {classname}) {
     // METHODS
     return (
         <>

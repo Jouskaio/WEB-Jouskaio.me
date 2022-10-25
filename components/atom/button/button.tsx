@@ -8,11 +8,12 @@ import Link from 'next/link';
  * Atom: Button
  * @param props : content, src
  * @param src : string
+ * @param classname: string
  */
-function Button(props, src) {
+function Button(props, {src, classname}) {
     // METHODS
     return (
-        <Link href={src}><a className="a-button">{props.children}</a></Link>
+        <Link href={src}><a className={"a-button " + classname}>{props.children}</a></Link>
     );
 }
 

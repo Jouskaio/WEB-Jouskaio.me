@@ -16,6 +16,7 @@ import TextSpanM from "../components/atom/text/textSpanM";
 import TextH4 from "../components/atom/text/textH4";
 import Media from "../components/atom/media/media";
 import Code from "../components/atom/code/code";
+import Button from "../components/atom/button/button";
 
 export default function Home() {
 
@@ -84,7 +85,7 @@ export default function Home() {
 
                     <section className={"l-home__a-sizeSection"}>
                         <div className={"l-home__m-title"}>
-                            <TextH1>Hello ! I’m Manon Salsou</TextH1>
+                            <TextH1 classname={"l-home__a-titleText"}>Hello ! I’m Manon Salsou</TextH1>
                             <div className="l-home__a-division"></div>
                             <TextH4>
                             <span className={"l-home__a-span"}>
@@ -96,40 +97,41 @@ export default function Home() {
                         </div>
                         <nav className={"l-home__a-logoProfile"}><Media classname={""} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
                         <Code language={"javascript"} classname={"l-home__a-code"}>
-                            {`
-                            const jouskaio = {
-                            pronouns: "She" | "Her",
-                            formation: ["Digital Project Manager Bachelor", "Degree in computer engineering - 3iL"],
-                            askMeAbout: ["web dev", "tech", "app dev", "ios", "AR", "VR"],
-                            skills: {
-                            websiteAndMobile: {
-                            backEnd: ["PHP", "Symfony", "Docker", "Bash", "Wordpress", "Node.js", "Java"],
-                            frontEnd: ["HTML", "CSS", "Javacript", "Angular", "React", "Angular", "jQuery" ],
-                            mobileApp: ["ARKit", "Swift", "Kotlin"],
-                            devOps: ["AWS", "Docker🐳", "Nginx"],
-                            databases: ["mongo", "MySql", "sqlite", "postgreSQL"]
-                        },
-                            InteractiveDesign : {
-                            uxUi : ["Suite Adobe", "Design Thinking", "UX research techniques",
-                            "Benchmark", "Personae", "Experience Map", "Wireframe",
-                            "Prototype"],
-                            animation : ["Motion", "3D"]
-                        },
-                            trafficAmelioration: {
-                            traffic: ["Web Marketing", "E-Business", "Data Intelligence",
-                            "Semantic", "Traffic Management", "SEO", "ASO", "SEA",
-                            "CRM", "Social media"],
-                            createContent: ["Content Marketing", "Brand Content", "Media Content"]
-                        },
-                            specialities : ["Embedded systems", "management", "Agility and Scrum", "TOEIC"]
-                        },
-                            compagniesWorkedWith: ["Orange", "RATP", "Novæ Memoræ", "Santarelli"],
-                            funFact: ["My name is contraction of Jouska and I/O.
-                            Jouska means 'A hypothetical conversation that you compulsively play out in your head' which is usually the
-                            behavior I always have when reflecting about a future decision"]
-                        };
-                            `}
+{`
+const jouskaio = {
+    pronouns: "She" | "Her",
+    formation: ["Digital Project Manager Bachelor", "Degree in computer engineering - 3iL"],
+    askMeAbout: ["web dev", "tech", "app dev", "ios", "AR", "VR"],
+    skills: {
+        websiteAndMobile: {
+        backEnd: ["PHP", "Symfony", "Docker", "Bash", "Wordpress", "Node.js", "Java"],
+        frontEnd: ["HTML", "CSS", "Javacript", "Angular", "React", "Angular", "jQuery" ],
+        mobileApp: ["ARKit", "Swift", "Kotlin"],
+        devOps: ["AWS", "Docker🐳", "Nginx"],
+        databases: ["mongo", "MySql", "sqlite", "postgreSQL"]
+    },
+    InteractiveDesign : {
+        uxUi : ["Suite Adobe", "Design Thinking", "UX research techniques",
+        "Benchmark", "Personae", "Experience Map", "Wireframe",
+        "Prototype"],
+        animation : ["Motion", "3D"]
+    },
+    trafficAmelioration: {
+        traffic: ["Web Marketing", "E-Business", "Data Intelligence",
+        "Semantic", "Traffic Management", "SEO", "ASO", "SEA",
+        "CRM", "Social media"],
+        createContent: ["Content Marketing", "Brand Content", "Media Content"]
+    },
+    specialities : ["Embedded systems", "management", "Agility and Scrum", "TOEIC"]
+    },
+    compagniesWorkedWith: ["Orange", "RATP", "Novæ Memoræ", "Santarelli"],
+    funFact: ["My name is contraction of Jouska and I/O.
+    Jouska means 'A hypothetical conversation that you compulsively play out in your head' which is usually the
+    behavior I always have when reflecting about a future decision"]
+};
+`}
                         </Code>
+                        <Button classname={"l-home__a-buttonProfil"} src={"/about"}>More about it</Button>
                     </section>
                     <footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</footer>
                 </main>

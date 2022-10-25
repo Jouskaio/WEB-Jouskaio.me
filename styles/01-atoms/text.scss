@@ -1,6 +1,9 @@
 // Title website
 .a-titleH1 {
-  font-size: var(--font-size-XXL);
+  font-size: var(--font-size-XL);
+  @include large {
+    font-size: var(--font-size-XXL);
+  }
   font-family: var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
@@ -27,7 +30,10 @@
 
 // Title container passions
 .a-titleH4 {
-  font-size: var(--font-size-L);
+  font-size: var(--font-size-M);
+  @include large {
+    font-size: var(--font-size-L);
+  }
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
@@ -106,5 +112,10 @@
   display: block;
   margin: 0 auto;
   border-radius: 15px;
-  width: 300px;
+  //width: 100%;
+}
+
+pre code.hljs {
+  overflow-x: hidden !important;
+  white-space: pre-wrap;
 }
