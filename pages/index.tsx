@@ -96,6 +96,7 @@ export default function Home() {
                         </div>
                         <nav className={"l-home__a-logoProfile"}><Media classname={""} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
                         <Code language={"javascript"} classname={"l-home__a-code"}>
+                            {`
                             const jouskaio = {
                             pronouns: "She" | "Her",
                             formation: ["Digital Project Manager Bachelor", "Degree in computer engineering - 3iL"],
@@ -127,6 +128,7 @@ export default function Home() {
                             Jouska means 'A hypothetical conversation that you compulsively play out in your head' which is usually the
                             behavior I always have when reflecting about a future decision"]
                         };
+                            `}
                         </Code>
                     </section>
                     <footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</footer>
