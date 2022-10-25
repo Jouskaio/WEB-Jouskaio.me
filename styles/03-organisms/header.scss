@@ -1,10 +1,13 @@
+
 .o-header {
   width: 100%;
   padding: 16px;
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: column-reverse;
+  flex-direction: column;
   background: var(--background-color);
+  position: sticky;
+  top: 0;
 
   @include large {
     display: flex;
@@ -13,6 +16,7 @@
     justify-content: space-between;
     padding: 16px;
     width: 100%;
+    position: unset;
   }
 
   &__pagesDiv {
@@ -20,35 +24,49 @@
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-between;
+    transform: translateY(-30px);
 
     @include large {
       //display: flex;
       flex-wrap: nowrap;
       width: unset;
+      transform: unset;
     }
   }
 
   &__logo {
     display: block;
     margin: 0 auto;
-    transform: translateY(-25px);
 
     @include large {
       transform: unset;
       margin: unset;
+      z-index: 999;
     }
   }
 
   &__page:nth-child(2) {
-    transform: translateX(-24px);
+    transform: translateX(-30px);
+    @include large {
+      transform: translateX(-24px);
+    }
   }
 
+
   &__page:nth-child(3) {
-    transform: translateX(10px);
+    transform: translateX(25px);
+    @include large {
+      transform: translateX(10px);
+    }
   }
 
   &__page {
     font-size: 16px;
+    color: var(--text-color);
+    &>a:hover {
+      text-decoration-style: solid;
+      text-decoration: var(--text-color) 1px;
+    }
 
     @include large {
       font-size: 18px;

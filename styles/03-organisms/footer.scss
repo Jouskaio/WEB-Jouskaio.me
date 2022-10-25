@@ -5,4 +5,8 @@
   display: block;
   margin: 0 auto;
   text-align: center;
+  @include large {
+    padding-bottom: 15px;
+    padding-top: 45px;
+  }
 }

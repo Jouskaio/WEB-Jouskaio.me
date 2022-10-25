@@ -45,7 +45,7 @@ class MyDocument extends Document {
 
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/felipec.min.css"/>
           <script type="text/jsx" src={"js/slider-scroll.js"} async/>
-
+          <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         </Head>
         <body>
         <Main />

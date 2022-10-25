@@ -1,4 +1,6 @@
 import React from "react";
+// @ts-ignore
+import Image from "next/image";
 
 
 /**
@@ -26,7 +28,7 @@ function SliderScroll({slides}) {
                                         {/*-- Image --*/}
                                         <figure className="velo-slide__figure"
                                                 style={{backgroundImage: slide.media}}>
-                                            <img src={slide.media} alt={""}/>
+                                            <Image src={slide.media} alt={""}/>
                                         </figure>
                                     </div>
                                     {/*-- Header --*/}

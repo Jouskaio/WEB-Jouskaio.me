@@ -17,7 +17,7 @@ import {getStrapiMedia} from "../../../lib/blog/api";
  * @param title : string
  * @constructor
  */
-function Iframe(src, width, height, classname, id, title) {
+function Iframe({src, width, height, classname, id, title}) {
     // METHODS
     return (
         <>
@@ -28,7 +28,8 @@ function Iframe(src, width, height, classname, id, title) {
                     src={src}
                     allow="autoplay"
                     loading="lazy"
-                    className={classname}></iframe>
+                    className={classname}
+            ></iframe>
         </>
 
     );
