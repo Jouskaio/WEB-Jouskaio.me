@@ -16,6 +16,11 @@
       margin-right: 152px;
     }
   }
+
+  &__title  {
+    text-transform: lowercase;
+  }
+
   // HEADER & FOOTER
   &__header {
     width: 100%;
@@ -61,6 +66,12 @@
     z-index: 995;
   }
 
+  &__m-swipe {
+    position: relative;
+    top: -100px;
+    z-index: 996;
+  }
+
 
   // SECTION PROFIL
   &__a-division {
@@ -98,11 +109,16 @@
     flex-direction: row-reverse;
     justify-items: flex-end;
     margin-bottom: 35px;
+
+    @include medium {
+      flex-direction: row;
+    }
     @include large {
+      justify-content: center;
+      align-items: center;
       width: 50%;
     }
-      //transform: translateY(-70%);
-    }
+  }
 
   &__a-code {
     width: 40%;
@@ -111,8 +127,89 @@
     }
   }
 
-  &__a-buttonProfil {
-    display: block;
+  &__a-buttonProfile {
+    width: unset;
+    display: inline-block;
     margin: 0 auto;
+    margin-top: 16px;
   }
+
+  &__a-buttonProfileNav {
+    display: flex;
+  }
+
+  // SECTION NEWS
+  &__m-containerInfo {
+    margin-top: 150px;
+    text-align: center;
+    justify-content: center;
+  }
+  &__a-divisionInfo {
+    width: 100%;
+  }
+
+  &__a-buttonNews {
+    margin-bottom: 150px;
+  }
+
+  &__m-containerNews {
+    position: relative;
+    height: 500px;
+  }
+
+  &__a-newsArticle {
+    position: absolute;
+    &:nth-child(2) {
+      @include large {
+        top: 20%;
+      }
+    }
+
+    &:nth-child(3) {
+      top:27%;
+      left: 0;
+      @include large {
+        top: 30%;
+        left: 60%;
+      }
+    }
+
+    &:nth-child(4) {
+      top: 44%;
+      left: 0;
+      @include large {
+        top: 40%;
+        left: 35%;
+      }
+    }
+
+    &:nth-child(5) {
+      top: 61%;
+      left: 0;
+      @include large {
+        top: 50%;
+        left: 10%;
+      }
+    }
+
+    &:nth-child(6) {
+      top: 78%;
+      left: 0;
+      @include large {
+        top: 55%;
+        left: 70%;
+      }
+    }
+
+    &:nth-child(7) {
+      top: 95%;
+      left: 0;
+      @include large {
+        top: 75%;
+        left: 35%;
+      }
+    }
+
+  }
+
 }

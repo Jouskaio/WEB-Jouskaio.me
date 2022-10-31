@@ -17,6 +17,13 @@ import TextH4 from "../components/atom/text/textH4";
 import Media from "../components/atom/media/media";
 import Code from "../components/atom/code/code";
 import Button from "../components/atom/button/button";
+// @ts-ignore
+import Link from "next/link";
+import TextH5 from "../components/atom/text/textH5";
+import TextH3 from "../components/atom/text/textH3";
+import Swipe from "../components/molecule/navigation/swipe";
+import FlashNews from "../components/molecule/quotes/flash-news";
+import TitleWithTags from "../components/molecule/quotes/title-with-tags";
 
 export default function Home() {
 
@@ -67,20 +74,22 @@ export default function Home() {
                             ]}/>
                         <Side type={"--left"} icons={[
                             {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/twitter.png", alt: "Twitter", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/instagram.png", alt: "Instagram", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/github.png", alt: "GitHub", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/linkedin.png", alt: "Linkedin", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/spotify.png", alt: "Spotify", href: "#", classname: "m-sideGlobal__icon"},
+
                         ]} classname={"l-home__sideLeft"}/>
                         <Side type={"--right"} icons={[
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/palette.svg", alt: "Palette", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "#", classname: "m-sideGlobal__icon"},
                         ]} classname={"l-home__sideRight"}/>
                     </header>
 
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
+                        <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
                     </section>
 
                     <section className={"l-home__a-sizeSection"}>
@@ -131,7 +140,56 @@ const jouskaio = {
 };
 `}
                         </Code>
-                        <Button classname={"l-home__a-buttonProfil"} src={"/about"}>More about it</Button>
+                        <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile"} src={"/about"}>More about it</Button></nav>
+                    </section>
+
+                    <section className={"l-home__a-sizeSection l-home__o-news"}>
+                        <div className={"l-home__m-containerInfo"}>
+                            <TextH5>New Update 07/03/2022</TextH5>
+                            <div className="l-home__a-division l-home__a-divisionInfo"></div>
+                            <TextH3 classname={"l-home-__a-infoText"}>“ I recently create my blog, the first article will arrived soon. You can subscribe to the newsletter to be aware of its posting “</TextH3>
+                            {/*TODO: Create newsletter*/}
+                            <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile l-home__a-buttonNews"} src={"/about"}>Subscribe to the newsletter</Button></nav>
+                        </div>
+                        {/* Add latest articles (LIMIT 6) query*/}
+                        <div className={"l-home__m-containerNews"}>
+                            <span className={"l-home__title"}><TextH3>Latest News</TextH3></span>
+                            <TitleWithTags titleName={"List of Google tools for SEO"}
+                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
+                                {name: "Development", color: "#03D4C6", classname: "", link: "/blog/category"},
+                                {name: "Marketing", color: "#D48003", classname: "", link: "/blog/category"}
+                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+
+                            <TitleWithTags titleName={"List of Google tools for SEO"}
+                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
+                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
+                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
+                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+
+                            <TitleWithTags titleName={"List of Google tools for SEO"}
+                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
+                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
+                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
+                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+
+                            <TitleWithTags titleName={"List of Google tools for SEO"}
+                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
+                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
+                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
+                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+
+                            <TitleWithTags titleName={"List of Google tools for SEO"}
+                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
+                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
+                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
+                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+
+                            <TitleWithTags titleName={"List of Google tools for SEO"}
+                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
+                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
+                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
+                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+                        </div>
                     </section>
                     <footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</footer>
                 </main>

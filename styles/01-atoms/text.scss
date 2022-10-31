@@ -22,10 +22,17 @@
 // Title article fin home or news
 // No lowercase
 .a-titleH3 {
-  font-size: var(--font-size-XL);
+  font-size: var(--font-size-L);
+  @include large {
+    font-size: var(--font-size-XL);
+  }
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
+
+  &--default {
+    text-transform: lowercase;
+  }
 }
 
 // Title container passions
@@ -42,6 +49,9 @@
 // News date
 .a-titleH5 {
   font-size: var(--font-size-S);
+  @include large {
+    font-size: var(--font-size-M);
+  }
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 8px;

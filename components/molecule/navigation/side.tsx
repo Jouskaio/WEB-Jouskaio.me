@@ -10,6 +10,7 @@ import Icon from "../../atom/icon/icon";
  * @param props
  * @param icons : [{href: string, src: string, classname: string, alt: string}]
  * @param type : string
+ * @param classname: string
  */
 function Side({icons, type, classname}) {
     // METHOD

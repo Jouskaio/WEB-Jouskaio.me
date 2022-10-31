@@ -10,7 +10,7 @@ function FlashNews(props, {title, classnameTitle}) {
         <div className="m-flashNews">
             <TextH5 content={title} classname={classnameTitle}/>
             <nav className="m-flashNews__divider"></nav>
-            <TextH3 content={props.children}/>
+            <TextH3>{props.children}</TextH3>
         </div>
     );
 }
