@@ -1,5 +1,5 @@
 .m-titleWithTag {
-
+  //position: absolute;
   &__divTitle {
     display: flex;
     flex-wrap: nowrap;
@@ -22,6 +22,14 @@
     flex-wrap: nowrap;
     flex-direction: row-reverse;
     transform: translateY(-10px);
+  }
+
+  &__title {
+    font-style: normal;
+  }
+
+  &__tag {
+    font-style: normal;
   }
 
 }

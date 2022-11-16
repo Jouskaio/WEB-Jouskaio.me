@@ -1,12 +1,8 @@
-import TextH5 from "../../atom/text/textH5";
-import TextH3 from "../../atom/text/textH3";
 import React from "react";
 import TextSpanM from "../../atom/text/textSpanM";
 import Icon from "../../atom/icon/icon";
 import Tag from "./Tag";
-import Link from "next/link";
 import TextLink from "../../atom/text/textLink";
-import Text from "../../atom/text/text";
 /**
  *
  * @param itemClassname
@@ -28,7 +24,7 @@ function TitleWithTags({itemClassname, titleName, titleClassname, libelled, tags
             </nav>
             <nav className="m-titleWithTag__divTag">
                 {tags.map(function(tag, i) {
-                    return <TextLink classname={""} src={tag.link} key={i} content={<Tag content={tag.name} color={tag.color} classname={tag.classname}/>}></TextLink>;
+                    return <TextLink classname={"m-titleWithTag__tag"} src={tag.link} key={i} content={<Tag content={tag.name} color={tag.color} classname={tag.classname}/>}></TextLink>;
                 })}
             </nav>
         </div>

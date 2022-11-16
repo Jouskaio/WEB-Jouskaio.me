@@ -2,11 +2,12 @@
 .o-header {
   width: 100%;
   padding: 16px;
+
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
   background: var(--background-color);
-  position: sticky;
+  position: fixed;
   top: 0;
 
   @include large {
@@ -16,7 +17,8 @@
     justify-content: space-between;
     padding: 16px;
     width: 100%;
-    position: unset;
+    position: fixed;
+    padding-top: 50px;
   }
 
   &__pagesDiv {

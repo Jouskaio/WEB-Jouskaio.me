@@ -2,8 +2,8 @@
 import gql from "graphql-tag";
 
 const ARTICLE_QUERY = gql`
-    query Article($slug: String!) {
-        articles(filters: { slug: { eq: $slug } }) {
+    query Article($value: String!) {
+        articles(filters: { slug: { eq: $value } }) {
             data {
                 attributes {
                     slug

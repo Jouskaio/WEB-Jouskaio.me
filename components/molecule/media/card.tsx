@@ -27,7 +27,11 @@ const Card = ({ article }) => {
             style={{objectFit: 'contain'}}/>
         </div>
         <p id="category" className="uk-text-uppercase">
-          {article.attributes.category.data.attributes.name}
+          {article.attributes.categories.data.map(function (categorie, i) {
+            return (
+                <p key={i}>{categorie.name}</p>
+            )
+          })}
           <br/>
           {getStrapiMedia(article.attributes.image)}
         </p>

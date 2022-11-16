@@ -26,7 +26,7 @@ const Article = () => {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Query query={ARTICLE_QUERY} slug={slug}>
+        <Query query={ARTICLE_QUERY} value={slug}>
           {({ data: { articles } }) => {
             if (articles.data.length) {
               return (

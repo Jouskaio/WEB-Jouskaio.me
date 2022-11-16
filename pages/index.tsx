@@ -2,7 +2,7 @@
 import Head from 'next/head'
 // @ts-ignore
 import Image from 'next/image'
-import React, {useDebugValue, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {useDebugValue, useEffect, useState} from 'react';
 import Side from "../components/molecule/navigation/side";
 import Header from "../components/organisms/navigation/header";
 import TextLink from "../components/atom/text/textLink";
@@ -22,8 +22,13 @@ import Link from "next/link";
 import TextH5 from "../components/atom/text/textH5";
 import TextH3 from "../components/atom/text/textH3";
 import Swipe from "../components/molecule/navigation/swipe";
-import FlashNews from "../components/molecule/quotes/flash-news";
 import TitleWithTags from "../components/molecule/quotes/title-with-tags";
+import {client} from "../lib/blog/apolloClient";
+// @ts-ignore
+import {ApolloProvider} from "@apollo/client";
+import Query from "../lib/blog/api";
+import LATEST_ARTICLES_QUERY from "../lib/blog/article/latest-articles";
+import SliderScroll from "../components/molecule/sliders/slider-scroll";
 
 export default function Home() {
 
@@ -31,6 +36,9 @@ export default function Home() {
     //TODO: scroll and headerHidden not working
     //const scroll = setScrollingAOS();
 
+    if(!client) {
+        return <p>Loading</p>
+    }
     return (
         <>
             {/* Initialize Effect */}
@@ -43,7 +51,8 @@ export default function Home() {
             </Head>
 
             <>
-                <main className={"l-home__m-main"}>
+                <ApolloProvider client={client}>
+                    <main className={"l-home__m-main"}>
                     <header className={"l-home__header"}>
                         <Header
                             height={32}
@@ -86,7 +95,6 @@ export default function Home() {
                             {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "#", classname: "m-sideGlobal__icon"},
                         ]} classname={"l-home__sideRight"}/>
                     </header>
-
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
@@ -151,49 +159,51 @@ const jouskaio = {
                             {/*TODO: Create newsletter*/}
                             <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile l-home__a-buttonNews"} src={"/about"}>Subscribe to the newsletter</Button></nav>
                         </div>
-                        {/* Add latest articles (LIMIT 6) query*/}
-                        <div className={"l-home__m-containerNews"}>
-                            <span className={"l-home__title"}><TextH3>Latest News</TextH3></span>
-                            <TitleWithTags titleName={"List of Google tools for SEO"}
-                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
-                                {name: "Development", color: "#03D4C6", classname: "", link: "/blog/category"},
-                                {name: "Marketing", color: "#D48003", classname: "", link: "/blog/category"}
-                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+                        <Query query={LATEST_ARTICLES_QUERY} value={7}>
+                            {({ data: { articles } }) => {
+                                if (articles.data.length) {
+                                    return (
+                                        <div className={"l-home__m-containerNews"}>
+                                            <span className={"l-home__title"}><TextH3>Latest News</TextH3></span>
+                                            <div className={"l-home__m-containerArticles"}>
+                                                {articles.data.map(function (article, i) {
+                                                let tags = []
+                                                article.attributes.categories.data.map(function (categorie, i) {
+                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
+                                                })
+                                                //TODO: Create a tag pages
+                                                article.attributes.tags.data.map(function (tag, i) {
+                                                    tags.push({name : tag.attributes.name, color: tag.attributes.color, classname:"", link: "/blog/category/"+tag.attributes.slug})
+                                                })
 
-                            <TitleWithTags titleName={"List of Google tools for SEO"}
-                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
-                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
-                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
-                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
+                                                return (
+                                                    <nav key={i}><TitleWithTags key={i} titleName={article.attributes.title}
+                                                                        titleClassname={"m-titleWithTag__title"} libelled={article.attributes.language} tags={tags} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/></nav>
+                                                )
+                                            })}
+                                            </div>
+                                        </div>
+                                        )
 
-                            <TitleWithTags titleName={"List of Google tools for SEO"}
-                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
-                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
-                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
-                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
-
-                            <TitleWithTags titleName={"List of Google tools for SEO"}
-                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
-                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
-                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
-                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
-
-                            <TitleWithTags titleName={"List of Google tools for SEO"}
-                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
-                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
-                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
-                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
-
-                            <TitleWithTags titleName={"List of Google tools for SEO"}
-                                           titleClassname={"m-titleWithTag__title"} libelled={"US"} tags={[
-                                {name: "Development", color: "#03D4C6", classname: "", link:"/blog/category"},
-                                {name: "Marketing", color: "#D48003", classname: "", link:"/blog/category"}
-                            ]} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/>
-                        </div>
+                                }
+                            }
+                            }
+                        </Query>
+                        <nav className={"l-home__a-buttonNewsNav"}>
+                            <Button classname={"l-home__a-buttonNews"} src={"/blog"}>View Blog</Button>
+                            <Button classname={"l-home__a-buttonNews"} src={"/projects"}>View all projects</Button>
+                        </nav>
+                    </section>
+                    <section className={"l-home__a-sizeSection l-home__o-projects"}>
+                        <SliderScroll slides={[
+                            {type: "default", tag: "Docker", title: "Templates Docker", subtitle: "", text: "Differents exemples of Docker set-up", media: "https://jouskaio-me.herokuapp.com/uploads/default_image_942bef2801.png?updated_at=2022-11-02T23:10:03.494Z"}
+                        ]}/>
                     </section>
                     <footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</footer>
                 </main>
+                </ApolloProvider>
             </>
         </>
+
     )
 }

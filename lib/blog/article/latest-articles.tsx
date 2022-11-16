@@ -1,26 +1,29 @@
 // @ts-ignore
 import gql from "graphql-tag";
-
-const ARTICLES_QUERY = gql`
-    query Articles {
-        articles {
+const LATEST_ARTICLES_QUERY = gql`
+    query LatestArticles ($value : Int) {
+        articles(sort: "updatedAt:desc", publicationState: LIVE, pagination: {start: 1, limit: $value}) {
             data {
                 attributes {
                     slug
                     title
+                    language
                     categories {
                         data {
                             attributes {
                                 slug
-                                name
                                 color
+                                name
+                                updatedAt
                             }
                         }
                     }
-                    image {
+                    tags {
                         data {
                             attributes {
-                                url
+                                name
+                                slug
+                                color
                             }
                         }
                     }
@@ -29,5 +32,4 @@ const ARTICLES_QUERY = gql`
         }
     }
 `;
-
-export default ARTICLES_QUERY;
+export default LATEST_ARTICLES_QUERY;

@@ -18,7 +18,7 @@ const Category = () => {
   }
   return (
     <ApolloProvider client={client}>
-      <Query query={CATEGORY_ARTICLES_QUERY} slug={slug}>
+      <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
       {({ data: { categories } }) => {
         if (categories.data.length) {
           return (

@@ -2,12 +2,13 @@
 import gql from "graphql-tag";
 
 const CATEGORY_ARTICLES_QUERY = gql`
-    query Category($slug: String!) {
-        categories(filters: { slug: { eq: $slug } }) {
+    query Category($value: String!) {
+        categories(filters: { slug: { eq: $value } }) {
             data {
                 attributes {
                     slug
                     name
+                    color
                     articles {
                         data {
                             attributes {

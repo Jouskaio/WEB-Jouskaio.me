@@ -3,7 +3,9 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     loader: "default",
-    domains: ["jouskaio-me.herokuapp.com"]
+    domains: [
+      "jouskaio-me.herokuapp.com"
+    ]
   },
 }
 module.exports = nextConfig
