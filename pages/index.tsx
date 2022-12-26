@@ -12,7 +12,6 @@ import {useWindowSize} from "../components/protons/tools/sizeWindow";
 import AOS from 'aos';
 //import {setScrollingAOS} from "../components/protons/tools/scrolling-effectAOS";
 import TextH1 from "../components/atom/text/textH1";
-import TextSpanM from "../components/atom/text/textSpanM";
 import TextH4 from "../components/atom/text/textH4";
 import Media from "../components/atom/media/media";
 import Code from "../components/atom/code/code";
@@ -29,12 +28,16 @@ import {ApolloProvider} from "@apollo/client";
 import Query from "../lib/blog/api";
 import LATEST_ARTICLES_QUERY from "../lib/blog/article/latest-articles";
 import SliderScroll from "../components/molecule/sliders/slider-scroll";
+import Footer from '../components/organisms/navigation/footer';
+import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
+import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 
 export default function Home() {
 
     const size = useWindowSize();
     //TODO: scroll and headerHidden not working
     //const scroll = setScrollingAOS();
+
 
     if(!client) {
         return <p>Loading</p>
@@ -184,7 +187,6 @@ const jouskaio = {
                                             </div>
                                         </div>
                                         )
-
                                 }
                             }
                             }
@@ -196,10 +198,25 @@ const jouskaio = {
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         <SliderScroll slides={[
-                            {type: "default", tag: "Docker", title: "Templates Docker", subtitle: "", text: "Differents exemples of Docker set-up", media: "https://jouskaio-me.herokuapp.com/uploads/default_image_942bef2801.png?updated_at=2022-11-02T23:10:03.494Z"}
+                            {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
+                            {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]}
                         ]}/>
                     </section>
-                    <footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</footer>
+                    <section className={"l-home__a-sizeSection l-home__o-passions"}>
+                        <span className={"l-home__title"}><TextH3>Passions</TextH3></span>
+                        <div className={"l-home__o-passions__containerMedia"}>
+                            <PopCategoryXXS details={["Philosophy", "Sociology", "Dark Fantasy", "Fantasy", "Science Fiction"]} title={"Reading"} number={"01"} subtitle={"To learn new things"} media={"https://bestanimations.com/media/books/999470521finger-passes-along-book-spines-library-animated-gif.gif"}/>
+                            <PopCategoryXXS details={["History", "Archeology", "Health", "Technology"]} title={"Sciences"} number={"02"} subtitle={"Be aware of latest innovation"} media={"https://media.giphy.com/media/7VzgMsB6FLCilwS30v/giphy.gif"}/>
+                            <PopCategoryXXS details={["Jazz", "Pop", "Classical", "Soundtrack", "Rock", "Hip-Hop", "Electro"]} title={"Music"} number={"03"} subtitle={"While working or chilling"} media={"https://media.giphy.com/media/XbJYBCi69nyVOffLIU/giphy.gif"}/>
+                            <PopCategoryXXS details={["Architectural", "Cartoon", "Line Art", "Animation", "Realism", "Abstract"]} title={"Drawing"} number={"04"} subtitle={"Represent my minds"} media={"http://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif"}/>
+                            <PopCategoryXXS details={["Website", "Mobile application", "Video game", "Concept", "Realism"]} title={"Coding"} number={"05"} subtitle={"Reflect and develop"} media={"https://media.giphy.com/media/AOSwwqVjNZlDO/giphy.gif"}/>
+                            <PopCategoryXXS details={["Room", "Landscape", "Object", "Motion"]} title={"3D"} number={"06"} subtitle={"Create a new universe"} media={"https://media.giphy.com/media/DS89v1NqpzCqA/giphy.gif"}/>
+                        </div>
+                    </section>
+                    <section className={"l-home__a-sizeSection l-home__o-contact"}>
+                        <TextSpanXXXL>Send me an <TextLink classname={"l-home__o-contact__link"} src={"mailto: jouskaio.me@gmail.com"} content={"email"}/></TextSpanXXXL>
+                    </section>
+                    <Footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</Footer>
                 </main>
                 </ApolloProvider>
             </>

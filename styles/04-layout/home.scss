@@ -150,6 +150,7 @@
 
   &__a-buttonNews {
     margin-bottom: 150px;
+    margin-left: 8px;
   }
 
   &__m-containerArticles {
@@ -190,8 +191,35 @@
       justify-content: flex-start;
     }
     margin-bottom: 150px;
+  }
 
-    // LATEST PROJECTS
+  // LATEST PROJECTS
+  &__o-projects {
+    margin-bottom: 150px;
+  }
+  // PASSIONS
+  &__o-passions {
+    margin-bottom: 150px;
 
+    &__containerMedia {
+      @include large {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 8px;
+        //grid-auto-rows: minmax(100px, auto);
+      }
+    }
+  }
+
+
+  // CONTACT
+
+  &__o-contact {
+    text-align: center;
+    margin-bottom: 67px;
+    &__link {
+      color: var(--accent-color);
+      font-size: var(--font-size-XXXL);
+    }
   }
 }

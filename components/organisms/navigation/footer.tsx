@@ -2,7 +2,9 @@ import TextSpanM from "../../atom/text/textSpanM";
 
 function Footer(props) {
     return (
-        <TextSpanM>{props.children}</TextSpanM>
+        <div className={"o-footer"}>
+            <TextSpanM classname="o-footer__content">{props.children}</TextSpanM>
+        </div>
     )
 }
 

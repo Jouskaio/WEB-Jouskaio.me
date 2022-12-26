@@ -9,6 +9,7 @@
   background: var(--background-color);
   position: fixed;
   top: 0;
+  font-family: var(--font-family-accent);
 
   @include large {
     display: flex;
