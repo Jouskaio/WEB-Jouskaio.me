@@ -37,13 +37,13 @@
     text-align: center;
   }
 
-  //TODO: For both side, display none and when windows height allow it, display it
+  //NB: For both side, display none and when windows height allow it, display it
   &__sideLeft {
     position: fixed;
     bottom: 0;
     left: 0;
     margin-left: 16px;
-    z-index: 999;
+    z-index: 998;
     @include large {
       margin-left: 55px;
     }
@@ -151,6 +151,7 @@
   &__a-buttonNews {
     margin-bottom: 150px;
     margin-left: 8px;
+    background: none;
   }
 
   &__m-containerArticles {
@@ -193,6 +194,41 @@
     margin-bottom: 150px;
   }
 
+  &__o-newsletter {
+    display: block;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
+    margin: 0 auto;
+    padding-top: 15%;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    left: 0;
+    & > * {
+      display: block;
+      width: 100%;
+      margin: 0 auto;
+      font-family: var(--font-family-main);
+    }
+  }
+
+  &__o-newsletterClose {
+    width: 49%;
+    margin-bottom: 16px;
+    & > h5 {
+      text-align: right !important;
+    }
+  }
+
+  &__o-newsletterClose:hover {
+    & > * {
+      color: var(--accent-color);
+    }
+    text-decoration: underline;
+  }
+
   // LATEST PROJECTS
   &__o-projects {
     margin-bottom: 150px;
@@ -222,4 +258,9 @@
       font-size: var(--font-size-XXXL);
     }
   }
+}
+
+
+.hidden {
+  display: none;
 }

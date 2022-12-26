@@ -33,6 +33,7 @@ import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 
 export default function Home() {
+    const [displayNewsletter, setNewsletter] = useState("false");
 
     const size = useWindowSize();
     //TODO: scroll and headerHidden not working
@@ -42,6 +43,17 @@ export default function Home() {
     if(!client) {
         return <p>Loading</p>
     }
+    const displayingNewsletter = () => {
+        // @ts-ignore
+        setNewsletter(!displayNewsletter);
+    };
+
+    const closingNewsletter = () => {
+        // @ts-ignore
+        setNewsletter("false");
+    };
+
+
     return (
         <>
             {/* Initialize Effect */}
@@ -159,8 +171,11 @@ const jouskaio = {
                             <TextH5>New Update 07/03/2022</TextH5>
                             <div className="l-home__a-division l-home__a-divisionInfo"></div>
                             <TextH3 classname={"l-home-__a-infoText"}>“ I recently create my blog, the first article will arrived soon. You can subscribe to the newsletter to be aware of its posting “</TextH3>
-                            {/*TODO: Create newsletter*/}
-                            <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile l-home__a-buttonNews"} src={"/about"}>Subscribe to the newsletter</Button></nav>
+                            <nav className={"l-home__a-buttonProfileNav"}><button className={"a-button l-home__a-buttonProfile l-home__a-buttonNews"} onClick={displayingNewsletter}>Subscribe to the newsletter</button></nav>
+                            <div className={`l-home__o-newsletter  ${displayNewsletter ? "hidden" : ""}`}>
+                                <span className={`l-home__o-newsletterClose`} onClick={closingNewsletter}><TextH5>Close</TextH5></span>
+                                <script async data-uid="cb13d0812e" src="https://jouskaio-me.ck.page/cb13d0812e/index.js"></script>
+                            </div>
                         </div>
                         <Query query={LATEST_ARTICLES_QUERY} value={7}>
                             {({ data: { articles } }) => {
@@ -218,7 +233,7 @@ const jouskaio = {
                         <TextSpanXXXL>Send me an <TextLink classname={"l-home__o-contact__link"} src={"mailto: jouskaio.me@gmail.com"} content={"email"}/></TextSpanXXXL>
                     </section>
                     <Footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</Footer>
-                </main>
+                    </main>
                 </ApolloProvider>
             </>
         </>

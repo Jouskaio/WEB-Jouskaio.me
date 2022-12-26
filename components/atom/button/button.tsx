@@ -9,11 +9,12 @@ import Link from 'next/link';
  * @param props : content, src
  * @param src : string
  * @param class: string
+ * @param onClick: function()à
  */
 function Button(props) {
     // METHODS
     return (
-        <Link href={props.src}><a className={"a-button " + props.classname }>{props.children}</a></Link>
+        <Link href={props.src}><a onClick={props.onClick} className={"a-button " + props.classname }>{props.children}</a></Link>
     );
 }
 
