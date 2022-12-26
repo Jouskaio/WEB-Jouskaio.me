@@ -888,6 +888,7 @@ html {
   display: block;
   margin: 0 auto;
   border-radius: 15px;
+  font-family: "Roboto Mono", Monospaced, monospace;
 }
 
 pre code.hljs {

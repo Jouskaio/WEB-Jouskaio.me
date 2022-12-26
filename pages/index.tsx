@@ -197,6 +197,7 @@ const jouskaio = {
                         </nav>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
+                        {/*TODO: Add projects on it*/}
                         <SliderScroll slides={[
                             {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
                             {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]}
