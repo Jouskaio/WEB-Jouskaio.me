@@ -1,5 +1,6 @@
 .l-home {
   // GLOBAL
+  z-index: 1;
   &__main {
     width: 100%;
     @include large {
@@ -8,6 +9,7 @@
     }
   }
   &__a-sizeSection {
+    //background-color: var(--background-color);
     margin-left: 79px;
     margin-right: 79px;
     @include large {
@@ -70,26 +72,53 @@
     position: relative;
     top: -100px;
     z-index: 996;
+    & > * {
+      color: var(--primary-lightest);
+    }
   }
 
 
   // SECTION PROFIL
+  &__o-profil > div {
+    @include large {
+      margin-top: 100px;
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: row;
+    }
+  }
+
+
   &__a-division {
     display: block;
-    width: 60%;
+    width: 40%;
     border: 1px solid var(--text-color);
     margin-bottom: 8px;
+    @include medium {
+      width: 40%;
+    }
     @include large {
-      margin: 0 auto;
+      //margin: 0 auto;
       width: 35%;
     }
   }
 
   &__m-title {
     margin-top: 50px;
+    padding-right: 24px;
     width: 100%;
+    & > h4 {
+      margin-top: 8px;
+      line-height: 1.6;
+      @include large {
+        line-height: initial;
+        padding-right: 90px;
+      }
+    }
     @include large {
-      text-align: center;
+      text-align: left;
+      margin-bottom: 0;
+      margin-top: 0;
     }
   }
 
@@ -97,45 +126,30 @@
     text-align: left;
   }
 
+  &__a-logoProfile {
+    margin-bottom: 8px;
+  }
+
   &__a-span {
     color: var(--accent-color);
   }
 
-  &__a-logoProfile  {
-    width: 100%;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row-reverse;
-    justify-items: flex-end;
-    margin-bottom: 35px;
-
-    @include medium {
-      flex-direction: row;
-    }
-    @include large {
-      justify-content: center;
-      align-items: center;
-      width: 50%;
-    }
-  }
-
   &__a-code {
-    width: 40%;
-    @include large {
-      width: 100%;
-    }
+    width: 100%;
   }
 
   &__a-buttonProfile {
     width: unset;
     display: inline-block;
-    margin: 0 auto;
     margin-top: 16px;
   }
 
   &__a-buttonProfileNav {
+    width: 100%;
     display: flex;
+    flex-direction: row;
+    margin-bottom: 35px;
+
   }
 
   // SECTION NEWS
@@ -151,7 +165,7 @@
   &__a-buttonNews {
     margin-bottom: 150px;
     margin-left: 8px;
-    background: none;
+    background-color: var(--background-color);
   }
 
   &__m-containerArticles {
@@ -160,10 +174,12 @@
     flex-wrap: wrap;
     align-items: baseline;
     @include large {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: baseline;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      grid-column-gap: 12vh;
+      grid-row-gap: 0px;
+      //align-items: baseline;
       & > nav {
         flex: 0 0 33.333333%;
       }

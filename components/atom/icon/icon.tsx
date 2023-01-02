@@ -16,7 +16,7 @@ function Icon({href, src, classname, alt}) {
     // METHODS
     return (
         <>
-            <Link href={href}><a className={"a-icon"}><Image width={"24px"} height={"24px"} className={"a-icon " + {classname}} src={src} alt={alt}/></a></Link>
+            <Link href={href}><a className={"a-icon " + classname}><Image width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
         </>
 
     );

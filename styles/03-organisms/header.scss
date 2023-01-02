@@ -2,7 +2,6 @@
 .o-header {
   width: 100%;
   padding: 16px;
-
   display: flex;
   flex-wrap: nowrap;
   flex-direction: column;
@@ -19,7 +18,7 @@
     padding: 16px;
     width: 100%;
     position: fixed;
-    padding-top: 50px;
+    padding-top: 24px;
   }
 
   &__pagesDiv {
@@ -37,14 +36,18 @@
     }
   }
 
-  &__logo {
+
+  &__logo  {
     display: block;
     margin: 0 auto;
-
+    filter: var(--text-color-filter);
     @include large {
       transform: unset;
       margin: unset;
       z-index: 999;
+    }
+    &:hover, &:active {
+      filter: var(--accent-color-filter);
     }
   }
 
@@ -64,11 +67,14 @@
   }
 
   &__page {
-    font-size: 16px;
-    color: var(--text-color);
-    &>a:hover {
+    & {
+      font-size: 16px;
+      color: var(--text-color);
+      text-decoration: none;
+    }
+    &:hover {
       text-decoration-style: solid;
-      text-decoration: var(--text-color) 1px;
+      text-decoration: underline var(--text-color) 1px;
     }
 
     @include large {

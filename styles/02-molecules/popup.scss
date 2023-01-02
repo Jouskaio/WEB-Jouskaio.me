@@ -1,19 +1,8 @@
 // ANIMATION
-@keyframes gradient {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
 
 .m-popupCategoryXXS {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap;//
   flex-direction: column;
   width: 100%;
   padding: 16px;
@@ -27,9 +16,10 @@
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 5px;
+    box-shadow: rgba(0,0,0,0.2) 0 0 9px;
     &:not(:hover) {
       background: rgb(170,0,0);
-      background: linear-gradient(226deg, rgba(170,0,0,1) 0%, rgba(173,9,20,0.92) 8%, rgba(50,8,102,1) 100%) !important;
+      background: linear-gradient(226deg, rgba(170,0,0,1) 0%, rgba(173,9,20,0.92) 8%, rgba(50,8,102,1) 100%) !important;;
       animation: gradient 2s ease infinite !important;
       &:nth-child(1) { animation-delay: 0s }
       &:nth-child(2) { animation-delay: 1s }
@@ -38,7 +28,7 @@
       &:nth-child(5) { animation-delay: -1s }
       &:nth-child(6) { animation-delay: -2s }
     }
-    &:hover {
+    &:hover, &:active {
       background-image: initial;
     }
   }
@@ -50,6 +40,7 @@
     left: 8px;
     filter: inherit !important;
     text-shadow: 0 0 5px #000000;
+    color: var(--primary-lightest);
     & > p {
       padding-top: 6px;
     }

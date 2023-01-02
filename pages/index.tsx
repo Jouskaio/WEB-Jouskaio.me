@@ -10,7 +10,6 @@ import Iframe from "../components/atom/media/iframe";
 import {useWindowSize} from "../components/protons/tools/sizeWindow";
 // @ts-ignore
 import AOS from 'aos';
-//import {setScrollingAOS} from "../components/protons/tools/scrolling-effectAOS";
 import TextH1 from "../components/atom/text/textH1";
 import TextH4 from "../components/atom/text/textH4";
 import Media from "../components/atom/media/media";
@@ -27,11 +26,12 @@ import {client} from "../lib/blog/apolloClient";
 import {ApolloProvider} from "@apollo/client";
 import Query from "../lib/blog/api";
 import LATEST_ARTICLES_QUERY from "../lib/blog/article/latest-articles";
-import SliderScroll from "../components/molecule/sliders/slider-scroll";
+import Scroll from "../components/molecule/sliders/scroll/scroll";
 import Footer from '../components/organisms/navigation/footer';
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 
+{/*TODO: Animate background when in light mode*/}
 export default function Home() {
     const [displayNewsletter, setNewsletter] = useState("false");
 
@@ -66,6 +66,12 @@ export default function Home() {
             </Head>
 
             <>
+                <div className="l-background__lines hidden">
+                    <div className="l-background__line"></div>
+                    <div className="l-background__line"></div>
+                    <div className="l-background__line"></div>
+                </div>
+
                 <ApolloProvider client={client}>
                     <main className={"l-home__m-main"}>
                     <header className={"l-home__header"}>
@@ -97,17 +103,17 @@ export default function Home() {
                                 }
                             ]}/>
                         <Side type={"--left"} icons={[
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/twitter.png", alt: "Twitter", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/instagram.png", alt: "Instagram", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/github.png", alt: "GitHub", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/linkedin.png", alt: "Linkedin", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/spotify.png", alt: "Spotify", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "https://www.pinterest.fr/jouskaio/", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/twitter.png", alt: "Twitter", href: "https://twitter.com/Jouskaio_", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/instagram.png", alt: "Instagram", href: "https://www.instagram.com/jouskaio/", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/github.png", alt: "GitHub", href: "https://github.com/Jouskaio", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/linkedin.png", alt: "Linkedin", href: "https://www.linkedin.com/in/manonsalsou/", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/spotify.png", alt: "Spotify", href: "https://open.spotify.com/user/desespery?si=ac027624ff264504", classname: "m-sideGlobal__icon"},
 
                         ]} classname={"l-home__sideLeft"}/>
                         <Side type={"--right"} icons={[
-                            {src: "/icons/palette.svg", alt: "Palette", href: "#", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "#", classname: "m-sideGlobal__icon"},
+                            {src: "/icons/palette.svg", alt: "Palette", href: "#", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette"},
+                            {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "", classname: "m-sideGlobal__icon m-sideGlobal__icon--modeChanger"},
                         ]} classname={"l-home__sideRight"}/>
                     </header>
                     <section className={"l-home__o-homepage"}>
@@ -115,21 +121,27 @@ export default function Home() {
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
                     </section>
 
-                    <section className={"l-home__a-sizeSection"}>
-                        <div className={"l-home__m-title"}>
-                            <TextH1 classname={"l-home__a-titleText"}>Hello ! I’m Manon Salsou</TextH1>
-                            <div className="l-home__a-division"></div>
-                            <TextH4>
+                    <section className={"l-home__a-sizeSection l-home__o-profil"}>
+                        <div>
+                            <div>
+                                <nav className={"l-home__a-logoProfile"}><Media classname={""} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
+                                <div className={"l-home__m-title"}>
+                                    <TextH1 classname={"l-home__a-titleText"}>Hello ! I’m Manon Salsou</TextH1>
+                                    <div className="l-home__a-division"></div>
+                                    <TextH4>
                             <span className={"l-home__a-span"}>
                             Mobile</span> / <span className={"l-home__a-span"}>Web</span> developer and
-                                <span className={"l-home__a-span"}> IoT</span> software engineer
-                                <br/>Currently developing
-                                <span className={"l-home__a-span"}> AR</span> and <span className={"l-home__a-span"}>VR</span> applications at home
-                            </TextH4>
-                        </div>
-                        <nav className={"l-home__a-logoProfile"}><Media classname={""} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
-                        <Code language={"javascript"} classname={"l-home__a-code"}>
-{`
+                                        <span className={"l-home__a-span"}> IoT</span> software engineer
+                                        <br/>Currently developing
+                                        <span className={"l-home__a-span"}> AR</span> and <span className={"l-home__a-span"}>VR</span> applications at home
+                                    </TextH4>
+                                </div>
+                                <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile"} src={"/about"}>More about it</Button></nav>
+
+                            </div>
+                            <div>
+                                <Code language={"javascript"} classname={"l-home__a-code"}>
+                                    {`
 const jouskaio = {
     pronouns: "She" | "Her",
     formation: ["Digital Project Manager Bachelor", "Degree in computer engineering - 3iL"],
@@ -162,8 +174,9 @@ const jouskaio = {
     behavior I always have when reflecting about a future decision"]
 };
 `}
-                        </Code>
-                        <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile"} src={"/about"}>More about it</Button></nav>
+                                </Code>
+                            </div>
+                        </div>
                     </section>
 
                     <section className={"l-home__a-sizeSection l-home__o-news"}>
@@ -213,9 +226,11 @@ const jouskaio = {
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
-                        <SliderScroll slides={[
+                        <Scroll slides={[
                             {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
-                            {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]}
+                            {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
+                            {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
+                            {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
                         ]}/>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-passions"}>

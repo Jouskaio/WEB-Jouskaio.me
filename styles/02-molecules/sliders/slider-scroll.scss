@@ -8,8 +8,6 @@
 .swiper {
   width: 100%;
   height: 100%;
-  background: #000;
-  background-color: rgba(200,100,0,.5);
   background-blend-mode: multiply;
 }
 
@@ -17,44 +15,37 @@
   font-size: var(--font-size-L);
   font-family: var(--font-family-main);
   color: #fff;
-  -webkit-box-sizing: border-box;
-  box-sizing: border-box;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
   padding: 40px 60px;
-}
-
-.parallax-bg {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 130%;
-  height: 100%;
-  -webkit-background-size: cover;
-  background-size: cover;
-  background-position: center;
 
 }
 
-.swiper-slide .m-sliderScroll__title {
+.swiper-slide .title {
   font-size: var(--font-size-XXL);
   font-weight: 300;
   margin-bottom: 4px;
-
 }
 
-.swiper-slide .m-sliderScroll__subtitle {
+.swiper-slide .subtitle {
   font-size: var(--font-size-XL);
   margin-bottom: 8px;
 }
 
-.swiper-slide .m-sliderScroll__text {
+.swiper-slide .text {
   font-size: var(--font-size-M);
   max-width: 400px;
   line-height: 1.3;
 }
 
-.m-sliderScroll__text > div {
+.text > div {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  color: var(--primary-lightest);
+}
 
+.text > div > nav > * {
+  color: var(--primary-lightest);
 }
