@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 // @ts-ignore
 import Script from "next/script";
 // @ts-ignore
@@ -21,6 +21,7 @@ import {Parallax, Pagination, Navigation, Autoplay, EffectFade} from "swiper";
 import Tag from "../../quotes/Tag";
 // @ts-ignore
 import Link from "next/link";
+import {useWindowSize} from "../../../protons/tools/sizeWindow";
 
 
 /**
@@ -29,18 +30,22 @@ import Link from "next/link";
  * @param slides: [{media: string, title: string, linkTo: string, subtitle: string, text: string, tag: [{}]}]
  */
 function Scroll({slides}) {
+    const size = useWindowSize();
+    let numberSlides = 1
+    if (size.width <= 768) {
+        numberSlides = 1
+    } else {
+        numberSlides = 3
+    }
+
     // METHOD
     return (
         <>
             <Swiper
-                style={{
-                    "--swiper-navigation-color": "hsla(0, 0%, 89%, 1)",
-                    "--swiper-pagination-color": "hsla(0, 0%, 89%, 1)",
-                }}
                 speed={600}
-                slidesPerView={3}
+                slidesPerView={numberSlides}
                 spaceBetween={30}
-                slidesPerGroup={3}
+                slidesPerGroup={numberSlides}
                 loop={true}
                 loopFillGroupWithBlank={true}
                 pagination={{

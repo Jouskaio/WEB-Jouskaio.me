@@ -8,7 +8,7 @@ import {ApolloProvider} from "@apollo/client";
 import {useRouter} from "next/router";
 import {client} from "../../../lib/blog/apolloClient";
 
-const Category = () => {
+const CategorySlug = () => {
   const router = useRouter()
   const { slug } = router.query
 
@@ -38,4 +38,4 @@ const Category = () => {
   );
 };
 
-export default Category;
+export default CategorySlug;

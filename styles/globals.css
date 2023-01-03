@@ -787,7 +787,7 @@ img {
 html {
   background: var(--background-color);
   color: var(--text-color);
-  cursor: url("/icons/cursor.svg"), auto;
+  /*TODO: Add cursor*/
 }
 
 h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, span::selection, p::selection, a::selection {
