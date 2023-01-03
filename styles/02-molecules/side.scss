@@ -1,0 +1,45 @@
+.m-sideGlobal {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  align-items: center; // Align on secondary axe
+  position: fixed;
+  bottom: 0;
+  z-index: 9999;
+
+  &--right {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center; // Align on secondary axe
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+
+  &--left {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center; // Align on secondary axe
+    position: fixed;
+    bottom: 0;
+  }
+
+  &__icon {
+    margin-bottom: 4px;
+    &[data-theme="light"] {
+      filter: var(--text-color-filter);
+    }
+    &[data-theme="dark"] {
+      filter: var(--accent-color-filter);
+    }
+  }
+  &__divider {
+    //border: 2px dashed var(--text-color);
+    width: 2px;
+    height: 70px;
+    filter: var(--text-color-filter);
+    background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' stroke='%23333' stroke-width='4' stroke-dasharray='4%2c4' stroke-dashoffset='0' stroke-linecap='butt'/%3e%3c/svg%3e");
+  }
+}
