@@ -7,6 +7,7 @@ Installation theme-color :
   // Current palette
   color-scheme: dark;
   --accent-color: var(--accent-yellow);
+  --accent-color-opacity: var(--accent-yellow-opacity);
   --accent-color-filter: var(--accent-yellow-filter) ;
   --background-color: var(--primary-darkest);
   --container-color : var(--primary-dark-medium);
