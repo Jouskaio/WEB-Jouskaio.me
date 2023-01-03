@@ -26,7 +26,7 @@ const Article = () => {
   return (
     <ApolloProvider client={client}>
       <div>
-        <Query query={ARTICLE_QUERY} slug={slug}>
+        <Query query={ARTICLE_QUERY} value={slug}>
           {({ data: { articles } }) => {
             if (articles.data.length) {
               return (
@@ -35,7 +35,7 @@ const Article = () => {
                   <Moment format="MMM Do YYYY">
                     {articles.data[0].attributes.published_at}
                   </Moment>
-                  {/*<Image loader={() => getStrapiMedia(articles.data[0].attributes.image)} src={getStrapiMedia(articles.data[0].attributes.image)} alt={articles.data[0].attributes.image.data.attributes.url} height={10} layout="fill" objectFit="none" placeholder="blur"
+                  {/*<Image loader={() => getStrapiMedia(articles.data[0].attributes.image)} src={getStrapiMedia(articles.data[0].attributes.image)} alt={articles.data[0].attributes.image.data.attributes.url} height={10} 04-layout="fill" objectFit="none" placeholder="blur"
                        blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(10, 10))}`} />*/}
                   <div>
                     {/*<ReactMarkdown

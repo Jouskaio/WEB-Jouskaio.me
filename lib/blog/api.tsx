@@ -6,13 +6,13 @@ import {useQuery} from "@apollo/client";
 /** Fetch results of custom query request into a JSON format
  * @param children : object
  * @param query : graphql request asked
- * @param slug : int for custom variable search
+ * @param value : int for custom variable search
  * @return JSON format
  */
 
-const Query = ({ children=null, query=null, slug=null }) => {
+const Query = ({ children=null, query=null, value: value = null }) => {
   const { data, loading, error, refetch: _refetch } = useQuery(query, {
-    variables: { slug: slug }
+    variables: { value: value }
   });
 
   // Use refetch to ensure an error where React cannot fetch data. Do not delete the variable's name otherwise the error

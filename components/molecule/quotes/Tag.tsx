@@ -9,12 +9,12 @@ import TextSpanM from "../../atom/text/textSpanM";
  * @param color: string
  * @param classname: string
  */
-function Tag(props, {color, classname}) {
+function Tag({content, color, classname}) {
     // METHOD
     return (
         <nav className="m-tag {{class}}">
             <nav className="m-tag__color" style={{backgroundColor: color}}></nav>
-            <TextSpanM content={props.children} classname={classname}/>
+            <TextSpanM classname={classname}>{content}</TextSpanM>
         </nav>
     );
 }

@@ -1,6 +1,8 @@
 import React from "react";
 // @ts-ignore
 import Link from "next/link";
+// @ts-ignore
+import Image from "next/image";
 
 /**
  * Atom: Icon
@@ -14,7 +16,7 @@ function Icon({href, src, classname, alt}) {
     // METHODS
     return (
         <>
-            <Link href={href}><a className={"a-icon"}><img className={"a-icon " + {classname}} src={src} alt={alt}/></a></Link>
+            <Link href={href}><a className={"a-icon " + classname}><Image width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
         </>
 
     );

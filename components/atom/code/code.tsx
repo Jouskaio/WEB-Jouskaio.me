@@ -10,14 +10,15 @@ import Highlight from "react-highlight"
  * Atom: Code
  * @param props : string
  * @param language: string
+ * @param classname: string
  * @augments
  */
-function Code(props, language) {
+function Code(props, {language, classname}) {
     // METHODS
     return (
         <>
             <Highlight className={"a-code " +
-                language}>
+                classname + " " + language}>
                 {props.children}
             </Highlight>
         </>

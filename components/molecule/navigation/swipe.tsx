@@ -4,16 +4,20 @@ import Media from "../../atom/media/media";
 
 /**
  *
- * @param text: {content: string, classname: string}
- * @param media: {src: string, width: number, height: number, classname: string, alt: string}
+ * @param content: string
+ * @param src: string
+ * @param width
+ * @param height
+ * @param classname
+ * @param alt
  * @constructor
  */
-function Swipe({text, media}) {
+function Swipe({content, src, width, height, classname, alt}) {
     // METHOD
     return (
-        <nav className={"m-swipe"}>
-            <TextSpanXS content={text.content} classname={text.classname}/>
-            <Media src={media.src} width={media.width} height={media.height} classname={media.classname} alt={media.alt} />
+        <nav className={"m-swipe " + classname}>
+            <TextSpanXS classname={""}>Discover</TextSpanXS>
+            <Media src={src} width={width} height={height} classname={""} alt={alt} />
         </nav>
     );
 }

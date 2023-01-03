@@ -21,11 +21,12 @@
 @import "02-molecules/swipe";
 @import "02-molecules/flashNews";
 @import "02-molecules/titleWithTags";
-@import "02-molecules/sliders/slider-scroll";
 @import "02-molecules/popup";
+@import "02-molecules/sliders/slider-scroll";
 
 // Organisms
 @import "03-organisms/header";
 @import "03-organisms/footer";
 
-// Templates
+// Layout
+@import "04-layout/home";

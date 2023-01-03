@@ -1,5 +1,6 @@
 .a-icon {
   width: 24px;
+  filter: var(--text-color-filter);
   &:hover {
     filter: var(--accent-color-filter);
   }

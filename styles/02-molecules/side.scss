@@ -27,8 +27,13 @@
   }
 
   &__icon {
-    margin-top: 4px;
     margin-bottom: 4px;
+    &[data-theme="light"] {
+      filter: var(--text-color-filter);
+    }
+    &[data-theme="dark"] {
+      filter: var(--accent-color-filter);
+    }
   }
   &__divider {
     //border: 2px dashed var(--text-color);

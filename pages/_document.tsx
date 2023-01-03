@@ -43,9 +43,10 @@ class MyDocument extends Document {
           <meta property="og:image:height" content="192"/>
           <meta property="og:image" content="http://www.jouskaio.me/icon-x192.png"/>
 
+          <script type={"text/javascript"} async src={"https://code.jquery.com/jquery-3.5.1.min.js"}></script>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/felipec.min.css"/>
-          <script type="text/jsx" src={"js/slider-scroll.js"} async/>
-
+          <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+          <script type={"text/javascript"} defer src={"/js/onClick-sider.js"}></script>
         </Head>
         <body>
         <Main />

@@ -8,6 +8,7 @@ const CATEGORIES_QUERY = gql`
                 attributes {
                     slug
                     name
+                    color
                 }
             }
         }

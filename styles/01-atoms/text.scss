@@ -1,9 +1,13 @@
 // Title website
 .a-titleH1 {
-  font-size: var(--font-size-XXL);
+  font-size: var(--font-size-XL);
+  @include large {
+    font-size: var(--font-size-XXL);
+  }
   font-family: var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
+  
 }
 
 // Title section
@@ -14,33 +18,50 @@
   color: var(--text-color);
   margin-bottom: 16px;
   text-transform: lowercase;
+  
 }
 
 // Title article fin home or news
 // No lowercase
 .a-titleH3 {
-  font-size: var(--font-size-XL);
+  font-size: var(--font-size-L);
+  @include large {
+    font-size: var(--font-size-XL);
+  }
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
+  line-height: 1.6;
+
+  &--default {
+    text-transform: lowercase;
+  }
 }
 
 // Title container passions
 .a-titleH4 {
-  font-size: var(--font-size-L);
+  font-size: var(--font-size-M);
+  @include large {
+    font-size: var(--font-size-L);
+  }
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
+  
 }
 
 // News date
 .a-titleH5 {
   font-size: var(--font-size-S);
+  @include large {
+    font-size: var(--font-size-M);
+  }
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 8px;
   text-align: center;
   text-transform: uppercase;
+  
 }
 
 // Paragraph
@@ -48,6 +69,7 @@
   color: var(--text-color);
   font-family:  var(--font-family-main);
   font-size: var(--font-size-L);
+  
 }
 
 // link
@@ -57,6 +79,7 @@
   font-style: italic;
   text-decoration: none;
   font-size: var(--font-size-L);
+  
 
   &:hover {
     text-decoration: underline currentColor;
@@ -70,6 +93,7 @@
   color: var(--text-color);
   margin-bottom: 8px;
   //text-transform: lowercase;
+  
 }
 
 .a-spanM {
@@ -77,6 +101,7 @@
   font-family:  var(--font-family-main);
   color: var(--text-color);
   margin-bottom: 8px;
+  
 }
 
 .a-spanL {
@@ -84,6 +109,7 @@
   font-family:  var(--font-family-main);
   color: var(--text-color);
   margin-bottom: 16px;
+  
 }
 
 .a-spanXL {
@@ -91,6 +117,7 @@
   font-family:  var(--font-family-main);
   color: var(--text-color);
   margin-bottom: 16px;
+  
 }
 
 // Big message span
@@ -100,11 +127,20 @@
   color: var(--text-color);
   margin-bottom: 16px;
   text-align: center;
+  
 }
 
 .a-code {
   display: block;
   margin: 0 auto;
   border-radius: 15px;
-  width: 300px;
+  z-index: 4;
+  font-family: "Roboto Mono",Monospaced, monospace;
+  //width: 100%;
+  
+}
+
+pre code.hljs {
+  overflow-x: hidden !important;
+  white-space: pre-wrap;
 }
