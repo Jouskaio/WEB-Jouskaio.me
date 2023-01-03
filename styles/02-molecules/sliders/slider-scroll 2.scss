@@ -1,0 +1,51 @@
+
+.swiper-slide > a {
+  text-decoration: none;
+  color: white;
+
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  background-blend-mode: multiply;
+}
+
+.swiper-slide {
+  font-size: var(--font-size-L);
+  font-family: var(--font-family-main);
+  color: #fff;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  padding: 40px 60px;
+
+}
+
+.swiper-slide .title {
+  font-size: var(--font-size-XXL);
+  font-weight: 300;
+  margin-bottom: 4px;
+}
+
+.swiper-slide .subtitle {
+  font-size: var(--font-size-XL);
+  margin-bottom: 8px;
+}
+
+.swiper-slide .text {
+  font-size: var(--font-size-M);
+  max-width: 400px;
+  line-height: 1.3;
+}
+
+.text > div {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  color: var(--primary-lightest);
+}
+
+.text > div > nav > * {
+  color: var(--primary-lightest);
+}
