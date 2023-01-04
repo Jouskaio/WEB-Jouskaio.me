@@ -31,7 +31,7 @@ export default Query;
 export function getStrapiMedia(media) {
   const imageUrl =
     process.env.NODE_ENV !== "development"
-      ? media.data.attributes.url
+      ? process.env.NEXT_PUBLIC_STRAPI_API_URL + media.data.attributes.url
       : process.env.NEXT_PUBLIC_STRAPI_API_URL +
       media.data.attributes.url;
   return imageUrl;
