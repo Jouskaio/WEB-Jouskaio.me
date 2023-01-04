@@ -3,16 +3,27 @@ import gql from "graphql-tag";
 
 const ARTICLES_QUERY = gql`
     query Articles {
-        articles {
+        articles(sort: "updatedAt:desc") {
             data {
                 attributes {
                     slug
                     title
+                    updatedAt
+                    language
                     categories {
                         data {
                             attributes {
                                 slug
                                 name
+                                color
+                            }
+                        }
+                    }
+                    tags {
+                        data {
+                            attributes {
+                                name
+                                slug
                                 color
                             }
                         }

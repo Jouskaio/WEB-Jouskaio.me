@@ -8,6 +8,7 @@ const LATEST_ARTICLES_QUERY = gql`
                     slug
                     title
                     language
+                    description
                     categories {
                         data {
                             attributes {

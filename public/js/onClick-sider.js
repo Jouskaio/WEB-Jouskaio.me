@@ -3,11 +3,6 @@
   $(document).ready(function() {
     $(window).bind('load', function()
       {
-      $(".o-header__logo").click(function () {
-        console.log("Redirecting to homepage...");
-        location.href = '/';
-      })
-
       // Handler for .ready() called.
       $(":root").attr("data-theme", "dark");
         $(".l-background__lines").removeClass("hidden");

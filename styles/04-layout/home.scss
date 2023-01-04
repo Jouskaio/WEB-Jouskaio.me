@@ -1,13 +1,7 @@
 .l-home {
   // GLOBAL
   z-index: 1;
-  &__main {
-    width: 100%;
-    @include large {
-      position: sticky;
-      top: 0px;
-    }
-  }
+
   &__a-sizeSection {
     //background-color: var(--background-color);
     margin-left: 79px;
@@ -23,12 +17,6 @@
   }
 
   // HEADER & FOOTER
-  &__header {
-    width: 100%;
-    z-index: 980;
-    position: absolute;
-
-  }
 
   &__footer {
     position: relative;

@@ -1265,8 +1265,147 @@ pre code.hljs {
   color: var(--primary-lightest);
 }
 
+.m-categories {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.m-categories > li > a {
+  text-decoration: none;
+  color: var(--text-color);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+}
+.m-categories > li > a:hover {
+  color: var(--accent-color);
+}
+@media (min-width: 980px) {
+  .m-categories {
+    margin: 0 auto;
+    width: 25%;
+  }
+}
+
+.m-header {
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+  background: var(--background-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  font-family: var(--font-family-accent);
+}
+@media (min-width: 980px) {
+  .m-header {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 16px;
+    width: 100%;
+    position: fixed;
+    padding-top: 24px;
+  }
+}
+.m-header__pagesDiv {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  transform: translateY(-30px);
+}
+@media (min-width: 980px) {
+  .m-header__pagesDiv {
+    flex-wrap: nowrap;
+    width: unset;
+    transform: unset;
+  }
+}
+.m-header__logo {
+  display: block;
+  margin: 0 auto;
+  filter: var(--text-color-filter);
+}
+@media (min-width: 980px) {
+  .m-header__logo {
+    transform: unset;
+    margin: unset;
+    z-index: 999;
+  }
+}
+.m-header__logo:hover, .m-header__logo:active {
+  filter: var(--accent-color-filter);
+}
+.m-header__page:nth-child(2) {
+  transform: translateX(-30px);
+}
+@media (min-width: 980px) {
+  .m-header__page:nth-child(2) {
+    transform: translateX(-24px);
+  }
+}
+.m-header__page:nth-child(3) {
+  transform: translateX(25px);
+}
+@media (min-width: 980px) {
+  .m-header__page:nth-child(3) {
+    transform: translateX(10px);
+  }
+}
+.m-header__page {
+  font-size: 16px;
+  color: var(--text-color);
+  text-decoration: none;
+}
+.m-header__page:hover {
+  text-decoration-style: solid;
+  text-decoration: underline var(--text-color) 1px;
+}
+@media (min-width: 980px) {
+  .m-header__page {
+    font-size: 18px;
+    margin-left: 32.5px;
+    margin-right: 32.5px;
+  }
+  .m-header__page:last-child {
+    margin-right: 0;
+    background: none;
+  }
+  .m-header__page:first-child {
+    margin-left: 0;
+    background: none;
+  }
+  .m-header__page:nth-child(2) {
+    transform: none;
+  }
+  .m-header__page:nth-child(3) {
+    transform: none;
+  }
+}
+
+.m-card {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+}
+.m-card__a-link {
+  margin-left: 19px;
+  text-decoration: none;
+}
+.m-card__a-tags {
+  display: flex;
+  background-color: #0c1db8;
+}
+
 .o-header {
   width: 100%;
+  z-index: 980;
   padding: 16px;
   display: flex;
   flex-wrap: nowrap;
@@ -1383,15 +1522,6 @@ pre code.hljs {
 .l-home {
   z-index: 1;
 }
-.l-home__main {
-  width: 100%;
-}
-@media (min-width: 980px) {
-  .l-home__main {
-    position: sticky;
-    top: 0px;
-  }
-}
 .l-home__a-sizeSection {
   margin-left: 79px;
   margin-right: 79px;
@@ -1404,11 +1534,6 @@ pre code.hljs {
 }
 .l-home__title {
   text-transform: lowercase;
-}
-.l-home__header {
-  width: 100%;
-  z-index: 980;
-  position: absolute;
 }
 .l-home__footer {
   position: relative;
@@ -1635,6 +1760,52 @@ pre code.hljs {
 
 .hidden {
   display: none;
+}
+
+.l-blog {
+  z-index: 1;
+}
+.l-blog__a-sizeSection {
+  margin-left: 79px;
+  margin-right: 79px;
+}
+@media (min-width: 980px) {
+  .l-blog__a-sizeSection {
+    margin-left: 152px;
+    margin-right: 152px;
+  }
+}
+.l-blog__sideLeft {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  margin-left: 16px;
+  z-index: 998;
+}
+@media (min-width: 980px) {
+  .l-blog__sideLeft {
+    margin-left: 55px;
+  }
+}
+.l-blog__sideRight {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  margin-right: 16px;
+}
+@media (min-width: 980px) {
+  .l-blog__sideRight {
+    margin-right: 55px;
+  }
+}
+.l-blog__m-categories {
+  justify-content: space-between;
+  margin-top: 80px;
+}
+@media (min-width: 980px) {
+  .l-blog__m-categories {
+    margin-top: 80px;
+  }
 }
 
 /*# sourceMappingURL=globals.css.map */

@@ -1,0 +1,14 @@
+.m-card {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  &__a-link {
+    margin-left: 19px;
+    text-decoration: none;
+  }
+
+  &__a-tags {
+    display: flex;
+    background-color: #0c1db8;
+  }
+}

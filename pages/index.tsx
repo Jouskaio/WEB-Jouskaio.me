@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React, {useDebugValue, useEffect, useState} from 'react';
 import Side from "../components/molecule/navigation/side";
-import Header from "../components/organisms/navigation/header";
+import Header_top from "../components/molecule/navigation/header_top";
 import TextLink from "../components/atom/text/textLink";
 import Iframe from "../components/atom/media/iframe";
 import {useWindowSize} from "../components/protons/tools/sizeWindow";
@@ -30,6 +30,7 @@ import Scroll from "../components/molecule/sliders/scroll/scroll";
 import Footer from '../components/organisms/navigation/footer';
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
+import Header from "../components/organisms/navigation/header";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -74,48 +75,7 @@ export default function Home() {
 
                 <ApolloProvider client={client}>
                     <main className={"l-home__m-main"}>
-                    <header className={"l-home__header"}>
-                        <Header
-                            height={32}
-                            source={"icons/logo.svg"}
-                            alt={"Description"}
-                            classname={"o-header__logo"}
-                            pages={[
-                                {
-                                    name: "About",
-                                    source: "/about",
-                                    class: "o-header__page"
-                                },
-                                {
-                                    name: "Projects",
-                                    source: "/projects",
-                                    class: "o-header__page"
-                                },
-                                {
-                                    name: "Blog",
-                                    source: "/blog",
-                                    class: "o-header__page"
-                                },
-                                {
-                                    name: "Contact",
-                                    source: "/contact",
-                                    class: "o-header__page"
-                                }
-                            ]}/>
-                        <Side type={"--left"} icons={[
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "https://www.pinterest.fr/jouskaio/", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/twitter.png", alt: "Twitter", href: "https://twitter.com/Jouskaio_", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/instagram.png", alt: "Instagram", href: "https://www.instagram.com/jouskaio/", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/github.png", alt: "GitHub", href: "https://github.com/Jouskaio", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/linkedin.png", alt: "Linkedin", href: "https://www.linkedin.com/in/manonsalsou/", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/spotify.png", alt: "Spotify", href: "https://open.spotify.com/user/desespery?si=ac027624ff264504", classname: "m-sideGlobal__icon"},
-
-                        ]} classname={"l-home__sideLeft"}/>
-                        <Side type={"--right"} icons={[
-                            {src: "/icons/palette.svg", alt: "Palette", href: "#", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette"},
-                            {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "", classname: "m-sideGlobal__icon m-sideGlobal__icon--modeChanger"},
-                        ]} classname={"l-home__sideRight"}/>
-                    </header>
+                    <Header/>
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
@@ -199,14 +159,13 @@ const jouskaio = {
                                             <div className={"l-home__m-containerArticles"}>
                                                 {articles.data.map(function (article, i) {
                                                 let tags = []
-                                                article.attributes.categories.data.map(function (categorie, i) {
-                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
-                                                })
                                                 //TODO: Create a tag pages
                                                 article.attributes.tags.data.map(function (tag, i) {
                                                     tags.push({name : tag.attributes.name, color: tag.attributes.color, classname:"", link: "/blog/category/"+tag.attributes.slug})
                                                 })
-
+                                                article.attributes.categories.data.map(function (categorie, i) {
+                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
+                                                })
                                                 return (
                                                     <nav key={i}><TitleWithTags key={i} titleName={article.attributes.title}
                                                                         titleClassname={"m-titleWithTag__title"} libelled={article.attributes.language} tags={tags} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/></nav>
