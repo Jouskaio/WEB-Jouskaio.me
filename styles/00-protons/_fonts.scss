@@ -67,9 +67,16 @@
   font-weight: 600;
 }
 
+// Zapfino
+@font-face {
+  font-family: "Zapfino";
+  src: url("/public/fonts/Zapfino.ttf") format("ttf");
+}
+
 :root {
   --font-family-accent: "Fugue", sans-serif;
   --font-family-main: "BauPro", sans-serif;
+  --font-family-stylized: "Zapfino", serif;
 
   --font-size-XXXL: 100px ;
   --font-size-XXL: 40px;
