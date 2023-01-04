@@ -12,7 +12,7 @@ import Image from "next/image";
  * @constructor
  */
 const Card = ({ article }) => {
-
+  console.log("HELLO " + getStrapiMedia(article.attributes.image))
   return (
     <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`} className="uk-link-reset">
       <a>
