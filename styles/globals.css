@@ -1522,6 +1522,7 @@ pre code.hljs {
   display: flex;
   flex-direction: row;
   margin-bottom: 35px;
+  justify-content: center;
 }
 .l-home__m-containerInfo {
   margin-top: 150px;
@@ -1627,6 +1628,7 @@ pre code.hljs {
   margin-bottom: 67px;
 }
 .l-home__o-contact__link {
+  font-family: var(--font-family-stylized);
   color: var(--accent-color);
   font-size: var(--font-size-XXXL);
 }
