@@ -43,7 +43,7 @@ export default function Header() {
             ]} classname={"l-home__sideLeft"}/>
             <Side type={"--right"} icons={[
                 {src: "/icons/palette.svg", alt: "Palette", href: "#", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette"},
-                {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "", classname: "m-sideGlobal__icon m-sideGlobal__icon--modeChanger"},
+                {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "#", classname: "m-sideGlobal__icon m-sideGlobal__icon--modeChanger"},
             ]} classname={"l-home__sideRight"}/>
         </header>
     )

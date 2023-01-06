@@ -3,8 +3,6 @@ import Head from 'next/head'
 // @ts-ignore
 import Image from 'next/image'
 import React, {useDebugValue, useEffect, useState} from 'react';
-import Side from "../components/molecule/navigation/side";
-import Header_top from "../components/molecule/navigation/header_top";
 import TextLink from "../components/atom/text/textLink";
 import Iframe from "../components/atom/media/iframe";
 import {useWindowSize} from "../components/protons/tools/sizeWindow";
@@ -185,7 +183,7 @@ const jouskaio = {
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
-                        <Scroll slides={[
+                        <Scroll key={1} slides={[
                             {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
                             {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
                             {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
@@ -198,7 +196,7 @@ const jouskaio = {
                             <PopCategoryXXS details={["Philosophy", "Sociology", "Dark Fantasy", "Fantasy", "Science Fiction"]} title={"Reading"} number={"01"} subtitle={"To learn new things"} media={"https://bestanimations.com/media/books/999470521finger-passes-along-book-spines-library-animated-gif.gif"}/>
                             <PopCategoryXXS details={["History", "Archeology", "Health", "Technology"]} title={"Sciences"} number={"02"} subtitle={"Be aware of latest innovation"} media={"https://media.giphy.com/media/7VzgMsB6FLCilwS30v/giphy.gif"}/>
                             <PopCategoryXXS details={["Jazz", "Pop", "Classical", "Soundtrack", "Rock", "Hip-Hop", "Electro"]} title={"Music"} number={"03"} subtitle={"While working or chilling"} media={"https://media.giphy.com/media/XbJYBCi69nyVOffLIU/giphy.gif"}/>
-                            <PopCategoryXXS details={["Architectural", "Cartoon", "Line Art", "Animation", "Realism", "Abstract"]} title={"Drawing"} number={"04"} subtitle={"Represent my minds"} media={"http://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif"}/>
+                            <PopCategoryXXS details={["Architectural", "Cartoon", "Line Art", "Animation", "Realism", "Abstract"]} title={"Drawing"} number={"04"} subtitle={"Represent my mind"} media={"http://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif"}/>
                             <PopCategoryXXS details={["Website", "Mobile application", "Video game", "Concept", "Realism"]} title={"Coding"} number={"05"} subtitle={"Reflect and develop"} media={"https://media.giphy.com/media/AOSwwqVjNZlDO/giphy.gif"}/>
                             <PopCategoryXXS details={["Room", "Landscape", "Object", "Motion"]} title={"3D"} number={"06"} subtitle={"Create a new universe"} media={"https://media.giphy.com/media/DS89v1NqpzCqA/giphy.gif"}/>
                         </div>

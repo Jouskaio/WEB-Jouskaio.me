@@ -16,7 +16,6 @@
         flex-direction: row;
         justify-content: space-between;
         padding: 16px;
-        width: 100%;
         position: fixed;
         padding-top: 24px;
     }
@@ -44,7 +43,10 @@
         @include large {
             transform: unset;
             margin: unset;
+            margin: 0;
             z-index: 999;
+            width: 10%;
+
         }
         &:hover, &:active {
             filter: var(--accent-color-filter);

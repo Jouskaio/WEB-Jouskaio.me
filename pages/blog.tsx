@@ -1,5 +1,5 @@
 import {client} from "../lib/blog/apolloClient";
-import Query from "../lib/blog/api";
+import Query, {getStrapiMedia} from "../lib/blog/api";
 // I don't know why but Apollo works only if with calls it with @apollo/react-hooks even with this module isn't downloaded unlike the other one @apollo/client
 // @ts-ignore
 import {ApolloProvider, useQuery} from "@apollo/client";
@@ -10,6 +10,11 @@ import Card from "../components/molecule/media/card";
 import Header from "../components/organisms/navigation/header";
 // @ts-ignore
 import Head from "next/head";
+import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
+// @ts-ignore
+import Image from "next/image";
+import {shimmer, toBase64} from "../components/protons/preload/preload-image";
+import Media from "../components/atom/media/media";
 // <AllArticles/>
 export default class Blog extends React.Component {
   render() {
@@ -38,15 +43,29 @@ export default class Blog extends React.Component {
                                     let mainArticle = articles.data[0]
                                     let nextArticles = articles.data.slice(1)
                                     return (
-
-                                        nextArticles.map((article) => {
-                                            return (
-                                                <Card
-                                                    article={article}
-                                                    key={`article__${article.attributes.slug}`}
-                                                />
-                                            );
-                                        })
+                                        <div className={"l-blog__a-sizeSection l-blog__o-articlesContainer"}>
+                                            <div className={"l-blog__o-mainArticle"}>
+                                                <div className={"l-blog__m-mainArticle"}>
+                                                    <div className={"l-blog__m-mainInformations"}></div>
+                                                </div>
+                                                <nav className={"l-blog__a-mainImage"}><Image src={getStrapiMedia(mainArticle.attributes.image)} object-fit={"fill"} unoptimized={false} layout='fill' placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`} loader={() => getStrapiMedia(mainArticle.attributes.image)}></Image></nav>
+                                            </div>
+                                            <div className={"l-blog__o-nextArticles"}>
+                                                <nav className={"l-blog__a-title"}><TextSpanXXXL><span className={"l-blog__a-title--span"}>Blog</span></TextSpanXXXL></nav>
+                                                <div className={"l-blog__m-divNextArticles"}>
+                                                    {
+                                                        nextArticles.map((article) => {
+                                                            return (
+                                                                <Card
+                                                                    article={article}
+                                                                    key={`article__${article.attributes.slug}`}
+                                                                />
+                                                            );
+                                                        })
+                                                    }
+                                                </div>
+                                            </div>
+                                        </div>
                                     )
                                 }
                             }}

@@ -17,10 +17,12 @@ import Image from "next/image";
 function Header_top({source, height, classname, alt, pages}) {
     return (
         <div className="m-header">
-            <Link href={"/"}><Image className={"a-media "+ classname } src={source} alt={alt} height={height} width={"100%"} objectFit='contain' unoptimized={true}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer("100%", height))}`} loader={() => source}/></Link>
+            <Link href={{pathname: "/"}}>
+                <img alt={alt} src={source} className={"a-media "+ classname } width={"100%"} height={height} style={{objectFit:"fill"}} placeholder="blur" onLoad={() => source}/>
+            </Link>
             <div className="m-header__pagesDiv">
                 {pages.map(function(page, i) {
-                    return <Link href={page.source} key={i}><a className={page.class}>{page.name}</a></Link>
+                    return <Link href={{pathname: page.source}} key={i} className={page.class}>{page.name}</Link>
                 })}
             </div>
         </div>
