@@ -1,8 +1,10 @@
 import {client} from "../lib/blog/apolloClient";
 import Query, {getStrapiMedia} from "../lib/blog/api";
-// I don't know why but Apollo works only if with calls it with @apollo/react-hooks even with this module isn't downloaded unlike the other one @apollo/client
+/**
+ * I don't know why, but Apollo works only if with calls it with @apollo/react-hooks even with this module isn't downloaded unlike the other one @apollo/client
+ */
 // @ts-ignore
-import {ApolloProvider, useQuery} from "@apollo/client";
+import {ApolloProvider} from "@apollo/client";
 import ARTICLES_QUERY from "../lib/blog/article/articles";
 import NavCategories from '../components/molecule/navigation/categories'
 import React from "react";
@@ -14,7 +16,6 @@ import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 // @ts-ignore
 import Image from "next/image";
 import {shimmer, toBase64} from "../components/protons/preload/preload-image";
-import Media from "../components/atom/media/media";
 // <AllArticles/>
 export default class Blog extends React.Component {
   render() {

@@ -12,7 +12,7 @@ export default function TextSpanXXXL(props, classname) {
     // METHODS
     return (
         <>
-            <span className={"a-spanXXXL " + classname.toString()}>{props.children}</span>
+            <span className={"a-spanXXXL " + classname}>{props.children}</span>
         </>
     );
 }

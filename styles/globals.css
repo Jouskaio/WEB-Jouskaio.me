@@ -932,14 +932,14 @@ h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::s
   font-size: var(--font-size-L);
 }
 
-.a-link {
+.a-link, .a-link > a {
   color: var(--text-color);
   font-family: var(--font-family-main);
   font-style: italic;
   text-decoration: none;
   font-size: var(--font-size-L);
 }
-.a-link:hover {
+.a-link:hover, .a-link > a:hover {
   text-decoration: underline currentColor;
   text-underline-offset: 8px;
 }
@@ -1750,13 +1750,27 @@ pre code.hljs {
   }
 }
 .l-home__o-contact {
-  text-align: center;
   margin-bottom: 67px;
+  text-align: center;
+}
+.l-home__o-contact > span {
+  font-size: var(--font-size-XXL);
+  font-family: var(--font-family-accent);
+  line-height: 2;
+}
+@media (min-width: 980px) {
+  .l-home__o-contact > span {
+    font-size: var(--font-size-XXXL);
+  }
 }
 .l-home__o-contact__link {
   font-family: var(--font-family-stylized);
   color: var(--accent-color);
-  font-size: var(--font-size-XXXL);
+  text-align: center;
+  text-decoration: none;
+}
+.l-home__o-contact__link:hover {
+  text-decoration: solid;
 }
 
 .hidden {

@@ -202,7 +202,9 @@ const jouskaio = {
                         </div>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-contact"}>
-                        <TextSpanXXXL>Send me an <TextLink classname={"l-home__o-contact__link"} src={"mailto: jouskaio.me@gmail.com"} content={"email"}/></TextSpanXXXL>
+                        <span>
+                            Send me an <a href="mailto:jouskaio.me@gmail.com" className={"l-home__o-contact__link"}>email</a>
+                        </span>
                     </section>
                     <Footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</Footer>
                     </main>

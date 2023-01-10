@@ -256,12 +256,24 @@
   // CONTACT
 
   &__o-contact {
-    text-align: center;
     margin-bottom: 67px;
-    &__link {
+    text-align: center;
+    & > span {
+      font-size: var(--font-size-XXL);
+      font-family: var(--font-family-accent);
+      line-height: 2;
+      @include large {
+        font-size: var(--font-size-XXXL);
+      }
+    }
+    &__link  {
       font-family: var(--font-family-stylized);
       color: var(--accent-color);
-      font-size: var(--font-size-XXXL);
+      text-align: center;
+      text-decoration: none;
+      &:hover {
+        text-decoration: solid;
+      }
     }
   }
 }
