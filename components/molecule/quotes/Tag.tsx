@@ -14,7 +14,7 @@ function Tag({content, color, classname}) {
     return (
         <nav className="m-tag {{class}}">
             <nav className="m-tag__color" style={{backgroundColor: color}}></nav>
-            <TextSpanM classname={classname}>{content}</TextSpanM>
+            <TextSpanM classname={{classname}}>{content}</TextSpanM>
         </nav>
     );
 }

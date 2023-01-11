@@ -2,6 +2,10 @@
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
+
+  &__m-imageDiv {
+    width: 100%;
+  }
   &__a-link {
     margin-left: 19px;
     text-decoration: none;

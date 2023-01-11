@@ -15,7 +15,7 @@ import TitleWithTags from "../quotes/title-with-tags";
 const Card = ({ article }) => {
   return (
       <div className={"m-card"}>
-        <div style={{position: 'relative', width: '145px', height: '100px' }}>
+        <div className={"m-card__m-ImageDiv"} style={{position: 'relative', width: '145px', height: '100px'}}>
           {/**
            * Source for blurData and placeholder strategy : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
            * Source for filling image strategy : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/layout-fill.js

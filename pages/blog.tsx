@@ -5,7 +5,7 @@ import Query, {getStrapiMedia} from "../lib/blog/api";
  */
 // @ts-ignore
 import {ApolloProvider} from "@apollo/client";
-import ARTICLES_QUERY from "../lib/blog/article/articles";
+import ARTICLES_QUERY, {ArticlesQuery} from "../lib/blog/article/articles";
 import NavCategories from '../components/molecule/navigation/categories'
 import React from "react";
 import Card from "../components/molecule/media/card";
@@ -16,6 +16,12 @@ import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 // @ts-ignore
 import Image from "next/image";
 import {shimmer, toBase64} from "../components/protons/preload/preload-image";
+import TextH1 from "../components/atom/text/textH1";
+import Tag from "../components/molecule/quotes/Tag";
+// @ts-ignore
+import Moment from "react-moment";
+import Button from "../components/atom/button/button";
+import TextH4 from "../components/atom/text/textH4";
 // <AllArticles/>
 export default class Blog extends React.Component {
   render() {
@@ -37,40 +43,81 @@ export default class Blog extends React.Component {
                     <main className={"l-blog"}>
                         <Header/>
                         <nav className={"l-blog__a-sizeSection l-blog__m-categories"}><NavCategories/></nav>
-                        <Query query={ARTICLES_QUERY}>
-                            {({data: {articles}}) => {
-                                let lengthArticles = articles.data.length
-                                if (lengthArticles > 1) {
-                                    let mainArticle = articles.data[0]
-                                    let nextArticles = articles.data.slice(1)
+                        <div className={"l-blog__a-sizeSection l-blog__o-articlesContainer"}>
+                            <Query query={ARTICLES_QUERY} value={[0, 1]}>
+                                {({data: {articles}}) => {
+                                    let lengthArticles = articles.data.length
+                                    if (lengthArticles = 1) {
+                                        let mainArticle = articles.data[0]
+                                        return (
+                                                <div className={"l-blog__o-mainArticles"}>
+                                                    <div className={"l-blog__m-mainArticle"}>
+                                                        <div className={"l-blog__m-mainInformations"}>
+                                                            <nav>
+                                                                <p>{mainArticle.attributes.number}</p>
+                                                            </nav>
+                                                            <div className={"l-blog__a-mainInformationsLabel"}>
+                                                                <p>{mainArticle.attributes.location}</p>
+                                                                <p>
+                                                                    <Moment format={"LL"}>
+                                                                        {mainArticle.attributes.updatedAt}
+                                                                    </Moment>
+                                                                </p>
+                                                            </div>
+                                                        </div>
+                                                        <TextH1>{mainArticle.attributes.title}</TextH1>
+                                                        <div className={"l-blog__m-mainCategory"}><nav></nav>
+                                                            {mainArticle.attributes.categories.data.map(function (categorie, i) {
+                                                                return <p key={i}>{categorie.attributes.name} </p>
+                                                            })}
+                                                        </div>
+                                                        <p className={"l-blog__a-mainDesc"}>
+                                                            {mainArticle.attributes.description}
+                                                        </p>
+                                                        <div className={"l-blog__m-mainTags"}>
+                                                            {mainArticle.attributes.tags.data.map(function (tag, i) {
+                                                                return <Tag key={i} content={tag.attributes.name} color={tag.attributes.color} classname={undefined}/>
+                                                            })}
+                                                        </div>
+                                                        <Button src={"/blog/article/" + mainArticle.attributes.slug}>See article</Button>
+                                                    </div>
+                                                    <nav className={"l-blog__a-mainImage"}><img src={getStrapiMedia(mainArticle.attributes.image)} placeholder="blur" onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`} alt={"Main image"}></img></nav>
+                                                </div>
+                                        )
+                                    } else {
+                                        return (<div className={"l-blog__a-sizeSection l-blog__o-articlesContainer--noArticle"}>Sorry, there is actually no article for now... :/</div>)
+                                    }
+                                }}
+                            </Query>
+                            <ArticlesQuery query={ARTICLES_QUERY} start={1} offset={3}>
+                                {({data: {articles}}) => {
+                                    let nextArticles = articles.data
                                     return (
-                                        <div className={"l-blog__a-sizeSection l-blog__o-articlesContainer"}>
-                                            <div className={"l-blog__o-mainArticle"}>
-                                                <div className={"l-blog__m-mainArticle"}>
-                                                    <div className={"l-blog__m-mainInformations"}></div>
-                                                </div>
-                                                <nav className={"l-blog__a-mainImage"}><Image src={getStrapiMedia(mainArticle.attributes.image)} object-fit={"fill"} unoptimized={false} layout='fill' placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`} loader={() => getStrapiMedia(mainArticle.attributes.image)}></Image></nav>
-                                            </div>
-                                            <div className={"l-blog__o-nextArticles"}>
-                                                <nav className={"l-blog__a-title"}><TextSpanXXXL><span className={"l-blog__a-title--span"}>Blog</span></TextSpanXXXL></nav>
-                                                <div className={"l-blog__m-divNextArticles"}>
-                                                    {
-                                                        nextArticles.map((article) => {
-                                                            return (
-                                                                <Card
-                                                                    article={article}
-                                                                    key={`article__${article.attributes.slug}`}
-                                                                />
-                                                            );
-                                                        })
-                                                    }
-                                                </div>
+                                        <div className={"l-blog__o-nextArticles"}>
+                                            <nav className={"l-blog__a-title"}><TextSpanXXXL><span className={"l-blog__a-title--span"}>Blog</span></TextSpanXXXL></nav>
+                                            <div className={"l-blog__m-divNextArticles"}>
+                                                <div className={"l-blog__m-nextHeader"}>
+                                                    <TextH4><span className={"l-blog__a-nextTitle"}>Latest</span> articles</TextH4>
+                                                    <nav>
+                                                        <Button src={""}>&lt;</Button>
+                                                        <Button src={""}>&gt;</Button>
+                                                    </nav>
+                                                </div>{
+                                                nextArticles.map((article) => {
+                                                    return (
+                                                        <Card
+                                                            article={article}
+                                                            key={`article__${article.attributes.slug}`}
+                                                        />
+                                                    );
+                                                })
+                                            }
                                             </div>
                                         </div>
                                     )
-                                }
-                            }}
-                        </Query>
+                                }}
+                            </ArticlesQuery>
+                        </div>
                     </main>
                 </ApolloProvider>
             </>
