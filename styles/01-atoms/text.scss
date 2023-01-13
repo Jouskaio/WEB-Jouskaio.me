@@ -73,13 +73,12 @@
 }
 
 // link
-.a-link {
+.a-link, .a-link > a {
   color: var(--text-color);
   font-family: var(--font-family-main);
   font-style: italic;
   text-decoration: none;
   font-size: var(--font-size-L);
-  
 
   &:hover {
     text-decoration: underline currentColor;

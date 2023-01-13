@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 // @ts-ignore
 import Script from "next/script";
 // @ts-ignore
@@ -31,7 +31,7 @@ import {useWindowSize} from "../../../protons/tools/sizeWindow";
  */
 function Scroll({slides}) {
     const size = useWindowSize();
-    let numberSlides = 1
+    let numberSlides;
     if (size.width <= 768) {
         numberSlides = 1
     } else {
@@ -46,7 +46,6 @@ function Scroll({slides}) {
                 slidesPerView={numberSlides}
                 spaceBetween={30}
                 slidesPerGroup={numberSlides}
-                loop={true}
                 loopFillGroupWithBlank={true}
                 pagination={{
                     clickable: true,
@@ -56,30 +55,26 @@ function Scroll({slides}) {
                     disableOnInteraction: false,
                 }}
                 navigation={true}
+                loop={true}
                 modules={[Pagination, Navigation, Autoplay, EffectFade]}
                 className="m-sliderScroll"
             >
-                <div
-                    slot="container-start"
-                    className={"parallax-bg"}
-                    data-swiper-parallax="-23%"
-                ></div>
                 {slides.map(function (slide, i) {
                     return (
                         <SwiperSlide key={i} style={{backgroundImage: "url("+slide.media+")", backgroundSize: "cover", backgroundColor: "rgba(0,0,0,.5)", backgroundBlendMode: "multiply"}}>
-                            <Link href={slide.linkTo}><a>
-                                <div className={"title"} data-swiper-parallax="-300">
+                            <Link key={"link"+i} href={slide.linkTo}><a>
+                                <div key={i} className={"title"} data-swiper-parallax="-300">
                                     {slide.title}
                                 </div>
-                                <div className={"subtitle"} data-swiper-parallax="-200">
+                                <div key={"subtitle"+i} className={"subtitle"} data-swiper-parallax="-200">
                                     {slide.subtitle}
                                 </div>
-                                <div className={"text"} data-swiper-parallax="-100">
-                                    <p>
+                                <div key={"textDiv"+i} className={"text"} data-swiper-parallax="-100">
+                                    <p key={"textP"+i}>
                                         {slide.text}
                                     </p>
                                     <br/>
-                                    <div>
+                                    <div key={"textTag"+i}>
                                         {slide.tag.map(function (tag, t) {
                                             return <Tag key={t} content={tag.content} color={tag.color} classname={tag.classname}/>
                                         })}

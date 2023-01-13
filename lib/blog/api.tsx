@@ -11,8 +11,8 @@ import {useQuery} from "@apollo/client";
  */
 
 const Query = ({ children=null, query=null, value: value = null }) => {
-  const { data, loading, error, refetch: _refetch } = useQuery(query, {
-    variables: { value: value }
+  const { data, loading, error, refetch: _refetch, arg } = useQuery(query, {
+    variables: { value: value },
   });
 
   // Use refetch to ensure an error where React cannot fetch data. Do not delete the variable's name otherwise the error

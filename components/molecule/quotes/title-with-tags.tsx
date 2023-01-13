@@ -18,7 +18,8 @@ function TitleWithTags({itemClassname, titleName, titleClassname, libelled, tags
     return (
         <div className={"m-titleWithTag " + itemClassname}>
             <nav className="m-titleWithTag__divTitle">
-                <TextLink classname={"undefined"} src={linkTitle} content={<h4 className={"a-titleH4 " + titleClassname}>{titleName}</h4>}></TextLink>
+                <TextLink src={linkTitle} content={<h4 className={"a-titleH4 " + titleClassname}>{titleName}</h4>}
+                          classname={undefined}></TextLink>
                 <nav className="m-titleWithTag__divider"></nav>
                 <TextSpanM>{libelled}</TextSpanM>
             </nav>

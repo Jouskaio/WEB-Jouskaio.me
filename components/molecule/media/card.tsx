@@ -5,6 +5,10 @@ import {shimmer, toBase64} from "../../protons/preload/preload-image";
 import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
+import TitleWithTags from "../quotes/title-with-tags";
+import TextLink from "../../atom/text/textLink";
+import Tag from "../quotes/Tag";
+import TextSpanM from "../../atom/text/textSpanM";
 
 /**
  *
@@ -12,33 +16,44 @@ import Image from "next/image";
  * @constructor
  */
 const Card = ({ article }) => {
-  return (
-    <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`} className="uk-link-reset">
-      <a>
-        <div style={{position: 'relative', width: '300px', height: '300px' }}>
-          {/**
-           * Source for blurData and placeholder strategy : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/shimmer.js
-           * Source for filling image strategy : https://github.com/vercel/next.js/blob/canary/examples/image-component/pages/layout-fill.js
-           * Property :  objectFit="none" allows image to zoom in or zoom out depending on the windows size
-           */}
-          <Image loader={() => getStrapiMedia(article.attributes.image)} src={getStrapiMedia(article.attributes.image)} alt={article.attributes.image.url} height={300} layout="fill" placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(300, 300))}`}
-            style={{objectFit: 'contain'}}/>
-        </div>
-        <p id="category" className="uk-text-uppercase">
-          {article.attributes.categories.data.map(function (categorie, i) {
-            return (
-                <p key={i}>{categorie.name}</p>
-            )
-          })}
-          <br/>
-          {getStrapiMedia(article.attributes.image)}
-        </p>
-        <p id="title" className="uk-text-large">
-          {article.attributes.title}
-        </p>
-      </a>
-    </Link>
+    let tags = [];
+    if (article.attributes.tags.data.length > 0) {
+        article.attributes.tags.data.map(function (tag, i) {
+            tags.push({
+                name: tag.attributes.name,
+                color: tag.attributes.color,
+                classname: "",
+                link: tag.attributes.slug
+            });
+        });
+    }
+    if (article.attributes.categories.data.length > 0) {
+        article.attributes.categories.data.map(function (tag, i) {
+            tags.push({
+                name: tag.attributes.name,
+                color: tag.attributes.color,
+                classname: "",
+                link: tag.attributes.slug
+            });
+        });
+    }
+    return (
+        <div className={"m-card l-blog__m-nextCard"}>
+          <div className={"l-blog__a-nextImage"}
+               style={{backgroundImage: `url(${getStrapiMedia(article.attributes.image)})`}}>
+          </div>
+          <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`}>
+              <a className="m-card__a-link l-blog__a-link">
+                  <p className={"l-blog__a-link--title"}>{article.attributes.title}</p>
+                  <p className={"l-blog__a-link--description"}>{article.attributes.description}</p>
+                  <nav className="m-titleWithTag__divTag l-blog__a-link--divTag">
+                      {tags.map(function (element, i) {
+                          return (<Tag key={i} content={element.name} color={element.color} classname={element.classname}/>);
+                      })}
+                  </nav>
+              </a>
+          </Link>
+      </div>
   );
 };
 

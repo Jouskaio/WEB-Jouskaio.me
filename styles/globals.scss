@@ -23,6 +23,9 @@
 @import "02-molecules/titleWithTags";
 @import "02-molecules/popup";
 @import "02-molecules/sliders/slider-scroll";
+@import "02-molecules/categories";
+@import "02-molecules/headerTop";
+@import "02-molecules/card";
 
 // Organisms
 @import "03-organisms/header";
@@ -30,3 +33,4 @@
 
 // Layout
 @import "04-layout/home";
+@import "04-layout/blog";
