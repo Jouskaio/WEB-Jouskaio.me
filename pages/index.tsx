@@ -3,8 +3,6 @@ import Head from 'next/head'
 // @ts-ignore
 import Image from 'next/image'
 import React, {useDebugValue, useEffect, useState} from 'react';
-import Side from "../components/molecule/navigation/side";
-import Header from "../components/organisms/navigation/header";
 import TextLink from "../components/atom/text/textLink";
 import Iframe from "../components/atom/media/iframe";
 import {useWindowSize} from "../components/protons/tools/sizeWindow";
@@ -30,6 +28,7 @@ import Scroll from "../components/molecule/sliders/scroll/scroll";
 import Footer from '../components/organisms/navigation/footer';
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
+import Header from "../components/organisms/navigation/header";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -74,48 +73,7 @@ export default function Home() {
 
                 <ApolloProvider client={client}>
                     <main className={"l-home__m-main"}>
-                    <header className={"l-home__header"}>
-                        <Header
-                            height={32}
-                            source={"icons/logo.svg"}
-                            alt={"Description"}
-                            classname={"o-header__logo"}
-                            pages={[
-                                {
-                                    name: "About",
-                                    source: "/about",
-                                    class: "o-header__page"
-                                },
-                                {
-                                    name: "Projects",
-                                    source: "/projects",
-                                    class: "o-header__page"
-                                },
-                                {
-                                    name: "Blog",
-                                    source: "/blog",
-                                    class: "o-header__page"
-                                },
-                                {
-                                    name: "Contact",
-                                    source: "/contact",
-                                    class: "o-header__page"
-                                }
-                            ]}/>
-                        <Side type={"--left"} icons={[
-                            {src: "/icons/pinterest.png", alt: "Pinterest", href: "https://www.pinterest.fr/jouskaio/", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/twitter.png", alt: "Twitter", href: "https://twitter.com/Jouskaio_", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/instagram.png", alt: "Instagram", href: "https://www.instagram.com/jouskaio/", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/github.png", alt: "GitHub", href: "https://github.com/Jouskaio", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/linkedin.png", alt: "Linkedin", href: "https://www.linkedin.com/in/manonsalsou/", classname: "m-sideGlobal__icon"},
-                            {src: "/icons/spotify.png", alt: "Spotify", href: "https://open.spotify.com/user/desespery?si=ac027624ff264504", classname: "m-sideGlobal__icon"},
-
-                        ]} classname={"l-home__sideLeft"}/>
-                        <Side type={"--right"} icons={[
-                            {src: "/icons/palette.svg", alt: "Palette", href: "#", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette"},
-                            {src: "/icons/dark-mode.svg", alt: "Dark Mode", href: "", classname: "m-sideGlobal__icon m-sideGlobal__icon--modeChanger"},
-                        ]} classname={"l-home__sideRight"}/>
-                    </header>
+                    <Header/>
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
@@ -199,14 +157,13 @@ const jouskaio = {
                                             <div className={"l-home__m-containerArticles"}>
                                                 {articles.data.map(function (article, i) {
                                                 let tags = []
-                                                article.attributes.categories.data.map(function (categorie, i) {
-                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
-                                                })
                                                 //TODO: Create a tag pages
                                                 article.attributes.tags.data.map(function (tag, i) {
                                                     tags.push({name : tag.attributes.name, color: tag.attributes.color, classname:"", link: "/blog/category/"+tag.attributes.slug})
                                                 })
-
+                                                article.attributes.categories.data.map(function (categorie, i) {
+                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
+                                                })
                                                 return (
                                                     <nav key={i}><TitleWithTags key={i} titleName={article.attributes.title}
                                                                         titleClassname={"m-titleWithTag__title"} libelled={article.attributes.language} tags={tags} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/></nav>
@@ -226,7 +183,7 @@ const jouskaio = {
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
-                        <Scroll slides={[
+                        <Scroll key={1} slides={[
                             {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
                             {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
                             {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
@@ -239,13 +196,15 @@ const jouskaio = {
                             <PopCategoryXXS details={["Philosophy", "Sociology", "Dark Fantasy", "Fantasy", "Science Fiction"]} title={"Reading"} number={"01"} subtitle={"To learn new things"} media={"https://bestanimations.com/media/books/999470521finger-passes-along-book-spines-library-animated-gif.gif"}/>
                             <PopCategoryXXS details={["History", "Archeology", "Health", "Technology"]} title={"Sciences"} number={"02"} subtitle={"Be aware of latest innovation"} media={"https://media.giphy.com/media/7VzgMsB6FLCilwS30v/giphy.gif"}/>
                             <PopCategoryXXS details={["Jazz", "Pop", "Classical", "Soundtrack", "Rock", "Hip-Hop", "Electro"]} title={"Music"} number={"03"} subtitle={"While working or chilling"} media={"https://media.giphy.com/media/XbJYBCi69nyVOffLIU/giphy.gif"}/>
-                            <PopCategoryXXS details={["Architectural", "Cartoon", "Line Art", "Animation", "Realism", "Abstract"]} title={"Drawing"} number={"04"} subtitle={"Represent my minds"} media={"http://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif"}/>
+                            <PopCategoryXXS details={["Architectural", "Cartoon", "Line Art", "Animation", "Realism", "Abstract"]} title={"Drawing"} number={"04"} subtitle={"Represent my mind"} media={"http://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif"}/>
                             <PopCategoryXXS details={["Website", "Mobile application", "Video game", "Concept", "Realism"]} title={"Coding"} number={"05"} subtitle={"Reflect and develop"} media={"https://media.giphy.com/media/AOSwwqVjNZlDO/giphy.gif"}/>
                             <PopCategoryXXS details={["Room", "Landscape", "Object", "Motion"]} title={"3D"} number={"06"} subtitle={"Create a new universe"} media={"https://media.giphy.com/media/DS89v1NqpzCqA/giphy.gif"}/>
                         </div>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-contact"}>
-                        <TextSpanXXXL>Send me an <TextLink classname={"l-home__o-contact__link"} src={"mailto: jouskaio.me@gmail.com"} content={"email"}/></TextSpanXXXL>
+                        <span>
+                            Send me an <a href="mailto:jouskaio.me@gmail.com" className={"l-home__o-contact__link"}>email</a>
+                        </span>
                     </section>
                     <Footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</Footer>
                     </main>

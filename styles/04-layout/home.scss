@@ -1,13 +1,7 @@
 .l-home {
   // GLOBAL
   z-index: 1;
-  &__main {
-    width: 100%;
-    @include large {
-      position: sticky;
-      top: 0px;
-    }
-  }
+
   &__a-sizeSection {
     //background-color: var(--background-color);
     margin-left: 79px;
@@ -23,12 +17,6 @@
   }
 
   // HEADER & FOOTER
-  &__header {
-    width: 100%;
-    z-index: 980;
-    position: absolute;
-
-  }
 
   &__footer {
     position: relative;
@@ -149,6 +137,7 @@
     display: flex;
     flex-direction: row;
     margin-bottom: 35px;
+    justify-content: center;
 
   }
 
@@ -267,11 +256,24 @@
   // CONTACT
 
   &__o-contact {
+    margin-bottom: 150px;
     text-align: center;
-    margin-bottom: 67px;
-    &__link {
+    & > span {
+      font-size: var(--font-size-XXL);
+      font-family: var(--font-family-accent);
+      line-height: 2;
+      @include large {
+        font-size: var(--font-size-XXXL);
+      }
+    }
+    &__link  {
+      font-family: var(--font-family-stylized);
       color: var(--accent-color);
-      font-size: var(--font-size-XXXL);
+      text-align: center;
+      text-decoration: none;
+      &:hover {
+        text-decoration: solid;
+      }
     }
   }
 }
