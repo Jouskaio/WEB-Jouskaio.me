@@ -1393,7 +1393,6 @@ pre code.hljs {
   display: flex;
   flex-wrap: nowrap;
   flex-direction: row;
-  width: 100%;
 }
 .m-card__a-link {
   margin-left: 19px;
