@@ -42,8 +42,6 @@ yarn-error.log*
 **/public/worker-*.js.map
 !/pages/api/schema.graphql
 !/pages/api/.graphqlconfig
-
-_.jouskaio.me_private_key.key
 #public/.well-known
 
 # heroku certs:update --name=procompsognathus-53040 server.crt _.jouskaio.me_private_key.key
