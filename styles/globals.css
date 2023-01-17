@@ -1060,6 +1060,12 @@ pre code.hljs {
 .m-sideGlobal__icon[data-theme=dark] {
   filter: var(--accent-color-filter);
 }
+.m-sideGlobal__icon--left {
+  min-width: 24px;
+}
+.m-sideGlobal__icon--left:hover {
+  filter: var(--accent-color-filter);
+}
 .m-sideGlobal__divider {
   width: 2px;
   height: 70px;
@@ -2053,8 +2059,8 @@ pre code.hljs {
 }
 .l-blog__a-nextImage {
   position: relative;
-  width: 102.6666666667px;
-  height: 66.6666666667px;
+  min-height: 66.6666666667px;
+  min-width: 102.6666666667px;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -2062,8 +2068,8 @@ pre code.hljs {
 }
 @media (min-width: 980px) {
   .l-blog__a-nextImage {
-    width: 154px;
-    height: 100px;
+    min-width: 154px;
+    min-height: 100px;
   }
 }
 .l-blog__a-link {

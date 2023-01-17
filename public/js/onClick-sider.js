@@ -1,6 +1,7 @@
 // Bind function is used to wait for the page to finish loading before executing
 
-  $(document).ready(function() {
+/*
+$(document).ready(function() {
     $(window).bind('load', function()
       {
       // Handler for .ready() called.
@@ -19,4 +20,4 @@
         }
       })
   });
-});
+});*/
