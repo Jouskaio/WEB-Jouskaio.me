@@ -613,6 +613,23 @@ table {
 Installation theme-color :
   - Source : https://lukelowrey.com/css-variable-theme-switcher/
  */
+:export {
+  accentColor: var(--accent-color);
+  accentColorFilter: var(--accent-color);
+  accentYellow: var(--accent-yellow);
+  accentYellowFilter: var(--accent-yellow-filter);
+  accentGreenJade: var(--accent-green-jade);
+  accentGreenJadeFilter: var(--accent-green-jade-filter);
+  accentPurple: var(--accent-purple);
+  accentPurpleFilter: var(--accent-purple-filter);
+  accentMagenta: var(--accent-magenta);
+  accentMagentaFilter: var(--accent-magenta-filter);
+  accentBlueDark: var(--accent-blue-dark);
+  accentBlueDarkFilter: var(--accent-blue-dark-filter);
+  accentBlueLight: var(--accent-blue-light);
+  accentBlueLightFilter: var(--accent-blue-light-filter);
+}
+
 :root, [data-theme=default] {
   color-scheme: dark;
   --accent-color: var(--accent-yellow);
@@ -639,17 +656,17 @@ Installation theme-color :
   --primary-code-blue-dark: hsla(209, 100%, 70%, 1);
   --primary-code-blue-light: hsla(198, 100%, 70%, 1);
   --primary-shadow: hsla(0, 0%, 0%, 0.16);
-  --accent-yellow: hsla(46, 95%, 61%, 1);
+  --accent-yellow: rgb(250, 206, 61);
   --accent-yellow-filter: brightness(0) saturate(100%) invert(91%) sepia(66%) saturate(4207%) hue-rotate(323deg) brightness(99%) contrast(98%);
-  --accent-green-jade: hsla(176, 71%, 37%,1);
+  --accent-green-jade: rgb(27, 161, 152);
   --accent-green-jade-filter: brightness(0) saturate(100%) invert(47%) sepia(81%) saturate(423%) hue-rotate(127deg) brightness(93%) contrast(89%);
-  --accent-purple:	hsla(267, 100%, 64%, 1);
+  --accent-purple: rgb(154, 71, 255);
   --accent-purple-filter: brightness(0) saturate(100%) invert(31%) sepia(87%) saturate(2942%) hue-rotate(251deg) brightness(100%) contrast(103%);
-  --accent-magengta: hsla(327, 62%, 38%, 1);
-  --accent-magengta-filter: brightness(0) saturate(100%) invert(23%) sepia(38%) saturate(3013%) hue-rotate(297deg) brightness(91%) contrast(97%);
-  --accent-blue-dark: hsla(213, 42%, 56%, 1);
+  --accent-magenta: rgb(157, 37, 103);
+  --accent-magenta-filter: brightness(0) saturate(100%) invert(23%) sepia(38%) saturate(3013%) hue-rotate(297deg) brightness(91%) contrast(97%);
+  --accent-blue-dark: rgb(96, 138, 190);
   --accent-blue-dark-filter: brightness(0) saturate(100%) invert(51%) sepia(70%) saturate(299%) hue-rotate(172deg) brightness(89%) contrast(90%);
-  --accent-blue-light: hsla(212, 54%, 74%, 1);
+  --accent-blue-light: rgb(153, 186, 225);
   --accent-blue-light-filter: brightness(0) saturate(100%) invert(79%) sepia(8%) saturate(1738%) hue-rotate(181deg) brightness(92%) contrast(90%);
   --background-light-yellow: #ffecd2;
   --background-light-peach: #fcb69f;
@@ -1066,6 +1083,37 @@ pre code.hljs {
 .m-sideGlobal__icon--left:hover {
   filter: var(--accent-color-filter);
 }
+.m-sideGlobal__icon--paletteAccent:nth-child(1) {
+  color: var(--accent-yellow);
+  filter: var(--accent-yellow-filter);
+}
+.m-sideGlobal__icon--paletteAccent:nth-child(2) {
+  color: var(--accent-green-jade);
+  filter: var(--accent-green-jade-filter);
+}
+.m-sideGlobal__icon--paletteAccent:nth-child(3) {
+  color: var(--accent-purple);
+  filter: var(--accent-purple-filter);
+}
+.m-sideGlobal__icon--paletteAccent:nth-child(4) {
+  color: var(--accent-magenta);
+  filter: var(--accent-magenta-filter);
+}
+.m-sideGlobal__icon--paletteAccent:nth-child(5) {
+  color: var(--accent-blue-dark);
+  filter: var(--accent-blue-dark-filter);
+}
+.m-sideGlobal__icon--paletteAccent:nth-child(6) {
+  color: var(--accent-blue-light);
+  filter: var(--accent-blue-light-filter);
+}
+.m-sideGlobal__icon--paletteAccent:hover {
+  border-radius: 10%;
+  border: solid 2px white !important;
+}
+.m-sideGlobal__icon--paletteChooseColor {
+  filter: var(--accent-color-filter);
+}
 .m-sideGlobal__divider {
   width: 2px;
   height: 70px;
@@ -1205,7 +1253,7 @@ pre code.hljs {
   margin-top: 16px;
 }
 .m-popupCategoryXXS__number {
-  margin-right: 35px;
+  padding-right: 35px;
   margin-top: 35px;
   font-size: var(--font-size-XXL);
   filter: brightness(70%);
@@ -2060,6 +2108,7 @@ pre code.hljs {
 .l-blog__a-nextImage {
   position: relative;
   min-height: 66.6666666667px;
+  max-height: 66.6666666667px;
   min-width: 102.6666666667px;
   background-size: cover;
   background-repeat: no-repeat;
@@ -2070,6 +2119,7 @@ pre code.hljs {
   .l-blog__a-nextImage {
     min-width: 154px;
     min-height: 100px;
+    max-height: 100px;
   }
 }
 .l-blog__a-link {

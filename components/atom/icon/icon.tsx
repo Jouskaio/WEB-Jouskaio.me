@@ -12,14 +12,12 @@ import Image from "next/image";
  * @param alt : string
  * @constructor
  */
-function Icon({href, src, classname, alt}) {
+export default function Icon({href, src, classname, alt, id}) {
     // METHODS
     return (
         <>
-            <Link href={href}><a className={"a-icon " + classname}><Image width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
+            <Link id={id}  href={href} legacyBehavior><a className={"a-icon " + classname + " " + id}><Image width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
         </>
 
     );
 }
-
-export default Icon;

@@ -8,7 +8,7 @@ import Icon from "../../atom/icon/icon";
 /**
  * Send information to this page
  * @param props
- * @param icons : [{href: string, src: string, classname: string, alt: string}]
+ * @param icons : [{href: string, src: string, classname: string, alt: string, id: string}]
  * @param type : string
  * @param classname: string
  */
@@ -17,7 +17,7 @@ function Side({icons, type, classname}) {
     return (
     <nav className={classname + " m-sideGlobal m-sideGlobal"+type}>
       {icons.map(function(icon, i) {
-         return <Icon href={icon.href} src={icon.src} classname={icon.classname} alt={icon.alt} key={i}/>;
+         return <Icon id={icon.id} href={icon.href} src={icon.src} classname={icon.classname + " " + icon.id} alt={icon.alt} key={i}/>;
       })}
       <nav className="m-sideGlobal__divider"></nav>
     </nav>

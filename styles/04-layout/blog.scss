@@ -280,6 +280,7 @@
   &__a-nextImage {
     position: relative;
     min-height: calc(2*100px/3);
+    max-height: calc(2*100px/3);
     min-width: calc(2*154px/3);
     background-size: cover;
     background-repeat: no-repeat;
@@ -288,6 +289,7 @@
     @include large {
       min-width: 154px;
       min-height: 100px;
+      max-height: 100px;
     }
   }
 

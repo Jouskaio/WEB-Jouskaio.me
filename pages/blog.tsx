@@ -1,18 +1,11 @@
 import {client} from "../lib/blog/apolloClient";
-import Query, {getStrapiMedia} from "../lib/blog/api";
-/**
- * I don't know why, but Apollo works only if with calls it with @apollo/react-hooks even with this module isn't downloaded unlike the other one @apollo/client
- */
-// @ts-ignore
+import {getStrapiMedia} from "../lib/blog/api";
 import {ApolloProvider} from "@apollo/client";
-import ARTICLES_QUERY, {ArticlesQuery, ArticlesQueryWithPagination} from "../lib/blog/article/articles";
+import {ArticlesQuery, ArticlesQueryWithPagination} from "../lib/blog/article/articles";
 import NavCategories from '../components/molecule/navigation/categories'
 import React from "react";
-import Card from "../components/molecule/media/card";
 import Header from "../components/organisms/navigation/header";
-// @ts-ignore
 import Head from "next/head";
-import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 // @ts-ignore
 import Image from "next/image";
 import {shimmer, toBase64} from "../components/protons/preload/preload-image";
@@ -21,15 +14,11 @@ import Tag from "../components/molecule/quotes/Tag";
 // @ts-ignore
 import Moment from "react-moment";
 import Button from "../components/atom/button/button";
-import TextH4 from "../components/atom/text/textH4";
-// <AllArticles/>
 export default class Blog extends React.Component {
     render() {
         if (!client) {
-            return <p>Loading</p>
+            return <p className={"a-text"}>Loading</p>
         }
-        // @ts-ignore
-        // @ts-ignore
         return (
             <>
                 {/* Initialize Effect */}
