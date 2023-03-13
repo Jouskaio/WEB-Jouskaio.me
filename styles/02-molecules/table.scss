@@ -1,0 +1,31 @@
+.m-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-M);
+
+  &__cells {
+    font-family: var(--font-family-main);
+    font-style: italic;
+    padding-top: 16px;
+    padding-bottom: 16px;
+
+    &--row:hover {
+      color: var(--accent-color);
+      text-decoration: underline;
+      text-underline-offset: 8px;
+    }
+  }
+
+  &__title {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-weight: bold;
+    font-family: var(--font-family-main);
+  }
+
+  & > * > tr {
+    border-bottom: 1px solid var(--text-color);
+  }
+}

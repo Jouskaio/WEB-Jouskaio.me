@@ -40,12 +40,14 @@
         display: block;
         margin: 0 auto;
         filter: var(--text-color-filter);
+        width: 18px;
+        transform: translateY(-4px);
         @include large {
             transform: unset;
             margin: unset;
             margin: 0;
             z-index: 999;
-            width: 10%;
+            width: 24px;
 
         }
         &:hover, &:active {
