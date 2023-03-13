@@ -1,5 +1,4 @@
-import Icon from "../../atom/icon/icon";
-import React, {useRef} from "react";
+import React from "react";
 import TextSpanM from "../../atom/text/textSpanM";
 
 /**
