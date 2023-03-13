@@ -2,8 +2,7 @@
 import Head from 'next/head'
 // @ts-ignore
 import Image from 'next/image'
-import React, {useDebugValue, useEffect, useState} from 'react';
-import TextLink from "../components/atom/text/textLink";
+import React, {useState} from 'react';
 import Iframe from "../components/atom/media/iframe";
 import {useWindowSize} from "../components/protons/tools/sizeWindow";
 // @ts-ignore

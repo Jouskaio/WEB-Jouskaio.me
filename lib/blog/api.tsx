@@ -11,7 +11,7 @@ import {useQuery} from "@apollo/client";
  */
 
 const Query = ({ children=null, query=null, value: value = null }) => {
-  const { data, loading, error, refetch: _refetch, arg } = useQuery(query, {
+  const { data, loading, error, refetch: _refetch } = useQuery(query, {
     variables: { value: value },
   });
 

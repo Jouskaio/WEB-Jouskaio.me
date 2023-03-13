@@ -1,5 +1,4 @@
 import React from "react";
-import Articles from "../../../components/layout/articles";
 import Query from "../../../lib/blog/api";
 import CATEGORY_ARTICLES_QUERY from "../../../lib/blog/category/category-articles";
 // @ts-ignore
@@ -19,7 +18,8 @@ const CategorySlug = () => {
   return (
     <ApolloProvider client={client}>
       <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
-      {({ data: { categories } }) => {
+        {/*
+        {({ data: { categories } }) => {
         if (categories.data.length) {
           return (
             <div>
@@ -33,6 +33,7 @@ const CategorySlug = () => {
           );
         }
       }}
+        */}
     </Query>
     </ApolloProvider>
   );

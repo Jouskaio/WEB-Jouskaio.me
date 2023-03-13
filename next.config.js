@@ -37,6 +37,9 @@ module.exports = {
   ) => {
     // Important: return the modified config
     return config
+  },
+  experimental: {
+    forceSwcTransforms: true,
   }
 }
 

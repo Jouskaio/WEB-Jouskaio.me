@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useRef} from "react";
 // @ts-ignore
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ export default function TextLink({classname, src, content}) {
     // METHODS
     return (
         <>
-            <Link href={src} className={"a-link " + classname}>{content}</Link>
+            <Link legacyBehavior href={src} className={"a-link " + classname}>{content}</Link>
         </>
     );
 }

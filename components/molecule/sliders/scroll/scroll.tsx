@@ -63,7 +63,7 @@ function Scroll({slides}) {
                     return (
                         <SwiperSlide key={i} style={{backgroundImage: "url("+slide.media+")", backgroundSize: "cover", backgroundColor: "rgba(0,0,0,.5)", backgroundBlendMode: "multiply"}}>
                             <Link key={"link"+i} href={slide.linkTo}><a>
-                                <div key={i} className={"title"} data-swiper-parallax="-300">
+                                <div key={"title"+i} className={"title"} data-swiper-parallax="-300">
                                     {slide.title}
                                 </div>
                                 <div key={"subtitle"+i} className={"subtitle"} data-swiper-parallax="-200">

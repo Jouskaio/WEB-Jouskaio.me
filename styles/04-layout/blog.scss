@@ -279,15 +279,17 @@
 
   &__a-nextImage {
     position: relative;
-    width: calc(2*154px/3);
-    height: calc(2*100px/3);
+    min-height: calc(2*100px/3);
+    max-height: calc(2*100px/3);
+    min-width: calc(2*154px/3);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     z-index: 60;
     @include large {
-      width: 154px;
-      height: 100px;
+      min-width: 154px;
+      min-height: 100px;
+      max-height: 100px;
     }
   }
 
