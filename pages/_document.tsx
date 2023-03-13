@@ -46,6 +46,7 @@ class MyDocument extends Document {
           <script type={"text/javascript"} defer src={"https://code.jquery.com/jquery-3.5.1.min.js"}></script>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/felipec.min.css"/>
           <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+          {/*<script src="https://kit.fontawesome.com/916ffe3022.js" crossOrigin="anonymous" defer></script>*/}
         </Head>
         <body>
         <Main />

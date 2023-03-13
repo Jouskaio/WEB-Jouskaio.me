@@ -775,7 +775,6 @@ html[data-theme=light] {
 @font-face {
   font-family: "Fugue";
   src: url("/public/fonts/Fugue-DemiBold.ttf") format("ttf");
-  font-style: italic;
   font-weight: 600;
 }
 @font-face {
@@ -1457,6 +1456,34 @@ pre code.hljs {
   background-color: #0c1db8;
 }
 
+.m-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-family: var(--font-family-accent);
+  font-size: var(--font-size-M);
+}
+.m-table__cells {
+  font-family: var(--font-family-main);
+  font-style: italic;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+.m-table__cells--row:hover {
+  color: var(--accent-color);
+  text-decoration: underline;
+  text-underline-offset: 8px;
+}
+.m-table__title {
+  padding-top: 16px;
+  padding-bottom: 16px;
+  font-weight: bold;
+  font-family: var(--font-family-main);
+}
+.m-table > * > tr {
+  border-bottom: 1px solid var(--text-color);
+}
+
 .o-header {
   width: 100%;
   z-index: 980;
@@ -1498,6 +1525,8 @@ pre code.hljs {
   display: block;
   margin: 0 auto;
   filter: var(--text-color-filter);
+  width: 18px;
+  transform: translateY(-4px);
 }
 @media (min-width: 980px) {
   .o-header__logo {
@@ -1505,7 +1534,7 @@ pre code.hljs {
     margin: unset;
     margin: 0;
     z-index: 999;
-    width: 10%;
+    width: 24px;
   }
 }
 .o-header__logo:hover, .o-header__logo:active {
@@ -1740,12 +1769,14 @@ pre code.hljs {
   display: inline-flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: 8px;
 }
 .l-home__a-buttonNewsNav {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
+  margin-top: 40px;
   margin-bottom: 150px;
 }
 .l-home__a-buttonNewsNav > * {

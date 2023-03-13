@@ -54,6 +54,7 @@
   font-family: "Fugue";
   src: url("/public/fonts/Fugue-Regular.otf") format("otf");
 }
+
 @font-face {
   font-family: "Fugue";
   src: url("/public/fonts/Fugue-BoldItalic.ttf") format("ttf");
@@ -63,7 +64,6 @@
 @font-face {
   font-family: "Fugue";
   src: url("/public/fonts/Fugue-DemiBold.ttf") format("ttf");
-  font-style: italic;
   font-weight: 600;
 }
 

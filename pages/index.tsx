@@ -28,6 +28,7 @@ import Footer from '../components/organisms/navigation/footer';
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 import Header from "../components/organisms/navigation/header";
+import Table from "../components/molecule/media/table";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -176,18 +177,14 @@ const jouskaio = {
                             }
                         </Query>
                         <nav className={"l-home__a-buttonNewsNav"}>
-                            <Button classname={"l-home__a-buttonNews"} src={"/blog"}>View Blog</Button>
-                            <Button classname={"l-home__a-buttonNews"} src={"/projects"}>View all projects</Button>
+                            <Button classname={"l-home__a-buttonNews"} src={"/blog"}>Go to the blog</Button>
+                            <Button classname={"l-home__a-buttonNews"} src={"/projects"}>View projects</Button>
                         </nav>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
-                        <Scroll key={1} slides={[
-                            {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
-                            {media: "https://swiperjs.com/demos/images/nature-2.jpg", title: "Test", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
-                            {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
-                            {media: "https://swiperjs.com/demos/images/nature-3.jpg", title: "Docker", linkTo: "/work", subtitle: "Templates Docker", text: "Differents exemples of Docker set-up", tag: [{content: "Development", color: "rgba(200,100,0,.5)", classname: ""}, {content: "Development", color: "rgba(200,100,0,.5)", classname: ""}]},
-                        ]}/>
+                        <span className={"l-home__title"}><TextH3>Projects</TextH3></span>
+                        <Table items={undefined}/>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-passions"}>
                         <span className={"l-home__title"}><TextH3>Passions</TextH3></span>
