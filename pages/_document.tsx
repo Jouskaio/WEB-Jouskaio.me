@@ -46,7 +46,6 @@ class MyDocument extends Document {
           <script type={"text/javascript"} defer src={"https://code.jquery.com/jquery-3.5.1.min.js"}></script>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/styles/felipec.min.css"/>
           <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-          <Script strategy="lazyOnload" type={"text/javascript"} defer src={"/js/onClick-sider.js"} ></Script>
         </Head>
         <body>
         <Main />

@@ -41,6 +41,45 @@
         filter: var(--accent-color-filter);
       }
     }
+    &--paletteAccent {
+      &:nth-child(1) {
+        color: var(--accent-yellow);
+        filter: var(--accent-yellow-filter);
+      }
+      &:nth-child(2) {
+        color: var(--accent-green-jade);
+        filter: var(--accent-green-jade-filter);
+      }
+
+      &:nth-child(3) {
+        color: var(--accent-purple);
+        filter: var(--accent-purple-filter);
+      }
+
+      &:nth-child(4) {
+        color: var(--accent-magenta);
+        filter: var(--accent-magenta-filter);
+      }
+
+      &:nth-child(5) {
+        color: var(--accent-blue-dark);
+        filter: var(--accent-blue-dark-filter);
+      }
+
+      &:nth-child(6) {
+        color: var(--accent-blue-light);
+        filter: var(--accent-blue-light-filter);
+      }
+
+      &:hover {
+        border-radius: 10%;
+        border: solid 2px white !important;
+      }
+    }
+
+    &--paletteChooseColor {
+      filter: var(--accent-color-filter);
+    }
   }
   &__divider {
     width: 2px;
