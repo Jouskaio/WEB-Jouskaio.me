@@ -49,7 +49,7 @@ export default function Header() {
         <header className={"o-header"}>
             <Header_top
                 height={32}
-                source={"icons/logo.svg"}
+                source={"/icons/logo.svg"}
                 alt={"Description"}
                 classname={"o-header__logo"}
                 pages={[

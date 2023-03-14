@@ -10,20 +10,36 @@ import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 // @ts-ignore
 import rehypeParse from "rehype-parse"
+import Text from "../../atom/text/text";
+import TextH2 from "../../atom/text/textH2";
+import TextH3 from "../../atom/text/textH3";
+import TextH4 from "../../atom/text/textH4";
+import TextLink from "../../atom/text/textLink";
+import TextH5 from "../../atom/text/textH5";
 
 
 
-const UseProcessor = ({content}) => {
+function UseProcessor({content}) {
   // @ts-ignore
   const [Content, setContent] = useState(Fragment);
   useEffect( () => {
     unified()
       // PARSER
       // Specifies that we have Markdown text
-      .use(rehypeParse)//, {fragment: true})
+      .use(rehypeParse, {fragment: true})
       // TRANSFORMERS
       // COMPILER
-      .use(rehypeReact, {createElement, Fragment})
+      .use(rehypeReact, {
+        createElement: React.createElement,
+        components: {
+          p: Text,
+          h1: TextH3,
+          h2: TextH3,
+          h3: TextH4,
+          h4: TextH5,
+          a: TextLink
+        }
+      })
       .process(content)
       // OUTPUT
       .then((file) => {
