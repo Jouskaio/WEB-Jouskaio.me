@@ -4,15 +4,19 @@
   text-align: left;
   font-family: var(--font-family-accent);
   font-size: var(--font-size-M);
+  font-weight: bold;
+  overflow: hidden;
 
-  &__cells {
+  &__cells, &__cells > a {
     font-family: var(--font-family-main);
     font-style: italic;
     padding-top: 16px;
     padding-bottom: 16px;
+    text-decoration: none;
+    color: var(--text-color);
+    font-weight: normal;
 
-    &--row:hover {
-      color: var(--accent-color);
+    &--row:hover{
       text-decoration: underline;
       text-underline-offset: 8px;
     }
@@ -22,10 +26,11 @@
     padding-top: 16px;
     padding-bottom: 16px;
     font-weight: bold;
+    padding-right: 16px;
     font-family: var(--font-family-main);
   }
 
   & > * > tr {
-    border-bottom: 1px solid var(--text-color);
+    border-bottom: 2px solid var(--text-color);
   }
 }
