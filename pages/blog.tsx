@@ -1,10 +1,12 @@
 import {client} from "../lib/blog/apolloClient";
 import {getStrapiMedia} from "../lib/blog/api";
+// @ts-ignore
 import {ApolloProvider} from "@apollo/client";
 import {ArticlesQuery, ArticlesQueryWithPagination} from "../lib/blog/article/articles";
 import NavCategories from '../components/molecule/navigation/categories'
 import React from "react";
 import Header from "../components/organisms/navigation/header";
+// @ts-ignore
 import Head from "next/head";
 // @ts-ignore
 import Image from "next/image";

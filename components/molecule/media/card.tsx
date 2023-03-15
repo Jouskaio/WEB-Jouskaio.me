@@ -43,10 +43,10 @@ const Card = ({ article }) => {
                style={{backgroundImage: `url(${getStrapiMedia(article.attributes.image)})`}}>
           </div>
           <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`}>
-              <a className="m-card__a-link l-blog__a-link">
-                  <p className={"l-blog__a-link--title"}>{article.attributes.title}</p>
-                  <p className={"l-blog__a-link--description"}>{article.attributes.description}</p>
-                  <nav className="m-titleWithTag__divTag l-blog__a-link--divTag">
+              <a className="m-card__a-link">
+                  <p className={"m-card__a-link--title"}>{article.attributes.title}</p>
+                  <p className={"m-card__a-link--description"}>{article.attributes.description}</p>
+                  <nav className="m-titleWithTag__divTag m-card__a-link--divTag">
                       {tags.map(function (element, i) {
                           return (<Tag key={i} content={element.name} color={element.color} classname={element.classname}/>);
                       })}

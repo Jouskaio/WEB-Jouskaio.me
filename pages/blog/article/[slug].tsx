@@ -1,4 +1,4 @@
-import React, {Fragment} from "react";
+import React, {Fragment, useState} from "react";
 // @ts-ignore
 import Moment from "react-moment";
 // @ts-ignore
@@ -13,44 +13,70 @@ import {ApolloProvider} from "@apollo/client";
 //import Image from "next/image";
 import {shimmer, toBase64} from "../../../components/protons/preload/preload-image";
 // All plugins for ReactMarkdown
-import UseProcessor from "../../../components/protons/preload/preload-remark";
+import UseProcessor from "../../../components/protons/preload/preload-rehype";
+import Header from "../../../components/organisms/navigation/header";
+import NavCategories from "../../../components/molecule/navigation/categories";
+import Button from "../../../components/atom/button/button";
+import TextH1 from "../../../components/atom/text/textH1";
+import Text from "../../../components/atom/text/text";
 
 const Article = () => {
-  const router = useRouter()
-  const { slug } = router.query
+    const router = useRouter()
+    const { slug } = router.query
+    const [Content, setContent] = useState();
 
-  /** Configure Remark
-   * Source : https://codesandbox.io/s/b7437?file=/index.js:313-544
-   *
-   */
-  return (
-    <ApolloProvider client={client}>
-      <div>
+    /** Configure Remark
+    * Source : https://codesandbox.io/s/b7437?file=/index.js:313-544
+    *
+    */
+    return (
+        <ApolloProvider client={client}>
+        <Header/>
+        <div className={"l-article__a-sizeSection l-article__o-categories"}><NavCategories/></div>
         <Query query={ARTICLE_QUERY} value={slug}>
-          {({ data: { articles } }) => {
-            if (articles.data.length) {
-              return (
-                <div>
-                  <h1>{articles.data[0].attributes.title}</h1>
-                  <Moment format="MMM Do YYYY">
-                    {articles.data[0].attributes.published_at}
-                  </Moment>
-                  {/*<Image loader={() => getStrapiMedia(articles.data[0].attributes.image)} src={getStrapiMedia(articles.data[0].attributes.image)} alt={articles.data[0].attributes.image.data.attributes.url} height={10} 04-layout="fill" objectFit="none" placeholder="blur"
-                       blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(10, 10))}`} />*/}
-                  <div>
-                    {/*<ReactMarkdown
-                      remarkPlugins={[remarkMath]}
-                      escapeHtml={false}>{articles.data[0].attributes.content}</ReactMarkdown>*/}
-                    <UseProcessor content={articles.data[0].attributes.content}/>
-                  </div>
-                </div>
-              );
-            }
-          }}
+            {({ data: { articles } }) => {
+                if (articles.data.length) {
+                    setContent(articles.data[0].attributes.content)
+                    let tags = articles.data[0].attributes.tags.data
+                    let categories = articles.data[0].attributes.categories.data
+                    return (
+                    <main className={"l-article l-article__a-sizeSection"}>
+                        <div className={"l-article__m-tagsDiv"}>
+                            {
+                                tags.map(function (tag, i){
+                                    return <Button src={"/blog/category/" + tag.attributes.slug} key={i} classname={"l-article__m-tags"}>{tag.attributes.name}</Button>
+                                })
+                            }
+                            {
+                                categories.map(function (category, i){
+                                    return <Button src={"/blog/category/" + category.attributes.slug} key={i} classname={"l-article__m-tags"}>{category.attributes.name}</Button>
+                                })
+                            }
+
+                        </div>
+                        <nav className={"l-article__a-datetime"}>
+                            Last update : <Moment format="LL">{articles.data[0].attributes.published_at}</Moment>
+                        </nav>
+
+                        <TextH1 classname={"l-article__a-title"}>{articles.data[0].attributes.title}</TextH1>
+                        <Text classname={"l-article__a-description"}>{articles.data[0].attributes.description}</Text>
+                        <nav className={"l-article__m-mainImageDiv"}>
+                            <img
+                                src={getStrapiMedia(articles.data[0].attributes.image)}
+                                placeholder="blur"
+                                onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
+                                alt={"Main image"}/>
+                        </nav>
+                        {
+                            <UseProcessor content={Content}/>
+                        }
+                    </main>
+                    );
+                }
+            }}
         </Query>
-      </div>
     </ApolloProvider>
-  );
+    );
 };
 
 export default Article;

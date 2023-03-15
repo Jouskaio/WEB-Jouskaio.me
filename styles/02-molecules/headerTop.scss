@@ -34,6 +34,12 @@
       width: unset;
       transform: unset;
     }
+
+    & > a:hover {
+      text-decoration-style: solid;
+      text-decoration: underline var(--text-color) 1px;
+      text-underline-offset: 8px;
+    }
   }
 
 

@@ -76,10 +76,6 @@
             color: var(--text-color);
             text-decoration: none;
         }
-        &:hover {
-            text-decoration-style: solid;
-            text-decoration: underline var(--text-color) 1px;
-        }
 
         @include large {
             font-size: 18px;

@@ -98,7 +98,7 @@ export default function Home() {
 
                             </div>
                             <div>
-                                <Code language={"javascript"} classname={"l-home__a-code"}>
+                                <Code language={"js"} classname={"l-home__a-code"}>
                                     {`
 const jouskaio = {
     pronouns: "She" | "Her",
@@ -184,7 +184,10 @@ const jouskaio = {
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
                         <span className={"l-home__title"}><TextH3>Projects</TextH3></span>
-                        <Table items={undefined}/>
+                        <Table items={[
+                            {year: "2023", name: "Portfolio 2023", link:"#"},
+                            {year: "2023", name: "iBoardThings", link:"#"}
+                        ]}/>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-passions"}>
                         <span className={"l-home__title"}><TextH3>Passions</TextH3></span>
