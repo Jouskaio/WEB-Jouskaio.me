@@ -59,7 +59,6 @@ export default class Blog extends React.Component {
                                                         </div>
                                                         <TextH1>{mainArticle.attributes.title}</TextH1>
                                                         <div className={"l-blog__m-mainCategory"}>
-                                                            <nav></nav>
                                                             {mainArticle.attributes.categories.data.map(function (categorie, i) {
                                                                 return <p key={i}>{categorie.attributes.name} </p>
                                                             })}
@@ -74,7 +73,7 @@ export default class Blog extends React.Component {
                                                                             classname={undefined}/>
                                                             })}
                                                         </div>
-                                                        <Button src={"/blog/article/" + mainArticle.attributes.slug}>See
+                                                        <Button src={"/blog/article/" + mainArticle.attributes.slug} classname={"l-blog__m-buttonArticles"}>See
                                                             article</Button>
                                                     </div>
                                                     <nav className={"l-blog__a-mainImage"}><img

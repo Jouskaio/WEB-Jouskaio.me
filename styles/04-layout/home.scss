@@ -116,6 +116,9 @@
 
   &__a-logoProfile {
     margin-bottom: 8px;
+    &--img {
+      transform: translateX(-8px);
+    }
   }
 
   &__a-span {
@@ -162,11 +165,12 @@
     flex-direction: column;
     flex-wrap: wrap;
     align-items: baseline;
+    width: 100%;
     @include large {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: repeat(2, 1fr);
-      grid-column-gap: 12vh;
+      grid-column-gap: 3vh;
       grid-row-gap: 0px;
       //align-items: baseline;
       & > nav {

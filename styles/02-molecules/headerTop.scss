@@ -46,7 +46,7 @@
   &__logo  {
     display: block;
     margin: 0 auto;
-    filter: var(--text-color-filter);
+    filter: var(--accent-color-filter);
     @include large {
       //width: 25%;
       transform: unset;
@@ -54,7 +54,7 @@
       z-index: 999;
     }
     &:hover, &:active {
-      filter: var(--accent-color-filter);
+      filter: var(--text-color);
     }
   }
 

@@ -2,7 +2,7 @@
 import gql from "graphql-tag";
 const LATEST_ARTICLES_QUERY = gql`
     query LatestArticles ($value : Int) {
-        articles(sort: "updatedAt:desc", publicationState: LIVE, pagination: {start: 1, limit: $value}) {
+        articles(sort: "updatedAt:desc", publicationState: LIVE, pagination: {start: 0, limit: $value}) {
             data {
                 attributes {
                     slug
@@ -25,6 +25,13 @@ const LATEST_ARTICLES_QUERY = gql`
                                 name
                                 slug
                                 color
+                            }
+                        }
+                    }
+                    image {
+                        data {
+                            attributes {
+                                url
                             }
                         }
                     }

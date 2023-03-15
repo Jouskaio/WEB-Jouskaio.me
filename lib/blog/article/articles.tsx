@@ -5,7 +5,7 @@ import {useQuery} from "@apollo/client";
 import React, {useState} from "react";
 import TextSpanXXXL from "../../../components/atom/text/textSpanXXXL";
 import TextH4 from "../../../components/atom/text/textH4";
-import Card from "../../../components/molecule/media/card";
+import CardXS from "../../../components/molecule/media/cardXS";
 const ARTICLES_QUERY = gql`
     query Articles($start: Int, $offset: Int) {
         articles(sort: "updatedAt:desc", pagination: {start: $start, limit: $offset}) {
@@ -89,7 +89,7 @@ export function ArticlesQueryWithPagination() {
                 {
                     data.articles.data.map((article) => {
                         return (
-                            <Card
+                            <CardXS
                                 article={article}
                                 key={`article__${article.attributes.slug}`}
                             />

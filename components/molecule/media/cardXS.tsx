@@ -5,17 +5,14 @@ import {shimmer, toBase64} from "../../protons/preload/preload-image";
 import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
-import TitleWithTags from "../quotes/title-with-tags";
-import TextLink from "../../atom/text/textLink";
 import Tag from "../quotes/Tag";
-import TextSpanM from "../../atom/text/textSpanM";
 
 /**
  *
  * @param article : Send information to this page
  * @constructor
  */
-const Card = ({ article }) => {
+const CardXS = ({ article }) => {
     let tags = [];
     if (article.attributes.tags.data.length > 0) {
         article.attributes.tags.data.map(function (tag, i) {
@@ -38,15 +35,15 @@ const Card = ({ article }) => {
         });
     }
     return (
-        <div className={"m-card l-blog__m-nextCard"}>
-          <div className={"l-blog__a-nextImage"}
+        <div className={"m-cardXS m-cardXS__m-nextCard"}>
+          <div className={"m-cardXS__a-nextImage"}
                style={{backgroundImage: `url(${getStrapiMedia(article.attributes.image)})`}}>
           </div>
           <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`}>
-              <a className="m-card__a-link">
-                  <p className={"m-card__a-link--title"}>{article.attributes.title}</p>
-                  <p className={"m-card__a-link--description"}>{article.attributes.description}</p>
-                  <nav className="m-titleWithTag__divTag m-card__a-link--divTag">
+              <a className="m-cardXS__a-link">
+                  <p className={"m-cardXS__a-link--title"}>{article.attributes.title}</p>
+                  <p className={"m-cardXS__a-link--description"}>{article.attributes.description}</p>
+                  <nav className="m-titleWithTag__divTag m-cardXS__a-link--divTag">
                       {tags.map(function (element, i) {
                           return (<Tag key={i} content={element.name} color={element.color} classname={element.classname}/>);
                       })}
@@ -57,4 +54,4 @@ const Card = ({ article }) => {
   );
 };
 
-export default Card;
+export default CardXS;

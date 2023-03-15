@@ -119,7 +119,7 @@
     line-height: 1.5;
     margin-bottom: 30px;
     @include large {
-      width: 90%;
+      width: 40%;
     }
   }
 
@@ -169,10 +169,17 @@
     }
   }
 
+  &__m-buttonArticles {
+    display: block;
+    margin: 0 auto;
+    width: fit-content;
+  }
+
   &__m-mainInformations {
     display: flex;
     flex-wrap: nowrap;
     margin-bottom: 25px;
+    margin-top: 30px;
     & > nav {
       border: solid 1px var(--text-color);
       border-radius: 50%;
@@ -256,38 +263,5 @@
 
   &__a-nextTitle {
     color: var(--accent-color) !important;
-  }
-
-  // Card
-  &__m-nextCard {
-    margin-left: 16px;
-    margin-right: 16px;
-    margin-bottom: 24px;
-    width: calc(100% - 40px);
-  }
-
-  &__a-nextButton {
-    padding-left: 8px;
-    padding-right: 8px;
-    color: var(--text-color);
-    &:hover, &:checked {
-      color: var(--accent-color);
-    }
-  }
-
-  &__a-nextImage {
-    position: relative;
-    min-height: calc(2*100px/3);
-    max-height: calc(2*100px/3);
-    min-width: calc(2*154px/3);
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: center;
-    z-index: 60;
-    @include large {
-      min-width: 154px;
-      min-height: 100px;
-      max-height: 100px;
-    }
   }
 }

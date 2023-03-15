@@ -39,7 +39,7 @@
     &__logo  {
         display: block;
         margin: 0 auto;
-        filter: var(--text-color-filter);
+        //filter: var(--text-color-filter);
         width: 18px;
         transform: translateY(-4px);
         @include large {
@@ -51,7 +51,7 @@
 
         }
         &:hover, &:active {
-            filter: var(--accent-color-filter);
+            filter: var(--text-color-filter);
         }
     }
 

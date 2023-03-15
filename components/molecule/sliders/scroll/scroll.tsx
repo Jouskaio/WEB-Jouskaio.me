@@ -21,7 +21,7 @@ import {Parallax, Pagination, Navigation, Autoplay, EffectFade} from "swiper";
 import Tag from "../../quotes/Tag";
 // @ts-ignore
 import Link from "next/link";
-import {useWindowSize} from "../../../protons/tools/sizeWindow";
+import {useWindowSize} from "../../../../lib/motion/sizeWindow";
 
 
 /**

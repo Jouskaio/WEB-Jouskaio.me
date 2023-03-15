@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React, {useState} from 'react';
 import Iframe from "../components/atom/media/iframe";
-import {useWindowSize} from "../components/protons/tools/sizeWindow";
+import {useWindowSize} from "../lib/motion/sizeWindow";
 // @ts-ignore
 import AOS from 'aos';
 import TextH1 from "../components/atom/text/textH1";
@@ -29,6 +29,7 @@ import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 import Header from "../components/organisms/navigation/header";
 import Table from "../components/molecule/media/table";
+import CardS from "../components/molecule/media/cardS";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -82,7 +83,7 @@ export default function Home() {
                     <section className={"l-home__a-sizeSection l-home__o-profil"}>
                         <div>
                             <div>
-                                <nav className={"l-home__a-logoProfile"}><Media classname={""} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
+                                <nav className={"l-home__a-logoProfile"}><Media classname={"l-home__a-logoProfile--img"} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
                                 <div className={"l-home__m-title"}>
                                     <TextH1 classname={"l-home__a-titleText"}>Hello ! I’m Manon Salsou</TextH1>
                                     <div className="l-home__a-division"></div>
@@ -156,19 +157,8 @@ const jouskaio = {
                                             <span className={"l-home__title"}><TextH3>Latest News</TextH3></span>
                                             <div className={"l-home__m-containerArticles"}>
                                                 {articles.data.map(function (article, i) {
-                                                let tags = []
-                                                //TODO: Create a tag pages
-                                                article.attributes.tags.data.map(function (tag, i) {
-                                                    tags.push({name : tag.attributes.name, color: tag.attributes.color, classname:"", link: "/blog/category/"+tag.attributes.slug})
-                                                })
-                                                article.attributes.categories.data.map(function (categorie, i) {
-                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
-                                                })
-                                                return (
-                                                    <nav key={i}><TitleWithTags key={i} titleName={article.attributes.title}
-                                                                        titleClassname={"m-titleWithTag__title"} libelled={article.attributes.language} tags={tags} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/></nav>
-                                                )
-                                            })}
+                                                    return <CardS key={i} article={article}/>
+                                                })}
                                             </div>
                                         </div>
                                         )

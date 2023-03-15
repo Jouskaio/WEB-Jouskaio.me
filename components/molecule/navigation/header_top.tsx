@@ -16,7 +16,7 @@ function Header_top({source, height, classname, alt, pages}) {
     return (
         <div className="m-header">
             <Link href={{pathname: "/"}}>
-                <img alt={alt} src={source} className={"a-media "+ classname } width={"100%"} height={height} style={{objectFit:"fill"}} placeholder="blur" onLoad={() => source}/>
+                <img alt={alt} src={source} className={"a-media m-header__logo "+ classname} width={"100%"} height={height} style={{objectFit:"fill"}} placeholder="blur" onLoad={() => source}/>
             </Link>
             <div className="m-header__pagesDiv">
                 {pages.map(function(page, i) {

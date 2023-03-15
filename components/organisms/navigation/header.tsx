@@ -91,7 +91,7 @@ export default function Header() {
                 {src: "/icons/accent-color.svg", alt: "Palette", href: "#accent", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette m-sideGlobal__icon--paletteAccent hidden", id:"blue-dark"},
                 {src: "/icons/accent-color.svg", alt: "Palette", href: "#accent", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette m-sideGlobal__icon--paletteAccent hidden", id:"blue-light"},
                 {src: "/icons/accent-color.svg", alt: "Palette", href: "#accent", classname: "m-sideGlobal__icon m-sideGlobal__icon--palette m-sideGlobal__icon--paletteChoose"},
-                {src: "/icons/logo.svg", alt: "Home", href: "/", classname: "m-sideGlobal__icon"},
+                {src: "/icons/logo.svg", alt: "Home", href: "/", classname: "m-sideGlobal__icon m-sideGlobal__icon--logo"},
             ]} classname={"l-home__sideRight"}/>
         </header>
     )

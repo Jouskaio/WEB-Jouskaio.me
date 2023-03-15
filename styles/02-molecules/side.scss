@@ -27,12 +27,13 @@
   }
 
   &__icon {
-    margin-bottom: 4px;
-    &[data-theme="light"] {
-      filter: var(--text-color-filter);
-    }
-    &[data-theme="dark"] {
+    margin-bottom: 8px;
+
+    &--logo {
       filter: var(--accent-color-filter);
+      &:hover {
+        filter: var(--text-color-filter);
+      }
     }
 
     &--left {
