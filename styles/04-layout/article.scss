@@ -64,14 +64,21 @@
   }
 
   &__m-mainImageDiv {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 150px;
     overflow: hidden;
     margin-bottom: 30px;
+    @include large {
+      height: 250px;
+    }
     & > img {
       flex-shrink: 0;
       object-fit: cover;
       min-width: 100%;
+      object-position: bottom;
       min-height: 100%;
     }
   }
