@@ -1,6 +1,4 @@
-import Media from "../../atom/media/media";
 import React from "react";
-import TextLink from "../../atom/text/textLink";
 // @ts-ignore
 import Link from "next/link";
 import Icon from "../../atom/icon/icon";

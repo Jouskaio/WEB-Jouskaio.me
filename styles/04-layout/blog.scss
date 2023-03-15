@@ -96,7 +96,7 @@
 
   &__m-mainArticle {
     position: absolute;
-    left: 12%;
+    left: 15%;
     z-index: 80;
     text-shadow: 1px 0 10px var(--background-color);
     @include large {
@@ -119,7 +119,7 @@
     line-height: 1.5;
     margin-bottom: 30px;
     @include large {
-      width: 30%;
+      width: 90%;
     }
   }
 
@@ -137,6 +137,7 @@
     }
     & > img {
       flex-shrink: 0;
+      object-fit: cover;
       min-width: 100%;
       min-height: 100%;
       filter: brightness(70%)
@@ -261,11 +262,8 @@
   &__m-nextCard {
     margin-left: 16px;
     margin-right: 16px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     width: calc(100% - 40px);
-    @include large {
-      margin-bottom: 24px;
-    }
   }
 
   &__a-nextButton {
@@ -290,23 +288,6 @@
       min-width: 154px;
       min-height: 100px;
       max-height: 100px;
-    }
-  }
-
-  &__a-link {
-    color: var(--text-color);
-    font-size: var(--font-size-M);
-    font-family: var(--font-family-main);
-    &--title {
-      font-family: var(--font-family-accent);
-      margin-bottom: 8px;
-    }
-    &--description {
-      margin-bottom: 16px;
-    }
-    &--divTag {
-      transform: none;
-      flex-direction: row;
     }
   }
 }

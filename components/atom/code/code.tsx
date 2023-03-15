@@ -8,17 +8,18 @@ import Highlight from "react-highlight"
 
 /**
  * Atom: Code
- * @param props : string
- * @param language: string
- * @param classname: string
+ * @param props
+ * @param props.classname : string
+ * @param props.language : string
+ * @param props.children: string
  * @augments
  */
-function Code(props, {language, classname}) {
+function Code(props) {
     // METHODS
     return (
         <>
             <Highlight className={"a-code " +
-                classname + " " + language}>
+                props.classname + " " + props.language}>
                 {props.children}
             </Highlight>
         </>

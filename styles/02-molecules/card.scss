@@ -1,15 +1,45 @@
 .m-card {
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
+  flex-direction: column;
   &__a-link {
-    margin-left: 19px;
     text-decoration: none;
+    color: var(--text-color);
+    font-size: var(--font-size-M);
+    font-family: var(--font-family-main);
+    &--title {
+      font-family: var(--font-family-accent);
+      margin-bottom: 16px;
+      margin-top: 8px;
+      color: var(--accent-color);
+      text-align: center;
+    }
+    &--description {
+      margin-bottom: 8px;
+    }
+    &--divTag {
+      transform: none;
+      flex-direction: row;
+    }
   }
 
+  @include medium {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    &__a-link {
+      margin-left: 19px;
+      &--title {
+        margin-top: 0;
+        text-align: left;
+        margin-bottom: 8px;
+      }
+      &--description {
+        margin-bottom: 16px;
+      }
+    }
+  }
   &__a-tags {
     display: flex;
-    background-color: #0c1db8;
   }
-
 }

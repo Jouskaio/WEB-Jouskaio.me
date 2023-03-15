@@ -6,7 +6,6 @@ import React, {useState} from "react";
 import TextSpanXXXL from "../../../components/atom/text/textSpanXXXL";
 import TextH4 from "../../../components/atom/text/textH4";
 import Card from "../../../components/molecule/media/card";
-
 const ARTICLES_QUERY = gql`
     query Articles($start: Int, $offset: Int) {
         articles(sort: "updatedAt:desc", pagination: {start: $start, limit: $offset}) {
@@ -50,6 +49,7 @@ const ARTICLES_QUERY = gql`
     }
 `;
 export default ARTICLES_QUERY;
+
 
 export function ArticlesQuery ({ children=null, start = null, offset = null }) {
     const { loading, error, data } = useQuery(ARTICLES_QUERY, {

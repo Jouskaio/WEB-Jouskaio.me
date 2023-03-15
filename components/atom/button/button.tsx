@@ -8,7 +8,7 @@ import Link from 'next/link';
  * Atom: Button
  * @param props : content, src
  * @param src : string
- * @param class: string
+ * @param classname: string
  * @param onClick: function()à
  */
 function Button(props) {
