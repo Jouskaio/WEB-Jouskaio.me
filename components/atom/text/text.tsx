@@ -7,11 +7,11 @@ import React from "react";
  * @param classname : string
  * @constructor
  */
-export default function Text(props, classname) {
+export default function Text(props) {
     // METHODS
     return (
         <>
-            <p className={"a-text " + classname}>{props.children}</p>
+            <p className={"a-text " + props.classname}>{props.children}</p>
         </>
     );
 }

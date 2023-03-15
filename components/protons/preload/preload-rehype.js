@@ -1,22 +1,18 @@
 import React from "react";
-import {createElement, Fragment, useEffect, useState} from 'react'
+import {Fragment, useEffect, useState} from 'react'
 // @ts-ignore
 import {unified} from 'unified'
 // @ts-ignore
 import rehypeReact from 'rehype-react'
 // @ts-ignore
-import remarkParse from "remark-parse";
-// @ts-ignore
-import remarkRehype from "remark-rehype";
-// @ts-ignore
 import rehypeParse from "rehype-parse"
 import Text from "../../atom/text/text";
-import TextH2 from "../../atom/text/textH2";
 import TextH3 from "../../atom/text/textH3";
 import TextH4 from "../../atom/text/textH4";
 import TextLink from "../../atom/text/textLink";
 import TextH5 from "../../atom/text/textH5";
-
+import Code from "../../atom/code/code";
+import rehypeFormat from "rehype-format";
 
 
 function UseProcessor({content}) {
@@ -28,6 +24,7 @@ function UseProcessor({content}) {
       // Specifies that we have Markdown text
       .use(rehypeParse, {fragment: true})
       // TRANSFORMERS
+      .use(rehypeFormat)
       // COMPILER
       .use(rehypeReact, {
         createElement: React.createElement,
@@ -37,7 +34,8 @@ function UseProcessor({content}) {
           h2: TextH3,
           h3: TextH4,
           h4: TextH5,
-          a: TextLink
+          a: TextLink,
+          code: Code
         }
       })
       .process(content)

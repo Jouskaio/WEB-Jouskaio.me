@@ -68,8 +68,9 @@
 .a-text {
   color: var(--text-color);
   font-family:  var(--font-family-main);
-  font-size: var(--font-size-L);
-  
+  //font-size: var(--font-size-L);
+  font-size: var(--font-size-M);
+  padding-bottom: 8px;
 }
 
 // link
@@ -140,6 +141,10 @@
 }
 
 pre code.hljs {
+  font-size: var(--font-size-S) !important;
   overflow-x: hidden !important;
   white-space: pre-wrap;
+  @include large {
+    font-size: var(--font-size-M) !important;
+  }
 }

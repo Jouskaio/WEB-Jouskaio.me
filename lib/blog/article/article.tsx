@@ -10,6 +10,7 @@ const ARTICLE_QUERY = gql`
                     title
                     content
                     number
+                    description
                     location
                     tags {
                         data {

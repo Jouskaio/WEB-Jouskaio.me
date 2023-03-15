@@ -13,10 +13,13 @@ import {ApolloProvider} from "@apollo/client";
 //import Image from "next/image";
 import {shimmer, toBase64} from "../../../components/protons/preload/preload-image";
 // All plugins for ReactMarkdown
-import UseProcessor from "../../../components/protons/preload/preload-remark";
+import UseProcessor from "../../../components/protons/preload/preload-rehype";
 import Header from "../../../components/organisms/navigation/header";
 import NavCategories from "../../../components/molecule/navigation/categories";
 import Button from "../../../components/atom/button/button";
+import TextH1 from "../../../components/atom/text/textH1";
+import Text from "../../../components/atom/text/text";
+import Image from "next/image";
 
 const Article = () => {
     const router = useRouter()
@@ -52,12 +55,19 @@ const Article = () => {
                             }
 
                         </div>
-                        <Moment format="LL" className={"l-article__a-datetime"}>
-                            {articles.data[0].attributes.published_at}
-                        </Moment>
-                        <h1>{articles.data[0].attributes.title}</h1>
-                        {/*<Image loader={() => getStrapiMedia(articles.data[0].attributes.image)} src={getStrapiMedia(articles.data[0].attributes.image)} alt={articles.data[0].attributes.image.data.attributes.url} height={10} 04-layout="fill" objectFit="none" placeholder="blur"
-                           blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(10, 10))}`} />*/}
+                        <nav className={"l-article__a-datetime"}>
+                            Last update : <Moment format="LL">{articles.data[0].attributes.published_at}</Moment>
+                        </nav>
+
+                        <TextH1 classname={"l-article__a-title"}>{articles.data[0].attributes.title}</TextH1>
+                        <Text classname={"l-article__a-description"}>{articles.data[0].attributes.description}</Text>
+                        <nav className={"l-article__m-mainImageDiv"}>
+                            <img
+                                src={getStrapiMedia(articles.data[0].attributes.image)}
+                                placeholder="blur"
+                                onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
+                                alt={"Main image"}/>
+                        </nav>
                         <div>
                         {/*<ReactMarkdown
                           remarkPlugins={[remarkMath]}

@@ -98,7 +98,7 @@ export default function Home() {
 
                             </div>
                             <div>
-                                <Code language={"javascript"} classname={"l-home__a-code"}>
+                                <Code language={"js"} classname={"l-home__a-code"}>
                                     {`
 const jouskaio = {
     pronouns: "She" | "Her",
