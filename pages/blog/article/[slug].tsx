@@ -19,7 +19,6 @@ import NavCategories from "../../../components/molecule/navigation/categories";
 import Button from "../../../components/atom/button/button";
 import TextH1 from "../../../components/atom/text/textH1";
 import Text from "../../../components/atom/text/text";
-import Image from "next/image";
 
 const Article = () => {
     const router = useRouter()
@@ -68,15 +67,9 @@ const Article = () => {
                                 onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
                                 alt={"Main image"}/>
                         </nav>
-                        <div>
-                        {/*<ReactMarkdown
-                          remarkPlugins={[remarkMath]}
-                          escapeHtml={false}>{articles.data[0].attributes.content}</ReactMarkdown>
-                          <UseProcessor content={articles.data[0].attributes.content}/>
-                          */
+                        {
                             <UseProcessor content={Content}/>
                         }
-                        </div>
                     </main>
                     );
                 }
