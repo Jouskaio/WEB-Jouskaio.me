@@ -6,6 +6,7 @@ import {ApolloProvider} from "@apollo/client";
 // @ts-ignore
 import {useRouter} from "next/router";
 import {client} from "../../../lib/blog/apolloClient";
+import Header from "../../../components/organisms/navigation/header";
 
 const CategorySlug = () => {
   const router = useRouter()
@@ -17,23 +18,22 @@ const CategorySlug = () => {
   }
   return (
     <ApolloProvider client={client}>
+      <Header/>
       <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
-        {/*
         {({ data: { categories } }) => {
         if (categories.data.length) {
           return (
             <div>
-              <div className="uk-section">
-                <div className="uk-container uk-container-large">
+              <div className="">
+                <div className="">
                   <h1>{categories.data[0].attributes.name}</h1>
-                  <Articles articles={categories.data[0].attributes.articles.data} />
+                  {/*<Articles articles={categories.data[0].attributes.articles.data} />*/}
                 </div>
               </div>
             </div>
           );
         }
       }}
-        */}
     </Query>
     </ApolloProvider>
   );

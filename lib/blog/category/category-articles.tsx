@@ -14,14 +14,8 @@ const CATEGORY_ARTICLES_QUERY = gql`
                             attributes {
                                 slug
                                 title
-                                content
-                                category {
-                                    data {
-                                        attributes {
-                                            name
-                                        }
-                                    }
-                                }
+                                language
+                                description
                                 image {
                                     data {
                                         attributes {

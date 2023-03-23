@@ -21,6 +21,7 @@ export default function Header() {
                     $(".m-sideGlobal__icon--paletteChoose").toggleClass("m-sideGlobal__icon--paletteChooseColor");
                     $(".m-sideGlobal__icon--paletteAccent").each(function (i, obj) {
                         //console.log($.trim($(this).css("color")))
+                        console.log("Color")
                         //console.log($.trim(root.getPropertyValue("--accent-color")))
                         if($.trim(root.getPropertyValue("--accent-color")) == $.trim($(this).css("color"))) {
                             selectedColor = $.trim(root.getPropertyValue("--accent-color-filter"));
