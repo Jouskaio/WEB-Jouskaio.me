@@ -16,6 +16,7 @@ import Tag from "../components/molecule/quotes/Tag";
 // @ts-ignore
 import Moment from "react-moment";
 import Button from "../components/atom/button/button";
+import TextLink from "../components/atom/text/textLink";
 export default class Blog extends React.Component {
     render() {
         if (!client) {
@@ -59,9 +60,11 @@ export default class Blog extends React.Component {
                                                         </div>
                                                         <TextH1>{mainArticle.attributes.title}</TextH1>
                                                         <div className={"l-blog__m-mainCategory"}>
+                                                            -
                                                             {mainArticle.attributes.categories.data.map(function (categorie, i) {
-                                                                return <p key={i}>{categorie.attributes.name} </p>
+                                                                return <TextLink key={i} classname={"l-blog__m-mainCategory"} src={"/blog/category/"+categorie.attributes.slug}>{categorie.attributes.name}</TextLink>
                                                             })}
+                                                            -
                                                         </div>
                                                         <p className={"l-blog__a-mainDesc"}>
                                                             {mainArticle.attributes.description}

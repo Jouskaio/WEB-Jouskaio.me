@@ -13,6 +13,7 @@ import TextLink from "../../atom/text/textLink";
 import TextH5 from "../../atom/text/textH5";
 import Code from "../../atom/code/code";
 import rehypeFormat from "rehype-format";
+import Table from "../../molecule/media/table";
 
 
 function UseProcessor({content}) {
@@ -35,13 +36,27 @@ function UseProcessor({content}) {
           h3: TextH4,
           h4: TextH5,
           a: TextLink,
-          code: Code
+          code: Code,
+          table: (props) => {
+            /*
+            Exemple HTML code to write :
+            <table
+              items='[
+                {"year": "2023", "name": "portfolio 2023", "link": "#"},
+                {"year": "2024", "name": "portfolio 2024", "link": "#"}
+              ]'
+            />
+             */
+            const items = JSON.parse(props.items);
+            return <Table items={items} />;
+          },
         }
       })
       .process(content)
       // OUTPUT
       .then((file) => {
         setContent(file.result)
+        console.log(content)
       })
   }, [content])
   return Content

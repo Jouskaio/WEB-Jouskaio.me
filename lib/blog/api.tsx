@@ -22,7 +22,6 @@ const Query = ({ children=null, query=null, value: value = null }) => {
   useCallback(() => { setTimeout(() => _refetch(), 0) }, [_refetch]);
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
-  //console.log({data});
   return children({data})
   //return children({ data });
 };

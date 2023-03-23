@@ -1,3 +1,6 @@
+
+
+
 .l-blog {
   // GLOBAL
   height: 100%;
@@ -67,7 +70,7 @@
     width: 100%;
     align-items: center;
     justify-content: right;
-
+    position: relative;
     @include large {
       width: 50%;
       margin-top: 0;
@@ -96,8 +99,8 @@
 
   &__m-mainArticle {
     position: absolute;
-    left: 15%;
     z-index: 80;
+    width: 100%;
     text-shadow: 1px 0 10px var(--background-color);
     @include large {
       left: 15%;
@@ -114,12 +117,13 @@
 
   &__a-mainDesc {
     font-family: var(--font-family-main);
-    font-size: var(--font-size-L);
-    width: 60%;
+    font-size: var(--font-size-M);
+    width: 80%;
     line-height: 1.5;
     margin-bottom: 30px;
     @include large {
       width: 40%;
+      font-size: var(--font-size-L);
     }
   }
 
@@ -151,11 +155,23 @@
     font-family: var(--font-family-main);
     font-size: var(--font-size-M);
     margin-bottom: 40px;
+    width: 30%;
     & > nav {
       width: 40px;
       height: 1px;
       background-color: var(--text-color);
       margin-right: 8px;
+    }
+    & > a{
+      margin-left: 4px;
+      margin-right: 4px;
+      text-decoration: none;
+      color: var(--text-color);
+
+      &:hover {
+        text-decoration: underline;
+        text-underline-offset: 8px;
+      }
     }
   }
 
@@ -173,6 +189,10 @@
     display: block;
     margin: 0 auto;
     width: fit-content;
+    @include large {
+      margin: unset;
+      width: fit-content;
+    }
   }
 
   &__m-mainInformations {
@@ -186,11 +206,14 @@
       width: 36px;
       height: 36px;
       font-family: var(--font-family-stylized);
-      font-size: var(--font-size-M);
+      font-size: var(--font-size-S);
       justify-content: center;
       text-align: center;
       display: flex;
       align-items: center;
+      @include large {
+        font-size: var(--font-size-M);
+      }
       & > p {
         width: 100%;
         text-align: center;

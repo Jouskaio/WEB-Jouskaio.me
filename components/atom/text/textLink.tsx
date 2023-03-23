@@ -10,11 +10,11 @@ import Link from 'next/link';
  * @param content: string
  * @constructor
  */
-export default function TextLink({classname, src, content}) {
+export default function TextLink(props) {
     // METHODS
     return (
         <>
-            <Link legacyBehavior href={src} className={"a-link " + classname}>{content}</Link>
+            <Link href={props.src} className={"a-link " + props.classname}>{props.children}</Link>
         </>
     );
 }
