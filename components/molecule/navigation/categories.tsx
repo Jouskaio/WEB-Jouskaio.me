@@ -1,5 +1,5 @@
-import CATEGORIES_QUERY from "../../../lib/blog/category/categories";
-import Query from "../../../lib/blog/api";
+import CATEGORIES_QUERY from "../../../lib/api/category/categories";
+import Query from "../../../lib/api/api";
 // @ts-ignore
 import Link from "next/link";
 

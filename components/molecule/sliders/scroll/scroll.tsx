@@ -18,7 +18,7 @@ import 'swiper/css/effect-fade';
 // import required modules
 // @ts-ignore
 import {Parallax, Pagination, Navigation, Autoplay, EffectFade} from "swiper";
-import Tag from "../../quotes/Tag";
+import Tag from "../../quotes/tag";
 // @ts-ignore
 import Link from "next/link";
 import {useWindowSize} from "../../../../lib/motion/sizeWindow";

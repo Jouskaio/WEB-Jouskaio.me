@@ -1,6 +1,9 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  experimental: {
+    externalDir: true,
+  },
   images: {
     loader: "default",
     domains: [
@@ -29,19 +32,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true'
 })
 
-// Webpack
-module.exports = {
-  webpack: (
-    config,
-    { buildId, dev, isServer, defaultLoaders, nextRuntime, webpack }
-  ) => {
-    // Important: return the modified config
-    return config
-  },
-  experimental: {
-    forceSwcTransforms: true,
-  }
-}
 
 
 const withPlugins = require('next-compose-plugins')

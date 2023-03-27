@@ -1,8 +1,9 @@
-import React from "react";
 // @ts-ignore
 import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
+import {Component} from "react";
+import PropTypes from "prop-types";
 
 /**
  * Atom: Icon
@@ -12,12 +13,36 @@ import Image from "next/image";
  * @param alt : string
  * @constructor
  */
-export default function Icon({href, src, classname, alt, id}) {
-    // METHODS
-    return (
-        <>
-            <Link id={id}  href={href} legacyBehavior><a className={"a-icon " + classname + " " + id}><Image width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
-        </>
+class Icon extends Component {
+    static propTypes = {
+        href: PropTypes.string.isRequired,
+        src: PropTypes.string.isRequired,
+        classname: PropTypes.string,
+        alt: PropTypes.string,
+        id: PropTypes.string
+    }
+    render() {
+        const {
+            // @ts-ignore
+            href,
+            // @ts-ignore
+            src,
+            // @ts-ignore
+            classname,
+            // @ts-ignore
+            alt,
+            // @ts-ignore
+            id
+        } = this.props;
+        // METHODS
+        return (
+            <>
+                <Link id={id} href={href} legacyBehavior><a className={"a-icon " + classname + " " + id}><Image
+                    width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
+            </>
 
-    );
+        );
+    }
 }
+
+export default Icon;

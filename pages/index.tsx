@@ -18,16 +18,16 @@ import TextH5 from "../components/atom/text/textH5";
 import TextH3 from "../components/atom/text/textH3";
 import Swipe from "../components/molecule/navigation/swipe";
 import TitleWithTags from "../components/molecule/quotes/title-with-tags";
-import {client} from "../lib/blog/apolloClient";
+import {client} from "../lib/api/apolloClient";
 // @ts-ignore
 import {ApolloProvider} from "@apollo/client";
-import Query from "../lib/blog/api";
-import LATEST_ARTICLES_QUERY from "../lib/blog/article/latest-articles";
+import Query from "../lib/api/api";
+import LATEST_ARTICLES_QUERY from "../lib/api/article/latest-articles";
 import Scroll from "../components/molecule/sliders/scroll/scroll";
-import Footer from '../components/organisms/navigation/footer';
+import Footer from '../components/organism/navigation/footer';
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
 import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
-import Header from "../components/organisms/navigation/header";
+import Header from "../components/organism/navigation/header";
 import Table from "../components/molecule/media/table";
 import CardS from "../components/molecule/media/cardS";
 
@@ -74,7 +74,6 @@ export default function Home() {
 
                 <ApolloProvider client={client}>
                     <main className={"l-home__m-main"}>
-                    <Header/>
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
@@ -167,7 +166,7 @@ const jouskaio = {
                             }
                         </Query>
                         <nav className={"l-home__a-buttonNewsNav"}>
-                            <Button classname={"l-home__a-buttonNews"} src={"/blog"}>Go to the blog</Button>
+                            <Button classname={"l-home__a-buttonNews"} src={"/api"}>Go to the blog</Button>
                             <Button classname={"l-home__a-buttonNews"} src={"/projects"}>View projects</Button>
                         </nav>
                     </section>
@@ -195,7 +194,6 @@ const jouskaio = {
                             Send me an <a href="mailto:jouskaio.me@gmail.com" className={"l-home__o-contact__link"}>email</a>
                         </span>
                     </section>
-                    <Footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</Footer>
                     </main>
                 </ApolloProvider>
             </>

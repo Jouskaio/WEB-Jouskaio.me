@@ -2,7 +2,7 @@ import React from "react";
 // @ts-ignore
 import Link from "next/link";
 import Icon from "../../atom/icon/icon";
-import {shimmer, toBase64} from "../../protons/preload/preload-image";
+import {shimmer, toBase64} from "../../../lib/preload/preload-image";
 // @ts-ignore
 import Image from "next/image";
 

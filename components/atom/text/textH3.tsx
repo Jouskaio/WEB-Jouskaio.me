@@ -6,11 +6,11 @@ import React from "react";
  * @param classname : string
  * @constructor
  */
-export default function TextH3(props, classname) {
+export default function TextH3(props) {
     // METHODS
     return (
         <>
-            <h3 className={"a-titleH3"}>{props.children}</h3>
+            <h3 className={"a-titleH3 " + props.classname}>{props.children}</h3>
         </>
     );
 }

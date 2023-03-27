@@ -1,10 +1,9 @@
-import React from "react";
+import React, {Component} from "react";
 // @ts-ignore
 import Link from 'next/link';
 // @ts-ignore
 import Highlight from "react-highlight"
-
-// <Modal post= {postProps} user={userDetails}/>
+import PropTypes from "prop-types";
 
 /**
  * Atom: Code
@@ -14,17 +13,30 @@ import Highlight from "react-highlight"
  * @param props.children: string
  * @augments
  */
-function Code(props) {
-    // METHODS
-    return (
-        <>
-            <Highlight className={"a-code " +
-                props.classname + " " + props.language}>
-                {props.children}
-            </Highlight>
-        </>
-
-    );
+class Code extends Component {
+    static propTypes = {
+        classname: PropTypes.string,
+        language: PropTypes.string,
+        children: PropTypes.string.isRequired
+    }
+    render () {
+        const {
+            // @ts-ignore
+            classname: classname,
+            // @ts-ignore
+            language: language,
+            // @ts-ignore
+            children: children
+        } = this.props
+        return (
+            <>
+                <Highlight className={"a-code " +
+                    classname + " " + language}>
+                    {children}
+                </Highlight>
+            </>
+        )
+    }
 }
 
 export default Code;

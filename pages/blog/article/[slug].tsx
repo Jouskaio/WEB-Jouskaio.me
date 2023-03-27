@@ -2,19 +2,15 @@ import React, {Fragment, useState} from "react";
 // @ts-ignore
 import Moment from "react-moment";
 // @ts-ignore
-import ARTICLE_QUERY from "/lib/blog/article/article";
+import ARTICLE_QUERY from "/lib/api/article/article";
 // @ts-ignore
 import {useRouter} from "next/router";
-import Query, {getStrapiMedia} from "../../../lib/blog/api";
-import {client} from "../../../lib/blog/apolloClient";
+import Query, {getStrapiMedia} from "../../../lib/api/api";
+import {client} from "../../../lib/api/apolloClient";
 // @ts-ignore
 import {ApolloProvider} from "@apollo/client";
-//import parse from "html-react-parser";
-//import Image from "next/image";
-import {shimmer, toBase64} from "../../../components/protons/preload/preload-image";
-// All plugins for ReactMarkdown
-import UseProcessor from "../../../components/protons/preload/preload-rehype";
-import Header from "../../../components/organisms/navigation/header";
+import {shimmer, toBase64} from "../../../lib/preload/preload-image";
+import UseProcessor from "../../../lib/preload/preload-rehype";
 import NavCategories from "../../../components/molecule/navigation/categories";
 import Button from "../../../components/atom/button/button";
 import TextH1 from "../../../components/atom/text/textH1";
@@ -31,7 +27,6 @@ const Article = () => {
     */
     return (
         <ApolloProvider client={client}>
-        <Header/>
         <div className={"l-article__a-sizeSection l-article__o-categories"}><NavCategories/></div>
         <Query query={ARTICLE_QUERY} value={slug}>
             {({ data: { articles } }) => {
@@ -44,12 +39,12 @@ const Article = () => {
                         <div className={"l-article__m-tagsDiv"}>
                             {
                                 tags.map(function (tag, i){
-                                    return <Button src={"/blog/category/" + tag.attributes.slug} key={i} classname={"l-article__m-tags"}>{tag.attributes.name}</Button>
+                                    return <Button src={"/api/category/" + tag.attributes.slug} key={i} classname={"l-article__m-tags"}>{tag.attributes.name}</Button>
                                 })
                             }
                             {
                                 categories.map(function (category, i){
-                                    return <Button src={"/blog/category/" + category.attributes.slug} key={i} classname={"l-article__m-tags"}>{category.attributes.name}</Button>
+                                    return <Button src={"/api/category/" + category.attributes.slug} key={i} classname={"l-article__m-tags"}>{category.attributes.name}</Button>
                                 })
                             }
 

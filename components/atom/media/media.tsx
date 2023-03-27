@@ -3,8 +3,8 @@ import React from "react";
 import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
-import {shimmer, toBase64} from "../../protons/preload/preload-image";
-import {getStrapiMedia} from "../../../lib/blog/api";
+import {shimmer, toBase64} from "../../../lib/preload/preload-image";
+import {getStrapiMedia} from "../../../lib/api/api";
 
 /**
  * Atom: Media

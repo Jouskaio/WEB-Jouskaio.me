@@ -12,12 +12,21 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Documentation
 
-For the first installation, be sure to run `yarn istall`, `next build` and then `npm run dev`. Next time
+For the first installation, be sure to run `yarn istall`, `next build` and then `npm run dev`. 
 
-- [Start the application](./documentation/NEXT-commands.md)
+Several commands are possible to use with the project :
+- `next build` : build the project
+- `next dev` : start the server in development mode
+- `next start` : start the server in production mode
+- `next styleguide:build` : build the styleguidist auto documentation
+- `next styleguide` : start the server to visualize styleguidist documentation
 
 ## Packages installed
 
+- `depcheck` which allow visualizing which npm packages are unnecessary for the project
+- `babel-loader style-loader css-loader sass-loader` to use webpack loader in order to generate documentation with `styleguidist`
+- `sharp` to optimize images (Next.JS recommendation : https://nextjs.org/docs/messages/sharp-missing-in-production
+  )
 - `@types/component-emitter` because of an error while building the project.
 ``` bash
 info  - Loaded env from /Users/jouskaio/Documents/Development/Projets/Portfolio/Jouskaio-Front/.env
@@ -26,5 +35,4 @@ Failed to compile.
 Type error: Cannot find type definition file for 'component-emitter'.
   The file is in the program because:
     Entry point for implicit type library 'component-emitter'
-
 ```

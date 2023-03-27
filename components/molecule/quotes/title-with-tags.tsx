@@ -1,7 +1,7 @@
 import React, {useRef} from "react";
 import TextSpanM from "../../atom/text/textSpanM";
 import Icon from "../../atom/icon/icon";
-import Tag from "./Tag";
+import Tag from "./tag";
 import TextLink from "../../atom/text/textLink";
 /**
  *

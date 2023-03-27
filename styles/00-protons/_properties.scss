@@ -71,3 +71,15 @@ h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::s
     }
   }
 }
+
+
+.l-main {
+  &__footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding-top: 45px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+}
