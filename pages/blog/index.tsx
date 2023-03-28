@@ -17,10 +17,11 @@ import Tag from "../../components/molecule/quotes/tag";
 import Moment from "react-moment";
 import Button from "../../components/atom/button/button";
 import TextLink from "../../components/atom/text/textLink";
+import TextDefault from "../../components/atom/text/TextDefault";
 export default class Index extends React.Component {
     render() {
         if (!client) {
-            return <p className={"a-text"}>Loading</p>
+            return <TextDefault>Loading</TextDefault>
         }
         return (
             <>

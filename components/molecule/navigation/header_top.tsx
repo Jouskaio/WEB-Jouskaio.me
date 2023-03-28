@@ -12,17 +12,12 @@ import Image from "next/image";
  * @param pages: [{src: string, class: string, name: string}]
  * @constructor
  */
-function Header_top({source, height, classname, alt, pages}) {
+function Header_top({pages}) {
     return (
         <div className="m-header">
-            <Link href={{pathname: "/"}}>
-                <img alt={alt} src={source} className={"a-media m-header__logo "+ classname} width={"100%"} height={height} style={{objectFit:"fill"}} placeholder="blur" onLoad={() => source}/>
-            </Link>
-            <div className="m-header__pagesDiv">
                 {pages.map(function(page, i) {
                     return <Link href={{pathname: page.source}} key={i} className={page.class}>{page.name}</Link>
                 })}
-            </div>
         </div>
     )
 }

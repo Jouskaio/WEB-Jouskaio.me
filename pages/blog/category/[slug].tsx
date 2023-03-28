@@ -10,14 +10,14 @@ import Header from "../../../components/organism/navigation/header";
 import NavCategories from "../../../components/molecule/navigation/categories";
 
 const CategorySlug = () => {
-  const router = useRouter()
-  const { slug } = router.query
+    const router = useRouter()
+    const { slug } = router.query
 
 
-  if (!client) {
+    if (!client) {
     return <p>Loading</p>
-  }
-  return (
+    }
+    return (
     <ApolloProvider client={client}>
         <main className={"l-category__a-sizeSection l-category__a-sizeSection--mainSection"}>
             <NavCategories/>
@@ -39,7 +39,7 @@ const CategorySlug = () => {
             </Query>
         </main>
     </ApolloProvider>
-  );
+    );
 };
 
 export default CategorySlug;

@@ -1,6 +1,4 @@
-import React, {useRef} from "react";
 import TextSpanM from "../../atom/text/textSpanM";
-import Icon from "../../atom/icon/icon";
 import Tag from "./tag";
 import TextLink from "../../atom/text/textLink";
 /**
@@ -18,14 +16,15 @@ function TitleWithTags({itemClassname, titleName, titleClassname, libelled, tags
     return (
         <div className={"m-titleWithTag " + itemClassname}>
             <nav className="m-titleWithTag__divTitle">
-                <TextLink src={linkTitle} content={<h4 className={"a-titleH4 " + titleClassname}>{titleName}</h4>}
-                          classname={undefined}></TextLink>
+                <TextLink src={linkTitle} classname={undefined}>
+                    <h4 className={"a-titleH4 " + titleClassname}>{titleName}</h4>
+                </TextLink>
                 <nav className="m-titleWithTag__divider"></nav>
                 <TextSpanM>{libelled}</TextSpanM>
             </nav>
             <nav className="m-titleWithTag__divTag">
                 {tags.map(function(tag, i) {
-                    return <TextLink classname={"m-titleWithTag__tag"} src={tag.link} key={i} content={<Tag content={tag.name} color={tag.color} classname={tag.classname}/>}></TextLink>;
+                    return <TextLink classname={"m-titleWithTag__tag"} src={tag.link} key={i}><Tag content={tag.name} color={tag.color} classname={tag.classname}/></TextLink>;
                 })}
             </nav>
         </div>

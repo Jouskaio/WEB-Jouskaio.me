@@ -1,4 +1,5 @@
-import React from "react";
+import {Component} from "react";
+import PropTypes from "prop-types";
 
 /**
  *
@@ -6,11 +7,22 @@ import React from "react";
  * @param classname : string
  * @constructor
  */
-export default function TextH3(props) {
-    // METHODS
-    return (
-        <>
-            <h3 className={"a-titleH3 " + props.classname}>{props.children}</h3>
-        </>
-    );
+export default class TextH3 extends Component{
+    static propTypes = {
+        classname: PropTypes.string,
+        children: PropTypes.any
+    }
+    render() {
+        const {
+            //@ts-ignore
+            classname,
+            //@ts-ignore
+            children
+        } = this.props
+        return (
+            <>
+                <h3 className={"a-titleH3 " + classname}>{children}</h3>
+            </>
+        );
+    }
 }

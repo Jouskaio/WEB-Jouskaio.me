@@ -14,7 +14,7 @@ import UseProcessor from "../../../lib/preload/preload-rehype";
 import NavCategories from "../../../components/molecule/navigation/categories";
 import Button from "../../../components/atom/button/button";
 import TextH1 from "../../../components/atom/text/textH1";
-import Text from "../../../components/atom/text/text";
+import TextDefault from "../../../components/atom/text/TextDefault";
 
 const Article = () => {
     const router = useRouter()
@@ -54,7 +54,7 @@ const Article = () => {
                         </nav>
 
                         <TextH1 classname={"l-article__a-title"}>{articles.data[0].attributes.title}</TextH1>
-                        <Text classname={"l-article__a-description"}>{articles.data[0].attributes.description}</Text>
+                        <TextDefault classname={"l-article__a-description"}>{articles.data[0].attributes.description}</TextDefault>
                         <nav className={"l-article__m-mainImageDiv"}>
                             <img
                                 src={getStrapiMedia(articles.data[0].attributes.image)}

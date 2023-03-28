@@ -70,11 +70,14 @@
   font-family:  var(--font-family-main);
   //font-size: var(--font-size-L);
   font-size: var(--font-size-M);
-  line-height: 390% !important;
+  line-height: 150% !important;
+  @include large {
+    font-size: var(--font-size-L);
+  }
 }
 
 // link
-.a-link, .a-link > a {
+.a-link, .a-link > a, .a-link > *, .a-link > * > * {
   color: var(--text-color);
   font-family: var(--font-family-main);
   font-style: italic;

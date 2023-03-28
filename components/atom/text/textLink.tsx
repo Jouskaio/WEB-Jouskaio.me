@@ -1,6 +1,7 @@
-import React, {useRef} from "react";
+import {Component} from "react";
 // @ts-ignore
 import Link from 'next/link';
+import PropTypes from "prop-types";
 
 /**
  *
@@ -10,11 +11,25 @@ import Link from 'next/link';
  * @param content: string
  * @constructor
  */
-export default function TextLink(props) {
-    // METHODS
-    return (
-        <>
-            <Link href={props.src} className={"a-link " + props.classname}>{props.children}</Link>
-        </>
-    );
+export default class TextLink extends Component{
+    static propTypes = {
+        src: PropTypes.string.isRequired,
+        classname: PropTypes.string,
+        children: PropTypes.any
+    }
+    render() {
+        const {
+            //@ts-ignore
+            src,
+            //@ts-ignore
+            classname,
+            //@ts-ignore
+            children
+        } = this.props
+        return (
+            <>
+                <Link href={src} className={"a-link " + classname}>{children}</Link>
+            </>
+        );
+    }
 }

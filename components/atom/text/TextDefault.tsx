@@ -1,26 +1,31 @@
-import  {Component} from "react";
+import {Component} from "react";
 import PropTypes from "prop-types";
 
 /**
+ * Atom: Text
  *
  * @param props
+ * @param classname : string
  * @constructor
  */
-export default class TextH5 extends Component{
+export default class TextDefault extends Component {
+
     static propTypes = {
         classname: PropTypes.string,
-        children: PropTypes.string
+        children: PropTypes.any
     }
+
     render() {
         const {
-            //@ts-ignore
+            // @ts-ignore
             classname,
-            //@ts-ignore
+            // @ts-ignore
             children
         } = this.props
+
         return (
             <>
-                <h5 className={"a-titleH5 " + classname}>{children}</h5>
+                <p className={"a-text " + classname}>{children}</p>
             </>
         );
     }

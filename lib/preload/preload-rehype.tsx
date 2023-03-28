@@ -6,7 +6,7 @@ import {unified} from 'unified'
 import rehypeReact from 'rehype-react'
 // @ts-ignore
 import rehypeParse from "rehype-parse"
-import Text from "../../components/atom/text/text";
+import TextDefault from "../../components/atom/text/TextDefault";
 import TextH3 from "../../components/atom/text/textH3";
 import TextH4 from "../../components/atom/text/textH4";
 import TextLink from "../../components/atom/text/textLink";
@@ -30,7 +30,7 @@ function UseProcessor({content}) {
       .use(rehypeReact, {
         createElement: React.createElement,
         components: {
-          p: Text,
+          p: TextDefault,
           h1: TextH3,
           h2: TextH3,
           h3: TextH4,
