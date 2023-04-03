@@ -49,8 +49,8 @@ class MyDocument extends Document {
           {/*<script src="https://kit.fontawesome.com/916ffe3022.js" crossOrigin="anonymous" defer></script>*/}
         </Head>
         <body>
-        <Main />
-        <NextScript />
+          <Main />
+          <NextScript />
         </body>
       </Html>
     );

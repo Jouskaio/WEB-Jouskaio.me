@@ -1,28 +1,31 @@
 import {client} from "../../lib/api/apolloClient";
 import {getStrapiMedia} from "../../lib/api/api";
-// @ts-ignore
 import {ApolloProvider} from "@apollo/client";
 import {ArticlesQuery, ArticlesQueryWithPagination} from "../../lib/api/article/articles";
 import NavCategories from '../../components/molecule/navigation/categories'
-import React from "react";
-import Header from "../../components/organism/navigation/header";
-// @ts-ignore
 import Head from "next/head";
-// @ts-ignore
-import Image from "next/image";
 import {shimmer, toBase64} from "../../lib/preload/preload-image";
-import TextH1 from "../../components/atom/text/textH1";
 import Tag from "../../components/molecule/quotes/tag";
-// @ts-ignore
 import Moment from "react-moment";
-import Button from "../../components/atom/button/button";
 import TextLink from "../../components/atom/text/textLink";
 import TextDefault from "../../components/atom/text/TextDefault";
-export default class Index extends React.Component {
-    render() {
-        if (!client) {
-            return <TextDefault>Loading</TextDefault>
-        }
+import Link from "next/link";
+import TextMarked from "../../components/atom/text/textMarked";
+import TextH1 from "../../components/atom/text/textH1";
+import TextSpanM from "../../components/atom/text/textSpanM";
+import TextSpanXS from "../../components/atom/text/textSpanXS";
+export default function Index()  {
+    function audioText(text) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        //utterance.lang = 'en-US';
+        utterance.rate = 0.75;
+        speechSynthesis.speak(utterance);
+    }
+
+
+    if (!client) {
+        return <TextDefault>Loading</TextDefault>
+    } else {
         return (
             <>
                 {/* Initialize Effect */}
@@ -36,60 +39,54 @@ export default class Index extends React.Component {
                 <>
                     <ApolloProvider client={client}>
                         <main className={"l-blog"}>
-                            <nav className={"l-blog__a-sizeSection l-blog__m-categories"}><NavCategories/></nav>
-                            <div className={"l-blog__a-sizeSection l-blog__o-articlesContainer"}>
+                            <NavCategories width={"100%"}/>
+                            <div className={"l-blog__a-sizeSection l-blog__o-mainContainer"}>
                                 <ArticlesQuery start={0} offset={1}>
                                     {({data: {articles}}) => {
                                         if (parseInt(articles.data.length) == 1) {
                                             let mainArticle = articles.data[0]
                                             return (
-                                                <div className={"l-blog__o-mainArticles"}>
-                                                    <div className={"l-blog__m-mainArticle"}>
-                                                        <div className={"l-blog__m-mainInformations"}>
-                                                            <nav>
-                                                                <p>{mainArticle.attributes.number}</p>
-                                                            </nav>
-                                                            <div className={"l-blog__a-mainInformationsLabel"}>
-                                                                <p>{mainArticle.attributes.location}</p>
-                                                                <p>
-                                                                    <Moment format={"LL"}>
-                                                                        {mainArticle.attributes.updatedAt}
-                                                                    </Moment>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                        <TextH1>{mainArticle.attributes.title}</TextH1>
-                                                        <div className={"l-blog__m-mainCategory"}>
-                                                            -
-                                                            {mainArticle.attributes.categories.data.map(function (categorie, i) {
-                                                                return <TextLink key={i} classname={"l-blog__m-mainCategory"} src={"/api/category/"+categorie.attributes.slug}>{categorie.attributes.name}</TextLink>
-                                                            })}
-                                                            -
-                                                        </div>
-                                                        <p className={"l-blog__a-mainDesc"}>
-                                                            {mainArticle.attributes.description}
-                                                        </p>
-                                                        <div className={"l-blog__m-mainTags"}>
-                                                            {mainArticle.attributes.tags.data.map(function (tag, i) {
-                                                                return <Tag key={i} content={tag.attributes.name}
-                                                                            color={tag.attributes.color}
-                                                                            classname={undefined}/>
-                                                            })}
-                                                        </div>
-                                                        <Button src={"/api/article/" + mainArticle.attributes.slug} classname={"l-blog__m-buttonArticles"}>See
-                                                            article</Button>
-                                                    </div>
-                                                    <nav className={"l-blog__a-mainImage"}><img
+                                                <section className={"l-blog__o-mainSection"}>
+                                                    <Link href={"/api/article/" + mainArticle.attributes.slug}>
+                                                        <TextMarked classname={"l-blog__m-tag"}>
+                                                            {mainArticle.attributes.categories.data.map(function (category, i) {
+                                                                return <TextLink key={i} classname={undefined} src={"/api/category/"+category.attributes.slug}>{category.attributes.name}</TextLink>
+                                                        })}
+                                                        </TextMarked>
+                                                    </Link>
+                                                    <TextH1 classname={"l-blog__a-title"}><nav className={"l-blog__a-title--bar"}></nav> {mainArticle.attributes.title}</TextH1>
+                                                    <nav className={"l-blog__a-mainImage"}>
+                                                        <img
                                                         src={getStrapiMedia(mainArticle.attributes.image)}
                                                         placeholder="blur"
                                                         onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
-                                                        alt={"Main image"}></img></nav>
-                                                </div>
+                                                        alt={"Main image"}></img>
+                                                        <nav className={"l-blog__a-mainImage--div"}></nav>
+                                                    </nav>
+                                                    <TextDefault classname={"l-blog__a-description"}>{mainArticle.attributes.description}</TextDefault>
+                                                    <div className={"l-blog__m-mainInformations l-blog__a-description"}>
+                                                        <nav className={"l-blog__m-mainInformations--option"}>
+                                                            <input className={"l-blog__m-mainInformations--vocal"} src={"/icons/audio.png"} name={"Vocal"} type="image" onClick={() => audioText(mainArticle.attributes.title + mainArticle.attributes.description)}/>
+                                                            {mainArticle.attributes.tags.data.map(function (tag, i) {
+                                                                return <Tag key={i} content={tag.attributes.name}
+                                                                            color={tag.attributes.color}
+                                                                            classname={"l-blog__m-mainInformations--label"}/>
+                                                            })}
+                                                        </nav>
+                                                        <TextSpanXS classname={"l-blog__m-mainInformations--label"}>
+                                                            <Moment format={"LL"}>
+                                                                {mainArticle.attributes.updatedAt}
+                                                            </Moment>
+                                                        </TextSpanXS>
+                                                    </div>
+                                                </section>
                                             )
                                         } else {
-                                            return (<div
-                                                className={"l-blog__a-sizeSection l-blog__o-articlesContainer--noArticle"}>Sorry,
-                                                there is actually no article for now... :/</div>)
+                                            return (
+                                                <div className={"l-blog__a-sizeSection l-blog__o-articlesContainer--noArticle"}>
+                                                    Sorry, there is actually no article for now... :/
+                                                </div>
+                                            )
                                         }
                                     }}
                                 </ArticlesQuery>

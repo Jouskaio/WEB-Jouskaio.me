@@ -8,14 +8,21 @@ import {useRouter} from "next/router";
 import {client} from "../../../lib/api/apolloClient";
 import Header from "../../../components/organism/navigation/header";
 import NavCategories from "../../../components/molecule/navigation/categories";
+import TextDefault from "../../../components/atom/text/TextDefault";
 
 const CategorySlug = () => {
     const router = useRouter()
     const { slug } = router.query
+    if (typeof window === "object") {
 
+    }
 
-    if (!client) {
-    return <p>Loading</p>
+        if (!client) {
+    return (
+        <main className={"l-main__a-sizeSection"}>
+            <TextDefault classname={undefined}>Loading</TextDefault>
+        </main>
+        )
     }
     return (
     <ApolloProvider client={client}>

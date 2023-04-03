@@ -1,7 +1,8 @@
 // @ts-ignore
-import {useCallback} from "react";
+import React, {useCallback} from "react";
 // @ts-ignore
 import {useQuery} from "@apollo/client";
+import TextDefault from "../../components/atom/text/TextDefault";
 
 /** Fetch results of custom query request into a JSON format
  * @param children : object
@@ -20,7 +21,11 @@ const Query = ({ children=null, query=null, value: value = null }) => {
   // Documentation : https://github.com/apollographql/react-apollo/issues/3862
   // eslint-disable-next-line react-hooks/rules-of-hooks
   useCallback(() => { setTimeout(() => _refetch(), 0) }, [_refetch]);
-  if (loading) return <p>Loading...</p>;
+  if (loading) return (
+      <main className={"l-main__a-sizeSection"}>
+        <TextDefault classname={undefined}>Loading</TextDefault>
+      </main>
+  )
   if (error) return <p>Error: {JSON.stringify(error)}</p>;
   return children({data})
   //return children({ data });

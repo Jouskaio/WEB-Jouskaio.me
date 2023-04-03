@@ -75,9 +75,6 @@ export function ArticlesQueryWithPagination() {
     const loadPrev = () => setStart((prev) => (start > 3 ? prev - offset : start));
     return (
         <div className={"l-blog__o-nextArticles"}>
-            <nav className={"l-blog__a-title"}><TextSpanXXXL><span
-                className={"l-blog__a-title--span"}>Blog</span></TextSpanXXXL></nav>
-            <div className={"l-blog__m-divNextArticles"}>
                 <div className={"l-blog__m-nextHeader"}>
                     <TextH4><span
                         className={"l-blog__a-nextTitle"}>Latest</span> articles</TextH4>
@@ -96,7 +93,6 @@ export function ArticlesQueryWithPagination() {
                         );
                     })
                 }
-            </div>
         </div>
     )
 }

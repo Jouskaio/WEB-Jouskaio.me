@@ -2,16 +2,6 @@
   // GLOBAL
   z-index: 1;
 
-  &__a-sizeSection {
-    //background-color: var(--background-color);
-    margin-left: 79px;
-    margin-right: 79px;
-    @include large {
-      margin-left: 152px;
-      margin-right: 152px;
-    }
-  }
-
   &__title  {
     text-transform: lowercase;
   }
@@ -33,7 +23,7 @@
     bottom: 0;
     left: 0;
     margin-left: 16px;
-    z-index: 998;
+    z-index: 994;
     @include large {
       margin-left: 55px;
     }
@@ -44,6 +34,8 @@
     bottom: 0;
     right: 0;
     margin-right: 16px;
+    z-index: 994;
+
     @include large {
       margin-right: 55px;
     }
@@ -51,8 +43,9 @@
 
   // SECTION VIDEO
   &__m-videoHome {
-    position: relative;
+    position: absolute;
     top: 0;
+    left: 0;
     z-index: 995;
   }
 
@@ -68,6 +61,7 @@
 
   // SECTION PROFIL
   &__o-profil > div {
+    margin-top: 40px;
     @include large {
       margin-top: 100px;
       display: flex;

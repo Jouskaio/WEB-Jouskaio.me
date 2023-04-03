@@ -11,7 +11,7 @@ import PropTypes from "prop-types";
 export default class TextH1 extends Component {
     static propTypes = {
         classname: PropTypes.string,
-        children: PropTypes.string
+        children: PropTypes.any
     }
     render() {
         const {

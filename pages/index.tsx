@@ -30,6 +30,7 @@ import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
 import Header from "../components/organism/navigation/header";
 import Table from "../components/molecule/media/table";
 import CardS from "../components/molecule/media/cardS";
+import {height} from "dom7";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -73,13 +74,12 @@ export default function Home() {
                 </div>
 
                 <ApolloProvider client={client}>
-                    <main className={"l-home__m-main"}>
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
                     </section>
 
-                    <section className={"l-home__a-sizeSection l-home__o-profil"}>
+                    <section className={"l-home__a-sizeSection l-home__o-profil"} style={{marginTop: size.height+40}}>
                         <div>
                             <div>
                                 <nav className={"l-home__a-logoProfile"}><Media classname={"l-home__a-logoProfile--img"} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
@@ -194,7 +194,6 @@ const jouskaio = {
                             Send me an <a href="mailto:jouskaio.me@gmail.com" className={"l-home__o-contact__link"}>email</a>
                         </span>
                     </section>
-                    </main>
                 </ApolloProvider>
             </>
         </>

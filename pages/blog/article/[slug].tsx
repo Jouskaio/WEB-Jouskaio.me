@@ -1,4 +1,4 @@
-import React, {Fragment, useState} from "react";
+import React, {useState} from "react";
 // @ts-ignore
 import Moment from "react-moment";
 // @ts-ignore
@@ -27,7 +27,7 @@ const Article = () => {
     */
     return (
         <ApolloProvider client={client}>
-        <div className={"l-article__a-sizeSection l-article__o-categories"}><NavCategories/></div>
+        <div className={"l-article__a-sizeSection l-article__o-categories"}><NavCategories width={"100%"}/></div>
         <Query query={ARTICLE_QUERY} value={slug}>
             {({ data: { articles } }) => {
                 if (articles.data.length) {
@@ -74,4 +74,7 @@ const Article = () => {
     );
 };
 
+Article.getInitialProps = async ({ htmlProps }) => {
+    return { htmlProps: { ...htmlProps, className: 'my-blog-class' } };
+};
 export default Article;

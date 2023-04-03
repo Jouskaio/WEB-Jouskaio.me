@@ -12,7 +12,7 @@ import PropTypes from "prop-types";
 export default class TextSpanM extends Component{
     static propTypes = {
         classname: PropTypes.string,
-        children: PropTypes.string
+        children: PropTypes.any
     }
     render() {
         const {
