@@ -307,11 +307,12 @@
   &__o-mainSection {
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    //justify-content: center;
     flex-direction: column;
     padding-bottom: 8px;
     margin-bottom: 30px;
     border-bottom: 1px solid var(--text-color);
+    top: 0;
 
     @include large {
       margin-top: 0;
@@ -413,7 +414,9 @@
       height: 16px;
       width: 16px;
       margin-right: 8px;
-
+      &:checked, &:hover, &:focus {
+        filter: var(--accent-color-filter);
+      }
     }
 
     &--labelLocation {
@@ -426,6 +429,40 @@
     width: 100%;
     @include large {
       width: 400px;
+    }
+  }
+
+  &__a-nextTitle {
+    margin-bottom: 24px;
+    &--span {
+      color: var(--accent-color);
+    }
+  }
+
+  &__m-buttonDiv {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 24px;
+    width: 100%;
+    &--button {
+      width: 50%;
+      background-color: var(--container-color);
+      border: none;
+      font-size: var(--font-size-L);
+      font-family: var(--font-family-main);
+
+      &:hover {
+        background-color: var(--accent-color);
+        color: var(--background-color);
+      }
+      &:nth-child(1) {
+        border-radius: 10px 0 0 10px;
+      }
+
+      &:nth-child(2) {
+        border-radius: 0 10px 10px 0;
+      }
     }
   }
 }

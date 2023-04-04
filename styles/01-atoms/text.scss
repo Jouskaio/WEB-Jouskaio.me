@@ -80,6 +80,8 @@
 .a-textMarked {
   color: var(--text-color);
   position: relative;
+  width: fit-content;
+  font-family: inherit;
   z-index: 10;
   & > * {
     text-decoration: none;

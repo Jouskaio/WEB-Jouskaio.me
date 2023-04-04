@@ -14,6 +14,7 @@ import TextH5 from "../../components/atom/text/textH5";
 import Code from "../../components/atom/code/code";
 import rehypeFormat from "rehype-format";
 import Table from "../../components/molecule/media/table";
+import TextMarked from "../../components/atom/text/textMarked";
 
 
 function UseProcessor({content}) {
@@ -36,6 +37,7 @@ function UseProcessor({content}) {
           h3: TextH4,
           h4: TextH5,
           a: TextLink,
+          mark: TextMarked,
           code: Code,
           table: (props) => {
             /*

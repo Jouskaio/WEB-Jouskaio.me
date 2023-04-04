@@ -12,8 +12,9 @@ import TextDefault from "../../components/atom/text/TextDefault";
 import Link from "next/link";
 import TextMarked from "../../components/atom/text/textMarked";
 import TextH1 from "../../components/atom/text/textH1";
-import TextSpanM from "../../components/atom/text/textSpanM";
 import TextSpanXS from "../../components/atom/text/textSpanXS";
+import $ from "jquery";
+
 export default function Index()  {
     function audioText(text) {
         const utterance = new SpeechSynthesisUtterance(text);
@@ -22,6 +23,27 @@ export default function Index()  {
         speechSynthesis.speak(utterance);
     }
 
+    // Execute JQuery script
+    /*if (typeof window === "object") {
+        // code is running in a browser environment
+        $(document).ready(function() {
+            $(window).bind('load', function() {
+                let root = window.getComputedStyle(document.body);
+                let colorText = $(":root").css("--text-color");
+                let colorTextFilter = $(":root").css("--text-color-filter");
+                let colorBackground = $(":root").css("--background-color");
+                let colorBackgroundFilter = $(":root").css("--background-color-filter");
+                let colorContainer = $(":root").css("--container-color");
+                //change colors variables
+                $(":root").css("--text-color", colorBackground);
+                $(":root").css("--text-color-filter", colorBackgroundFilter);
+                $(":root").css("--background-color", colorText);
+                $(":root").css("--background-color-filter", colorTextFilter);
+            });
+        });
+    } else {
+        // code is running in a Node.js environment
+    }*/
 
     if (!client) {
         return <TextDefault>Loading</TextDefault>
@@ -66,7 +88,7 @@ export default function Index()  {
                                                     <TextDefault classname={"l-blog__a-description"}>{mainArticle.attributes.description}</TextDefault>
                                                     <div className={"l-blog__m-mainInformations l-blog__a-description"}>
                                                         <nav className={"l-blog__m-mainInformations--option"}>
-                                                            <input className={"l-blog__m-mainInformations--vocal"} src={"/icons/audio.png"} name={"Vocal"} type="image" onClick={() => audioText(mainArticle.attributes.title + mainArticle.attributes.description)}/>
+                                                            <input className={"l-blog__m-mainInformations--vocal"} src={"/icons/audio.png"} name={"Vocal"} type="image" onClick={() => audioText(mainArticle.attributes.title + mainArticle.attributes.description)} alt={"Audio"}/>
                                                             {mainArticle.attributes.tags.data.map(function (tag, i) {
                                                                 return <Tag key={i} content={tag.attributes.name}
                                                                             color={tag.attributes.color}
@@ -83,9 +105,9 @@ export default function Index()  {
                                             )
                                         } else {
                                             return (
-                                                <div className={"l-blog__a-sizeSection l-blog__o-articlesContainer--noArticle"}>
+                                                <TextDefault classname={"l-blog__a-sizeSection l-blog__o-articlesContainer--noArticle"}>
                                                     Sorry, there is actually no article for now... :/
-                                                </div>
+                                                </TextDefault>
                                             )
                                         }
                                     }}
