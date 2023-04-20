@@ -77,7 +77,8 @@
   flex-wrap: nowrap;
   flex-direction: column;
   //padding-bottom: 16px;
-  border-bottom: .5px solid;
+  border-bottom: .1px solid;
+  border-bottom-color: rgba(255, 255, 255, 0.2);
   margin-bottom: 24px;
   @include large {
     border-bottom: none;
@@ -88,7 +89,7 @@
     color: var(--text-color);
     font-size: var(--font-size-M);
     font-family: var(--font-family-main);
-    margin-top: 8px;
+    margin-top: 10px;
 
     & > a {
       text-decoration: none;
@@ -242,7 +243,7 @@
     flex-direction: row;
     margin-bottom: 16px;
     &--mark {
-      margin-right: 8px;
+      margin-right: 16px;
       width: fit-content;
       text-transform: uppercase;
       font-family: var(--font-family-main);

@@ -74,8 +74,9 @@ h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::s
 
 
 .l-main {
+
   &__a-sizeSection {
-    //background-color: var(--background-color);
+    background-color: var(--background-color);
     margin-left: 60px;
     margin-right: 60px;
     margin-bottom: 40px;

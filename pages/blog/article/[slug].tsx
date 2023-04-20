@@ -12,22 +12,25 @@ import {ApolloProvider} from "@apollo/client";
 import {shimmer, toBase64} from "../../../lib/preload/preload-image";
 import UseProcessor from "../../../lib/preload/preload-rehype";
 import NavCategories from "../../../components/molecule/navigation/categories";
-import Button from "../../../components/atom/button/button";
 import TextH1 from "../../../components/atom/text/textH1";
 import TextDefault from "../../../components/atom/text/TextDefault";
+import TextMarked from "../../../components/atom/text/textMarked";
+import article from "../../../lib/api/article/article";
+import AudioButton from "../../../lib/motion/audioButton";
 
 const Article = () => {
     const router = useRouter()
     const { slug } = router.query
     const [Content, setContent] = useState();
 
+    //TODO: regarder comment se passe le changement de class. Ca merde là
     /** Configure Remark
     * Source : https://codesandbox.io/s/b7437?file=/index.js:313-544
     *
     */
     return (
         <ApolloProvider client={client}>
-        <div className={"l-article__a-sizeSection l-article__o-categories"}><NavCategories width={"100%"}/></div>
+        <div className={"l-article__o-categories"}><NavCategories width={"100%"}/></div>
         <Query query={ARTICLE_QUERY} value={slug}>
             {({ data: { articles } }) => {
                 if (articles.data.length) {
@@ -35,25 +38,25 @@ const Article = () => {
                     let tags = articles.data[0].attributes.tags.data
                     let categories = articles.data[0].attributes.categories.data
                     return (
-                    <main className={"l-article l-article__a-sizeSection"}>
+                    <main className={"l-article"}>
+                        <nav className={"l-article__a-datetime"}>
+                            Last update : <Moment format="LL">{articles.data[0].attributes.published_at}</Moment>
+                        </nav>
                         <div className={"l-article__m-tagsDiv"}>
                             {
                                 tags.map(function (tag, i){
-                                    return <Button src={"/api/category/" + tag.attributes.slug} key={i} classname={"l-article__m-tags"}>{tag.attributes.name}</Button>
+                                    return <a href={"/api/category/" + tag.attributes.slug} key={i} className={"l-article__m-tags"}><TextMarked classname={"l-article__m-tags--marked"}>{tag.attributes.name}</TextMarked></a>
                                 })
                             }
                             {
                                 categories.map(function (category, i){
-                                    return <Button src={"/api/category/" + category.attributes.slug} key={i} classname={"l-article__m-tags"}>{category.attributes.name}</Button>
+                                    return <a href={"/api/category/" + category.attributes.slug} key={i} className={"l-article__m-tags"}><TextMarked classname={"l-article__m-tags--marked"}>{category.attributes.name}</TextMarked></a>
                                 })
                             }
-
                         </div>
-                        <nav className={"l-article__a-datetime"}>
-                            Last update : <Moment format="LL">{articles.data[0].attributes.published_at}</Moment>
-                        </nav>
-
-                        <TextH1 classname={"l-article__a-title"}>{articles.data[0].attributes.title}</TextH1>
+                        <nav className={"l-article__a-titleDiv"}>
+                            <AudioButton classname={"l-article__a-titleDiv--vocal"} text={articles.data[0].attributes.title + articles.data[0].attributes.description + Content} id={1}/>
+                            <TextH1 classname={"l-article__a-title"}>{articles.data[0].attributes.title}</TextH1></nav>
                         <TextDefault classname={"l-article__a-description"}>{articles.data[0].attributes.description}</TextDefault>
                         <nav className={"l-article__m-mainImageDiv"}>
                             <img

@@ -17,20 +17,14 @@ import Link from "next/link";
 import TextH5 from "../components/atom/text/textH5";
 import TextH3 from "../components/atom/text/textH3";
 import Swipe from "../components/molecule/navigation/swipe";
-import TitleWithTags from "../components/molecule/quotes/title-with-tags";
 import {client} from "../lib/api/apolloClient";
 // @ts-ignore
 import {ApolloProvider} from "@apollo/client";
 import Query from "../lib/api/api";
 import LATEST_ARTICLES_QUERY from "../lib/api/article/latest-articles";
-import Scroll from "../components/molecule/sliders/scroll/scroll";
-import Footer from '../components/organism/navigation/footer';
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
-import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
-import Header from "../components/organism/navigation/header";
 import Table from "../components/molecule/media/table";
 import CardS from "../components/molecule/media/cardS";
-import {height} from "dom7";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -173,10 +167,12 @@ const jouskaio = {
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
                         <span className={"l-home__title"}><TextH3>Projects</TextH3></span>
-                        <Table items={[
-                            {year: "2023", name: "Portfolio 2023", link:"#"},
-                            {year: "2023", name: "iBoardThings", link:"#"}
-                        ]}/>
+                        <Table header={["year", "name"]}>
+                            {[
+                                ["2023", "Portfolio 2023"],
+                                ["2023", "iBoardThings 2023"],
+                            ]}
+                        </Table>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-passions"}>
                         <span className={"l-home__title"}><TextH3>Passions</TextH3></span>

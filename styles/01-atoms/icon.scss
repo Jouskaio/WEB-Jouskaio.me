@@ -8,4 +8,13 @@
     filter: none;
     filter: var(--accent-purple-filter);
   }
+
+  &__audio {
+    height: 16px;
+    width: 16px;
+    margin-right: 8px;
+    &:checked, &:hover, &:focus {
+      filter: var(--accent-color-filter);
+    }
+  }
 }

@@ -1,11 +1,12 @@
 .m-table {
   width: 100%;
+  //height: fit-content;
   border-collapse: collapse;
   text-align: left;
   font-family: var(--font-family-accent);
   font-size: var(--font-size-M);
   font-weight: bold;
-  //overflow: hidden;
+  overflow-x: auto;
 
   &__cells, &__cells > a {
     font-family: var(--font-family-main);

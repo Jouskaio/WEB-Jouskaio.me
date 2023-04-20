@@ -15,9 +15,9 @@ import PropTypes from "prop-types";
  */
 class Code extends Component {
     static propTypes = {
-        classname: PropTypes.string,
+        children: PropTypes.any,
         language: PropTypes.string,
-        children: PropTypes.string.isRequired
+        classname: PropTypes.string,
     }
     render () {
         const {

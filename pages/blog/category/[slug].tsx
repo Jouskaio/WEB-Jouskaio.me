@@ -13,40 +13,37 @@ import TextDefault from "../../../components/atom/text/TextDefault";
 const CategorySlug = () => {
     const router = useRouter()
     const { slug } = router.query
-    if (typeof window === "object") {
 
-    }
-
-        if (!client) {
-    return (
-        <main className={"l-main__a-sizeSection"}>
-            <TextDefault classname={undefined}>Loading</TextDefault>
-        </main>
-        )
-    }
-    return (
-    <ApolloProvider client={client}>
-        <main className={"l-category__a-sizeSection l-category__a-sizeSection--mainSection"}>
-            <NavCategories/>
-            <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
-                {({ data: { categories } }) => {
-                    if (categories.data.length) {
-                        return (
-                            <section className={"l-category"}>
-                                <div className="">
+    if (!client) {
+        return (
+            <main>
+                <TextDefault classname={undefined}>Loading</TextDefault>
+            </main>
+            )
+        }
+        return (
+        <ApolloProvider client={client}>
+            <main className={"l-category"}>
+                <NavCategories/>
+                <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
+                    {({ data: { categories } }) => {
+                        if (categories.data.length) {
+                            return (
+                                <section className={""}>
                                     <div className="">
-                                        <h1>{categories.data[0].attributes.name}</h1>
-                                        {/*<Articles articles={categories.data[0].attributes.articles.data} />*/}
+                                        <div className="">
+                                            <h1>{categories.data[0].attributes.name}</h1>
+                                            {/*<Articles articles={categories.data[0].attributes.articles.data} />*/}
+                                        </div>
                                     </div>
-                                </div>
-                            </section>
-                        );
-                    }
-                }}
-            </Query>
-        </main>
-    </ApolloProvider>
-    );
+                                </section>
+                            );
+                        }
+                    }}
+                </Query>
+            </main>
+        </ApolloProvider>
+        );
 };
 
 export default CategorySlug;

@@ -85,11 +85,11 @@ export function ArticlesQueryWithPagination() {
                     </div>
                 </div>
                 {
-                    data.articles.data.map((article) => {
+                    data.articles.data.map((article, i) => {
                         return (
                             <CardXS
                                 article={article}
-                                key={`article__${article.attributes.slug}`}
+                                key={i} id={i}
                             />
                         );
                     })

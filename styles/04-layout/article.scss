@@ -1,17 +1,6 @@
 .l-article {
   font-family: var(--font-family-main);
   font-size: var(--font-size-M);
-  // GLOBAL
-  &__a-sizeSection {
-    //background-color: var(--background-color);
-    margin-left: 79px;
-    margin-right: 79px;
-    margin-bottom: 40px;
-    @include large {
-      margin-left: 152px;
-      margin-right: 152px;
-    }
-  }
   // CATEGORIES
   &__o-categories {
     margin-top: 80px;
@@ -25,21 +14,25 @@
     display: flex;
     flex-wrap: nowrap;
     flex-direction: row;
-    justify-content: center;
     align-content: center;
     margin-bottom: 16px;
+    text-transform: uppercase;
   }
 
   &__m-tags{
     padding-top: 4px;
     padding-bottom: 8px;
-    padding-left: 8px;
-    padding-right: 8px;
-    margin-left: 4px;
-    margin-right: 4px;
+    margin-left: 8px;
+    margin-right: 8px;
     margin-top: 0;
     font-size: var(--font-size-M);
     margin-bottom: 24px;
+    text-decoration: none;
+    &--marked:hover {
+      & > span {
+        background-color: unset;
+      }
+    }
   }
 
 
@@ -60,7 +53,26 @@
     font-size: var(--font-size-M);
   }
   &__a-title {
+    margin-bottom: 0;
+  }
+
+  &__a-titleDiv {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    align-content: center;
     margin-bottom: 30px;
+
+    &--vocal {
+      height:24px;
+      width: 24px;
+      margin-right: 8px;
+      align-self: center;
+      margin-top: 6px;
+      &:checked, &:hover, &:focus {
+        filter: var(--accent-color-filter);
+      }
+    }
   }
 
   &__m-mainImageDiv {

@@ -7,20 +7,18 @@ import Link from "next/link";
 import Image from "next/image";
 import Tag from "../quotes/tag";
 import TextMarked from "../../atom/text/textMarked";
+import AudioButton from "../../../lib/motion/audioButton";
 
 /**
  *
  * @param article : Send information to this page
+ * @param key: int
  * @constructor
  */
-const CardXS = ({ article }) => {
-    function audioText(text) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        //utterance.lang = 'en-US';
-        utterance.rate = 0.75;
-        speechSynthesis.speak(utterance);
-    }
+const CardXS = ({ article, id }) => {
+    // Events
 
+    // Data transformation
     let tags = [];
     let categories = [];
     if (article.attributes.tags.data.length > 0) {
@@ -68,8 +66,11 @@ const CardXS = ({ article }) => {
                         </a>
                     </Link>
                     <nav className="m-titleWithTag__divTag m-cardXS__m-tagsDiv">
-                        <input className={"m-cardXS__m-mainInformations--vocal"} src={"/icons/audio.png"} name={"Vocal"} type="image" onClick={() => audioText(article.attributes.title + article.attributes.description)} alt={"Audio"}/>
-                        {tags.map(function (element, i) {
+                        <AudioButton
+                            text={article.attributes.title + article.attributes.description}
+                            classname="m-cardXS__m-mainInformations--vocal"
+                            id={id}
+                        />                        {tags.map(function (element, i) {
                             return (<Tag key={i} content={element.name} color={element.color} classname={element.classname}/>);
                         })}
                     </nav>

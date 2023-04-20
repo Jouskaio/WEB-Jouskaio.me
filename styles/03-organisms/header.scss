@@ -1,4 +1,3 @@
-
 .m-header {
   //width: calc(100% - 80px);
   width: 100%;
@@ -17,6 +16,7 @@
   left: 50%;
   transform: translateX(-50%);
   justify-content: space-around;
+
 
   @include large {
     padding-left: 37.5%;
