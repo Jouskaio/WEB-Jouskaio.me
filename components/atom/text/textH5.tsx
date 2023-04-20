@@ -1,16 +1,27 @@
-import React from "react";
+import  {Component} from "react";
+import PropTypes from "prop-types";
 
 /**
  *
  * @param props
- * @param classname : string
  * @constructor
  */
-export default function TextH5(props, classname) {
-    // METHODS
-    return (
-        <>
-            <h5 className={"a-titleH5 " + classname}>{props.children}</h5>
-        </>
-    );
+export default class TextH5 extends Component{
+    static propTypes = {
+        classname: PropTypes.string,
+        children: PropTypes.string
+    }
+    render() {
+        const {
+            //@ts-ignore
+            classname,
+            //@ts-ignore
+            children
+        } = this.props
+        return (
+            <>
+                <h5 className={"a-titleH5 " + classname}>{children}</h5>
+            </>
+        );
+    }
 }

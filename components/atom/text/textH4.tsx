@@ -1,4 +1,5 @@
-import React from "react";
+import {Component} from "react";
+import PropTypes from "prop-types";
 
 /**
  *
@@ -6,11 +7,26 @@ import React from "react";
  * @param classname : string
  * @constructor
  */
-export default function TextH4(props, classname) {
-    // METHODS
-    return (
-        <>
-            <h4 className={"a-titleH4 " + classname}>{props.children}</h4>
-        </>
-    );
+export default class TextH4 extends Component {
+    static propTypes = {
+        children: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.arrayOf(PropTypes.any)
+        ]),
+        classname: PropTypes.string
+    }
+
+    render() {
+        const {
+            //@ts-ignore
+            classname,
+            //@ts-ignore
+            children
+        } = this.props
+        return (
+            <>
+                <h4 className={"a-titleH4 " + classname}>{children}</h4>
+            </>
+        );
+    }
 }

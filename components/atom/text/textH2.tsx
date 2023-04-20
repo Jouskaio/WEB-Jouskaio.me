@@ -1,4 +1,5 @@
-import React from "react";
+import {Component} from "react";
+import PropTypes from "prop-types";
 
 /**
  * Atom: Title H2
@@ -7,11 +8,22 @@ import React from "react";
  * @param classname : string
  * @constructor
  */
-export default function TextH2(props, classname) {
-    // METHODS
-    return (
-        <>
-            <h2 className={"a-titleH2 " + classname}>{props.children}</h2>
-        </>
-    );
+export default class TextH2 extends Component {
+    static propTypes = {
+        classname: PropTypes.string,
+        children: PropTypes.any
+    }
+    render() {
+        const {
+            //@ts-ignore
+            classname,
+            //@ts-ignore
+            children
+        } = this.props
+        return (
+            <>
+                <h2 className={"a-titleH2 " + classname}>{children}</h2>
+            </>
+        );
+    }
 }

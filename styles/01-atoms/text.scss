@@ -41,13 +41,13 @@
 // Title container passions
 .a-titleH4 {
   font-size: var(--font-size-M);
-  @include large {
-    font-size: var(--font-size-L);
-  }
+
   font-family:  var(--font-family-accent);
   color: var(--text-color);
   margin-bottom: 16px;
-  
+  @include large {
+    font-size: var(--font-size-L);
+  }
 }
 
 // News date
@@ -70,11 +70,37 @@
   font-family:  var(--font-family-main);
   //font-size: var(--font-size-L);
   font-size: var(--font-size-M);
-  padding-bottom: 8px;
+  line-height: 150% !important;
+  @include large {
+    font-size: var(--font-size-L);
+  }
+}
+
+// Text Marked
+.a-textMarked {
+  color: var(--text-color);
+  position: relative;
+  width: fit-content;
+  font-family: inherit;
+  z-index: 10;
+  & > * {
+    text-decoration: none;
+    color: inherit;
+  }
+  &--mark {
+    z-index: -1;
+    position: absolute;
+    left: 0;
+    top: 60%;
+    opacity: 75%;
+    background-color: var(--accent-color);
+    width: 100%;
+    height: 10px;
+  }
 }
 
 // link
-.a-link, .a-link > a {
+.a-link, .a-link > a, .a-link > *, .a-link > * > * {
   color: var(--text-color);
   font-family: var(--font-family-main);
   font-style: italic;
@@ -137,7 +163,9 @@
   z-index: 4;
   font-family: "Roboto Mono",Monospaced, monospace;
   //width: 100%;
-  
+  &--special {
+    color: black;
+  }
 }
 
 pre code.hljs {

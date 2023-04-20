@@ -1,10 +1,11 @@
-import React from "react";
+import React, {Component} from "react";
 // @ts-ignore
 import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
-import {shimmer, toBase64} from "../../protons/preload/preload-image";
-import {getStrapiMedia} from "../../../lib/blog/api";
+import {shimmer, toBase64} from "../../../lib/preload/preload-image";
+import {getStrapiMedia} from "../../../lib/api/api";
+import PropTypes from "prop-types";
 
 /**
  * Atom: Media
@@ -15,14 +16,42 @@ import {getStrapiMedia} from "../../../lib/blog/api";
  * @param classname : string
  * @param alt : string
  */
-function Media({src, width, height, classname, alt}) {
+class Media extends Component{
 
-    // METHODS
-    return (
-        <>
-            <Image className={"a-media "+ classname } src={src} alt={alt} height={height} width={width} objectFit='contain' unoptimized={true}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src}/>
-        </>
-    );
+    static propTypes = {
+        src : PropTypes.string,
+        classname : PropTypes.string,
+        alt : PropTypes.string,
+        height: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+        width: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.number
+        ]),
+
+    }
+
+    render() {
+        const {
+            // @ts-ignore
+            classname,
+            // @ts-ignore
+            src,
+            // @ts-ignore
+            alt,
+            // @ts-ignore
+            height,
+            // @ts-ignore
+            width
+        } = this.props
+        return (
+            <>
+                <Image className={"a-media "+ classname } src={src} alt={alt} height={height} width={width} objectFit='contain' unoptimized={true}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src}/>
+            </>
+        );
+    }
 }
 
 export default Media;
