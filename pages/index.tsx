@@ -4,7 +4,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import React, {useState} from 'react';
 import Iframe from "../components/atom/media/iframe";
-import {useWindowSize} from "../components/protons/tools/sizeWindow";
+import {useWindowSize} from "../lib/motion/sizeWindow";
 // @ts-ignore
 import AOS from 'aos';
 import TextH1 from "../components/atom/text/textH1";
@@ -17,18 +17,14 @@ import Link from "next/link";
 import TextH5 from "../components/atom/text/textH5";
 import TextH3 from "../components/atom/text/textH3";
 import Swipe from "../components/molecule/navigation/swipe";
-import TitleWithTags from "../components/molecule/quotes/title-with-tags";
-import {client} from "../lib/blog/apolloClient";
+import {client} from "../lib/api/apolloClient";
 // @ts-ignore
 import {ApolloProvider} from "@apollo/client";
-import Query from "../lib/blog/api";
-import LATEST_ARTICLES_QUERY from "../lib/blog/article/latest-articles";
-import Scroll from "../components/molecule/sliders/scroll/scroll";
-import Footer from '../components/organisms/navigation/footer';
+import Query from "../lib/api/api";
+import LATEST_ARTICLES_QUERY from "../lib/api/article/latest-articles";
 import PopCategoryXXS from "../components/molecule/media/popup-category-xxs";
-import TextSpanXXXL from "../components/atom/text/textSpanXXXL";
-import Header from "../components/organisms/navigation/header";
 import Table from "../components/molecule/media/table";
+import CardS from "../components/molecule/media/cardS";
 
 {/*TODO: Animate background when in light mode*/}
 export default function Home() {
@@ -72,17 +68,15 @@ export default function Home() {
                 </div>
 
                 <ApolloProvider client={client}>
-                    <main className={"l-home__m-main"}>
-                    <Header/>
                     <section className={"l-home__o-homepage"}>
                         <Iframe src={undefined} width={size.width} height={size.height} classname={"l-home__m-videoHome"} id={undefined} title={undefined}/>
                         <Swipe content={"Discover"} src={"icons/arrow.svg"} width={16} height={16} classname={"l-home__m-swipe"} alt={"Scroll down"}/>
                     </section>
 
-                    <section className={"l-home__a-sizeSection l-home__o-profil"}>
+                    <section className={"l-home__a-sizeSection l-home__o-profil"} style={{marginTop: size.height+40}}>
                         <div>
                             <div>
-                                <nav className={"l-home__a-logoProfile"}><Media classname={""} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
+                                <nav className={"l-home__a-logoProfile"}><Media classname={"l-home__a-logoProfile--img"} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
                                 <div className={"l-home__m-title"}>
                                     <TextH1 classname={"l-home__a-titleText"}>Hello ! I’m Manon Salsou</TextH1>
                                     <div className="l-home__a-division"></div>
@@ -156,19 +150,8 @@ const jouskaio = {
                                             <span className={"l-home__title"}><TextH3>Latest News</TextH3></span>
                                             <div className={"l-home__m-containerArticles"}>
                                                 {articles.data.map(function (article, i) {
-                                                let tags = []
-                                                //TODO: Create a tag pages
-                                                article.attributes.tags.data.map(function (tag, i) {
-                                                    tags.push({name : tag.attributes.name, color: tag.attributes.color, classname:"", link: "/blog/category/"+tag.attributes.slug})
-                                                })
-                                                article.attributes.categories.data.map(function (categorie, i) {
-                                                    tags.push({name : categorie.attributes.name, color: categorie.attributes.color, classname:"", link: "/blog/category/"+categorie.attributes.slug})
-                                                })
-                                                return (
-                                                    <nav key={i}><TitleWithTags key={i} titleName={article.attributes.title}
-                                                                        titleClassname={"m-titleWithTag__title"} libelled={article.attributes.language} tags={tags} itemClassname={"l-home__a-newsArticle"} linkTitle={"/blog"}/></nav>
-                                                )
-                                            })}
+                                                    return <CardS key={i} article={article}/>
+                                                })}
                                             </div>
                                         </div>
                                         )
@@ -177,17 +160,19 @@ const jouskaio = {
                             }
                         </Query>
                         <nav className={"l-home__a-buttonNewsNav"}>
-                            <Button classname={"l-home__a-buttonNews"} src={"/blog"}>Go to the blog</Button>
+                            <Button classname={"l-home__a-buttonNews"} src={"/api"}>Go to the blog</Button>
                             <Button classname={"l-home__a-buttonNews"} src={"/projects"}>View projects</Button>
                         </nav>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-projects"}>
                         {/*TODO: Add projects on it*/}
                         <span className={"l-home__title"}><TextH3>Projects</TextH3></span>
-                        <Table items={[
-                            {year: "2023", name: "Portfolio 2023", link:"#"},
-                            {year: "2023", name: "iBoardThings", link:"#"}
-                        ]}/>
+                        <Table header={["year", "name"]}>
+                            {[
+                                ["2023", "Portfolio 2023"],
+                                ["2023", "iBoardThings 2023"],
+                            ]}
+                        </Table>
                     </section>
                     <section className={"l-home__a-sizeSection l-home__o-passions"}>
                         <span className={"l-home__title"}><TextH3>Passions</TextH3></span>
@@ -205,8 +190,6 @@ const jouskaio = {
                             Send me an <a href="mailto:jouskaio.me@gmail.com" className={"l-home__o-contact__link"}>email</a>
                         </span>
                     </section>
-                    <Footer className={"l-home__footer"}>Made with ♥ by @Jouskaio - 2022</Footer>
-                    </main>
                 </ApolloProvider>
             </>
         </>

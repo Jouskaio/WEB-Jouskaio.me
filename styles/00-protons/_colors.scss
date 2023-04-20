@@ -37,11 +37,12 @@ Installation theme-color :
   --shadow: var(--primary-shadow);
 
   // Primary P palette
-  --primary-darkest: hsla(0, 11%, 2%, 1);
+  //--primary-darkest: hsla(0, 11%, 2%, 1);
+  --primary-darkest: #0C0B0B;
   --primary-darkest-filter: brightness(0) saturate(100%) invert(0%) sepia(43%) saturate(7499%) hue-rotate(177deg) brightness(92%) contrast(96%);
   --primary-dark-medium: hsla(0, 0%, 9%, 1);
   //--primary-lightest: hsla(0, 0%, 89%, 1);
-  --primary-lightest: #FFFFFF;
+  --primary-lightest: #E3E3E3;
   --primary-lightest-filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(5054%) hue-rotate(188deg) brightness(125%) contrast(78%);
   --primary-light-medium: hsla(0, 0%, 66%, 1);
   --primary-light: hsla(240, 0%, 47%, 1);

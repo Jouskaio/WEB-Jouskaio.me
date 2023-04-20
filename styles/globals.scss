@@ -24,15 +24,15 @@
 @import "02-molecules/popup";
 @import "02-molecules/sliders/slider-scroll";
 @import "02-molecules/categories";
-@import "02-molecules/headerTop";
 @import "02-molecules/card";
 @import "02-molecules/table";
 
 // Organisms
-@import "03-organisms/header";
 @import "03-organisms/footer";
+@import "03-organisms/header";
 
 // Layout
 @import "04-layout/home";
 @import "04-layout/blog";
 @import "04-layout/article";
+@import "04-layout/categoryHome";
