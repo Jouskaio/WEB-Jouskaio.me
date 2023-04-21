@@ -1,6 +1,6 @@
 .l-categoryHome {
   // GLOBAL
-  margin-top: 40px;
+  //margin-top: 40px;
   font-family: var(--font-family-main);
   @include large {
     margin-top: 76px;
@@ -8,6 +8,7 @@
 
   // MAIN ARTICLES
   &__o-mainArticles {
+    width: 100%;
     min-height: 300px;
     background-position: center;
     font-family: var(--font-family-main);
@@ -16,10 +17,15 @@
     flex-wrap: nowrap;
     flex-direction: column;
     justify-content: flex-end;
-    padding: 16px;
+    padding: 24px;
     text-decoration: none;
     padding-top: 100px;
     position: relative;
+    @include large {
+      padding: 50px;
+      padding-top: 100px;
+
+    }
     & > * {
       text-decoration: none;
     }
@@ -50,6 +56,7 @@
       margin-right: 4px;
       background-color: var(--text-color);
       border-radius: 50%;
+      position: relative;
 
     }
 
@@ -153,18 +160,73 @@
     &--m-data {
       display: flex;
       flex-wrap: nowrap;
-      flex-direction: row;
+      flex-direction: column;
       justify-content: space-between;
+      @include large {
+        flex-direction: row;
+      }
     }
+
+    &--m-categoryDiv {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      @include large {
+        flex-direction: column;
+        justify-content: unset;
+        align-items: flex-start;
+      }
+    }
+
+    &--a-linkCategory > * {
+      color: var(--text-color);
+      text-underline-offset: 8px;
+      &:hover {
+        color: var(--accent-color);
+      }
+    }
+
 
     &--m-article {
       justify-content: flex-end;
     }
 
-    &--m-article {
+    &--m-articleDiv {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      align-items: center;
+
       @include large {
-        width: 50%;
-        background-color: red;
+        flex-direction: row;
+      }
+    }
+
+    &--m-article {
+      text-align: justify;
+      & > * {
+        text-decoration: none;
+      }
+      @include large {
+        width: 300px;
+        padding-right: 40px;
+
+      }
+    }
+
+    &--m-articleDescription {
+      line-height: 150%;
+    }
+
+    &--m-articleTitle {
+      margin-top: 16px;
+      color: var(--accent-color);
+      @include large {
+        margin-top: 0;
+        color: var(--text-color);
+
       }
     }
   }

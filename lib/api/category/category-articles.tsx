@@ -23,6 +23,15 @@ const CATEGORY_ARTICLES_QUERY = gql`
                                         }
                                     }
                                 }
+                                tags {
+                                    data {
+                                        attributes {
+                                            name
+                                            slug
+                                            color
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
