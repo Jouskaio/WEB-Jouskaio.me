@@ -30,6 +30,7 @@ class Media extends Component{
             PropTypes.string,
             PropTypes.number
         ]),
+        objectFit: PropTypes.string.isRequired
 
     }
 
@@ -44,11 +45,13 @@ class Media extends Component{
             // @ts-ignore
             height,
             // @ts-ignore
-            width
+            width,
+            // @ts-ignore
+            objectFit
         } = this.props
         return (
             <>
-                <Image className={"a-media "+ classname } src={src} alt={alt} height={height} width={width} objectFit='contain' unoptimized={true}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src}/>
+                <Image className={"a-media "+ classname } src={src} alt={alt} height={height} width={width} objectFit={objectFit} unoptimized={true}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src}/>
             </>
         );
     }

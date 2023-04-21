@@ -21,6 +21,14 @@ Several commands are possible to use with the project :
 - `next styleguide:build` : build the styleguidist auto documentation
 - `next styleguide` : start the server to visualize styleguidist documentation
 
+## Update SSL certificate on Heroku
+
+SSL certificate is approved and managed by Let's Encrypt but not automatically.
+To update the certificate, you need to run the following command :
+
+``` bash
+sudo certbot certonly --authenticator manual --installer heroku
+```
 ## Packages installed
 
 - `depcheck` which allow visualizing which npm packages are unnecessary for the project

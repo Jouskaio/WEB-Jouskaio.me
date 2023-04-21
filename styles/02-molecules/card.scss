@@ -112,13 +112,17 @@
     }
     &--description {
       margin-bottom: 24px;
+      text-align: justify;
       line-height: 150%;
       margin-top: 0;
       overflow: hidden;
       text-overflow: ellipsis;
       display: -webkit-box;
-      -webkit-line-clamp: 2; /* nombre de lignes souhaitées */
+      //-webkit-line-clamp: 7; /* nombre de lignes souhaitées */
       -webkit-box-orient: vertical;
+      @include large {
+        text-align: start;
+      }
     }
     &--divTag {
       transform: none;

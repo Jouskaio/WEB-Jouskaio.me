@@ -10,15 +10,18 @@ export default class NavCategories extends Component{
         width: PropTypes.oneOfType([
             PropTypes.string.isRequired,
             PropTypes.number.isRequired
-        ])
+        ]),
+        classname: PropTypes.string
     }
     render() {
         const {
             // @ts-ignore
-            width
+            width,
+            // @ts-ignore
+            classname
         } = this.props
         return (
-            <ul className={"m-categories"} style={{width: width}}>
+            <ul className={"m-categories " + classname} style={{width: width}}>
                 <Query query={CATEGORIES_QUERY} >
                     {({ data: { categories } }) => {
                         return (

@@ -3,7 +3,7 @@ import {client} from "../../../lib/api/apolloClient";
 import TextDefault from "../../../components/atom/text/TextDefault";
 import {ApolloProvider} from "@apollo/client";
 import NavCategories from "../../../components/molecule/navigation/categories";
-import Query from "../../../lib/api/api";
+import Query, {getStrapiMedia} from "../../../lib/api/api";
 import CATEGORY_LATEST_ARTICLES_QUERY from "../../../lib/api/category/category-latest-articles";
 import LATEST_ARTICLES_QUERY from "../../../lib/api/article/latest-articles";
 import TextMarked from "../../../components/atom/text/textMarked";
@@ -15,6 +15,8 @@ import TextH4 from "../../../components/atom/text/textH4";
 import TextSpanXS from "../../../components/atom/text/textSpanXS";
 import TextSpanM from "../../../components/atom/text/textSpanM";
 import TextH1 from "../../../components/atom/text/textH1";
+import Media from "../../../components/atom/media/media";
+import TextH5 from "../../../components/atom/text/textH5";
 
 export default class Category extends React.Component {
     render() {
@@ -95,18 +97,20 @@ export default class Category extends React.Component {
                                                     return (
                                                         <section key={index} className={"l-categoryHome__o-category"}>
                                                             <div className="l-categoryHome__o-category--m-data">
-                                                                <div className={""}>
+                                                                <div className={"l-categoryHome__o-category--m-categoryDiv"}>
                                                                     <TextH1>{category.attributes.name}</TextH1>
+                                                                    <TextH5 classname={"l-categoryHome__o-category--a-linkCategory"}><Link href={"/blog/category/"+category.attributes.slug}>See all</Link></TextH5>
                                                                 </div>
                                                                 <div className="l-categoryHome__o-category--m-articleDiv">
                                                                     <div className={"l-categoryHome__o-category--m-article"} key={index}>
                                                                         <a href={"/blog/article/"+category.attributes.articles.data[0].attributes.slug}>
-                                                                            <TextH4 classname={""}>{category.attributes.articles.data[0].attributes.title}</TextH4>
+                                                                            <TextH4 classname={"l-categoryHome__o-category--m-articleTitle"}>{category.attributes.articles.data[0].attributes.title}</TextH4>
                                                                         </a>
                                                                         <a href={"/blog/article/"+category.attributes.articles.data[0].attributes.slug} style={{textAlign: "justify"}}>
-                                                                            <TextSpanM classname={""}>{category.attributes.articles.data[0].attributes.description}</TextSpanM>
+                                                                            <TextSpanM classname={"l-categoryHome__o-category--m-articleDescription"}>{category.attributes.articles.data[0].attributes.description}</TextSpanM>
                                                                         </a>
                                                                     </div>
+                                                                    <Media objectFit={"contain"} height={"200px"} width={"200px"} src={getStrapiMedia(category.attributes.articles.data[0].attributes.image)}/>
                                                                 </div>
                                                             </div>
                                                             <hr className={"l-categoryHome__o-latestArticles--a-separation"}/>

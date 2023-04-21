@@ -1,0 +1,77 @@
+.l-category {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+
+  &__m-divArticle {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-bottom: 24px;
+    text-decoration: none;
+
+    @include large {
+      width: 80%;
+      height: 180px;
+      flex-direction: row;
+      margin-bottom: 40px;
+    }
+
+    &--m-metaDiv {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-direction: column;
+      width: 100%;
+      padding: 16px;
+      background-color: var(--container-color);
+      @include large {
+        width: calc(100% - 300px);
+        padding-left: 24px;
+      }
+    }
+
+    &--m-metaTag {
+      margin-bottom: 16px;
+      font-family: var(--font-family-accent);
+      text-decoration: none;
+    }
+
+    &--m-metaDescription {
+      font-size: var(--font-size-M);
+      text-align: justify;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; /* nombre de lignes souhaitées */
+      -webkit-box-orient: vertical;
+      @include large {
+        text-align: left;
+      }
+    }
+
+    &--m-metaTitle {
+      color: var(--accent-color);
+      @include large {
+        color: var(--text-color);
+      }
+    }
+
+    &--m-metaInfo {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      color: var(--text-color);
+      padding-top: 8px;
+      margin-top: auto; //Set at the end of the div
+    }
+
+    &--m-metaInfoTag {
+      display: flex;
+      flex-wrap: wrap;
+      flex-direction: row;
+      color: var(--text-color);
+    }
+  }
+}
