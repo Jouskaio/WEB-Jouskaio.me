@@ -11,7 +11,8 @@ export default class TextH4 extends Component {
     static propTypes = {
         children: PropTypes.oneOfType([
             PropTypes.string,
-            PropTypes.arrayOf(PropTypes.any)
+            PropTypes.arrayOf(PropTypes.any),
+            PropTypes.any
         ]),
         classname: PropTypes.string
     }

@@ -9,7 +9,10 @@ import PropTypes from "prop-types";
 export default class TextH5 extends Component{
     static propTypes = {
         classname: PropTypes.string,
-        children: PropTypes.string
+        children: PropTypes.oneOfType([
+            PropTypes.string,
+            PropTypes.element
+        ])
     }
     render() {
         const {

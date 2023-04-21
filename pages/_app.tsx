@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
       <main className={"l-main__a-sizeSection"}>
         <Header/>
         <Component {...pageProps} />
-        <Footer className={"l-main__footer"}>Made with ♥ by @Jouskaio - 2023</Footer>
+          {/*<Footer className={"l-main__footer"}>Made with ♥ by @Jouskaio - 2023</Footer>*/}
       </main>
   )
 }
