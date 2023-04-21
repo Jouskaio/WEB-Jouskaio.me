@@ -76,7 +76,7 @@ export default function Home() {
                     <section className={"l-home__a-sizeSection l-home__o-profil"} style={{marginTop: size.height+40}}>
                         <div>
                             <div>
-                                <nav className={"l-home__a-logoProfile"}><Media classname={"l-home__a-logoProfile--img"} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
+                                <nav className={"l-home__a-logoProfile"}><Media objectFit={"contain"} classname={"l-home__a-logoProfile--img"} src={"/icons/swift.svg"} width={116} height={"100%"} alt={"Logo"}/></nav>
                                 <div className={"l-home__m-title"}>
                                     <TextH1 classname={"l-home__a-titleText"}>Hello ! I’m Manon Salsou</TextH1>
                                     <div className="l-home__a-division"></div>

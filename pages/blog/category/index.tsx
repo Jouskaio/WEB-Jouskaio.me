@@ -110,7 +110,7 @@ export default class Category extends React.Component {
                                                                             <TextSpanM classname={"l-categoryHome__o-category--m-articleDescription"}>{category.attributes.articles.data[0].attributes.description}</TextSpanM>
                                                                         </a>
                                                                     </div>
-                                                                    <Media height={"200px"} width={"200px"} src={getStrapiMedia(category.attributes.articles.data[0].attributes.image)}/>
+                                                                    <Media objectFit={"contain"} height={"200px"} width={"200px"} src={getStrapiMedia(category.attributes.articles.data[0].attributes.image)}/>
                                                                 </div>
                                                             </div>
                                                             <hr className={"l-categoryHome__o-latestArticles--a-separation"}/>

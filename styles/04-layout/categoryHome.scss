@@ -1,6 +1,6 @@
 .l-categoryHome {
   // GLOBAL
-  margin-top: 40px;
+  //margin-top: 40px;
   font-family: var(--font-family-main);
   @include large {
     margin-top: 76px;
@@ -8,6 +8,7 @@
 
   // MAIN ARTICLES
   &__o-mainArticles {
+    width: 100%;
     min-height: 300px;
     background-position: center;
     font-family: var(--font-family-main);

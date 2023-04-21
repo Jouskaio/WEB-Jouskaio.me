@@ -17,7 +17,7 @@ function Swipe({content, src, width, height, classname, alt}) {
     return (
         <nav className={"m-swipe " + classname}>
             <TextSpanXS classname={""}>Discover</TextSpanXS>
-            <Media src={src} width={width} height={height} classname={""} alt={alt} />
+            <Media objectFit={"contain"} src={src} width={width} height={height} classname={""} alt={alt} />
         </nav>
     );
 }
