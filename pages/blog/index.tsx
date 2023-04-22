@@ -37,7 +37,7 @@ export default function Index()  {
             });
         });
     } else {
-        // code is running in a Node.js environment
+        // code is running in a Node.json environment
     }*/
 
     if (!client) {

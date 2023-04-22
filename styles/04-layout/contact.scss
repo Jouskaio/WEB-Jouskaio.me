@@ -1,0 +1,21 @@
+.l-contact {
+  margin-top: 80px;
+  &__a-title {
+    color: var(--accent-color);
+    font-family: var(--font-family-stylized);
+  }
+
+  &__m-flexDiv {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  &__m-formDiv {
+    width: 50%;
+  }
+
+  &__m-mapDiv {
+    width: 50%;
+  }
+}

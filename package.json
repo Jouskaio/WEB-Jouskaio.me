@@ -21,6 +21,7 @@
     "babel-plugin-transform-class-properties": "^6.24.1",
     "css-loader": "^6.7.3",
     "depcheck": "^1.4.3",
+    "google-map-react": "^2.2.0",
     "graphql": "^16.5.0",
     "graphql-tag": "^2.12.6",
     "html-dom-parser": "^3.1.7",

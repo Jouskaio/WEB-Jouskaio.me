@@ -43,7 +43,7 @@ export default function Header() {
             });
         });
     } else {
-        // code is running in a Node.js environment
+        // code is running in a Node.json environment
     }
 
     return (
