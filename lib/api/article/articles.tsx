@@ -89,7 +89,7 @@ export function ArticlesQueryWithPagination() {
                         return (
                             <CardXS
                                 article={article}
-                                key={i} id={i}
+                                key={i} //id={i}
                             />
                         );
                     })
