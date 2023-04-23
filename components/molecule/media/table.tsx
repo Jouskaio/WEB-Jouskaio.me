@@ -11,11 +11,8 @@ import PropTypes from "prop-types";
  */
 class Table extends Component {
     static propTypes = {
-        children: PropTypes.oneOfType([
-            PropTypes.arrayOf(PropTypes.string).isRequired,
-            PropTypes.arrayOf(PropTypes.any)
-        ]),
-        header: PropTypes.arrayOf(PropTypes.string)
+        children: PropTypes.arrayOf(PropTypes.any).isRequired,
+        header: PropTypes.arrayOf(PropTypes.any)
     }
 
 

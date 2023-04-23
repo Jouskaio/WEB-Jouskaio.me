@@ -40,3 +40,6 @@ module.exports = withPlugins([
   [withBundleAnalyzer],
   // your other plugins here
 ])
+
+
+// Resolving "fs module not found"

@@ -14,14 +14,9 @@ import TextMarked from "../../components/atom/text/textMarked";
 import TextH1 from "../../components/atom/text/textH1";
 import TextSpanXS from "../../components/atom/text/textSpanXS";
 import $ from "jquery";
+import AudioButton from "../../lib/motion/audioButton";
 
 export default function Index()  {
-    function audioText(text) {
-        const utterance = new SpeechSynthesisUtterance(text);
-        //utterance.lang = 'en-US';
-        utterance.rate = 0.75;
-        speechSynthesis.speak(utterance);
-    }
 
     // Execute JQuery script
     /*if (typeof window === "object") {
@@ -42,7 +37,7 @@ export default function Index()  {
             });
         });
     } else {
-        // code is running in a Node.js environment
+        // code is running in a Node.json environment
     }*/
 
     if (!client) {
@@ -69,26 +64,28 @@ export default function Index()  {
                                             let mainArticle = articles.data[0]
                                             return (
                                                 <section className={"l-blog__o-mainSection"}>
-                                                    <Link href={"/api/article/" + mainArticle.attributes.slug}>
+                                                    <Link href={"/blog/article/" + mainArticle.attributes.slug}>
                                                         <TextMarked classname={"l-blog__m-tag"}>
                                                             {mainArticle.attributes.categories.data.map(function (category, i) {
                                                                 return <TextLink key={i} classname={undefined} src={"/api/category/"+category.attributes.slug}>{category.attributes.name}</TextLink>
                                                         })}
                                                         </TextMarked>
                                                     </Link>
-                                                    <TextH1 classname={"l-blog__a-title"}><nav className={"l-blog__a-title--bar"}></nav> {mainArticle.attributes.title}</TextH1>
-                                                    <nav className={"l-blog__a-mainImage"}>
-                                                        <img
-                                                        src={getStrapiMedia(mainArticle.attributes.image)}
-                                                        placeholder="blur"
-                                                        onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
-                                                        alt={"Main image"}></img>
-                                                        <nav className={"l-blog__a-mainImage--div"}></nav>
-                                                    </nav>
-                                                    <TextDefault classname={"l-blog__a-description"}>{mainArticle.attributes.description}</TextDefault>
+                                                    <a href={"/blog/article/" + mainArticle.attributes.slug} className={"l-blog__m-mainArticleLink"}>
+                                                        <TextH1 classname={"l-blog__a-title"}><nav className={"l-blog__a-title--bar"}></nav> {mainArticle.attributes.title}</TextH1>
+                                                        <nav className={"l-blog__a-mainImage"}>
+                                                            <img
+                                                                src={getStrapiMedia(mainArticle.attributes.image)}
+                                                                placeholder="blur"
+                                                                onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
+                                                                alt={"Main image"}></img>
+                                                            <nav className={"l-blog__a-mainImage--div"}></nav>
+                                                        </nav>
+                                                        <TextDefault classname={"l-blog__a-description"}>{mainArticle.attributes.description}</TextDefault>
+                                                    </a>
                                                     <div className={"l-blog__m-mainInformations l-blog__a-description"}>
                                                         <nav className={"l-blog__m-mainInformations--option"}>
-                                                            <input className={"l-blog__m-mainInformations--vocal"} src={"/icons/audio.png"} name={"Vocal"} type="image" onClick={() => audioText(mainArticle.attributes.title + mainArticle.attributes.description)} alt={"Audio"}/>
+                                                            <AudioButton text={mainArticle.attributes.title + mainArticle.attributes.description} classname="l-blog__m-mainInformations--vocal" id={"First"}/>
                                                             {mainArticle.attributes.tags.data.map(function (tag, i) {
                                                                 return <Tag key={i} content={tag.attributes.name}
                                                                             color={tag.attributes.color}

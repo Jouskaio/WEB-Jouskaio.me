@@ -1,5 +1,7 @@
 .l-contact {
   margin-top: 80px;
+  margin-bottom: 80px;
+
   &__a-title {
     color: var(--accent-color);
     font-family: var(--font-family-stylized);
@@ -8,14 +10,44 @@
   &__m-flexDiv {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: row;
+    flex-direction: column;
+    justify-content: space-between;
+    @include large {
+      flex-direction: row;
+    }
   }
 
-  &__m-formDiv {
-    width: 50%;
+  &__m-infoDiv {
+    @include large {
+      width: calc(50% - 32px);
+    }
+
+    &--a-span {
+      color: var(--accent-color);
+      font-weight: bold;
+    }
+
+    &--a-link {
+      color: var(--text-color);
+      text-decoration: none;
+    }
+
+    &--a-title {
+      margin-top: 30px;
+    }
   }
 
   &__m-mapDiv {
-    width: 50%;
+    margin-top: 30px;
+    @include large {
+      width: calc(50% - 32px);
+      margin-top: 0;
+    }
+  }
+
+  &__m-recoDiv {
+    display: flex;
+    flex-wrap: wrap;
+    //justify-content: space-evenly;
   }
 }
