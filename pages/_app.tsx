@@ -3,6 +3,7 @@ import Header from "../components/organism/navigation/header";
 import React from "react";
 import Footer from "../components/organism/navigation/footer";
 
+
 function MyApp({ Component, pageProps }) {
 
   return (
