@@ -24,7 +24,7 @@ export default class TextMarked extends Component {
         } = this.props
 
         return (
-                <p className={"a-textMarked " + classname}>{children}<span className={"a-textMarked--mark"}></span></p>
+                <span className={"a-textMarked " + classname}>{children}<span className={"a-textMarked--mark"}></span></span>
         );
     }
 }

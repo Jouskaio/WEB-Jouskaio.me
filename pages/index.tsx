@@ -92,7 +92,7 @@ export default function Home() {
 
                             </div>
                             <div>
-                                <Code language={"js"} classname={"l-home__a-code"}>
+                                <Code language={"json"} classname={"l-home__a-code"}>
                                     {`
 const jouskaio = {
     pronouns: "She" | "Her",

@@ -29,6 +29,15 @@ To update the certificate, you need to run the following command :
 ``` bash
 sudo certbot certonly --authenticator manual --installer heroku
 ```
+
+To get the txt to add on the app run :
+
+```bash
+sudo certbot certonly --manual --preferred-challenges http --email YOUR-EMAIL --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d YOURDOMAIN.com -d www.YOURDOMAIN.com
+
+```
+Follow then this tuto : [Uplift.ltd - Heroku SSL + Let's Encrypt](https://www.uplift.ltd/posts/heroku-ssl-letsencrypt/)
+
 ## Packages installed
 
 - `depcheck` which allow visualizing which npm packages are unnecessary for the project
