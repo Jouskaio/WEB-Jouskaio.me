@@ -14,7 +14,7 @@ on:
         type: string
 
 env:
-  DEPLOYMENT_FOLDER: public
+  DEPLOYMENT_FOLDER: .next
 
 jobs:
 # Please do not rename this job
@@ -35,7 +35,7 @@ jobs:
       - name: Build Node assets
         env:
           CI: true
-          NEXT_PUBLIC_STRAPI_API_URL: https://jouskaio-me.herokuapp.com
+          NEXT_PUBLIC_STRAPI_API_URL: ${{ secrets.NEXT_PUBLIC_STRAPI_API_URL }}
           NODE_ENV: production
           SITE_URL: ${{ inputs.site-url }}
         run: |
@@ -49,7 +49,7 @@ jobs:
         with:
           api-key: ${{ secrets.IONOS_API_KEY }}
           service-host: api-eu.ionos.space
-          project-id: 67747040-8574-4d3b-af98-80204524427b
+          project-id: 2db8556f-4039-49d0-adbf-4fc24015bd64
           branch-id: ${{ inputs.branch-id }}
           version: ${{ github.sha }}
           folder: ${{ env.DEPLOYMENT_FOLDER }}
