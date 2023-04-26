@@ -19,9 +19,6 @@ export default function Contact () {
                     <TextDefault><span className={"l-contact__m-infoDiv--a-span"}>Twitter : </span><a href={"https://twitter.com/Jouskaio_"} className={"l-contact__m-infoDiv--a-link"}>@Jouskaio_</a></TextDefault>
                     <TextDefault><span className={"l-contact__m-infoDiv--a-span"}>Linkedin : </span><a href={"https://www.linkedin.com/in/manonsalsou/"} className={"l-contact__m-infoDiv--a-link"}>@manonsalsou</a></TextDefault>
                     <br/>
-
-                    <TextDefault><span className={"l-contact__m-infoDiv--a-span"}>Address :</span> Boissy-Saint-Léger (France)</TextDefault>
-                    <br/>
                     <TextDefault><span className={"l-contact__m-infoDiv--a-span"}>Availability :</span> <br/>Currently finishing my Master degree until September 2024 on Paris but after that I will be available to work anywhere. I was used to travel a lot where studying in engineering school so distance isn't a problem.</TextDefault>
                 </div>
                 <div className={"l-contact__m-mapDiv"}>

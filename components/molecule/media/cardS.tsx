@@ -6,6 +6,12 @@ import Link from "next/link";
 // @ts-ignore
 import Image from "next/image";
 import Tag from "../quotes/tag";
+import TextH1 from "../../atom/text/textH1";
+import TextH5 from "../../atom/text/textH5";
+import TextH4 from "../../atom/text/textH4";
+import TextSpanM from "../../atom/text/textSpanM";
+import Media from "../../atom/media/media";
+import TextMarked from "../../atom/text/textMarked";
 
 /**
  *
@@ -36,20 +42,21 @@ const CardS = ({ article }) => {
     }
     return (
         <div className={"m-cardS"}>
-            <div className={"m-cardS__m-imageDiv"}
-                 style={{backgroundImage: `url(${getStrapiMedia(article.attributes.image)})`}}>
-            </div>
-            <Link href={`/blog/article/[slug]`} as={`/blog/article/${article.attributes.slug}`}>
-                <a className="m-cardS__m-textDiv">
-                    <p className={"m-cardS__m-textDiv--a-title"}>{article.attributes.title}</p>
-                    <p className={"m-cardS__m-textDiv--a-description"}>{article.attributes.description}</p>
-                    <nav className="m-cardS__m-tagsDiv">
-                        {tags.map(function (element, i) {
-                            return (<Tag key={i} content={element.name} color={element.color} classname={element.classname}/>);
-                        })}
-                    </nav>
-                </a>
-            </Link>
+            <nav className={"m-cardS__m-categoriesDiv"}>
+                {
+                    article.attributes.categories.data.map((category, index) => {
+                        return (
+                            <a href={"/blog/category/"+category.attributes.slug} key={index}><TextMarked classname={"l-categoryHome__o-latestArticles--m-metaCategory"}>{category.attributes.name}</TextMarked></a>
+                        )
+                    })
+                }
+            </nav>
+            <a href={"/blog/article/"+article.attributes.slug}>
+                <TextH4 classname={"m-cardS__a-title"}>{article.attributes.title}</TextH4>
+            </a>
+            <a href={"/blog/article/"+article.attributes.slug} style={{textAlign: "justify"}}>
+                <TextSpanM classname={"m-cardS__a-description"}>{article.attributes.description}</TextSpanM>
+            </a>
         </div>
     );
 };
