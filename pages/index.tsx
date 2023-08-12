@@ -91,6 +91,7 @@ export default function Home() {
                                 <nav className={"l-home__a-buttonProfileNav"}><Button classname={"l-home__a-buttonProfile"} src={"/about"}>More about it</Button></nav>
 
                             </div>
+                            {/*
                             <div>
                                 <Code language={"json"} classname={"l-home__a-code"}>
                                     {`
@@ -128,6 +129,7 @@ const jouskaio = {
 `}
                                 </Code>
                             </div>
+                            */}
                         </div>
                     </section>
 
@@ -171,6 +173,7 @@ const jouskaio = {
                             {[
                                 ["2023", "Portfolio 2023"],
                                 ["2023", "iBoardThings 2023"],
+                                ["2023", "Backup Pack"],
                             ]}
                         </Table>
                     </section>

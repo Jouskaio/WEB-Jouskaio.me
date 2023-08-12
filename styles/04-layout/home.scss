@@ -61,6 +61,10 @@
 
   // SECTION PROFIL
   &__o-profil > div {
+    // If no code block
+    justify-content: center;
+    text-align: center;
+    // End no code block
     margin-top: 40px;
     @include large {
       margin-top: 100px;
@@ -75,6 +79,8 @@
     display: block;
     width: 40%;
     border: 1px solid var(--text-color);
+    margin: 0 auto;
+
     margin-bottom: 8px;
     @include medium {
       width: 40%;
@@ -89,24 +95,23 @@
     margin-top: 50px;
     padding-right: 24px;
     width: 100%;
+    text-align: center;
     & > h4 {
       margin-top: 8px;
       line-height: 1.6;
       @include large {
         line-height: initial;
-        padding-right: 90px;
+        //padding-right: 90px;
       }
     }
     @include large {
-      text-align: left;
+      text-align: center;
       margin-bottom: 0;
       margin-top: 0;
     }
   }
 
-  &__a-titleText {
-    text-align: left;
-  }
+
 
   &__a-logoProfile {
     margin-bottom: 8px;
