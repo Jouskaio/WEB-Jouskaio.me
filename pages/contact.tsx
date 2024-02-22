@@ -27,7 +27,7 @@ export default function Contact (props) {
                         a problem.</TextDefault>
                     {statusAOS && (
                         <Email
-                            url={"http://localhost:2000"}
+                            url={process.env.JOUSKAIO_API}
                             className={"l-contact__m-emailForm"}
                             alert={alert}
                             aosDuration={1000}
