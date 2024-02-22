@@ -5,9 +5,9 @@ import Image from 'next/image'
 
 import Footer from "../components/organism/navigation/footer";
 import Header from "../components/organism/navigation/header";
-import {useScrollingAOS} from "../lib/motion/scrolling-effectAOS";
 import Alert from "../components/molecule/navigation/alert";
 import {useWindowSize} from "../lib/motion/sizeWindow";
+import {useScrollingAOS} from "../lib/motion/scrolling-effectAOS";
 
 
 function MyApp({ Component, pageProps }) {
