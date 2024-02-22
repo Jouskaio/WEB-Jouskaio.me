@@ -12,7 +12,7 @@ import Media from "../../../components/atom/media/media";
 import TextH4 from "../../../components/atom/text/textH4";
 import TextSpanXS from "../../../components/atom/text/textSpanXS";
 import Moment from "react-moment";
-import TextMarked from "../../../components/atom/text/textMarked";
+import TextH1 from "../../../components/atom/text/textH1";
 
 const CategorySlug = () => {
     const router = useRouter()
@@ -25,42 +25,46 @@ const CategorySlug = () => {
             </section>
             )
         }
+
         return (
         <ApolloProvider client={client}>
-            <NavCategories/>
-            <section className={"l-category"}>
-                <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
-                    {({ data: { categories } }) => {
-                        return (
-                            <>
-                                {
-                                    categories.data[0].attributes.articles.data.map(function (article, index) {
-                                        console.log(article.attributes)
-                                        return (
-                                            <a className={"l-category__m-divArticle"} key={index} href={"/blog/article/"+ article.attributes.slug}>
-                                                <Media width={"300px"} height={"100px"} objectFit={"cover"} src={getStrapiMedia(article.attributes.image)}/>
-                                                <nav className={'l-category__m-divArticle--m-metaDiv'}>
-                                                    <nav className={"l-category__m-divArticle--m-metaInfoTag "}>
-                                                        {
-                                                            article.attributes.tags.data.map(function (tag, index) {
-                                                                return (
-                                                                    <a href={"/blog/category/" + tag.attributes.slug } className={"l-category__m-divArticle--m-metaTag"} key={index}><TextMarked>{tag.attributes.name}</TextMarked></a>
-                                                                )
-                                                            })
-                                                        }
-                                                    </nav><TextH4 classname={"l-category__m-divArticle--m-metaTitle"}>{article.attributes.title}</TextH4>
-                                                    <TextDefault classname={"l-category__m-divArticle--m-metaDescription"}>{article.attributes.description}</TextDefault>
-                                                    <nav className={"l-category__m-divArticle--m-metaInfo"}><TextSpanXS>Last Update : <Moment format={"LL"}>{article.attributes.updatedAt}</Moment></TextSpanXS></nav>
-                                                </nav>
-                                            </a>
-                                        )
-                                    })
-                                }
-                            </>
-                        )
-                    }}
-                </Query>
-            </section>
+            <main className={"l-main__o-global l-blog"}>
+                <TextH1 classname={"l-blog__a-title"}>Blog</TextH1>
+                <NavCategories/>
+                <section className={"l-category"}>
+                    <Query query={CATEGORY_ARTICLES_QUERY} value={slug}>
+                        {({ data: { categories } }) => {
+                            return (
+                                <>
+                                    {
+                                        categories.data[0].attributes.articles.data.map(function (article, index) {
+                                            return (
+                                                <a className={"l-category__m-divArticle"} key={index} href={"/blog/article/"+ article.attributes.slug}>
+                                                    <nav className={"l-category__m-divArticle--a-image"}><Media width={"300px"} height={"150px"} objectFit={"cover"} src={getStrapiMedia(article.attributes.image)}/></nav>
+                                                    <nav className={'l-category__m-divArticle--m-metaDiv'}>
+                                                        <nav className={"l-category__m-divArticle--m-metaInfoTag"}>
+                                                            {
+                                                                article.attributes.tags.data.map(function (tag, index) {
+                                                                    return (
+                                                                        <a href={"/blog/category/" + tag.attributes.slug } className={"l-category__m-divArticle--m-metaTag"} key={index}>{tag.attributes.name}</a>
+                                                                    )
+                                                                })
+                                                            }
+                                                        </nav>
+                                                        <TextH4 classname={"l-category__m-divArticle--m-metaTitle"}>{article.attributes.title}</TextH4>
+                                                        <TextDefault classname={"l-category__m-divArticle--m-metaDescription"}>{article.attributes.description}</TextDefault>
+                                                        <nav className={"l-category__m-divArticle--m-metaInfo"}><TextSpanXS>Last Update : <Moment format={"LL"}>{article.attributes.updatedAt}</Moment></TextSpanXS></nav>
+                                                    </nav>
+                                                </a>
+                                            )
+                                        })
+                                    }
+                                </>
+                            )
+                        }}
+                    </Query>
+                </section>
+            </main>
         </ApolloProvider>
         );
 };

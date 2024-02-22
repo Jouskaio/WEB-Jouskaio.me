@@ -1,5 +1,7 @@
 # Front-end portfolio 2022
 
+[![wakatime](https://wakatime.com/badge/user/421f3c4d-505e-46dd-a125-f4af7f23cc50/project/5f397f8d-865a-4945-b49c-12d2e440c04b.svg)](https://wakatime.com/badge/user/421f3c4d-505e-46dd-a125-f4af7f23cc50/project/5f397f8d-865a-4945-b49c-12d2e440c04b)
+
 ## Installation
 
 To run this application for the first time, make sure to execute `yarn istall`, `next build` and then `npm run dev`.
@@ -12,7 +14,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Documentation
 
-For the first installation, be sure to run `yarn istall`, `next build` and then `npm run dev`. 
+For the first installation, be sure to run `yarn install`, `next build` and then `npm run dev`. 
 
 Several commands are possible to use with the project :
 - `next build` : build the project

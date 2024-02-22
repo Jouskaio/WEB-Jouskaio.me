@@ -1,0 +1,10 @@
+.m-alert {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background-color: var(--accent-color);
+  padding: 10px;
+  text-align: center;
+  z-index: 999;
+}

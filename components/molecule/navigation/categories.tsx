@@ -21,29 +21,32 @@ export default class NavCategories extends Component{
             classname
         } = this.props
         return (
-            <ul className={"m-categories " + classname} style={{width: width}}>
-                <Query query={CATEGORIES_QUERY} >
-                    {({ data: { categories } }) => {
-                        return (
-                            categories.data.map((category) => {
-                                return (
-                                    <li key={category.attributes.slug}>
-                                        <Link
-                                            href={`/blog/category/[slug]`} as={`/blog/category/${category.attributes.slug}`}>
-                                            {category.attributes.name}
-                                        </Link>
-                                    </li>
-                                );
-                            })
-                        );
-                    }}
-                </Query>
-                <li className={"m-categories__a-all"}>
-                    <Link href={`/blog/category`}>
-                        All
-                    </Link>
-                </li>
-            </ul>
+            <div className={"l-blog__m-categories"}>
+                <ul className={"l-blog__m-categoriesUl " + classname} style={{width: width}}>
+                    <Query query={CATEGORIES_QUERY}>
+                        {({data: {categories}}) => {
+                            return (
+                                categories.data.map((category) => {
+                                    return (
+                                        <li key={category.attributes.slug}>
+                                            <Link
+                                                href={`/blog/category/[slug]`}
+                                                as={`/blog/category/${category.attributes.slug}`}>
+                                                {category.attributes.name}
+                                            </Link>
+                                        </li>
+                                    );
+                                })
+                            );
+                        }}
+                    </Query>
+                    <li className={"m-categories__a-all"}>
+                        <Link href={`/blog/category`}>
+                            All
+                        </Link>
+                    </li>
+                </ul>
+            </div>
         )
     }
 }

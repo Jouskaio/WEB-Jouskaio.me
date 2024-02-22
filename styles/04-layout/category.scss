@@ -1,20 +1,76 @@
 .l-category {
-  // GLOBAL
-  &__a-sizeSection {
-    //background-color: var(--background-color);
-    margin-left: 79px;
-    margin-right: 79px;
-    margin-bottom: 40px;
+  display: block;
+  margin: 0 auto;
+  width: 85%;
+  @include large {
+    width: 75%;
+  }
+  &__m-divArticle {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 80px;
     @include large {
-      margin-left: 152px;
-      margin-right: 152px;
+      display: flex;
+      flex-wrap: nowrap;
     }
-    &--mainSection {
-      margin-top: 80px;
-
-      @include large {
-        margin-top: 76px;
+    text-decoration: none;
+    @include large {
+      &:hover {
+        //font-style: italic;
+        padding-left: 30px;
+        width: calc(100% + 30px);
       }
+    }
+
+    &--m-metaDiv {
+      @include large {
+        width: calc(100% - 300px);
+        padding-left: 24px;
+        margin-top: unset;
+      }
+      color: var(--text-color);
+      line-height: 1.5;
+      position: relative;
+      margin-top: 8px;
+    }
+
+    &--m-metaTag {
+      color: var(--text-color);
+      text-transform: uppercase;
+      text-decoration: none;
+      font-family: var(--font-family-main);
+      font-size: var(--font-size-XS);
+      margin-right: 4px;
+      margin-left: 4px;
+    }
+
+    &--m-metaTitle {
+      color: var(--accent-color);
+      margin-top: 8px;
+      margin-bottom: 16px;
+
+    }
+
+    &--m-metaInfo {
+      font-family: var(--font-family-main);
+      font-size: var(--font-size-XS);
+      text-align: right;
+      margin-top: 24px;
+      @include large {
+        position: absolute;
+        bottom: 0px;
+        text-align: unset;
+      }
+    }
+
+    &--m-metaInfoTag {
+      display: flex;
+      flex-wrap: wrap;
+    }
+
+    &--a-image {
+      display: block;
+      text-align: center;
     }
   }
 }

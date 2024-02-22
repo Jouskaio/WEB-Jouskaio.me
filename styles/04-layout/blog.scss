@@ -1,180 +1,42 @@
 .l-blog {
-  // GLOBAL
-  height: 100%;
-  z-index: 1;
-
-  &__o-mainContainer {
-    display: flex;
-    flex-direction: column;
+  &__a-status {
+    display: block;
     width: 100%;
-    @include large {
-      flex-direction: row;
-    }
-  }
-
-  // MAIN SECTION
-  &__o-mainSection {
-    display: flex;
-    flex-wrap: wrap;
-    //justify-content: center;
-    flex-direction: column;
-    padding-bottom: 8px;
-    margin-bottom: 30px;
-    border-bottom: 1px solid var(--text-color);
-    top: 0;
-
-    @include large {
-      margin-top: 0;
-      width: 60%;
-      padding-bottom: unset;
-      margin-bottom: 5%;
-      border-bottom: unset;
-    }
-  }
-
-  &__m-mainArticleLink {
-    text-decoration: none;
-  }
-
-  &__m-tag {
-    text-transform: uppercase;
-    width: fit-content;
-    font-family: var(--font-family-main);
-    color: var(--text-color);
-    padding-left: 4px;
-    padding-right: 8px;
-    & > * > * {
-      text-decoration: none;
-    }
+    margin: 0 auto;
+    text-align: center;
+    justify-content: center;
+    color: var(--accent-blue);
+    margin-top: 100px;
   }
 
   &__a-title {
+    text-align: center;
+    margin-bottom: 24px;
+  }
+
+  &__m-categories {
+    width: 100%;
+    padding: 16px 0;
+    background: var(--background-color);
+    position: sticky;
+    top: 0;
+    z-index: 99;
+  }
+  &__m-categoriesUl {
+    width: 100%;
     display: flex;
-    flex-direction: row;
-    align-items: flex-start;
     flex-wrap: wrap;
-    margin-top: 24px;
-    &--bar {
-      width: 50px;
-      height: 4px;
-      margin-top: var(--font-size-L);
-      margin-bottom: 16px;
-      margin-right: 10px;
-      background-color: var(--text-color);
-      @include large {
-        width: 24px;
-      }
-    }
-    @include large {
-      margin-bottom: 30px;
-    }
-  }
-
-  &__a-description {
-    @include large {
-      width: 85%;
-    }
-  }
-
-  &__a-mainImage {
-    position: relative;
-    width: 100%;
-    margin-bottom: 24px;
-    @include large {
-      width: 85%;
-      margin-bottom: 40px;
-    }
-    &--div {
-      width: 100%;
-      z-index: -1;
-      height: 100%;
-      position: absolute;
-      top: 3%;
-      left: 3%;
-      border: 1px solid var(--text-color);
-      @include large {
-        top: 3%;
-        left: 1%;
-      }
-    }
-  }
-
-  &__m-mainInformations {
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    margin-top: 16px;
-    margin-bottom: 16px;
-    justify-content: space-between;
-    opacity: 70%;
-    align-items: center;
-
-    &--label {
-      display: flex;
-      flex-wrap: nowrap;
-      flex-direction: row;
-      font-size: var(--font-size-S);
-      font-family: var(--font-family-main);
-    }
-
-    &--option {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-    }
-
-    &--vocal {
-      height: 16px;
-      width: 16px;
-      margin-right: 8px;
-      &:checked, &:hover, &:focus {
-        filter: var(--accent-color-filter);
-      }
-    }
-
-    &--labelLocation {
-      padding-right: 16px;
-    }
-  }
-
-  // NEXT ARTICLES
-  &__o-nextArticles {
-    width: 100%;
-    @include large {
-      width: 400px;
-    }
-  }
-
-  &__a-nextTitle {
-    margin-bottom: 24px;
-    &--span {
-      color: var(--accent-color);
-    }
-  }
-
-  &__m-buttonDiv {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
-    margin-bottom: 24px;
-    width: 100%;
-    &--button {
-      width: 50%;
-      background-color: var(--container-color);
-      border: none;
-      font-size: var(--font-size-L);
-      font-family: var(--font-family-main);
-
-      &:hover {
-        background-color: var(--accent-color);
-        color: var(--background-color);
-      }
-      &:nth-child(1) {
-        border-radius: 10px 0 0 10px;
-      }
-
-      &:nth-child(2) {
-        border-radius: 0 10px 10px 0;
+    & > li {
+      margin: 0 8px;
+      & > a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-family: var(--font-family-main);
+        &:hover {
+          text-decoration: underline;
+          color: var(--accent-color);
+        }
       }
     }
   }

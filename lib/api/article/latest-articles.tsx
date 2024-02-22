@@ -1,5 +1,6 @@
 // @ts-ignore
 import gql from "graphql-tag";
+import {useQuery} from "@apollo/client";
 const LATEST_ARTICLES_QUERY = gql`
     query LatestArticles ($value : Int) {
         articles(sort: "updatedAt:desc", publicationState: LIVE, pagination: {start: 0, limit: $value}) {

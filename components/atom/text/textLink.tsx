@@ -27,9 +27,7 @@ export default class TextLink extends Component{
             children
         } = this.props
         return (
-            <>
-                <Link href={src} className={"a-link " + classname}>{children}</Link>
-            </>
+            <Link href={src} className={"a-link " + classname}>{children}</Link>
         );
     }
 }

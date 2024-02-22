@@ -1,43 +1,36 @@
-.m-header {
-  //width: calc(100% - 80px);
-  width: 100%;
-  z-index: 980;
-  display: flex;
-  flex-wrap: nowrap;
-  flex-direction: row;
-  background: var(--background-color);
-  font-family: var(--font-family-accent);
-  margin: 0 auto;
+.o-header {
+  z-index: 999;
+  width: calc(100% - 32px);
   position: fixed;
-  bottom: 0;
-  padding: 16px 40px;
-  // Technic to center vertically a fixed object
-  // Source : https://stackoverflow.com/questions/2005954/center-a-positionfixed-element
-  left: 50%;
-  transform: translateX(-50%);
-  justify-content: space-around;
-
-
-  @include large {
-    padding-left: 37.5%;
-    padding-right: 37.5%;
-    width: 100%;
+  bottom: 16px;
+  display: flex;
+  margin: 0 auto;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  height: 92px;
+  border-radius: 31px;
+  background: rgba(217, 217, 217, 0.30);
+  backdrop-filter: blur(2px);
+  align-items: center;
+  @include medium {
+    margin: 0;
+    width: calc(100% / 3);
+    justify-self: center;
   }
 
-  & > a {
-    font-size: 16px;
+  &__page {
+    background: var(--primary-light);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
-    padding: 8px;
-    padding-left: 16px;
-    padding-right: 16px;
-    border-radius: 50px;
-    background-color: var(--accent-color);
-    color: var(--container-color);
-  }
-
-  & > a:hover {
-    background-color: var(--text-color);
-    color: var(--container-color);
-
+    color: var(--primary-darkest);
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-XS);
+    font-weight: lighter;
   }
 }

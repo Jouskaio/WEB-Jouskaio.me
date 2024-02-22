@@ -1,17 +1,84 @@
-.a-button {
-  //display: inline-block;
-  padding: 10px 24px;
-  text-decoration: none;
-  border: 1px solid var(--text-color);
-  border-radius: 100px;
-  color: var(--text-color);
-  font-family:  var(--font-family-accent);
-  font-size: var(--font-size-L);
+.a-switch {
   text-align: center;
-  margin-top: 16px;
-  background-color: var(--background-color);
-  &:hover {
-    color: var(--accent-color);
-    border: 1px solid currentColor;
+  position: relative;
+  width: 75px;
+  display: inline-block;
+  text-align: left;
+  top: 8px;
+
+  &__a-checkbox {
+    display: none;
+  }
+
+  &__a-label {
+    display: block;
+    overflow: hidden;
+    cursor: pointer;
+    border: 0 solid #bbb;
+    border-radius: 20px;
+  }
+
+  &__a-inner {
+    display: block;
+    width: 200%;
+    margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+    &:before, &:after {
+        display: block;
+        float: left;
+        width: 50%;
+        height: 36px;
+        padding: 0;
+        line-height: 36px;
+        font-size: 14px;
+        color: #fff;
+        font-weight: bold;
+        box-sizing: border-box;
+    }
+
+    &:before {
+      content: "";
+      padding-left: 10px;
+      background-color: var(--accent-purple-light);
+      color: #fff;
+    }
+
+    &:after {
+      content: "";
+      padding-right: 10px;
+      background-color: #bbb;
+      color: #fff;
+      text-align: right;
+    }
+  }
+
+  &__a-switch {
+    display: block;
+    width: 24px;
+    margin: 5px;
+    background: #fff;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 40px;
+    border: 0 solid #bbb;
+    border-radius: 20px;
+    transition: all 0.3s ease-in 0s;
+  }
+
+  &__a-checkbox:checked + &__a-label &__a-inner {
+    margin-left: 0;
+  }
+
+  &__a-checkbox:checked + &__a-label &__a-switch {
+    right: 0px;
+  }
+}
+
+
+.a-icon {
+  &__audio {
+    height: 16px;
+    width: 16px;
   }
 }

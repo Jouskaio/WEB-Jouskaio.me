@@ -1,16 +1,17 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   experimental: {
     externalDir: true,
   },
   images: {
     loader: "default",
     domains: [
-      "jouskaio-me.herokuapp.com"
+      "jouskaio-me.herokuapp.com",
+      "https://jouskaio-me.herokuapp.com"
     ]
   },
-}
+};
 module.exports = nextConfig
 
 // PWA

@@ -1,53 +1,37 @@
 .l-contact {
-  margin-top: 80px;
-  margin-bottom: 80px;
-
+  width: 75%;
+  margin: 16px auto 0;
+  justify-content: space-between;
   &__a-title {
-    color: var(--accent-color);
-    font-family: var(--font-family-stylized);
+    margin-bottom: 24px;
   }
 
-  &__m-flexDiv {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    justify-content: space-between;
-    @include large {
-      flex-direction: row;
-    }
+  &__m-emailForm {
+    margin-top: 24px;
   }
 
-  &__m-infoDiv {
-    @include large {
-      width: calc(50% - 32px);
-    }
-
-    &--a-span {
-      color: var(--accent-color);
-      font-weight: bold;
-    }
-
-    &--a-link {
-      color: var(--text-color);
-      text-decoration: none;
-    }
-
-    &--a-title {
-      margin-top: 30px;
-    }
-  }
-
-  &__m-mapDiv {
+  &__m-infoDiv--a-title {
     margin-top: 30px;
-    @include large {
-      width: calc(50% - 32px);
-      margin-top: 0;
-    }
   }
 
   &__m-recoDiv {
+    margin-top: 24px;
     display: flex;
+    flex-direction: column;
     flex-wrap: wrap;
-    //justify-content: space-evenly;
+    align-items: flex-start;
+
+    & > &--a-citation {
+      width: 100%;
+      @include large {
+        width: 55%;
+      }
+    }
+    & > &--a-citation:nth-child(2n) {
+      align-self: flex-end;
+    }
+    &--a-span {
+      font-weight: var(--font-weight-bold);
+    }
   }
 }

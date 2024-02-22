@@ -1,26 +1,27 @@
-import {useEffect, useState} from "react";
-// @ts-ignore
+import { useEffect, useState } from "react";
 import AOS from 'aos';
 
-
-/*export const setScrollingAOS = () => {
+export const useScrollingAOS = () => {
     // Initialize state with undefined width/height, so the server and client render match
-    // Learn more here: https://joshwcomeau.com/react/the-perils-of-rehydration/
-    const [scrollAOS, setScroll] = useState({
-        scroll: undefined,
-    });
+    const [scrollAOS, setScrollAOS] = useState(undefined);
 
     useEffect(() => {
-        // only execute all the code below in client side
+        // only execute all the code below on the client side
         if (typeof window !== 'undefined') {
-            // Handler to call on window resize
-            const handleResize = () => {
-                // Set window width/height to state
-                setScroll({
-                    scroll: AOS.init()
-                });
+            // Initialize AOS when the component mounts
+            AOS.init();
+            AOS.refresh();
+            setScrollAOS(AOS);
+
+            // Cleanup function to remove AOS when the component unmounts
+            return () => {
+                // @ts-ignore
+                AOS.destroy();
             };
         }
     }, []); // Empty array ensures that effect is only run on mount
+
     return scrollAOS;
-};*/
+};
+
+

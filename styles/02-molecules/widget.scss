@@ -1,0 +1,57 @@
+// WIDGET CONTACT
+
+.m-widgetContact {
+  background: var(--primary-lightest);
+  border-radius: var(--border-radius);
+  padding: 16px;
+  padding-top: 20px;
+  color: var(--background-color);
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  &__a-title {
+    color: var(--accent-color);
+    margin-bottom: 16px;
+  }
+
+  &__m-divText {
+    width: 100%;
+  }
+
+  &__a-switchNav {
+    transform: rotate(-90deg);
+    margin: 0 auto;
+    justify-content: flex-end;
+    padding-top: 30px;
+  }
+
+  &__a-description {
+    font-size: var(--font-size-XS);
+    margin-bottom: 16px;
+  }
+
+  &__a-contacts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    margin-bottom: 16px;
+  }
+
+  &__a-input {
+    input[type="radio"] {
+      display: none;
+    }
+    label {
+      font-family: var(--font-family-main);
+      font-size: var(--font-size-M);
+      color: var(--accent-purple-light);
+      font-weight: 300;
+      margin-right: 8px;
+      position: relative;
+      cursor: pointer;
+    }
+  }
+}

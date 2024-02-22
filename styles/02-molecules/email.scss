@@ -1,0 +1,72 @@
+.m-email {
+  & > form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    & > label > input, & > div > label > input {
+      margin-bottom: 8px;
+      width: 100%;
+      flex-grow: 2;
+    }
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      @include large {
+        flex-direction: row;
+        & > label {
+          flex-grow: 2;
+          &:first-child {
+            margin-right: 8px;
+          }
+          &:last-child {
+            margin-left: 8px;
+          }
+        }
+      }
+      flex-wrap: nowrap;
+      justify-content: space-between;
+    }
+    & > label {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+  &__a-input {
+    margin-bottom: 24px;
+    width: 100%;
+    background: var(--container-color);
+    border: 1px solid var(--container-color);
+    height: 40px;
+    color: rgba(227, 227, 227, .9);
+    font-size: 16px;
+    font-family: var(--font-family-main);
+    padding-left: 16px;
+    &:hover, &:focus {
+      border: 1px solid var(--text-color);
+    }
+
+    &--a-textarea {
+      height: 300px;
+      resize: none;
+      padding-top: 16px;
+      font-family: var(--font-family-main);
+    }
+
+    &--a-submit {
+      background: var(--text-color);
+      color: var(--background-color);
+      border: 1px solid var(--text-color);
+
+      &:hover, &:focus {
+        background: var(--accent-color);
+        color: var(--text-color);
+        border: 1px solid var(--accent-color);
+      }
+    }
+  }
+
+  &__a-label {
+    margin-bottom: 8px;
+  }
+}

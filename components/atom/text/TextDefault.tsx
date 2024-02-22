@@ -25,7 +25,7 @@ export default class TextDefault extends Component {
 
         return (
             <>
-                <p className={"a-text " + classname}>{children}</p>
+                <span className={"a-text " + classname}>{children}</span>
             </>
         );
     }

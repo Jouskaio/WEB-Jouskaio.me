@@ -12,18 +12,24 @@ export default class TextH5 extends Component{
         children: PropTypes.oneOfType([
             PropTypes.string,
             PropTypes.element
-        ])
+        ]),
+        aosDuration: PropTypes.number,
+        aosEffect: PropTypes.string,
     }
     render() {
         const {
             //@ts-ignore
             classname,
             //@ts-ignore
-            children
+            children,
+            //@ts-ignore
+            aosDuration,
+            //@ts-ignore
+            aosEffect,
         } = this.props
         return (
             <>
-                <h5 className={"a-titleH5 " + classname}>{children}</h5>
+                <h5 className={"a-titleH5 " + classname} data-aos={aosEffect} data-aos-duration={aosDuration}>{children}</h5>
             </>
         );
     }

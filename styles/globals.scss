@@ -10,32 +10,29 @@
 @import "00-protons/properties";
 
 // Atoms
-@import "01-atoms/button";
 @import "01-atoms/text";
-@import "01-atoms/icon";
-@import "01-atoms/media";
+@import "01-atoms/button";
 
 // Molecules
-@import "02-molecules/side";
-@import "02-molecules/tag";
-@import "02-molecules/swipe";
-@import "02-molecules/flashNews";
-@import "02-molecules/titleWithTags";
-@import "02-molecules/popup";
-@import "02-molecules/sliders/slider-scroll";
-@import "02-molecules/categories";
 @import "02-molecules/card";
+@import "02-molecules/pin";
+@import "02-molecules/widget";
+@import "02-molecules/email";
+@import "02-molecules/alert";
+@import "02-molecules/plugins/audio";
 @import "02-molecules/table";
-@import "02-molecules/citation";
 
 // Organisms
-@import "03-organisms/footer";
 @import "03-organisms/header";
+@import "03-organisms/footer";
+@import "03-organisms/feed";
+@import "03-organisms/processor";
 
 // Layout
-@import "04-layout/home";
+@import "04-layout/main";
+@import "04-layout/homepage";
 @import "04-layout/blog";
-@import "04-layout/article";
+@import "04-layout/contact";
 @import "04-layout/categoryHome";
 @import "04-layout/category";
-@import "04-layout/contact";
+@import "04-layout/article";

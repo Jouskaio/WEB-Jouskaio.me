@@ -20,13 +20,14 @@ const Query = ({ children=null, query=null, value: value = null }) => {
   // will come back
   // Documentation : https://github.com/apollographql/react-apollo/issues/3862
   // eslint-disable-next-line react-hooks/rules-of-hooks
-  useCallback(() => { setTimeout(() => _refetch(), 0) }, [_refetch]);
+  setTimeout(() => _refetch(), 0);
   if (loading) return (
       <main className={"l-main__a-sizeSection"}>
-        <TextDefault classname={undefined}>Loading</TextDefault>
+        {/*TODO: Make an animation loading*/}
+        <TextDefault>...</TextDefault>
       </main>
   )
-  if (error) return <p>Error: {JSON.stringify(error)}</p>;
+  if (error) return <TextDefault>Error: {JSON.stringify(error)}</TextDefault>;
   return children({data})
   //return children({ data });
 };
@@ -34,8 +35,8 @@ export default Query;
 
 export function getStrapiMedia(media) {
   const imageUrl =
-    process.env.NODE_ENV !== "development"
-      ? process.env.NEXT_PUBLIC_STRAPI_API_URL + media.data.attributes.url
+    typeof media === "string"
+      ? process.env.NEXT_PUBLIC_STRAPI_API_URL + media
       : process.env.NEXT_PUBLIC_STRAPI_API_URL +
       media.data.attributes.url;
   return imageUrl;
