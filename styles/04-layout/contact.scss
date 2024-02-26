@@ -1,0 +1,37 @@
+.l-contact {
+  width: 75%;
+  margin: 16px auto 0;
+  justify-content: space-between;
+  &__a-title {
+    margin-bottom: 24px;
+  }
+
+  &__m-emailForm {
+    margin-top: 24px;
+  }
+
+  &__m-infoDiv--a-title {
+    margin-top: 30px;
+  }
+
+  &__m-recoDiv {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: flex-start;
+
+    & > &--a-citation {
+      width: 100%;
+      @include large {
+        width: 55%;
+      }
+    }
+    & > &--a-citation:nth-child(2n) {
+      align-self: flex-end;
+    }
+    &--a-span {
+      font-weight: var(--font-weight-bold);
+    }
+  }
+}

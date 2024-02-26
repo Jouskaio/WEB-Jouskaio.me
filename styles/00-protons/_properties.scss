@@ -1,0 +1,43 @@
+* {
+  box-sizing: border-box;
+}
+
+img {
+  max-width: 100%;
+}
+
+
+html {
+  background: var(--background-color);
+  color: var(--text-color);
+  /*TODO: Add cursor*/
+  //cursor: url('/icons/cursor.svg'),auto;
+}
+
+h1::selection, h2::selection, h3::selection, h4::selection, h5::selection, h6::selection, span::selection, p::selection, a::selection
+{
+  background-color: var(--accent-color);
+  color: var(--primary-darkest);
+}
+
+.l-layout {
+
+  &__a-sizeSection {
+    background-color: var(--background-color);
+    margin-left: 60px;
+    margin-right: 60px;
+    margin-bottom: 40px;
+    @include large {
+      margin-left: 152px;
+      margin-right: 152px;
+    }
+  }
+  &__footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    padding-top: 45px;
+    padding-bottom: 15px;
+    text-align: center;
+  }
+}
