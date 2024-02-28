@@ -14,7 +14,6 @@ function Email(props) {
 
     const [submissionStatus, setSubmissionStatus] = React.useState(null);
     const [showAlert, setShowAlert] = useState(false);
-    console.log(url)
     useEffect(() => {
         // Use the useEffect hook to trigger the alert when submissionStatus changes
         if (submissionStatus) {
@@ -33,16 +32,16 @@ function Email(props) {
 
     const sendEmail = async (e) => {
         e.preventDefault();
-
         // Créez l'URL complète
         const apiUrl = `${url}/v1/email`;
-        console.log(apiUrl);
+        console.log(apiUrl)
         try {
             if (formData.email && formData.title && formData.message && formData.name) {
                 const response = await sendData(apiUrl, {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
+                        "Access-Control-Allow-Origin": "*", // Allow CORS
                     },
                     body: JSON.stringify(formData),
                     timeout: 1000,

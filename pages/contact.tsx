@@ -10,7 +10,6 @@ export default function Contact(props) {
     const { alert } = props;
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
-
     return (
         <section className={"l-contact"}>
             <TextH1 classname={"l-contact__a-title"}>Contact me</TextH1>
@@ -24,7 +23,7 @@ export default function Contact(props) {
                     </TextDefault>
                     {statusAOS && (
                         <Email
-                            url={process.env.JOUSKAIO_API}
+                            url={"https://jouskaio-me-api-8b04d6008f29.herokuapp.com"}
                             className={"l-contact__m-emailForm"}
                             alert={alert}
                             aosDuration={1000}

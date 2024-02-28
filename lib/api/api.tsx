@@ -3,7 +3,6 @@ import React, {useCallback} from "react";
 // @ts-ignore
 import {useQuery} from "@apollo/client";
 import TextDefault from "../../components/atom/text/TextDefault";
-import dotenv from 'dotenv';
 /** Fetch results of custom query request into a JSON format
  * @param children : object
  * @param query : graphql request asked
