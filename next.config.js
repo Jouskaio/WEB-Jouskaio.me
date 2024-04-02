@@ -7,8 +7,9 @@ const nextConfig = {
   images: {
     loader: "default",
     domains: [
-      "jouskaio-me.herokuapp.com",
-      "https://jouskaio-me.herokuapp.com"
+      "https://jouskaio-me-cms-df531e980433.herokuapp.com",
+      "jouskaio-me-cms-df531e980433.herokuapp.com",
+      "https://jouskaio-me-api-8b04d6008f29.herokuapp.com"
     ]
   },
 };
@@ -16,8 +17,6 @@ module.exports = nextConfig
 
 // PWA
 const pwaConfig = process.env.NODE_ENV;
-const server = "https://jouskaio-me.herokuapp.com";
-module.exports = server;
 const withPWA = require("next-pwa");
 module.exports = withPWA({
   pwa: {
