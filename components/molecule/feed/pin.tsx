@@ -42,7 +42,7 @@ function Pin(props) {
             )}
             <TextH4 classname={`m-pin__a-title--${size}`}>{title}</TextH4>
             <p className={`m-pin__a-text m-pin__a-text--${size}`}>{text}</p>
-            <Link href={url}><a className={"m-pin__a-link"}>Read More</a></Link>
+            <Link href={url} legacyBehavior><a className={"m-pin__a-link"}>Read More</a></Link>
         </div>
     );
 }

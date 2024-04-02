@@ -38,7 +38,7 @@ class Icon extends Component {
         return (
             <>
                 <Link id={id} href={href} legacyBehavior><a className={"a-icon " + classname + " " + id}><Image
-                    width={"24px"} height={"24px"} className={"a-icon"} src={src} alt={alt}/></a></Link>
+                    width={"24"} height={"24"} className={"a-icon"} src={src} alt={alt}/></a></Link>
             </>
 
         );

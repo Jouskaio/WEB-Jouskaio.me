@@ -19,7 +19,7 @@ function Header({pages}) {
         <div className="o-header" data-aos={"zoom-in-up"} data-aos-duration={1000}>
             {pages.map(function (page, i) {
                 return (
-                    <Link href={{ pathname: page.source }} key={i}>
+                    <Link href={{ pathname: page.source }} key={i} legacyBehavior>
                         <a className={page.class}>{page.name}</a>
                     </Link>
                 );

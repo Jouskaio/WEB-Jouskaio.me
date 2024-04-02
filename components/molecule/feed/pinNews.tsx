@@ -17,7 +17,7 @@ function PinNews(props) {
     } = props;
 
     return (
-        <Link href={`/blog/article/${url}`}>
+        <Link href={`/blog/article/${url}`} legacyBehavior>
             <div className={`m-pinNews ${classname}`}>
                 <div className={"m-pinNews__m-divText"}>
                     <TextH4 classname={`m-pinNews__a-title`}>{title}</TextH4>

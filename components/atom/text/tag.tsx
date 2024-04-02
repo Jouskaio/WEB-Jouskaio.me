@@ -33,7 +33,7 @@ export default class Tag extends Component {
         } = this.props
 
         return (
-            <Link href={`/blog/category/${slug}`} style={{ color: color }}>
+            <Link href={`/blog/category/${slug}`} style={{ color: color }} legacyBehavior>
                 <a className={`a-tag ${classname}`}>{children}</a>
             </Link>
 

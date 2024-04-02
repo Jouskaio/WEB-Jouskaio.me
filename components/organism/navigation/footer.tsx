@@ -9,7 +9,7 @@ function Footer(props) {
                 <hr className={"o-footer__a-hr"}/>
                 <TextH3 classname={"o-footer__a-textH3"}>Don't hesitate to drop me an email or contact me via my profiles pictures</TextH3>
                 <nav className={"o-footer__m-divRow"}>
-                    <Link href={"mailto:manon.salsou@icloud.com"}><a className={"o-footer__a-mail"}>manon.salsou@icloud.com</a></Link>
+                    <Link href={"mailto:manon.salsou@icloud.com"} legacyBehavior><a className={"o-footer__a-mail"}>manon.salsou@icloud.com</a></Link>
                     <nav className={"o-footer__m-divRowOneIcons"}>
                         <a href={"https://www.pinterest.fr/jouskaio/"} className={"o-footer__a-icons"}><img src={"/icons/pinterest.png"} className={"o-footer__a-icons--img"} alt={"Pinterest"}/></a>
                         <a href={"https://twitter.com/Jouskaio_"} className={"o-footer__a-icons"}><img src={"/icons/twitter.png"} className={"o-footer__a-icons--img"} alt={"Twitter"}/></a>

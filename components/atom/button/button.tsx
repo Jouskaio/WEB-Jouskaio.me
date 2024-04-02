@@ -30,7 +30,7 @@ class Button extends Component {
             children: children
         } = this.props;
         return (
-            <Link href={src}>
+            <Link href={src} legacyBehavior>
                 <a onClick={onClick} className={'a-button ' + classname}>
                     {children}
                 </a>
