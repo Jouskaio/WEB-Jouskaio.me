@@ -1,25 +1,31 @@
 .m-table {
     width: 100%;
+    margin-top: 24px;
+    margin-bottom: 24px;
     border-collapse: collapse;
     border-spacing: 0;
-    margin-bottom: 20px;
     font-family: var(--font-family-main);
     overflow: hidden;
 
     & > thead {
-        background-color: var(--background-color);
+        border-top: 1px solid var(--container-color);
+        background-color: #2c2c2e;
         color: white;
-
-        & > th {
+        & > tr > th {
             padding: 12px 10px;
             text-align: left;
             font-weight: bold;
+            margin-top: 16px;
         }
     }
 
     & > tbody {
         & > tr {
-            &:nth-child(odd),
+            //&:nth-child(odd),
+            &:nth-child(odd) {
+                background-color: #37373a;
+
+            }
             &:nth-child(even) {
                 background-color: #2c2c2e;
             }

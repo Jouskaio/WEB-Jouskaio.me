@@ -64,20 +64,28 @@ $width: 75%;
     //margin-right: 24px;
     margin-bottom: 16px;
     width: 100%;
+    display: block;
+    margin: 0 auto;
+    justify-content: center;
+    text-align: center;
     @include large {
       display: block;
       text-align: center;
     }
   }
    &__m-mainImage {
+     max-height: 200px;
     @include large {
       border-radius: 10px;
       width: $width !important;
+      object-fit: contain;
       //margin: 0 auto;
     }
   }
   &__m-content {
+    margin-top: 40px;
     margin-right: 16px;
+    line-height: 2;
     @include large {
       margin: 0 auto;
       width: $width;

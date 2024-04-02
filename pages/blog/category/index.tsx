@@ -53,7 +53,7 @@ export default function Category(props) {
                                                                 </a>
                                                             </div>
                                                             {sizeAOS && (
-                                                                <Media objectFit={size && size.width <= 768 ? "cover" : "contain"} height={"200px"} width={"200px"} src={getStrapiMedia(category.attributes.articles.data[0].attributes.image)} />
+                                                                <Media objectFit={size && size.width <= 768 ? "cover" : "contain"} height={"200"} width={"200"} src={getStrapiMedia(category.attributes.articles.data[0].attributes.image)} />
                                                             )}
                                                         </div>
                                                     </div>

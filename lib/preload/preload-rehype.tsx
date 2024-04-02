@@ -15,8 +15,24 @@ import {switchListStyle} from "./preload-rehype-tools";
 
 function UseProcessor({ content, size }) {
   const [contentElements, setContentElements] = useState([]);
+  function preloadListProcessor(child, i) {
+        if (child.name == "li") {
+            return (
+                <li key={i}>{child.children.map((subChild, j) => {
+                    if (subChild.type === "text") {
+                        return <span key={j}>{subChild.data}</span>;
+                    } else if (subChild.name === "code") {
+                        return <Code key={j}>{subChild.children[0].data}</Code>;
+                    } else if (subChild.name === "p") {
+                        return <p key={j}>{subChild.children[0].data}</p>;
+                    }
+                })}</li>
+            );
+        }
+    }
 
-  useEffect(() => {
+// Render the content
+useEffect(() => {
     const parsedContent = ReactHtmlParser(content, {
       decodeEntities: true,
       transform: (node, index) => {
@@ -33,10 +49,6 @@ function UseProcessor({ content, size }) {
           return <TextH4 key={index} classname={"o-processor__a-textH4"}>{node.children[0].data}</TextH4>;
         } else if (node.name === "h5") {
           return <TextH5 key={index} classname={"o-processor__a-textH5"}>{node.children[0].data}</TextH5>;
-        } else if (node.name === "a") {
-          return <TextLink key={index} src={node.attribs.href}>
-                {node.children[0].data}
-              </TextLink>
         } else if (node.name === "mark") {
           return <TextMarked key={index}>{node.children[0].data}</TextMarked>;
         } else if (node.name === "code") {
@@ -56,7 +68,7 @@ function UseProcessor({ content, size }) {
               </nav>
           )
         } else if (node.name === "table") {
-          return <nav style={{maxWidth: size.width}} key={index}>
+          return <nav style={{maxWidth: size.width, overflowX: "auto"}} key={index}>
                 <table className={"m-table"}>
                   {node.children.map((child, i) => {
                     if (child.name === "thead") {
@@ -102,25 +114,13 @@ function UseProcessor({ content, size }) {
         } else if (node.name == "ol") {
           return (
               <ol className={"o-processor__m-list"} style={{listStyleType: switchListStyle(node)}}>
-                {node.children.map((child, i) => {
-                  if (child.name == "li") {
-                    return (
-                        <li key={i}>{child.children[0].data}</li>
-                    )
-                  }
-                })}
+                {node.children.map(preloadListProcessor)}
               </ol>
           )
         } else if (node.name == "ul") {
           return (
               <ul key={index} className={"o-processor__m-list--ul o-processor__m-list"}>
-                {node.children.map((child, i) => {
-                  if (child.name == "li") {
-                    return (
-                        <li key={i}>{child.children[0].data}</li>
-                    )
-                  }
-                })}
+                  {node.children.map(preloadListProcessor)}
               </ul>
           )
         } else if(node.name === "blockquote") {

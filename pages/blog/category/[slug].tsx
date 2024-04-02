@@ -40,7 +40,7 @@ const CategorySlug = () => {
                                         categories.data[0].attributes.articles.data.map(function (article, index) {
                                             return (
                                                 <a className={"l-category__m-divArticle"} key={index} href={"/blog/article/"+ article.attributes.slug}>
-                                                    <nav className={"l-category__m-divArticle--a-image"}><Media width={"300px"} height={"150px"} objectFit={"cover"} src={getStrapiMedia(article.attributes.image)}/></nav>
+                                                    <nav className={"l-category__m-divArticle--a-image"}><Media width={"150"} height={"150"} objectFit={"cover"} src={getStrapiMedia(article.attributes.image)}/></nav>
                                                     <nav className={'l-category__m-divArticle--m-metaDiv'}>
                                                         <nav className={"l-category__m-divArticle--m-metaInfoTag"}>
                                                             {
