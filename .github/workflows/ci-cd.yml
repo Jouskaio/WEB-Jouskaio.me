@@ -1,46 +1,37 @@
 name: CI/CD - WEB-Jouskaio.me
+
 on:
   push:
     branches:
       - main
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      # Mise à jour de l'action checkout
+      # Upgrade checkout action
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: main
 
-      # Installe les dépendances
-      - name: Install Dependencies
-        run: npm install --legacy-peer-deps
-
-      # Exécute les tests
-      #- name: Run Tests
-      #  run: npm run test
-
-      # Construit l'application Next.js
-      - name: Build
-        run: npm run build
-
-      # Installe OpenVPN
+      # Install OpenVPN
       - name: Install OpenVPN
         run: |
           sudo apt update
           sudo apt install -y openvpn openvpn-systemd-resolved
 
-      # Crée le fichier de configuration du VPN en utilisant le contenu du secret
+      # Create VPN Config File
       - name: Create VPN Config File
         run: echo "${{ secrets.VPN_CONFIG }}" > vpn_config.ovpn
 
-      # Connecte au VPN
+      # Connect to VPN
       - name: Connect to VPN
         uses: "kota65535/github-openvpn-connect-action@v2"
         with:
-          config: vpn_config.ovpn
+          config_file: vpn_config.ovpn
 
+      # Build and Deploy
       - name: Use SSH
         uses: appleboy/ssh-action@master
         with:
