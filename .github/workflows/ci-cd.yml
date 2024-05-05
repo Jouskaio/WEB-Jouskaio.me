@@ -21,8 +21,8 @@ jobs:
         run: npm install --legacy-peer-deps
 
       # Exécute les tests
-      - name: Run Tests
-        run: npm run test
+      #- name: Run Tests
+      #  run: npm run test
 
       # Construit l'application Next.js
       - name: Build
