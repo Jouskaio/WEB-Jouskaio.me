@@ -31,7 +31,7 @@ jobs:
         with:
           config_file: vpn_config.ovpn
 
-      # Build and Deploy
+      # Build & Deploy
       - name: Use SSH
         uses: easingthemes/ssh-deploy@v2.1.4
         with:
