@@ -1,14 +1,11 @@
-name: CI/CD
-
+name: CI/CD - WEB-Jouskaio.me
 on:
   push:
     branches:
       - main
-
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
       # Mise à jour de l'action checkout
       - name: Checkout
@@ -28,8 +25,23 @@ jobs:
       - name: Build
         run: npm run build
 
-      # Déploie l'application sur le serveur Linux
-      - name: Deploy
+      # Installe OpenVPN
+      - name: Install OpenVPN
+        run: |
+          sudo apt update
+          sudo apt install -y openvpn openvpn-systemd-resolved
+
+      # Crée le fichier de configuration du VPN en utilisant le contenu du secret
+      - name: Create VPN Config File
+        run: echo "${{ secrets.VPN_CONFIG }}" > vpn_config.ovpn
+
+      # Connecte au VPN
+      - name: Connect to VPN
+        uses: "kota65535/github-openvpn-connect-action@v2"
+        with:
+          config: vpn_config.ovpn
+
+      - name: Use SSH
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.SERVER_HOST }}
