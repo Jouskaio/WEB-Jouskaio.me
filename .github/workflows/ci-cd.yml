@@ -33,12 +33,15 @@ jobs:
 
       # Build and Deploy
       - name: Use SSH
-        uses: appleboy/ssh-action@master
+        uses: easingthemes/ssh-deploy@v2.1.4
         with:
-          host: ${{ secrets.SERVER_HOST }}
-          username: ${{ secrets.SERVER_USERNAME }}
-          key: ${{ secrets.SSH_PRIVATE_KEY }}
-          script: |
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
+          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
+          REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
+          REMOTE_PORT: ${{ secrets.SERVER_PORT }}
+          SCRIPT_BEFORE: |
+            pwd
+          SCRIPT_AFTER: |
             cd /root/WEB-Jouskaio.me
             git pull origin main
             npm install --legacy-peer-deps
