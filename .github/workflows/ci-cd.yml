@@ -38,7 +38,8 @@ jobs:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY}}
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
-          REMOTE_PORT: ${{ secrets.SERVER_PORT }}
+          SOURCE: "dist"
+          TARGET: "/root/WEB-Jouskaio.me"
           SCRIPT_BEFORE: |
             pwd
           SCRIPT_AFTER: |
