@@ -18,8 +18,13 @@ function Header({pages}) {
     return (
         <div className="o-header" data-aos={"zoom-in-up"} data-aos-duration={1000}>
             {pages.map(function (page, i) {
-                return (
-                    <Link href={{ pathname: page.source }} key={i} legacyBehavior>
+                const isExternal = page.source.startsWith("http");
+                return isExternal ? (
+                    <a href={page.source} className={page.class} key={i}>
+                        {page.name}
+                    </a>
+                ) : (
+                    <Link href={page.source} key={i} legacyBehavior>
                         <a className={page.class}>{page.name}</a>
                     </Link>
                 );
@@ -27,5 +32,6 @@ function Header({pages}) {
         </div>
     )
 }
+
 
 export default Header;

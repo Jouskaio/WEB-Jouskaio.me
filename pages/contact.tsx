@@ -45,7 +45,7 @@ export default function Contact (props) {
                         nameProfile={"Jean-Camille Sormain"}
                         descriptionProfile={"Novae Memorae CEO"}
                         urlProfile={"https://www.linkedin.com/in/jean-camille-sormain-65779924/"}
-                        urlPhotoProfile={"https://media.licdn.com/dms/image/C5603AQGXr_baLyGibw/profile-displayphoto-shrink_800_800/0/1582906820768?e=2147483647&v=beta&t=6df5VyT9DeZ5E35Pg-Iw0h_dH5Hxd27iV1inCJPOl_A"}
+                        urlPhotoProfile={"/images/jean-camille-sormain.png"}
                         aosDuration={1000}
                         aosEffect={size && size.width <= 768 ? "fade-up" : "fade-right"}>
                         I highly recommend: hardworking, self-sufficient and intelligent.

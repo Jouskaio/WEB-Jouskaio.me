@@ -138,7 +138,7 @@ function Email(props) {
 }
 
 Email.propTypes = {
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
     className: PropTypes.string,
     alert: PropTypes.func,
     aosDuration: PropTypes.number,

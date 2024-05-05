@@ -253,6 +253,7 @@ export default function Home() {
                         )}
                     </section>
                     <section className={'l-homepage__o-latestArticles'}>
+                        {/*TODO : Changer to API REST Wordpress*/}
                         <Query query={LATEST_ARTICLES_QUERY} value={3}>
                             {({ data: { articles } }) => {
                                 let articlesData = [];

@@ -51,7 +51,7 @@ class Media extends Component{
         } = this.props
         return (
             <>
-                <Image className={"a-media "+ classname } src={src} alt={alt} height={height} width={width} objectFit={objectFit} unoptimized={true}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src}/>
+                <Image src={src} alt={alt} height={height} width={width} objectFit={objectFit} unoptimized={false}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src} className={"a-media "+ classname }/>
             </>
         );
     }
