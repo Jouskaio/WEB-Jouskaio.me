@@ -18,7 +18,7 @@ jobs:
 
       # Installe les dépendances
       - name: Install Dependencies
-        run: npm install
+        run: npm install --legacy-peer-deps
 
       # Exécute les tests
       - name: Run Tests
@@ -38,6 +38,6 @@ jobs:
           script: |
             cd /root/WEB-Jouskaio.me
             git pull origin main
-            npm install
+            npm install --legacy-peer-deps
             npm run build
             pm2 restart nextjs
