@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import TextH1 from '../components/atom/text/textH1';
 import { client } from '../lib/api/apolloClient';
 import { ApolloProvider } from '@apollo/client';
@@ -16,11 +16,18 @@ import {useWindowSize} from "../lib/motion/sizeWindow";
 import TextH5 from "../components/atom/text/textH5";
 import WidgetContact from "../components/molecule/widget/contact/widgetContact";
 import Image from "next/image";
+import {fetchLatestArticles} from "../lib/api/blog.jouskaio.me/fetchLatestPost";
+import alert from "../components/molecule/navigation/alert";
 
 export default function Home() {
     const [displayNewsletter, setNewsletter] = useState('false');
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
+    const [articles, setArticles] = useState([]);
+    useEffect(() => {
+        fetchLatestArticles().then(setArticles);
+        console.log(articles)
+    }, []);
 
     if (!client) {
         // TODO: Do progress bar
@@ -254,48 +261,19 @@ export default function Home() {
                     </section>
                     <section className={'l-homepage__o-latestArticles'}>
                         {/*TODO : Changer to API REST Wordpress*/}
-                        <Query query={LATEST_ARTICLES_QUERY} value={3}>
-                            {({ data: { articles } }) => {
-                                let articlesData = [];
-                                articles.data.map((article, i) => {
-                                    let tags = [];
-                                    article.attributes.tags.data.map((tag, i) => {
-                                        tags.push({
-                                            name: tag.attributes.name,
-                                            color: tag.attributes.color,
-                                            slug: tag.attributes.slug,
-                                        });
-                                    });
-                                    article.attributes.categories.data.map((tag, i) => {
-                                        tags.push({
-                                            name: tag.attributes.name,
-                                            color: tag.attributes.color,
-                                            slug: tag.attributes.slug,
-                                        });
-                                    });
-                                    articlesData.push({
-                                        title: article.attributes.title,
-                                        text: article.attributes.description,
-                                        media: getStrapiMedia(article.attributes.image),
-                                        url: article.attributes.slug,
-                                        tags: tags,
-                                        classname: undefined,
-                                    });
-                                });
-                                return (
-                                    <CardNews
-                                        article={articlesData}
-                                        classname={'l-homepage__o-latestArticles--news'}
-                                        aosDuration={1000}
-                                        aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}
-                                    />
-                                );
-                            }}
-                        </Query>
+                        <section className={'l-homepage__o-latestArticles'}>
+                            <CardNews
+                                article={articles}
+                                classname={'l-homepage__o-latestArticles--news'}
+                                aosDuration={1000}
+                                aosEffect={'fade-up'}
+                            />
+                        </section>
                     </section>
                     {statusAOS && size.width < 768 && (
                         <>
-                            <TextH5 classname={'l-homepage__a-titlePassion'} aosDuration={1300} aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}>Passions</TextH5>
+                            <TextH5 classname={'l-homepage__a-titlePassion'} aosDuration={1300}
+                                    aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}>Passions</TextH5>
                             {fragmentPassion}
                         </>
                     )}

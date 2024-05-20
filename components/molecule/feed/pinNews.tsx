@@ -16,15 +16,17 @@ function PinNews(props) {
         classname
     } = props;
 
+    console.log(media)
     return (
-        <Link href={`/blog/article/${url}`} legacyBehavior>
+        <Link href={`https://blog.jouskaio.me/${url}`} legacyBehavior>
             <div className={`m-pinNews ${classname}`}>
                 <div className={"m-pinNews__m-divText"}>
                     <TextH4 classname={`m-pinNews__a-title`}>{title}</TextH4>
-                    <TextDefault classname={`m-pinNews__a-text`}>{text}</TextDefault>
+                    <div className="a-text " dangerouslySetInnerHTML={{__html: text}}/>
                     <nav className={"m-pinNews__m-tags"}>
                         {tags && tags.map((item, i) => (
-                            <Tag color={item.color} slug={item.slug} key={i} classname={"m-pin__a-tag"}>{item.name}</Tag>
+                            <Tag color={item.color} slug={item.slug} key={i}
+                                 classname={"m-pin__a-tag"}>{item.name}</Tag>
                         ))}
                     </nav>
                 </div>
