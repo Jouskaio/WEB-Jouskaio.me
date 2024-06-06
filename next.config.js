@@ -7,9 +7,7 @@ const nextConfig = {
   images: {
     loader: "default",
     domains: [
-      "https://jouskaio-me-cms-df531e980433.herokuapp.com",
-      "jouskaio-me-cms-df531e980433.herokuapp.com",
-      "https://jouskaio-me-api-8b04d6008f29.herokuapp.com"
+      "https://api.jouskaio.me"
     ]
   },
 };

@@ -52,7 +52,7 @@ export default function Home() {
             ]}
             title={'Reading'}
             media={
-                'https://bestanimations.com/media/books/999470521finger-passes-along-book-spines-library-animated-gif.gif'
+                'https://i.pinimg.com/originals/4a/f9/8f/4af98f078ef1d02329e202fa4d6aac17.gif'
             }
             classname={'l-homepage__o-passions--card'}
             aosEffect={"fade-up"}
@@ -254,13 +254,13 @@ export default function Home() {
                                 aosDuration={1000}
                                 aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}
                             >
-                                “ I recently created my blog, the first article will arrive soon.
-                                You can subscribe to the newsletter to be aware of its posting “
+                                “My blog is finally created and you can now check last articles :)
+                                I'm currently finishing the newsletter registering.
+                                “
                             </CardInfos>
                         )}
                     </section>
                     <section className={'l-homepage__o-latestArticles'}>
-                        {/*TODO : Changer to API REST Wordpress*/}
                         <section className={'l-homepage__o-latestArticles'}>
                             <CardNews
                                 article={articles}
