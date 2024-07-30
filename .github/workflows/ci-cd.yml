@@ -40,8 +40,10 @@ jobs:
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
           SCRIPT_BEFORE: |
+            echo "Running SCRIPT_BEFORE"
             pwd
           SCRIPT_AFTER: |
+            echo "Running SCRIPT_AFTER"
             cd /root/WEB-Jouskaio.me
             git pull origin main
             npm install --legacy-peer-deps
