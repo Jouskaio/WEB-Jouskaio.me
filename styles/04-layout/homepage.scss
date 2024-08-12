@@ -65,12 +65,11 @@
   }
 
   &__o-latestArticles {
-    margin-top: 8px;
+    margin-top: 4px;
 
     @include medium {
       max-width: 450px;
       margin-left: 4px;
-      margin-top: 4px;
       grid-column: 5 / 7;
       grid-row: 3;
     }

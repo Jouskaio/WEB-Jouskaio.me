@@ -40,11 +40,13 @@ class CardCitation extends Component {
         } = this.props;
         return (
             <div className={"m-cardCitation " + classname} data-aos-duration={aosDuration} data-aos-effect={aosEffect}>
+                <nav className={"m-cardCitation__m-divImage"}>
+                    <Media objectFit={"cover"} src={urlPhotoProfile} alt={"Profile Image"} height={"100"} width={"100"} classname={"m-cardCitation__m-profilDivImg"}/>
+                </nav>
                 <a href={urlSource} className={"m-cardCitation__a-content"}>
                     <TextDefault>"{children}"</TextDefault>
                 </a>
                 <a href={urlProfile} className={"m-cardCitation__m-profilDiv"}>
-                    <Media objectFit={"cover"} src={urlPhotoProfile} alt={"Profile Image"} height={"100"} width={"100"} classname={"m-cardCitation__m-profilDivImg"}/>
                     <nav className={"m-cardCitation__m-profilDivText"}>
                         <TextDefault classname={"m-cardCitation__m-profilDivText--title"}>{nameProfile}</TextDefault>
                         <TextSpanXS>{descriptionProfile}</TextSpanXS>
