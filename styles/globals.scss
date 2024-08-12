@@ -21,6 +21,7 @@
 @import "02-molecules/alert";
 @import "02-molecules/plugins/audio";
 @import "02-molecules/table";
+@import "02-molecules/plugins/carousel";
 
 // Organisms
 @import "03-organisms/header";
@@ -33,6 +34,4 @@
 @import "04-layout/homepage";
 @import "04-layout/blog";
 @import "04-layout/contact";
-@import "04-layout/categoryHome";
-@import "04-layout/category";
-@import "04-layout/article";
+@import "04-layout/works";

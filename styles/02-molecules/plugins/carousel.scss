@@ -1,0 +1,53 @@
+.m-carousel-container {
+  width: 302px;
+  overflow: hidden;
+  position: relative;
+  margin: 0 auto;
+}
+
+.m-carousel {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+}
+
+.m-carousel__item {
+  min-width: 302px;
+  margin-right: 20px;
+  text-align: center;
+
+  img {
+    width: 302px;
+    height: 439px;
+    object-fit: cover;
+  }
+}
+
+.m-navCarousel-buttons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.m-navCarousel-button {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  margin: 0 5px;
+}
+
+/* Media query pour mobile */
+@include medium {
+  .m-carousel-container {
+    width: 100%;
+  }
+
+  .m-navCarousel-button {
+    position: static;
+  }
+
+  .m-navCarousel-buttons {
+    margin-top: 20px;
+  }
+}

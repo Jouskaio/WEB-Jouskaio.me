@@ -1,0 +1,16 @@
+.l-works {
+  &__a-title {
+    margin-top: 24px;
+    margin-bottom: 50px;
+    @include large {
+      margin-top: unset;
+      margin-bottom: 100px;
+    }
+  }
+  &__carousel {
+    width: 302px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 auto;
+  }
+}
