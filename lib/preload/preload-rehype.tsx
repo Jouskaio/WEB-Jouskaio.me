@@ -3,7 +3,6 @@ import ReactHtmlParser from "react-html-parser";
 import TextDefault from "../../components/atom/text/TextDefault";
 import TextH3 from "../../components/atom/text/textH3";
 import TextH4 from "../../components/atom/text/textH4";
-import TextLink from "../../components/atom/text/textLink";
 import TextH5 from "../../components/atom/text/textH5";
 import Code from "../../components/atom/code/code";
 import TextMarked from "../../components/atom/text/textMarked";
@@ -12,6 +11,7 @@ import TextH2 from "../../components/atom/text/textH2";
 import {getStrapiMedia} from "../api/api";
 import {shimmer, toBase64} from "./preload-image";
 import {switchListStyle} from "./preload-rehype-tools";
+import Image from "next/image";
 
 function UseProcessor({ content, size }) {
   const [contentElements, setContentElements] = useState([]);
@@ -58,9 +58,10 @@ useEffect(() => {
         } else if (node.name == "img") {
           return (
               <nav className={"o-processor__a-image"} key={index}>
-                <img
+                <Image
                     src={getStrapiMedia(node.attribs.src)}
                     placeholder="blur"
+                    layout="responsive"
                     onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
                     alt={"Illustration"}
                     className={""}

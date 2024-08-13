@@ -32,19 +32,23 @@ jobs:
           config_file: vpn_config.ovpn
 
       # Build & Deploy
-      - name: Use SSH
+      - name: Deploy to remote server
         uses: easingthemes/ssh-deploy@main
-        env:
+        with:
           SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rlgoDzvc -i"
+          ARGS: "-rlgoDzvc -i --delete"
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
+          TARGET: "/root/WEB-Jouskaio.me"
+          EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_BEFORE: |
             echo "Running SCRIPT_BEFORE"
+            whoami
             pwd
           SCRIPT_AFTER: |
             echo "Running SCRIPT_AFTER"
-            cd /root/WEB-Jouskaio.me
+            whoami
             git pull origin main
-            npm install --legacy-peer-deps
-            yarn run build
+            yarn install
+            next build
+            pm2 restart all

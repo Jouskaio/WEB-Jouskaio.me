@@ -1,4 +1,11 @@
-/** @type {import('next').NextConfig} */
+// Import the necessary modules for Next.js configuration
+const withPWA = require("next-pwa");
+const withBundleAnalyzer = require('@next/bundle-analyzer')({
+  enabled: process.env.ANALYZE === 'true'
+});
+const withPlugins = require('next-compose-plugins');
+
+// Define the main configuration object for Next.js
 const nextConfig = {
   reactStrictMode: false,
   experimental: {
@@ -7,37 +14,20 @@ const nextConfig = {
   images: {
     loader: "default",
     domains: [
-      "https://api.jouskaio.me"
+      "api.jouskaio.me", // Ensure these domains are correct
+      "blog.jouskaio.me" // Ensure these domains are correct
     ]
   },
-};
-module.exports = nextConfig
-
-// PWA
-const pwaConfig = process.env.NODE_ENV;
-const withPWA = require("next-pwa");
-module.exports = withPWA({
   pwa: {
     dest: "public",
     register: true,
     skipWaiting: true,
-    disable :  !pwaConfig
+    disable: process.env.NODE_ENV !== 'production' // Assuming you want PWA only in production
   }
-});
+};
 
-// Bundle Analyzer: analyze performances of the application
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true'
-})
-
-
-
-const withPlugins = require('next-compose-plugins')
+// Export a configuration wrapped by all plugins
 module.exports = withPlugins([
   [withPWA],
-  [withBundleAnalyzer],
-  // your other plugins here
-])
-
-
-// Resolving "fs module not found"
+  [withBundleAnalyzer]
+], nextConfig);

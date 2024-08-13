@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import PropTypes from 'prop-types';
 import {shimmer, toBase64} from "../../../lib/preload/preload-image";
-import TextDefault from "../../atom/text/TextDefault";
 import TextH4 from "../../atom/text/textH4";
 import Link from "next/link";
 import Tag from "../../atom/text/tag";
+import Image from "next/image";
 
 function Pin(props) {
     const {
@@ -27,11 +27,12 @@ function Pin(props) {
                     ))}
                 </nav>
             )}
-            <img
+            <Image
                 src={media}
                 placeholder="blur"
                 onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
                 className={`m-pin__a-image--${size}`}
+                alt={title}
             />
             {(size === 'small' || size === 'large') && (
                 <nav className={"m-pin__m-tags--" + size}>

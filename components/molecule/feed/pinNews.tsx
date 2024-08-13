@@ -5,6 +5,7 @@ import TextDefault from "../../atom/text/TextDefault";
 import TextH4 from "../../atom/text/textH4";
 import Link from "next/link";
 import Tag from "../../atom/text/tag";
+import Image from "next/image";
 
 function PinNews(props) {
     const {
@@ -30,11 +31,13 @@ function PinNews(props) {
                         ))}
                     </nav>
                 </div>
-                <img
+                <Image
                     src={media}
                     placeholder="blur"
                     width={100}
+                    alt={title}
                     height={55}
+                    blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
                     onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
                     className={`m-pinNews__a-image`}
                 />
