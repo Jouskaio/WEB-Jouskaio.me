@@ -43,6 +43,7 @@ jobs:
           EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_BEFORE: |
             echo "Running SCRIPT_BEFORE"
+            echo ${{ secrets.SSH_PRIVATE_KEY }}
             whoami
             pwd
           SCRIPT_AFTER: |
