@@ -34,9 +34,10 @@ jobs:
       # Test SSH Connection
       - name: Test SSH Connection
         run: |
-          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
-        env:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
+          chmod 600 /tmp/private_key
+          ssh -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
+      
 
       # Build & Deploy
       - name: Deploy to remote server
