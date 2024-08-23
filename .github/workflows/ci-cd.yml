@@ -54,6 +54,4 @@ jobs:
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
             yarn install
-            echo "Yarn install completed"
             next build
-            echo "Next build completed"
