@@ -51,8 +51,9 @@ jobs:
           SCRIPT_AFTER: |
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-            yarn install
-            yarn list next 
+            cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
             pwd
-            ls -l
+            ls -la
+            yarn install
             next build
+          
