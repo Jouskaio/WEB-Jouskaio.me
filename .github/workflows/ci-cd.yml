@@ -38,7 +38,6 @@ jobs:
           chmod 600 /tmp/private_key
           ssh -vvv -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
 
-
       # Build & Deploy
       - name: Deploy to remote server
         uses: easingthemes/ssh-deploy@main
