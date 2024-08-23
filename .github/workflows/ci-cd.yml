@@ -47,7 +47,7 @@ jobs:
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
           TARGET: "/home/debian/Documents/jouskaio.me/WEB-Jouskaio.me"
-          EXCLUDE: "/dist/"
+          EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_AFTER: |
             echo "Starting SCRIPT_AFTER"
             export NVM_DIR="$HOME/.nvm"
