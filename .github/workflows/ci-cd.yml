@@ -46,13 +46,11 @@ jobs:
           ARGS: "-rlgoDzvc -i --delete"
           REMOTE_HOST: ${{ secrets.SERVER_HOST }}
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
-          TARGET: "/root/WEB-Jouskaio.me"
+          TARGET: "/home/debian/Documents/jouskaio.me/WEB-Jouskaio.me"
           EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_BEFORE: |
             echo "Running SCRIPT_BEFORE"
-            echo ${{ secrets.SSH_PRIVATE_KEY }}
             whoami
-            pwd
           SCRIPT_AFTER: |
             echo "Running SCRIPT_AFTER"
             whoami
