@@ -50,7 +50,5 @@ jobs:
           EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_AFTER: |
             echo "Running SCRIPT_AFTER"
-            export PATH="$PATH:/home/linuxbrew/.linuxbrew/bin"
-            git pull origin main
-            yarn install
-            next build
+            /home/debian/.nvm/versions/node/v22.2.0/bin/yarn install
+            /home/debian/.nvm/versions/node/v22.2.0/bin/next build
