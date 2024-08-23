@@ -49,6 +49,8 @@ jobs:
           TARGET: "/home/debian/Documents/jouskaio.me/WEB-Jouskaio.me"
           EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_AFTER: |
-            echo "Running SCRIPT_AFTER"
-            /home/linuxbrew/.linuxbrew/bin/yarn install
-            /home/linuxbrew/.linuxbrew/bin/next build
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+            yarn install
+            next build
+          
