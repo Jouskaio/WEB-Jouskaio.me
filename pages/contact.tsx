@@ -1,13 +1,12 @@
 import React from "react";
 import TextH1 from "../components/atom/text/textH1";
 import TextDefault from "../components/atom/text/TextDefault";
-import TextH2 from "../components/atom/text/textH2";
 import Email from "../components/organism/interaction/email";
 import {useWindowSize} from "../lib/motion/sizeWindow";
 import TextH3 from "../components/atom/text/textH3";
 import CardCitation from "../components/molecule/cards/cardCitation";
 
-export default function Contact (props) {
+export default function Contact (props: { alert: any; }) {
     const { alert } = props;
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
