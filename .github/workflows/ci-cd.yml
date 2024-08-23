@@ -50,5 +50,5 @@ jobs:
           EXCLUDE: "/dist/, /node_modules/"
           SCRIPT_AFTER: |
             echo "Running SCRIPT_AFTER"
-            /home/debian/.nvm/versions/node/v22.2.0/bin/yarn install
-            /home/debian/.nvm/versions/node/v22.2.0/bin/next build
+            /home/linuxbrew/.linuxbrew/bin/yarn install
+            /home/linuxbrew/.linuxbrew/bin/next build
