@@ -48,13 +48,9 @@ jobs:
           REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
           TARGET: "/home/debian/Documents/jouskaio.me/WEB-Jouskaio.me"
           EXCLUDE: "/dist/, /node_modules/"
-          SCRIPT_BEFORE: |
-            echo "Running SCRIPT_BEFORE"
-            whoami
           SCRIPT_AFTER: |
             echo "Running SCRIPT_AFTER"
-            whoami
             git pull origin main
             yarn install
             next build
-            pm2 restart all
+            
