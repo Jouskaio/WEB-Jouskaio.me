@@ -31,6 +31,13 @@ jobs:
         with:
           config_file: vpn_config.ovpn
 
+      # Test SSH Connection
+      - name: Test SSH Connection
+        run: |
+          ssh -o StrictHostKeyChecking=no -i ${{ secrets.SSH_PRIVATE_KEY }} ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
+
       # Build & Deploy
       - name: Deploy to remote server
         uses: easingthemes/ssh-deploy@main
