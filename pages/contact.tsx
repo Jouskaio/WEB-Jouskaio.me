@@ -6,7 +6,7 @@ import {useWindowSize} from "../lib/motion/sizeWindow";
 import TextH3 from "../components/atom/text/textH3";
 import CardCitation from "../components/molecule/cards/cardCitation";
 
-export default function Contact (props: { alert: any; }) {
+export default function Contact (props) {
     const { alert } = props;
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
