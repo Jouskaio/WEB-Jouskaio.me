@@ -53,5 +53,8 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
+            git pull
             yarn install
-            next build
+            yarn build
+            pm2 start WEB-Jouskaio.me
+            
