@@ -55,6 +55,6 @@ jobs:
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
             git pull
             yarn install
-            yarn build
+            next build
             pm2 restart WEB-Jouskaio.me
             
