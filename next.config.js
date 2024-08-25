@@ -9,7 +9,6 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
 
-// Assurez-vous d'importer `next-compose-plugins` ici
 const withPlugins = require('next-compose-plugins');
 
 const nextConfig = {

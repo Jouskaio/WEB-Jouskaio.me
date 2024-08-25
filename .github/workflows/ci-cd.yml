@@ -56,5 +56,5 @@ jobs:
             git pull
             yarn install
             yarn build
-            pm2 start WEB-Jouskaio.me
+            pm2 restart WEB-Jouskaio.me
             
