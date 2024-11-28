@@ -36,7 +36,7 @@
     "net": "^1.0.2",
     "next": "^14.2.6",
     "next-compose-plugins": "^2.2.1",
-    "next-pwa": "^5.5.2",
+    "next-pwa": "^5.6.0",
     "next-sitemap": "^4.2.3",
     "nodemailer": "^6.9.5",
     "react": "^18.1.0",

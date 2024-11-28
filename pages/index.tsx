@@ -1,7 +1,9 @@
+// @ts-ignore
 import Head from 'next/head';
 import React, {useEffect, useState} from 'react';
 import TextH1 from '../components/atom/text/textH1';
 import { client } from '../lib/api/apolloClient';
+// @ts-ignore
 import { ApolloProvider } from '@apollo/client';
 import CardXL from '../components/molecule/cards/cardXL';
 import CardStatus from '../components/molecule/cards/cardStatus';
@@ -9,15 +11,11 @@ import CardListIcons from '../components/molecule/cards/cardListIcons';
 import TextDefault from '../components/atom/text/TextDefault';
 import CardInfos from '../components/molecule/cards/cardInfos';
 import CardNews from '../components/molecule/cards/cardNews';
-import LATEST_ARTICLES_QUERY from '../lib/api/article/latest-articles';
-import Query, { getStrapiMedia } from '../lib/api/api';
 import CardListText from '../components/molecule/cards/cardListText';
 import {useWindowSize} from "../lib/motion/sizeWindow";
 import TextH5 from "../components/atom/text/textH5";
 import WidgetContact from "../components/molecule/widget/contact/widgetContact";
-import Image from "next/image";
 import {fetchLatestArticles} from "../lib/api/blog.jouskaio.me/fetchLatestPost";
-import alert from "../components/molecule/navigation/alert";
 
 export default function Home() {
     const [displayNewsletter, setNewsletter] = useState('false');
