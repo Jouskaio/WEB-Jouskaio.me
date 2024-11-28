@@ -108,7 +108,7 @@ export default function Home() {
                         <TextH1 classname={'l-homepage__o-mainTitle'}>Manon Salsou</TextH1>
                         {statusAOS && (
                             <CardXL
-                                media={'https://vod.api.video/vod/vi7JsiT7ga1SbBdR8QeUAZLX/mp4/source.mp4'}
+                                media={'/video/landing_page.mp4'}
                                 aosDuration={1000}
                                 aosEffect={"fade-up"}
                             />
