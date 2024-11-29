@@ -2,14 +2,15 @@ module.exports = {
   apps: [
     {
       name: "WEB-Jouskaio.me", // Nom de l'application dans PM2
-      script: "dist/server.js", // Fichier principal à exécuter
-      instances: "max", // Utilisation de tous les cœurs disponibles
-      exec_mode: "cluster", // Mode de cluster pour maximiser les performances
+      script: "yarn", // Utilise Yarn à la place de npm
+      args: "start", // Spécifie la commande "start" de Yarn
+      instances: "max", // Utilisation de tous les cœurs CPU disponibles
+      exec_mode: "cluster", // Mode cluster pour maximiser les performances
       env: {
-        NODE_ENV: "development", // Variables d'environnement pour dev
+        NODE_ENV: "development", // Variables d'environnement pour développement
       },
       env_production: {
-        NODE_ENV: "production", // Variables d'environnement pour prod
+        NODE_ENV: "production", // Variables d'environnement pour production
       },
     },
   ],
