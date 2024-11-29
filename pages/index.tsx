@@ -24,7 +24,6 @@ export default function Home() {
     const [articles, setArticles] = useState([]);
     useEffect(() => {
         fetchLatestArticles().then(setArticles);
-        console.log(articles)
     }, []);
 
     if (!client) {
