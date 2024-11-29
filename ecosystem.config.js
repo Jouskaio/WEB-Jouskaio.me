@@ -4,6 +4,12 @@ module.exports = {
       name: "WEB-Jouskaio.me",
       script: "yarn",
       args: "start",
+      watch: true,
+      "ignore_watch" : ["node_modules"],
+      "watch_options": {
+        "usePolling": true,
+        "interval": 1000
+      },
       instances: "max",
       exec_mode: "cluster",
       env: {

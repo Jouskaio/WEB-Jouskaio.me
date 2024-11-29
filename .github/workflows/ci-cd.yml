@@ -53,6 +53,11 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
+            # Installer Yarn si non présent
+            if ! command -v yarn > /dev/null; then
+              npm install -g yarn
+            fi
+
             # Aller dans le dossier du projet
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
 
