@@ -11,16 +11,21 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 const withPlugins = require("next-compose-plugins");
 
+const isLocal = process.env.NODE_ENV !== "production";
+
 const nextConfig = {
   reactStrictMode: false,
   experimental: {
     externalDir: true,
   },
   images: {
-    loader: "default",
-    domains: [
-      "api.jouskaio.me",
-      "blog.jouskaio.me",
+    remotePatterns: [
+      {
+        protocol: isLocal ? "http" : "https", // HTTP en local, HTTPS en production
+        hostname: isLocal ? "localhost" : "blog.jouskaio.me",
+        port: isLocal ? "8000" : "", // Spécifie le port 8000 en local
+        pathname: "/wp-content/uploads/**",
+      },
     ],
   },
   async headers() {
