@@ -55,7 +55,7 @@ jobs:
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
             git fetch --all
             git reset --hard origin/main
-            if [ ! -d "node_modules" ]; then yarn install; fi
+            if [ ! -d "node_modules" ]; then rm -rf node_modules package-lock.json && yarn install; fi
             yarn build
             pm2 reload ecosystem.config.js --env production
 #            echo "Starting SCRIPT_AFTER"
