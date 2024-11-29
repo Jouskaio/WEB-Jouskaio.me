@@ -52,17 +52,21 @@ jobs:
             set -e
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+            # Aller dans le dossier du projet
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
+
+            # Synchroniser avec le dernier code
             git fetch --all
             git reset --hard origin/main
-            if [ ! -d "node_modules" ]; then rm -rf node_modules package-lock.json && yarn install; fi
+
+            # Installer les dépendances
+            if [ ! -d "node_modules" ]; then
+              rm -rf node_modules package-lock.json yarn.lock && yarn install
+            fi
+
+            # Build l'application
             yarn build
-            pm2 reload ecosystem.config.js --env production
-#            echo "Starting SCRIPT_AFTER"
-#            export NVM_DIR="$HOME/.nvm"
-#            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-#            cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
-#            git pull
-#            yarn install
-#            yarn build
-#            pm2 restart WEB-Jouskaio.me
+
+            # Redémarrer avec PM2
+            pm2 start ecosystem.config.js --env production || pm2 reload ecosystem.config.js --env production
