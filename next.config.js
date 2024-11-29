@@ -21,10 +21,14 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: isLocal ? "http" : "https", // HTTP en local, HTTPS en production
-        hostname: isLocal ? "localhost" : "blog.jouskaio.me",
-        port: isLocal ? "8000" : "", // Spécifie le port 8000 en local
+        protocol: "https",
+        hostname: "blog.jouskaio.me",
         pathname: "/wp-content/uploads/**",
+      },
+      {
+        protocol: "https",
+        hostname: "api.jouskaio.me",
+        pathname: "/**",
       },
     ],
   },
