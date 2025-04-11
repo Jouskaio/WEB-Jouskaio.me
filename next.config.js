@@ -36,6 +36,11 @@ const nextConfig = {
         hostname: "api.jouskaio.me",
         pathname: "/**",
       },
+      {
+        protocol: "http",
+        hostname: "localhost",
+        pathname: "/**",
+      },
     ],
   },
   async headers() {
