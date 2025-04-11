@@ -4,41 +4,61 @@ on:
   push:
     branches:
       - main
+      - staging
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      # Upgrade checkout action
+      # Checkout du repo
       - name: Checkout
         uses: actions/checkout@v2
         with:
-          ref: main
+          ref: ${{ github.ref }}
 
-      # Install OpenVPN
+      # Cache node_modules pour gagner du temps
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # Installer OpenVPN
       - name: Install OpenVPN
         run: |
           sudo apt update
           sudo apt install -y openvpn openvpn-systemd-resolved
 
-      # Create VPN Config File
+      # Créer le fichier de config VPN
       - name: Create VPN Config File
         run: echo "${{ secrets.VPN_CONFIG }}" > vpn_config.ovpn
 
-      # Connect to VPN
+      # Se connecter au VPN
       - name: Connect to VPN
         uses: "kota65535/github-openvpn-connect-action@v2"
         with:
           config_file: vpn_config.ovpn
 
-      # Test SSH Connection
+      # Déterminer l'environnement (prod/staging)
+      - name: Set ENVIRONMENT variable
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "ENVIRONMENT=production" >> $GITHUB_ENV
+          else
+            echo "ENVIRONMENT=staging" >> $GITHUB_ENV
+          fi
+
+      # Vérifier la connexion SSH
       - name: Test SSH Connection
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
           chmod 600 /tmp/private_key
-          ssh -vvv -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
+          ssh -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
 
-      # Build & Deploy
+      # Déploiement distant
       - name: Deploy to remote server
         uses: easingthemes/ssh-deploy@main
         with:
@@ -53,25 +73,27 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
 
-            # Installer Yarn si non présent
+            cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
+            git fetch --all
+            git reset --hard origin/main
+
             if ! command -v yarn > /dev/null; then
               npm install -g yarn
             fi
 
-            # Aller dans le dossier du projet
-            cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
-
-            # Synchroniser avec le dernier code
-            git fetch --all
-            git reset --hard origin/main
-
-            # Installer les dépendances
             if [ ! -d "node_modules" ]; then
               rm -rf node_modules package-lock.json yarn.lock && yarn install
             fi
 
-            # Build l'application
             yarn build
 
-            # Redémarrer avec PM2
-            pm2 start ecosystem.config.js --env production || pm2 reload ecosystem.config.js --env production
+            pm2 start ecosystem.config.js --env $ENVIRONMENT || pm2 reload ecosystem.config.js --env $ENVIRONMENT
+
+      # Notification Discord si échec
+      - name: Discord Notification on Failure
+        if: failure()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"🚨 Le déploiement de **Jouskaio.me** a échoué sur \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
