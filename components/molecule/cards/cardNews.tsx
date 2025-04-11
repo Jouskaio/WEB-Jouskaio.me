@@ -12,6 +12,10 @@ function CardNews(props) {
         aosEffect,
     } = props;
 
+    {article.map((item, i) => {
+        console.log(item.media);
+    })}
+
     return (
         <div className={`m-cardNews ${classname}`} data-aos={aosEffect} data-aos-duration={aosDuration}>
             <TextH5 classname={"m-cardNews__a-title"}>Latest Articles</TextH5>

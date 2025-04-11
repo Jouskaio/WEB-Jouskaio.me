@@ -252,7 +252,7 @@ export default function Home() {
                                 aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}
                             >
                                 “My blog is finally created and you can now check last articles :)
-                                I'm currently finishing the newsletter registering.
+                                I'm currently working on my first project presentation.
                                 “
                             </CardInfos>
                         )}
