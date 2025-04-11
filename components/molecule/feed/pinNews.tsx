@@ -17,7 +17,6 @@ function PinNews(props) {
         classname
     } = props;
 
-    console.log(media)
     return (
         <Link href={`https://blog.jouskaio.me/${url}`} legacyBehavior>
             <div className={`m-pinNews ${classname}`}>
