@@ -42,12 +42,12 @@ jobs:
         if: success()
         uses: Ilshidur/action-discord@master
         with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
           message: ":white_check_mark: Déploiement de **Jouskaio.me** terminé avec succès sur la branche **main** !"
 
       - name: Discord notification on failure
         if: failure()
         uses: Ilshidur/action-discord@master
         with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
           message: ":x: Le déploiement de **Jouskaio.me** a échoué. Va checker les logs GitHub Actions !"
