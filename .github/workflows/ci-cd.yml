@@ -76,6 +76,8 @@ jobs:
             cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
             git fetch --all
             git reset --hard origin/main
+            
+            export BLOG_INTERNAL_URL=${{ secrets.BLOG_INTERNAL_URL }}
 
             if ! command -v yarn > /dev/null; then
               npm install -g yarn

@@ -21,8 +21,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "https",
-        hostname: "blog.jouskaio.me",
+        protocol: process.env.BLOG_INTERNAL_URL?.startsWith("http") ? process.env.BLOG_INTERNAL_URL.split("://")[0] : "https",
+        hostname: process.env.BLOG_INTERNAL_URL?.replace("http://", "").replace("https://", ""),
+        port: process.env.BLOG_INTERNAL_URL.includes(":") ? process.env.BLOG_INTERNAL_URL.split(":")[2]?.split("/")[0] : undefined,
         pathname: "/wp-content/uploads/**",
       },
       {
