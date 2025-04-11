@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 const withPWA = require("next-pwa")({
   dest: "public",
   register: true,
@@ -11,7 +13,10 @@ const withBundleAnalyzer = require("@next/bundle-analyzer")({
 
 const withPlugins = require("next-compose-plugins");
 
-const isLocal = process.env.NODE_ENV !== "production";
+const blogUrl = process.env.BLOG_INTERNAL_URL || "https://blog.jouskaio.me";
+
+const [protocol = "https", hostWithPort = "blog.jouskaio.me"] = blogUrl.split("://");
+const [hostname, port] = hostWithPort.split(":");
 
 const nextConfig = {
   reactStrictMode: false,
@@ -21,9 +26,9 @@ const nextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: process.env.BLOG_INTERNAL_URL?.startsWith("http") ? process.env.BLOG_INTERNAL_URL.split("://")[0] : "https",
-        hostname: process.env.BLOG_INTERNAL_URL?.replace("http://", "").replace("https://", ""),
-        port: process.env.BLOG_INTERNAL_URL.includes(":") ? process.env.BLOG_INTERNAL_URL.split(":")[2]?.split("/")[0] : undefined,
+        protocol,
+        hostname,
+        port,
         pathname: "/wp-content/uploads/**",
       },
       {
