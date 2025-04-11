@@ -81,26 +81,26 @@ jobs:
               npm install -g yarn
             fi
 
-            if [ ! -d "node_modules" ]; then
-              rm -rf node_modules package-lock.json yarn.lock && yarn install
-            fi
-
+            rm -rf node_modules .next package-lock.json yarn.lock
+            yarn install
             yarn build
 
             pm2 start ecosystem.config.js --env $ENVIRONMENT || pm2 reload ecosystem.config.js --env $ENVIRONMENT
 
+      # Discord Notification on Success
       - name: Discord Notification on Success
         if: success()
-        uses: Ilshidur/action-discord@master
-        with:
-          webhook: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          message: ":white_check_mark: Déploiement de **Jouskaio.me** terminé avec succès sur la branche **main** !"
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"✅ Deployment of **WEB-Jouskaio.me** successfully completed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          ${{ secrets.DISCORD_WEBHOOK_URL }}
 
-      # Notification Discord si échec
+      # Discord Notification on Success
       - name: Discord Notification on Failure
         if: failure()
         run: |
           curl -H "Content-Type: application/json" \
           -X POST \
-          -d "{\"content\": \"🚨 Le déploiement de **Jouskaio.me** a échoué sur \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          -d "{\"content\": \"🚨 Deployment of **WEB-Jouskaio.me** failed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
