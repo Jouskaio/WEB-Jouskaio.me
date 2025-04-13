@@ -1,30 +1,31 @@
-import {Component} from "react";
+import React, { Component, ReactNode } from "react";
 import PropTypes from "prop-types";
+
+type TextMarkedProps = {
+    classname?: string;
+    children?: ReactNode;
+};
 
 /**
  * Atom: Text Marked
  *
- * @param props
  * @param classname : string
- * @constructor
+ * @param children : ReactNode
  */
-export default class TextMarked extends Component {
-
+export default class TextMarked extends Component<TextMarkedProps> {
     static propTypes = {
         classname: PropTypes.string,
-        children: PropTypes.any
-    }
+        children: PropTypes.any,
+    };
 
     render() {
-        const {
-            // @ts-ignore
-            classname,
-            // @ts-ignore
-            children
-        } = this.props
+        const { classname = "", children } = this.props;
 
         return (
-                <span className={"a-textMarked " + classname}>{children}<span className={"a-textMarked--mark"}></span></span>
+            <span className={`a-textMarked ${classname}`}>
+        {children}
+                <span className="a-textMarked--mark" />
+      </span>
         );
     }
 }

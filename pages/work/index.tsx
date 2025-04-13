@@ -1,95 +1,107 @@
-import React, { useEffect, useRef, useState } from "react";
-import TextDefault from "../../components/atom/text/TextDefault";
+import { useEffect, useRef, useState } from "react";
+import Head from "next/head";
+import Image from "next/image";
 import { useWindowSize } from "../../lib/motion/sizeWindow";
 import TextH1 from "../../components/atom/text/textH1";
 
-const Works = () => {
+export default function WorkPage() {
     const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef(null);
-    const [totalItems, setTotalItems] = useState(0);
+    const carouselRef = useRef<HTMLDivElement | null>(null);
     const size = useWindowSize();
-    const statusAOS = size && size.width !== undefined;
+    const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
-    useEffect(() => {
-        if (carouselRef.current) {
-            const items = carouselRef.current.getElementsByClassName('m-carousel__item');
-            setTotalItems(items.length);
-        }
-    }, []);  // S'exécute une fois après le premier montage
+    const itemsLength = carouselRef.current?.children.length || 0;
 
-    useEffect(() => {
-        console.log("Updated total items:", totalItems);  // Ceci affichera la valeur mise à jour de totalItems
-    }, [totalItems]);  // S'exécute à chaque fois que totalItems change
-
-    const scrollCarousel = (direction) => {
+    const scrollCarousel = (direction: number) => {
         let newIndex = currentIndex + direction;
-        if (newIndex < 0) {
-            newIndex = totalItems - 1;
-        } else if (newIndex >= totalItems) {
-            newIndex = 0;
-        }
+
+        if (newIndex < 0) newIndex = itemsLength - 1;
+        else if (newIndex >= itemsLength) newIndex = 0;
+
         setCurrentIndex(newIndex);
     };
 
+    // Autoplay every 3 seconds
+    useEffect(() => {
+        if (itemsLength <= 1) return;
+
+        intervalRef.current = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % itemsLength);
+        }, 3000);
+
+        return () => {
+            if (intervalRef.current) clearInterval(intervalRef.current);
+        };
+    }, [itemsLength]);
+
     const offset = -currentIndex * (302 + 20);
+    const statusAOS = size?.width !== undefined;
 
     return (
         <section className="l-works">
-            <TextH1 classname={"l-works__a-title"}>Works</TextH1>
-            <div className="l-works__carousel m-carousel-container" style={statusAOS && size.width > 768 ? { width: `${size.width - 150}px` } : {}}>
-                <div className="m-carousel" ref={carouselRef} style={{transform: `translateX(${offset}px)`}}>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
-                    <div className="m-carousel__item">
-                        <img src="/images/jean-camille-sormain.png" alt="Image 1"/>
-                        <TextDefault>Titre 1</TextDefault>
-                    </div>
+            <Head>
+                <title>Works – Jouskaio</title>
+            </Head>
 
+            <TextH1 classname="l-works__a-title">Works</TextH1>
 
+            <div
+                className="l-works__carousel m-carousel-container"
+                style={
+                    statusAOS && size.width > 768
+                        ? { width: `${size.width - 150}px` }
+                        : {}
+                }
+            >
+                <div
+                    className="m-carousel"
+                    ref={carouselRef}
+                    style={{ transform: `translateX(${offset}px)` }}
+                >
+                    <div className="m-carousel__item">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <Image src="/images/img.png" alt="Image 1" width={300} height={200} />
+                            <p className="m-carousel__title">Titre 1</p>
+                            <p className="m-carousel__desc">Go to your next event with us</p>
+                            <p className="m-carousel__tags">Design - Web - React</p>
+                        </a>
+                    </div>
+                    <div className="m-carousel__item">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <Image src="/images/img.png" alt="Image 2" width={300} height={200} />
+                            <p className="m-carousel__title">Titre 2</p>
+                            <p className="m-carousel__desc">Another event experience</p>
+                            <p className="m-carousel__tags">Design - Web - React</p>
+                        </a>
+                    </div>
+                    <div className="m-carousel__item">
+                        <a href="#" target="_blank" rel="noopener noreferrer">
+                            <Image src="/images/img.png" alt="Image 3" width={300} height={200} />
+                            <p className="m-carousel__title">Titre 3</p>
+                            <p className="m-carousel__desc">Something unique</p>
+                            <p className="m-carousel__tags">Design - Web - React</p>
+                        </a>
+                    </div>
                 </div>
-                <div className="m-navCarousel-buttons">
-                    <button
-                        className="m-navCarousel-button m-navCarousel-button--left"
-                        onClick={() => scrollCarousel(-1)}
-                    >
-                        &#10094;
-                    </button>
-                    <button
-                        className="m-navCarousel-button m-navCarousel-button--right"
-                        onClick={() => scrollCarousel(1)}
-                    >
-                        &#10095;
-                    </button>
-                </div>
+
+               <nav className={"m-carousel-buttonsNav"}>
+                   <div className="m-navCarousel-buttons">
+                       <button
+                           className="m-navCarousel-button m-navCarousel-button--left"
+                           onClick={() => scrollCarousel(-1)}
+                       >
+                           <Image src={"/icons/next.svg"} className={"m-carousel__buttonImg"} alt={"Previous"} width={30} height={30} />
+                       </button>
+                       <button
+                           className="m-navCarousel-button m-navCarousel-button--right"
+                           onClick={() => scrollCarousel(1)}
+                       >
+                           <Image src={"/icons/next.svg"} alt={"Previous"} width={30} height={30} />
+
+                       </button>
+                   </div>
+               </nav>
             </div>
         </section>
     );
-};
-
-export default Works;
+}

@@ -1,26 +1,34 @@
-import { Component } from "react";
+import React, { Component, ReactNode } from "react";
 import PropTypes from "prop-types";
 import Highlight from "react-highlight";
 
-class Code extends Component {
+type CodeProps = {
+    children?: ReactNode;
+    language?: string;
+    classname?: string;
+};
+
+/**
+ * Atom: Code
+ *
+ * @param language : string (ex: "js", "ts", "html")
+ * @param classname : string (ex: "m-block")
+ * @param children : code content to highlight
+ */
+export default class Code extends Component<CodeProps> {
     static propTypes = {
         children: PropTypes.any,
         language: PropTypes.string,
         classname: PropTypes.string,
-    }
+    };
 
     render() {
-        // @ts-ignore
-        const { classname, language, children, size } = this.props;
+        const { classname = "", language = "", children } = this.props;
 
         return (
-            <>
-                <Highlight className={`a-code ${classname} ${language}`}>
-                    {children}
-                </Highlight>
-            </>
+            <Highlight className={`a-code ${classname} ${language}`}>
+                {children}
+            </Highlight>
         );
     }
 }
-
-export default Code;

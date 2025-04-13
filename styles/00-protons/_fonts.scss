@@ -11,8 +11,22 @@
   src: url("/public/fonts/SF-Pro.ttf") format("ttf");
 }
 
+// Inter
+@font-face {
+  font-family: "Inter";
+  src: url("/public/fonts/Inter.ttf") format("ttf");
+}
+// Inter
+@font-face {
+  font-family: "Inter";
+  src: url("/public/fonts/Inter-Italic.ttf") format("ttf");
+  font-style: italic;
+}
+
+
 :root {
   --font-family-main: "SF Pro", sans-serif;
+  --font-family-secondary: "Inter", sans-serif;
 
   --font-size-XXL: 36px;
   --font-size-XL: 30px;
@@ -25,5 +39,5 @@
   --font-weight-bold: bold;
   --border-radius : 21.67px;
 
-
+  --letter-spacing: 3px;
 }

@@ -1,12 +1,22 @@
-import  {Component} from "react";
+import React, { Component, ReactNode } from "react";
 import PropTypes from "prop-types";
 
+type TextH5Props = {
+    classname?: string;
+    children?: ReactNode;
+    aosDuration?: number;
+    aosEffect?: string;
+};
+
 /**
+ * Atom: Title H5
  *
- * @param props
- * @constructor
+ * @param classname : string
+ * @param children : ReactNode
+ * @param aosEffect : string (ex: fade-up)
+ * @param aosDuration : number (en ms)
  */
-export default class TextH5 extends Component{
+export default class TextH5 extends Component<TextH5Props> {
     static propTypes = {
         classname: PropTypes.string,
         children: PropTypes.oneOfType([
@@ -15,22 +25,24 @@ export default class TextH5 extends Component{
         ]),
         aosDuration: PropTypes.number,
         aosEffect: PropTypes.string,
-    }
+    };
+
     render() {
         const {
-            //@ts-ignore
-            classname,
-            //@ts-ignore
+            classname = "",
             children,
-            //@ts-ignore
             aosDuration,
-            //@ts-ignore
             aosEffect,
-        } = this.props
+        } = this.props;
+
         return (
-            <>
-                <h5 className={"a-titleH5 " + classname} data-aos={aosEffect} data-aos-duration={aosDuration}>{children}</h5>
-            </>
+            <h5
+                className={`a-titleH5 ${classname}`}
+                data-aos={aosEffect}
+                data-aos-duration={aosDuration}
+            >
+                {children}
+            </h5>
         );
     }
 }

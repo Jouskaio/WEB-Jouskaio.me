@@ -1,11 +1,16 @@
-import React, {Component} from "react";
-// @ts-ignore
-import Link from "next/link";
-// @ts-ignore
+import React from "react";
 import Image from "next/image";
-import {shimmer, toBase64} from "../../../lib/preload/preload-image";
-import {getStrapiMedia} from "../../../lib/api/api";
 import PropTypes from "prop-types";
+import { shimmer, toBase64 } from "../../../lib/preload/preload-image";
+
+type MediaProps = {
+    src: string;
+    width?: number | `${number}`;
+    height?: number | `${number}`;
+    classname?: string;
+    alt?: string;
+    style?: React.CSSProperties;
+};
 
 /**
  * Atom: Media
@@ -15,46 +20,38 @@ import PropTypes from "prop-types";
  * @param height : number
  * @param classname : string
  * @param alt : string
+ * @param style : React.CSSProperties (ex: { objectFit: "cover" })
  */
-class Media extends Component{
+const Media = ({
+       src,
+       width,
+       height,
+       classname = "",
+       alt = "",
+       style = {},}: MediaProps) => {
+    return (
+        <Image
+            src={src}
+            alt={alt}
+            height={height}
+            width={width}
+            unoptimized={false}
+            placeholder="blur"
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`}
+            loader={() => src}
+            style={style}
+            className={`a-media ${classname}`}
+        />
+    );
+};
 
-    static propTypes = {
-        src : PropTypes.string,
-        classname : PropTypes.string,
-        alt : PropTypes.string,
-        height: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
-        ]),
-        width: PropTypes.oneOfType([
-            PropTypes.string,
-            PropTypes.number
-        ]),
-        objectFit: PropTypes.string.isRequired
-
-    }
-
-    render() {
-        const {
-            // @ts-ignore
-            classname,
-            // @ts-ignore
-            src,
-            // @ts-ignore
-            alt,
-            // @ts-ignore
-            height,
-            // @ts-ignore
-            width,
-            // @ts-ignore
-            objectFit
-        } = this.props
-        return (
-            <>
-                <Image src={src} alt={alt} height={height} width={width} objectFit={objectFit} unoptimized={false}  placeholder="blur" blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`} loader={() => src} className={"a-media "+ classname }/>
-            </>
-        );
-    }
-}
+Media.propTypes = {
+    src: PropTypes.string.isRequired,
+    width: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    height: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+    classname: PropTypes.string,
+    alt: PropTypes.string,
+    style: PropTypes.object,
+};
 
 export default Media;

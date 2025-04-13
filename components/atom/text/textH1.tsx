@@ -1,29 +1,30 @@
-import {Component} from "react";
+import React, { Component, ReactNode } from "react";
 import PropTypes from "prop-types";
+
+type TextH1Props = {
+    classname?: string;
+    children?: ReactNode;
+};
 
 /**
  * Atom: Title H1
  *
- * @param props
  * @param classname : string
- * @constructor
+ * @param children : ReactNode
  */
-export default class TextH1 extends Component {
+export default class TextH1 extends Component<TextH1Props> {
     static propTypes = {
         classname: PropTypes.string,
         children: PropTypes.any
-    }
+    };
+
     render() {
-        const {
-            //@ts-ignore
-            classname,
-            //@ts-ignore
-            children
-        } = this.props
+        const { classname = "", children } = this.props;
+
         return (
-            <>
-                <h1 className={"a-titleH1 " + classname}>{children}</h1>
-            </>
+            <h1 className={`a-titleH1 ${classname}`}>
+                {children}
+            </h1>
         );
     }
 }

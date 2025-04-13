@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
             setShowAlert(true);
             setTimeout(() => {
                 setShowAlert(false);
-            }, 2000);
+            }, 1500);
         }
     };
 

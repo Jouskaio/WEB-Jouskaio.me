@@ -1,42 +1,44 @@
-import {Component} from "react";
+import React, { Component, ReactNode } from "react";
 import PropTypes from "prop-types";
 import Link from "next/link";
+
+type TagProps = {
+    classname?: string;
+    children?: ReactNode;
+    color: string;
+    slug: string;
+};
 
 /**
  * Atom: Tag
  *
- * @param props
  * @param classname : string
  * @param color : string
  * @param slug : string
- * @constructor
+ * @param children : ReactNode
  */
-export default class Tag extends Component {
-
+export default class Tag extends Component<TagProps> {
     static propTypes = {
         classname: PropTypes.string,
         children: PropTypes.any,
         color: PropTypes.string.isRequired,
-        slug: PropTypes.string.isRequired
-    }
+        slug: PropTypes.string.isRequired,
+    };
 
     render() {
         const {
-            // @ts-ignore
-            classname,
-            // @ts-ignore
+            classname = "",
             children,
-            // @ts-ignore
-            color: color,
-            // @ts-ignore
-            slug: slug
-        } = this.props
+            color,
+            slug
+        } = this.props;
 
         return (
-            <Link href={`https://blog.jouskaio.me/${slug}`} style={{ color: color }} legacyBehavior>
-                <a className={`a-tag ${classname}`}>{children}</a>
+            <Link href={`https://blog.jouskaio.me/${slug}`} legacyBehavior>
+                <a className={`a-tag ${classname}`} style={{ color }}>
+                    {children}
+                </a>
             </Link>
-
         );
     }
 }

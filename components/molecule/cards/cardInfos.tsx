@@ -1,9 +1,20 @@
-import React, {Component} from "react";
-import PropTypes from 'prop-types';
+import React, { Component, ReactNode } from "react";
+import PropTypes from "prop-types";
 import TextDefault from "../../atom/text/TextDefault";
 import TextH1 from "../../atom/text/textH1";
 
-class CardInfos extends Component {
+type CardInfosProps = {
+    date: string;
+    classname?: string;
+    children: string;
+    aosDuration?: number;
+    aosEffect?: string;
+};
+
+/**
+ * Molecule: CardInfos
+ */
+export default class CardInfos extends Component<CardInfosProps> {
     static propTypes = {
         date: PropTypes.string.isRequired,
         classname: PropTypes.string,
@@ -14,35 +25,33 @@ class CardInfos extends Component {
 
     render() {
         const {
-            // @ts-ignore
-            date: date,
-            // @ts-ignore
-            classname: classname,
-            // @ts-ignore
-            children: children,
-            // @ts-ignore
-            aosDuration: aosDuration,
-            // @ts-ignore
-            aosEffect: aosEffect,
+            date,
+            classname = "",
+            children,
+            aosDuration,
+            aosEffect,
         } = this.props;
 
-        let datetime = new Date(date)
-        let day = datetime.getDate()
+        const datetime = new Date(date);
+        const day = datetime.getDate();
         const monthNames = [
             "January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"
         ];
-        let mmYY = monthNames[datetime.getMonth() + 1] + " " +  datetime.getFullYear()
+        const mmYY = `${monthNames[datetime.getMonth()]} ${datetime.getFullYear()}`; // ✅ getMonth() is 0-based
+
         return (
-            <div className={"m-cardInfos " + classname} data-aos={aosEffect} data-aos-duration={aosDuration}>
-                <div className={"m-cardInfos__m-datetime"}>
-                    <TextH1 classname={"m-cardInfos__m-datetime--a-day"}>{day}</TextH1>
-                    <TextDefault classname={"m-cardInfos__m-datetime--a-mmYY"}>{mmYY}</TextDefault>
+            <div
+                className={`m-cardInfos ${classname}`}
+                data-aos={aosEffect}
+                data-aos-duration={aosDuration}
+            >
+                <div className="m-cardInfos__m-datetime">
+                    <TextH1 classname="m-cardInfos__m-datetime--a-day">{day}</TextH1>
+                    <TextDefault classname="m-cardInfos__m-datetime--a-mmYY">{mmYY}</TextDefault>
                 </div>
-                <TextDefault classname={"m-cardInfos__m-message"}>{children}</TextDefault>
+                <TextDefault classname="m-cardInfos__m-message">{children}</TextDefault>
             </div>
         );
     }
 }
-
-export default CardInfos;
