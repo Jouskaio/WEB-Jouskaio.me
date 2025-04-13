@@ -11,38 +11,29 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout du repo
+      # 🔁 Checkout du repo
       - name: Checkout
         uses: actions/checkout@v2
         with:
           ref: ${{ github.ref }}
 
-      # Cache node_modules pour gagner du temps
-      - name: Cache node_modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Installer OpenVPN
+      # 🔐 Install OpenVPN
       - name: Install OpenVPN
         run: |
           sudo apt update
           sudo apt install -y openvpn openvpn-systemd-resolved
 
-      # Créer le fichier de config VPN
+      # 🛠️ Create VPN Config File
       - name: Create VPN Config File
         run: echo "${{ secrets.VPN_CONFIG }}" > vpn_config.ovpn
 
-      # Se connecter au VPN
+      # 🔗 Connect to VPN
       - name: Connect to VPN
         uses: "kota65535/github-openvpn-connect-action@v2"
         with:
           config_file: vpn_config.ovpn
 
-      # Déterminer l'environnement (prod/staging)
+      # 📦 Get environment variable
       - name: Set ENVIRONMENT variable
         run: |
           if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
@@ -51,14 +42,23 @@ jobs:
             echo "ENVIRONMENT=staging" >> $GITHUB_ENV
           fi
 
-      # Vérifier la connexion SSH
+      # 📂 Set cache for node_modules
+      - name: Cache node_modules
+        uses: actions/cache@v3
+        with:
+          path: node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      # 🔗Check SSH Connection
       - name: Test SSH Connection
         run: |
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
           chmod 600 /tmp/private_key
           ssh -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
 
-      # Déploiement distant
+      # 🚀Remote deployment
       - name: Deploy to remote server
         uses: easingthemes/ssh-deploy@main
         with:
@@ -89,19 +89,21 @@ jobs:
 
             pm2 start ecosystem.config.js --env $ENVIRONMENT || pm2 reload ecosystem.config.js --env $ENVIRONMENT
 
-      # Discord Notification on Success
+      # ℹ️Discord Notification on Success
       - name: Discord Notification on Success
         if: success()
         run: |
+          TITLE="${{ github.event.inputs.title }}"
           curl -H "Content-Type: application/json" \
           -X POST \
-          -d "{\"content\": \"✅ Deployment of **WEB-Jouskaio.me** successfully completed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          -d "{\"content\": \"ℹ️ Deployment of **WEB-Jouskaio.me** successfully completed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
           ${{ secrets.DISCORD_WEBHOOK_URL }}
 
-      # Discord Notification on Success
+      # 🚨Discord Notification on Success
       - name: Discord Notification on Failure
         if: failure()
         run: |
+          TITLE="${{ github.event.inputs.title }}"
           curl -H "Content-Type: application/json" \
           -X POST \
           -d "{\"content\": \"🚨 Deployment of **WEB-Jouskaio.me** failed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
