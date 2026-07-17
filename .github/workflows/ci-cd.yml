@@ -1,110 +1,52 @@
 name: CI/CD - WEB-Jouskaio.me
 
 on:
-  push:
-    branches:
-      - main
-      - staging
+    push:
+        branches:
+            - main
+
+concurrency:
+    group: deploy-web-jouskaio-main
+    cancel-in-progress: true
 
 jobs:
-  deploy:
-    runs-on: ubuntu-latest
+    deploy:
+        runs-on:
+            - self-hosted
+            - linux
+            - x64
 
-    steps:
-      # 🔁 Checkout du repo
-      - name: Checkout
-        uses: actions/checkout@v2
-        with:
-          ref: ${{ github.ref }}
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
 
-      # 🔐 Install OpenVPN
-      - name: Install OpenVPN
-        run: |
-          sudo apt update
-          sudo apt install -y openvpn openvpn-systemd-resolved
+            - name: Setup Node
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 20
+                  cache: yarn
+                  cache-dependency-path: yarn.lock
 
-      # 🛠️ Create VPN Config File
-      - name: Create VPN Config File
-        run: echo "${{ secrets.VPN_CONFIG }}" > vpn_config.ovpn
+            - name: Show versions
+              run: |
+                  node -v
+                  npm -v
 
-      # 🔗 Connect to VPN
-      - name: Connect to VPN
-        uses: "kota65535/github-openvpn-connect-action@v2"
-        with:
-          config_file: vpn_config.ovpn
+            - name: Deploy locally on server
+              run: /home/user/deploy/deploy-jouskaio.sh
 
-      # 📦 Get environment variable
-      - name: Set ENVIRONMENT variable
-        run: |
-          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
-            echo "ENVIRONMENT=production" >> $GITHUB_ENV
-          else
-            echo "ENVIRONMENT=staging" >> $GITHUB_ENV
-          fi
+            - name: Discord Notification on Success
+              if: success()
+              run: |
+                  curl -H "Content-Type: application/json" \
+                  -X POST \
+                  -d "{\"content\": \"ℹ️ Deployment of **WEB-Jouskaio.me** successfully completed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+                  "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
-      # 📂 Set cache for node_modules
-      - name: Cache node_modules
-        uses: actions/cache@v3
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # 🔗Check SSH Connection
-      - name: Test SSH Connection
-        run: |
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > /tmp/private_key
-          chmod 600 /tmp/private_key
-          ssh -o StrictHostKeyChecking=no -i /tmp/private_key ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} whoami
-
-      # 🚀Remote deployment
-      - name: Deploy to remote server
-        uses: easingthemes/ssh-deploy@main
-        with:
-          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
-          ARGS: "-rlgoDzvc -i --delete"
-          REMOTE_HOST: ${{ secrets.SERVER_HOST }}
-          REMOTE_USER: ${{ secrets.SERVER_USERNAME }}
-          TARGET: "/home/debian/Documents/jouskaio.me/WEB-Jouskaio.me"
-          EXCLUDE: "/dist/, /node_modules/"
-          SCRIPT_AFTER: |
-            set -e
-            export NVM_DIR="$HOME/.nvm"
-            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-
-            cd /home/debian/Documents/jouskaio.me/WEB-Jouskaio.me
-            git fetch --all
-            git reset --hard origin/main
-            
-            export BLOG_INTERNAL_URL=${{ secrets.BLOG_INTERNAL_URL }}
-
-            if ! command -v yarn > /dev/null; then
-              npm install -g yarn
-            fi
-
-            rm -rf node_modules .next package-lock.json yarn.lock
-            yarn install
-            yarn build
-
-            pm2 start ecosystem.config.js --env $ENVIRONMENT || pm2 reload ecosystem.config.js --env $ENVIRONMENT
-
-      # ℹ️Discord Notification on Success
-      - name: Discord Notification on Success
-        if: success()
-        run: |
-          TITLE="${{ github.event.inputs.title }}"
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "{\"content\": \"ℹ️ Deployment of **WEB-Jouskaio.me** successfully completed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
-          ${{ secrets.DISCORD_WEBHOOK_URL }}
-
-      # 🚨Discord Notification on Success
-      - name: Discord Notification on Failure
-        if: failure()
-        run: |
-          TITLE="${{ github.event.inputs.title }}"
-          curl -H "Content-Type: application/json" \
-          -X POST \
-          -d "{\"content\": \"🚨 Deployment of **WEB-Jouskaio.me** failed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
-          ${{ secrets.DISCORD_WEBHOOK_URL }}
+            - name: Discord Notification on Failure
+              if: failure()
+              run: |
+                  curl -H "Content-Type: application/json" \
+                  -X POST \
+                  -d "{\"content\": \"🚨 Deployment of **WEB-Jouskaio.me** failed on \`${{ github.ref_name }}\` ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+                  "${{ secrets.DISCORD_WEBHOOK_URL }}"
