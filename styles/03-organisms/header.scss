@@ -1,3 +1,5 @@
+@use "../00-protons/mixins" as *;
+
 .o-header {
   z-index: 999;
   width: calc(100% - 32px);

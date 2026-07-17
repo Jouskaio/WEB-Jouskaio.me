@@ -1,58 +1,39 @@
-import React, { useState, useEffect } from "react";
-import PropTypes from 'prop-types';
-import dynamic from 'next/dynamic';
+import Pin, { type PinSize, type PinTag } from '../../molecule/feed/pin';
 
-// Delete hydration UI
-const ReactPlayer = dynamic(() => import('react-player/lazy'), { ssr: false });
+export type FeedLatestPin = {
+    title: string;
+    text: string;
+    media: string;
+    url: string;
+    size: PinSize;
+    tags?: PinTag[];
+};
 
-import TextH5 from "../../atom/text/textH5";
-import TextH3 from "../../atom/text/textH3";
-import TextDefault from "../../atom/text/TextDefault";
-import Pin from "../../molecule/feed/pin";
+export type FeedLatestProps = {
+    pins: FeedLatestPin[];
+    classname?: string;
+};
 
-function FeedLatest(props) {
-    const {
-        pins: pins,
-        classname: classname
-    } = props;
-
+/**
+ * Organism: Feed Latest
+ */
+export default function FeedLatest({
+                                       pins,
+                                       classname = '',
+                                   }: FeedLatestProps) {
     return (
-        <div className={`m-feed ${classname}`}>
-            {
-                pins.map(function (pin, i) {
-                    return (
-                        <Pin size={pin.size}
-                             media={pin.media}
-                             tags={pin.tags}
-                             title={pin.title}
-                             text={pin.text}
-                             url={pin.url}
-                             key={i}
-                        />
-                    )
-
-                })}
+        <div className={`m-feed ${classname}`.trim()}>
+            {pins.map((pin, index) => (
+                <Pin
+                    key={`${pin.title}-${index}`}
+                    size={pin.size}
+                    media={pin.media}
+                    tags={pin.tags}
+                    title={pin.title}
+                    text={pin.text}
+                    url={pin.url}
+                />
+            ))}
         </div>
     );
 }
-
-FeedLatest.propTypes = {
-    pins : PropTypes.arrayOf(
-        PropTypes.shape({
-            tag: PropTypes.arrayOf(
-                PropTypes.shape({
-                    name: PropTypes.string,
-                    color: PropTypes.string
-                })
-            ),
-            title: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-            media: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired,
-            size: PropTypes.string.isRequired
-        })
-    ).isRequired,
-    classname: PropTypes.string,
-};
-
-export default FeedLatest;

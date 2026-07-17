@@ -1,59 +1,63 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import PinNews from "../feed/pinNews";
-import TextH5 from "../../atom/text/textH5";
+import type { CSSProperties } from 'react';
 
-function CardNews(props) {
-    const {
-        article,
-        classname,
-        aosDuration,
-        aosEffect,
-    } = props;
+import PinNews from '../feed/pinNews';
+import TextH5 from '../../atom/text/textH5';
 
+export type CardNewsTag = {
+    name?: string;
+    color?: string;
+    slug?: string;
+};
+
+export type CardNewsArticle = {
+    media: string;
+    tags: CardNewsTag[];
+    title: string;
+    text: string;
+    url: string;
+    classname?: string;
+};
+
+export type CardNewsProps = {
+    article: CardNewsArticle[];
+    classname?: string;
+    style?: CSSProperties;
+    aosDuration?: number;
+    aosEffect?: string;
+};
+
+/**
+ * Molecule: Card News
+ */
+export default function CardNews({
+                                     article,
+                                     classname = '',
+                                     style,
+                                     aosDuration,
+                                     aosEffect,
+                                 }: CardNewsProps) {
     return (
-        <div className={`m-cardNews ${classname}`} data-aos={aosEffect} data-aos-duration={aosDuration}>
-            <TextH5 classname={"m-cardNews__a-title"}>Latest Articles</TextH5>
-            {article.map((item, i) => {
-                const internalURL = process.env.BLOG_INTERNAL_URL || "http://localhost:8000";
-                const updatedMediaURL = item.media.replace("https://blog.jouskaio.me", internalURL);
+        <div
+            className={`m-cardNews ${classname}`.trim()}
+            style={style}
+            data-aos={aosEffect}
+            data-aos-duration={aosDuration}
+        >
+            <TextH5 classname="m-cardNews__a-title">
+                Latest Articles
+            </TextH5>
 
-                return (
-                    <PinNews
-                        title={item.title}
-                        text={item.text}
-                        media={updatedMediaURL} // Utilisation de l'URL mise à jour
-                        url={item.url}
-                        tags={item.tags}
-                        classname={item.classname}
-                        key={i}
-                    />
-                );
-            })}
+            {article.map((item) => (
+                <PinNews
+                    key={item.url}
+                    title={item.title}
+                    text={item.text}
+                    media={item.media}
+                    url={item.url}
+                    tags={item.tags}
+                    classname={item.classname}
+                />
+            ))}
         </div>
     );
 }
-
-CardNews.propTypes = {
-    article: PropTypes.arrayOf(
-        PropTypes.shape({
-            media: PropTypes.string.isRequired,
-            tags: PropTypes.arrayOf(
-                PropTypes.shape({
-                    name: PropTypes.string,
-                    color: PropTypes.string,
-                    slug: PropTypes.string
-                })
-            ).isRequired,
-            title: PropTypes.string.isRequired,
-            text: PropTypes.string.isRequired,
-            url: PropTypes.string.isRequired,
-            classname: PropTypes.string
-        })
-    ).isRequired,
-    classname: PropTypes.string,
-    aosDuration: PropTypes.number,
-    aosEffect: PropTypes.string,
-};
-
-export default CardNews;

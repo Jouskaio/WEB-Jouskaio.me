@@ -1,3 +1,5 @@
+@use "../00-protons/mixins" as *;
+
 .l-blog {
   &__a-status {
     display: block;

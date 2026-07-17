@@ -1,3 +1,5 @@
+@use "../00-protons/mixins" as *;
+
 .l-works {
   &__a-title {
     margin-top: 24px;

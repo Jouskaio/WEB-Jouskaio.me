@@ -36,8 +36,8 @@ export default Query;
 export function getStrapiMedia(media) {
   const imageUrl =
     typeof media === "string"
-      ? process.env.NEXT_PUBLIC_STRAPI_API_URL + media
-      : process.env.NEXT_PUBLIC_STRAPI_API_URL +
+      ? process.env.BLOG_API_URL_URL + media
+      : process.env.BLOG_API_URL_URL +
       media.data.attributes.url;
   return imageUrl;
 }

@@ -1,30 +1,20 @@
-import {Component} from "react";
-// @ts-ignore
-import Link from 'next/link';
-import PropTypes from "prop-types";
+import type { ReactNode } from 'react';
+
+export type TextSpanXSProps = {
+    classname?: string;
+    children?: ReactNode;
+};
 
 /**
- *
- * @param props
- * @param classname : string
- * @constructor
+ * Atom: Text Span XS
  */
-export default class TextSpanXS extends Component {
-    static propTypes = {
-        classname: PropTypes.string,
-        children: PropTypes.any
-    }
-    render() {
-        const {
-            // @ts-ignore
-            classname,
-            // @ts-ignore
-            children
-        } = this.props
-        return (
-            <>
-                <span className={"a-spanXS " + classname}>{children}</span>
-            </>
-        );
-    }
+export default function TextSpanXS({
+                                       classname = '',
+                                       children,
+                                   }: TextSpanXSProps) {
+    return (
+        <span className={`a-spanXS ${classname}`.trim()}>
+            {children}
+        </span>
+    );
 }

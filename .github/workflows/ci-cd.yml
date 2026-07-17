@@ -11,29 +11,51 @@ concurrency:
 
 jobs:
     deploy:
-        runs-on:
-            - self-hosted
-            - linux
-            - x64
+        runs-on: ubuntu-latest
 
         steps:
             - name: Checkout
               uses: actions/checkout@v4
 
-            - name: Setup Node
-              uses: actions/setup-node@v4
-              with:
-                  node-version: 20
-                  cache: yarn
-                  cache-dependency-path: yarn.lock
-
-            - name: Show versions
+            - name: Install WireGuard
               run: |
-                  node -v
-                  npm -v
+                  sudo apt-get update
+                  sudo apt-get install -y wireguard wireguard-tools
 
-            - name: Deploy locally on server
-              run: /home/user/deploy/deploy-jouskaio.sh
+            - name: Create WireGuard config
+              run: |
+                  echo "${{ secrets.WG_CONFIG }}" | sudo tee /etc/wireguard/wg0.conf > /dev/null
+                  sudo chmod 600 /etc/wireguard/wg0.conf
+
+            - name: Start WireGuard
+              run: |
+                  sudo wg-quick up wg0
+                  sudo wg show
+
+            - name: Test VPN connectivity
+              run: |
+                  ping -c 2 ${{ secrets.SERVER_HOST }}
+
+            - name: Prepare SSH
+              run: |
+                  mkdir -p ~/.ssh
+                  echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
+                  chmod 600 ~/.ssh/id_ed25519
+                  ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+
+            - name: Test SSH connection
+              run: |
+                  ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} "whoami && hostname"
+
+            - name: Deploy on remote server
+              run: |
+                  ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} \
+                  "/home/user/Documents/jouskaio.me/deploy/deploy-jouskaio.sh"
+
+            - name: Stop WireGuard
+              if: always()
+              run: |
+                  sudo wg-quick down wg0 || true
 
             - name: Discord Notification on Success
               if: success()

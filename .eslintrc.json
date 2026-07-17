@@ -1,12 +1,16 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:react-hooks/recommended"
+    "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended"
   ],
   "rules": {
-    "react-hooks/exhaustive-deps": ["warn", {
-      "additionalHooks": "(useMyCustomHook|useMyOtherCustomHook)"
-    }],
+    "react-hooks/exhaustive-deps": [
+      "warn",
+      {
+        "additionalHooks": "(useMyCustomHook|useMyOtherCustomHook)"
+      }
+    ],
     "react/no-unescaped-entities": "off"
   }
 }

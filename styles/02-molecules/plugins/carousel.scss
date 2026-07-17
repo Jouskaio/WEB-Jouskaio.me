@@ -1,3 +1,5 @@
+@use "../../00-protons/mixins" as *;
+
 .m-carousel-container {
   width: 302px;
   overflow: hidden;

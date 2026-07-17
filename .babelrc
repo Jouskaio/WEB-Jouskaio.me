@@ -1,8 +1,0 @@
-{
-  "presets": [
-    "@babel/preset-typescript",
-    ["@babel/preset-react", { "runtime": "automatic" }],
-    "next/babel"
-  ],
-  "plugins": ["babel-plugin-transform-class-properties"]
-}

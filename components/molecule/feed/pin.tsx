@@ -1,68 +1,102 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import {shimmer, toBase64} from "../../../lib/preload/preload-image";
-import TextH4 from "../../atom/text/textH4";
-import Link from "next/link";
-import Tag from "../../atom/text/tag";
-import Image from "next/image";
+import type { CSSProperties } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
-function Pin(props) {
-    const {
-        tags,
-        title,
-        text,
-        media,
-        url,
-        size,
-        classname
-    } = props;
+import { shimmer, toBase64 } from '../../../lib/preload/preload-image';
+import Tag from '../../atom/text/tag';
+import TextH4 from '../../atom/text/textH4';
 
-
-    return (
-        <div className={`m-pin m-pin--${size} ${classname}`}>
-            {size === 'medium' && (
-                <nav className={"m-pin__m-tags--" + size}>
-                    {tags && tags.map((item, i) => (
-                        <Tag color={item.color} slug={item.slug} key={i} classname={"m-pin__a-tag"}>{item.name}</Tag>
-                    ))}
-                </nav>
-            )}
-            <Image
-                src={media}
-                placeholder="blur"
-                onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
-                className={`m-pin__a-image--${size}`}
-                alt={title}
-            />
-            {(size === 'small' || size === 'large') && (
-                <nav className={"m-pin__m-tags--" + size}>
-                    {tags && tags.map((item, i) => (
-                        <Tag color={item.color} slug={item.slug} key={i} classname={"m-pin__a-tag"}>{item.name}</Tag>
-                    ))}
-                </nav>
-            )}
-            <TextH4 classname={`m-pin__a-title--${size}`}>{title}</TextH4>
-            <p className={`m-pin__a-text m-pin__a-text--${size}`}>{text}</p>
-            <Link href={url} legacyBehavior><a className={"m-pin__a-link"}>Read More</a></Link>
-        </div>
-    );
-}
-
-
-Pin.propTypes = {
-    tags: PropTypes.arrayOf(
-        PropTypes.shape({
-            name: PropTypes.string,
-            color: PropTypes.string,
-            slug: PropTypes.string
-        })
-    ),
-    title: PropTypes.string,
-    text: PropTypes.string,
-    media: PropTypes.string,
-    url: PropTypes.string,
-    size: PropTypes.string.isRequired,
-    classname: PropTypes.string
+export type PinTag = {
+    name?: string;
+    color?: string;
+    slug?: string;
 };
 
-export default Pin;
+export type PinSize = 'small' | 'medium' | 'large';
+
+export type PinProps = {
+    tags?: PinTag[];
+    title?: string;
+    text?: string;
+    media?: string;
+    url?: string;
+    size: PinSize;
+    classname?: string;
+    style?: CSSProperties;
+};
+
+/**
+ * Molecule: Pin
+ */
+export default function Pin({
+                                tags = [],
+                                title = '',
+                                text = '',
+                                media = '',
+                                url = '#',
+                                size,
+                                classname = '',
+                                style,
+                            }: PinProps) {
+    const renderTags = () => {
+        if (tags.length === 0) {
+            return null;
+        }
+
+        return (
+            <div className={`m-pin__m-tags m-pin__m-tags--${size}`}>
+                {tags.map((tag, index) => (
+                    <Tag
+                        key={`${tag.slug ?? tag.name}-${index}`}
+                        color={tag.color ?? 'inherit'}
+                        slug={tag.slug ?? '#'}
+                        classname="m-pin__a-tag"
+                    >
+                        {tag.name}
+                    </Tag>
+                ))}
+            </div>
+        );
+    };
+
+    return (
+        <article
+            className={`m-pin m-pin--${size} ${classname}`.trim()}
+            style={style}
+        >
+            {media && (
+                <div className={`m-pin__a-mediaWrapper m-pin__a-mediaWrapper--${size}`}>
+                    <Image
+                        src={media}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 600px"
+                        placeholder="blur"
+                        blurDataURL={`data:image/svg+xml;base64,${toBase64(
+                            shimmer('600', '400')
+                        )}`}
+                        className={`m-pin__a-image m-pin__a-image--${size}`}
+                        alt={title}
+                    />
+                </div>
+            )}
+
+            {renderTags()}
+
+            {title && (
+                <TextH4 classname={`m-pin__a-title m-pin__a-title--${size}`}>
+                    {title}
+                </TextH4>
+            )}
+
+            {text && (
+                <p className={`m-pin__a-text m-pin__a-text--${size}`}>
+                    {text}
+                </p>
+            )}
+
+            <Link href={url} legacyBehavior>
+                <a className={`m-pin__a-link m-pin__a-link--${size}`}>Read More</a>
+            </Link>
+        </article>
+    );
+}

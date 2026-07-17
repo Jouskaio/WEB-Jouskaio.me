@@ -1,32 +1,20 @@
-import {Component} from "react";
-import PropTypes from "prop-types";
+import type { ReactNode } from 'react';
+
+export type CitationProps = {
+    classname?: string;
+    children?: ReactNode;
+};
 
 /**
- * Atom: Text
- *
- * @param props
- * @param classname : string
- * @constructor
+ * Atom: Citation
  */
-export default class Citation extends Component {
-
-    static propTypes = {
-        classname: PropTypes.string,
-        children: PropTypes.any
-    }
-
-    render() {
-        const {
-            // @ts-ignore
-            classname,
-            // @ts-ignore
-            children
-        } = this.props
-
-        return (
-            <blockquote className={"a-citation " + classname}>
-                <span>"</span> {children} <span>"</span>
-            </blockquote>
-        );
-    }
+export default function Citation({
+                                     classname = '',
+                                     children,
+                                 }: CitationProps) {
+    return (
+        <blockquote className={`a-citation ${classname}`.trim()}>
+            <span>"</span> {children} <span>"</span>
+        </blockquote>
+    );
 }

@@ -1,37 +1,37 @@
 
 // Vendors
-@import "vendors/reset";
-@import "vendors/animation";
+@use "vendors/reset";
+@use "vendors/animation";
 
 // Protons
-@import "00-protons/colors";
-@import "00-protons/mixins";
-@import "00-protons/fonts";
-@import "00-protons/properties";
+@use "00-protons/colors";
+@use "00-protons/mixins" as *;
+@use "00-protons/fonts";
+@use "00-protons/properties";
 
 // Atoms
-@import "01-atoms/text";
-@import "01-atoms/button";
+@use "01-atoms/text";
+@use "01-atoms/button";
 
 // Molecules
-@import "02-molecules/card";
-@import "02-molecules/pin";
-@import "02-molecules/widget";
-@import "02-molecules/email";
-@import "02-molecules/alert";
-@import "02-molecules/plugins/audio";
-@import "02-molecules/table";
-@import "02-molecules/plugins/carousel";
+@use "02-molecules/card";
+@use "02-molecules/pin";
+@use "02-molecules/widget";
+@use "02-molecules/email";
+@use "02-molecules/alert";
+@use "02-molecules/plugins/audio";
+@use "02-molecules/table";
+@use "02-molecules/plugins/carousel";
 
 // Organisms
-@import "03-organisms/header";
-@import "03-organisms/footer";
-@import "03-organisms/feed";
-@import "03-organisms/processor";
+@use "03-organisms/header";
+@use "03-organisms/footer";
+@use "03-organisms/feed";
+@use "03-organisms/processor";
 
 // Layout
-@import "04-layout/main";
-@import "04-layout/homepage";
-@import "04-layout/blog";
-@import "04-layout/contact";
-@import "04-layout/works";
+@use "04-layout/main";
+@use "04-layout/homepage";
+@use "04-layout/blog";
+@use "04-layout/contact";
+@use "04-layout/works";

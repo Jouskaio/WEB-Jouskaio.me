@@ -1,3 +1,5 @@
+@use "../00-protons/mixins" as *;
+
 .l-main {
   display: grid;
   grid-template-rows: auto auto auto;

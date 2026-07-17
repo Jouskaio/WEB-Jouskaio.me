@@ -1,29 +1,38 @@
-import React, { useEffect, useState } from "react";
-import dynamic from "next/dynamic";
+import type { CSSProperties } from 'react';
+import dynamic from 'next/dynamic';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-const ReactPlayer = dynamic(() => import("react-player/lazy"), { ssr: false });
+const ReactPlayer = dynamic(() => import('react-player/lazy'), {
+    ssr: false,
+});
 
-type Article = {
+export type CardXLArticle = {
     tag?: string;
     title?: string;
     text?: string;
 };
 
-type CardXLProps = {
+export type CardXLProps = {
     media: string;
     classname?: string;
+    style?: CSSProperties;
     aosDuration?: number;
     aosEffect?: string;
-    article?: Article;
+    article?: CardXLArticle;
 };
 
-const CardXL: React.FC<CardXLProps> = ({
-                                           media,
-                                           classname = "",
-                                           aosDuration,
-                                           aosEffect,
-                                           article,
-                                       }) => {
+/**
+ * Molecule: Card XL
+ */
+export default function CardXL({
+                                   media,
+                                   classname = '',
+                                   style,
+                                   aosDuration,
+                                   aosEffect,
+                                   article,
+                               }: CardXLProps) {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isReady, setIsReady] = useState(false);
 
@@ -31,47 +40,67 @@ const CardXL: React.FC<CardXLProps> = ({
         setIsPlaying(true);
     }, []);
 
+    const handleTogglePlayback = () => {
+        setIsPlaying((previousState) => !previousState);
+    };
+
     return (
         <div
-            className={`m-cardXL ${classname}`}
+            className={`m-cardXL ${classname}`.trim()}
+            style={style}
             data-aos={aosEffect}
             data-aos-duration={aosDuration}
         >
-            {!isReady && <div className="video-loader">Chargement...</div>}
+            {!isReady && (
+                <div className="video-loader" role="status">
+                    Chargement...
+                </div>
+            )}
 
             <ReactPlayer
                 className="m-cardXL__a-media"
                 url={media}
                 controls={false}
                 playing={isPlaying}
-                muted={true}
+                muted
                 width="100%"
                 height="100%"
-                loop={true}
+                loop
                 onReady={() => setIsReady(true)}
             />
 
             <button
-                className={`m-cardXL__a-play ${
-                    !isPlaying ? "m-cardXL__a-play--play" : ""
-                }`}
-                onClick={() => setIsPlaying(!isPlaying)}
+                type="button"
+                className={[
+                    'm-cardXL__a-play',
+                    !isPlaying ? 'm-cardXL__a-play--play' : '',
+                ]
+                    .filter(Boolean)
+                    .join(' ')}
+                onClick={handleTogglePlayback}
+                aria-label={
+                    isPlaying
+                        ? 'Mettre la vidéo en pause'
+                        : 'Lire la vidéo'
+                }
+                aria-pressed={isPlaying}
             >
-                <img
-                    src={isPlaying ? "/icons/pause.svg" : "/icons/play.svg"}
-                    alt={isPlaying ? "Pause" : "Play"}
+                <Image
+                    src={isPlaying ? '/icons/pause.svg' : '/icons/play.svg'}
+                    alt=""
+                    width={24}
+                    height={24}
+                    aria-hidden="true"
                 />
             </button>
 
             {article && (
-                <nav className="m-cardXL__a-article">
-                    <h5>{article.tag}</h5>
-                    <h3>{article.title}</h3>
-                    <p>{article.text}</p>
-                </nav>
+                <div className="m-cardXL__a-article">
+                    {article.tag && <h5>{article.tag}</h5>}
+                    {article.title && <h3>{article.title}</h3>}
+                    {article.text && <p>{article.text}</p>}
+                </div>
             )}
         </div>
     );
-};
-
-export default CardXL;
+}

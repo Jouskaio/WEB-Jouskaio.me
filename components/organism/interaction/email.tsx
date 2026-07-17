@@ -1,148 +1,187 @@
-import React, {useEffect, useState} from "react";
-import TextDefault from "../../atom/text/TextDefault";
-import PropTypes from "prop-types";
+import { useEffect, useState } from 'react';
 
-function Email(props) {
-    const { url, alert, aosDuration, aosEffect, className } = props;
+import TextDefault from '../../atom/text/TextDefault';
 
-    const [formData, setFormData] = useState({
-        name: "",
-        email: "",
-        title: "",
-        message: "",
+type EmailFormData = {
+    name: string;
+    email: string;
+    title: string;
+    message: string;
+};
+
+export type EmailProps = {
+    url?: string;
+    className?: string;
+    alert?: (message: string) => void;
+    aosDuration?: number;
+    aosEffect?: string;
+};
+
+/**
+ * Molecule: Email
+ */
+export default function Email({
+                                  url = '',
+                                  alert,
+                                  aosDuration,
+                                  aosEffect,
+                                  className = '',
+                              }: EmailProps) {
+    const [formData, setFormData] = useState<EmailFormData>({
+        name: '',
+        email: '',
+        title: '',
+        message: '',
     });
 
-    const [submissionStatus, setSubmissionStatus] = React.useState(null);
+    const [submissionStatus, setSubmissionStatus] = useState<string | null>(null);
     const [showAlert, setShowAlert] = useState(false);
 
     useEffect(() => {
-        // Use the useEffect hook to trigger the alert when submissionStatus changes
-        if (submissionStatus) {
+        if (submissionStatus && alert) {
             alert(submissionStatus);
-            setSubmissionStatus(null)
+            setSubmissionStatus(null);
         }
     }, [submissionStatus, alert]);
 
-    const handleChange = (e) => {
+    const handleChange = (
+        e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    ) => {
         const { name, value } = e.target;
+
         setFormData((prevData) => ({
             ...prevData,
             [name]: value,
         }));
     };
 
-    const sendEmail = async (e) => {
+    const sendData = async (targetUrl: string, options: RequestInit) => {
+        return fetch(targetUrl, options);
+    };
+
+    const sendEmail = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        // Créez l'URL complète
         const apiUrl = `${url}/v1/email`;
+
         try {
-            if (formData.email && formData.title && formData.message && formData.name) {
+            if (
+                formData.email &&
+                formData.title &&
+                formData.message &&
+                formData.name
+            ) {
                 const response = await sendData(apiUrl, {
-                    method: "POST",
+                    method: 'POST',
                     headers: {
-                        "Content-Type": "application/json",
+                        'Content-Type': 'application/json',
                     },
                     body: JSON.stringify(formData),
-                    timeout: 1000,
                 });
 
                 if (response.status === 200) {
-                    setSubmissionStatus("Email sent successfully");
+                    setSubmissionStatus('Email sent successfully');
                     setShowAlert(true);
                 } else if (response.status === 500) {
-                    setSubmissionStatus("Error while sending an email to contact@jouskaio.me. This error isn't related to you");
+                    setSubmissionStatus(
+                        "Error while sending an email to contact@jouskaio.me. This error isn't related to you"
+                    );
                     setShowAlert(true);
-                }
-                else {
-                    setSubmissionStatus("Error sending email. Please try again later");
+                } else {
+                    setSubmissionStatus('Error sending email. Please try again later');
                     setShowAlert(true);
                 }
             } else {
-                setSubmissionStatus("Please complete all fields as requested");
+                setSubmissionStatus('Please complete all fields as requested');
                 setShowAlert(true);
             }
-        } catch (error) {
-            setSubmissionStatus("Error sending email. Please try again later");
+        } catch {
+            setSubmissionStatus('Error sending email. Please try again later');
             setShowAlert(true);
         }
 
-        // Close the alert after 2 seconds
-        setTimeout(() => {
+        window.setTimeout(() => {
             setShowAlert(false);
             setSubmissionStatus(null);
         }, 2000);
     };
 
-    const sendData = async (url, options) => {
-        try {
-            return await fetch(url, options);
-        } catch (error) {
-            throw error;
-        }
-    };
-
     return (
-        <div className={"m-email " + className} data-aos={aosEffect} data-aos-duration={aosDuration}>
+        <div
+            className={`m-email ${className}`.trim()}
+            data-aos={aosEffect}
+            data-aos-duration={aosDuration}
+        >
             <form onSubmit={sendEmail}>
                 <div>
                     <label>
-                        <TextDefault classname={"m-email--a-label"}>Your name</TextDefault>
+                        <TextDefault classname="m-email--a-label">
+                            Your name
+                        </TextDefault>
                         <input
                             type="text"
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className={"m-email__a-input"}
-                            required={true}
+                            className="m-email__a-input"
+                            required
                         />
                     </label>
+
                     <label>
-                        <TextDefault classname={"m-email--a-label"}>Email</TextDefault>
+                        <TextDefault classname="m-email--a-label">
+                            Email
+                        </TextDefault>
                         <input
                             type="email"
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className={"m-email__a-input"}
-                            required={true}
+                            className="m-email__a-input"
+                            required
                         />
                     </label>
                 </div>
+
                 <label>
-                    <TextDefault classname={"m-email--a-label"}>Title</TextDefault>
+                    <TextDefault classname="m-email--a-label">
+                        Title
+                    </TextDefault>
                     <input
                         type="text"
                         name="title"
                         value={formData.title}
                         onChange={handleChange}
-                        className={"m-email__a-input"}
-                        required={true}
+                        className="m-email__a-input"
+                        required
                     />
                 </label>
+
                 <label>
-                    <TextDefault classname={"m-email--a-label"}>Message</TextDefault>
+                    <TextDefault classname="m-email--a-label">
+                        Message
+                    </TextDefault>
                     <textarea
                         name="message"
                         value={formData.message}
                         onChange={handleChange}
-                        required={true}
-                        className={"m-email__a-input  m-email__a-input--a-textarea"}
+                        required
+                        className="m-email__a-input m-email__a-input--a-textarea"
                     />
                 </label>
-                <input type="submit" value="Send the message" className={"m-email__a-input m-email__a-input--a-submit"} />
+
+                <input
+                    type="submit"
+                    value="Send the message"
+                    className="m-email__a-input m-email__a-input--a-submit"
+                />
             </form>
 
+            {showAlert && submissionStatus && (
+                <TextDefault classname="m-email__a-status">
+                    {submissionStatus}
+                </TextDefault>
+            )}
         </div>
     );
 }
-
-Email.propTypes = {
-    url: PropTypes.string,
-    className: PropTypes.string,
-    alert: PropTypes.func,
-    aosDuration: PropTypes.number,
-    aosEffect: PropTypes.string,
-};
-
-export default Email;

@@ -1,16 +1,16 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import TextH4 from "../../../atom/text/textH4";
-import Switch from "../../../atom/button/switch";
-import TextDefault from "../../../atom/text/TextDefault";
+import { useEffect, useState } from 'react';
 
-type Contact = {
+import Switch from '../../../atom/switch/switch';
+import TextDefault from '../../../atom/text/TextDefault';
+import TextH4 from '../../../atom/text/textH4';
+
+export type Contact = {
     name: string;
     url: string;
     description: string;
 };
 
-type WidgetContactProps = {
+export type WidgetContactProps = {
     contacts: Contact[];
     classname?: string;
     children: string;
@@ -18,98 +18,78 @@ type WidgetContactProps = {
     aosEffect?: string;
 };
 
-type WidgetContactState = {
-    selectedContact: Contact;
-    isEnabled: boolean;
-};
-
 /**
  * Molecule: WidgetContact
  */
-export default class WidgetContact extends Component<WidgetContactProps, WidgetContactState> {
-    static propTypes = {
-        contacts: PropTypes.arrayOf(
-            PropTypes.shape({
-                name: PropTypes.string,
-                url: PropTypes.string,
-                description: PropTypes.string
-            })
-        ).isRequired,
-        classname: PropTypes.string,
-        children: PropTypes.string.isRequired,
-        aosDuration: PropTypes.number,
-        aosEffect: PropTypes.string
+export default function WidgetContact({
+                                          contacts,
+                                          classname = '',
+                                          children,
+                                          aosDuration,
+                                          aosEffect,
+                                      }: WidgetContactProps) {
+    const [selectedContact, setSelectedContact] = useState<Contact | null>(
+        contacts[0] ?? null
+    );
+    const [isEnabled, setIsEnabled] = useState(false);
+
+    useEffect(() => {
+        setSelectedContact(contacts[0] ?? null);
+    }, [contacts]);
+
+    const handleContactChange = (contact: Contact) => {
+        setSelectedContact(contact);
     };
 
-    constructor(props: WidgetContactProps) {
-        super(props);
+    const toggleSwitch = (checked: boolean) => {
+        setIsEnabled(checked);
 
-        this.state = {
-            selectedContact: props.contacts[0],
-            isEnabled: false
-        };
-    }
+        if (selectedContact?.url) {
+            window.open(selectedContact.url, '_blank', 'noopener,noreferrer');
+        }
 
-    handleContactChange = (contact: Contact) => {
-        this.setState({ selectedContact: contact });
+        window.setTimeout(() => {
+            setIsEnabled(false);
+        }, 1500);
     };
 
-    toggleSwitch = () => {
-        this.setState(
-            (prevState) => ({
-                isEnabled: !prevState.isEnabled
-            }),
-            () => {
-                const { selectedContact } = this.state;
-                if (selectedContact?.url) {
-                    window.open(selectedContact.url, "_blank", "noopener noreferrer");
-                }
+    return (
+        <div
+            className={`m-widgetContact ${classname}`.trim()}
+            data-aos={aosEffect}
+            data-aos-duration={aosDuration}
+        >
+            <div className="m-widgetContact__m-divText">
+                <TextH4 classname="m-widgetContact__a-title">{children}</TextH4>
 
-                setTimeout(() => {
-                    this.setState({ isEnabled: false });
-                }, 1500);
-            }
-        );
-    };
-
-    render() {
-        const { contacts, classname = "", children, aosDuration, aosEffect } = this.props;
-        const { selectedContact, isEnabled } = this.state;
-
-        return (
-            <div className={`m-widgetContact ${classname}`} data-aos={aosEffect} data-aos-duration={aosDuration}>
-                <div className="m-widgetContact__m-divText">
-                    <TextH4 classname="m-widgetContact__a-title">{children}</TextH4>
-
-                    <nav className="m-widgetContact__a-contacts">
-                        {contacts.map((contact, i) => (
-                            <div className="m-widgetContact__a-input" key={i}>
-                                <input
-                                    type="radio"
-                                    id={`contactType${i}`}
-                                    name="contactType"
-                                    value={contact.name}
-                                    checked={selectedContact === contact}
-                                    onChange={() => this.handleContactChange(contact)}
-                                />
-                                <label htmlFor={`contactType${i}`}>{contact.name}</label>
-                            </div>
-                        ))}
-                    </nav>
-
-                    <TextDefault classname="m-widgetContact__a-description">
-                        {selectedContact?.description}
-                    </TextDefault>
-                </div>
-
-                <nav className="m-widgetContact__a-switchNav">
-                    <Switch
-                        isChecked={isEnabled}
-                        onClick={this.toggleSwitch}
-                        name="m-widgetContact__a-switch"
-                    />
+                <nav className="m-widgetContact__a-contacts">
+                    {contacts.map((contact, index) => (
+                        <div className="m-widgetContact__a-input" key={contact.name}>
+                            <input
+                                type="radio"
+                                id={`contactType${index}`}
+                                name="contactType"
+                                value={contact.name}
+                                checked={selectedContact?.name === contact.name}
+                                onChange={() => handleContactChange(contact)}
+                            />
+                            <label htmlFor={`contactType${index}`}>{contact.name}</label>
+                        </div>
+                    ))}
                 </nav>
+
+                <TextDefault classname="m-widgetContact__a-description">
+                    {selectedContact?.description ?? ''}
+                </TextDefault>
             </div>
-        );
-    }
+
+            <nav className="m-widgetContact__a-switchNav">
+                <Switch
+                    isChecked={isEnabled}
+                    onClick={toggleSwitch}
+                    name="m-widgetContact__a-switch"
+                />
+            </nav>
+        </div>
+    );
 }

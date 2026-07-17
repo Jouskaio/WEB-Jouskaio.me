@@ -19,10 +19,10 @@ module.exports = {
             time: true,
         },
         {
-            name: 'WEB-styleguide',
+            name: 'WEB-storybook',
             cwd: '/home/user/Documents/jouskaio.me/WEB-Jouskaio.me',
             script: '/usr/bin/bash',
-            args: ['-lc', 'npx serve -s styleguide -l tcp://0.0.0.0:6060'],
+            args: ['-lc', 'npx serve -s storybook-static -l tcp://0.0.0.0:6060'],
             interpreter: 'none',
             exec_mode: 'fork',
             instances: 1,
@@ -35,6 +35,6 @@ module.exports = {
                 NODE_ENV: 'production',
             },
             time: true,
-        },
+        }
     ],
 };

@@ -1,33 +1,23 @@
-import {Component} from "react";
-// @ts-ignore
 import Link from 'next/link';
-import PropTypes from "prop-types";
+import type { ReactNode } from 'react';
+
+export type TextLinkProps = {
+    src: string;
+    classname?: string;
+    children?: ReactNode;
+};
 
 /**
- *
- * @param props
- * @param classname : string
- * @param src : string
- * @param content: string
- * @constructor
+ * Atom: Text Link
  */
-export default class TextLink extends Component{
-    static propTypes = {
-        src: PropTypes.string.isRequired,
-        classname: PropTypes.string,
-        children: PropTypes.any
-    }
-    render() {
-        const {
-            //@ts-ignore
-            src,
-            //@ts-ignore
-            classname,
-            //@ts-ignore
-            children
-        } = this.props
-        return (
-            <Link href={src} className={"a-link " + classname} legacyBehavior>{children}</Link>
-        );
-    }
+export default function TextLink({
+                                     src,
+                                     classname = '',
+                                     children,
+                                 }: TextLinkProps) {
+    return (
+        <Link href={src} legacyBehavior>
+            <a className={`a-link ${classname}`.trim()}>{children}</a>
+        </Link>
+    );
 }

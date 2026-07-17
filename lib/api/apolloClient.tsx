@@ -1,7 +1,7 @@
 // @ts-ignore
 import { ApolloClient, HttpLink, ApolloLink, InMemoryCache, concat } from '@apollo/client';
 
-const httpLink = new HttpLink({ uri: `${process.env.NEXT_PUBLIC_STRAPI_API_URL}/graphql` });
+const httpLink = new HttpLink({ uri: `${process.env.BLOG_API_URL_URL}/graphql` });
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers

@@ -1,38 +1,52 @@
-import React from "react";
-import PropTypes from 'prop-types';
-import TextH4 from "../../atom/text/textH4";
-import TextDefault from "../../atom/text/TextDefault";
+import type { CSSProperties } from 'react';
 
+import TextDefault from '../../atom/text/TextDefault';
+import TextH4 from '../../atom/text/textH4';
 
-function CardStatus(props) {
+export type CardStatusProps = {
+    title: string;
+    text: string;
+    color: string;
+    classname?: string;
+    aosDuration?: number;
+    aosEffect?: string;
+    style?: CSSProperties;
+};
 
-    const {
-        title: title,
-        text: text,
-        color: color,
-        classname: classname,
-        aosDuration: aosDuration,
-        aosEffect: aosEffect,
-    } = props;
-
+/**
+ * Molecule: Card Status
+ */
+export default function CardStatus({
+                                       title,
+                                       text,
+                                       color,
+                                       classname = '',
+                                       aosDuration,
+                                       aosEffect,
+                                       style,
+                                   }: CardStatusProps) {
     return (
-        <div className={`m-cardStatus ${classname}`} data-aos={aosEffect} data-aos-duration={aosDuration}>
-            <nav className={"m-cardStatus__a-verticalBar"} style={{backgroundColor: color}}></nav>
+        <div
+            className={`m-cardStatus ${classname}`.trim()}
+            style={style}
+            data-aos={aosEffect}
+            data-aos-duration={aosDuration}
+        >
+            <div
+                className="m-cardStatus__a-verticalBar"
+                style={{ backgroundColor: color }}
+                aria-hidden="true"
+            />
+
             <div>
-                <TextH4 classname={"m-cardStatus__a-title"}>{title}</TextH4>
-                <TextDefault classname={"m-cardStatus__a-text"}>{text}</TextDefault>
+                <TextH4 classname="m-cardStatus__a-title">
+                    {title}
+                </TextH4>
+
+                <TextDefault classname="m-cardStatus__a-text">
+                    {text}
+                </TextDefault>
             </div>
         </div>
     );
 }
-
-CardStatus.propTypes = {
-    title: PropTypes.string.isRequired,
-    text: PropTypes.string.isRequired,
-    color: PropTypes.string.isRequired,
-    classname: PropTypes.string,
-    aosDuration: PropTypes.number,
-    aosEffect: PropTypes.string,
-};
-
-export default CardStatus;
