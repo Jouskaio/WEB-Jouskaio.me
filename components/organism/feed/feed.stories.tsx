@@ -1,5 +1,6 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import Link from 'next/link';
 
 import Feed from './feed';
@@ -7,16 +8,18 @@ import FeedLatest from "./feedLastest";
 
 const meta = {
     title: 'Organism/Feed',
+    tags: ['ai-generated'],
     component: Feed,
     parameters: {
         docs: {
             description: {
                 component:
-                    "Vue d'ensemble visuelle des composants du dossier feed.",
+                    "Visual overview of the components in the feed folder.",
             },
         },
     },
 } satisfies Meta<typeof Feed>;
+
 
 export default meta;
 
@@ -24,8 +27,8 @@ type Story = StoryObj<typeof meta>;
 
 const mockPins = [
     {
-        title: 'Construire un Design System avec Storybook',
-        text: 'Créer une bibliothèque de composants cohérente, réutilisable et documentée.',
+        title: 'Building a Design System with Storybook',
+        text: 'Create a consistent, reusable, and documented component library.',
         media: 'https://placehold.co/600x400/2563eb/ffffff?text=Design+System',
         url: 'https://blog.jouskaio.me',
         size: 'small' as const,
@@ -43,8 +46,8 @@ const mockPins = [
         ],
     },
     {
-        title: 'WordPress Headless et Next.js',
-        text: 'Utiliser WordPress comme CMS Headless pour alimenter une application moderne.',
+        title: 'Headless WordPress and Next.js',
+        text: 'Using WordPress as a Headless CMS to power a modern application.',
         media: 'https://placehold.co/600x400/21759b/ffffff?text=WP+Headless',
         url: 'https://blog.jouskaio.me',
         size: 'medium' as const,
@@ -62,8 +65,8 @@ const mockPins = [
         ],
     },
     {
-        title: 'Performance frontend et design d’interface',
-        text: 'Quelques bonnes pratiques pour garder une interface rapide et agréable à utiliser.',
+        title: 'Frontend performance and interface design',
+        text: 'A few best practices to keep an interface fast and pleasant to use.',
         media: 'https://placehold.co/600x400/7c3aed/ffffff?text=Performance',
         url: 'https://blog.jouskaio.me',
         size: 'large' as const,
@@ -111,6 +114,9 @@ function FeedArticlesStaticPreview() {
 }
 
 export const All: Story = {
+    args: {
+        pins: mockPins,
+    },
     render: () => (
         <div style={{ display: 'grid', gap: '64px' }}>
             <section>
@@ -129,13 +135,27 @@ export const All: Story = {
 };
 
 export const FeedComponent: Story = {
+    args: {
+        pins: mockPins,
+    },
     render: () => <Feed pins={mockPins} />,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const pinTitle = canvas.getByText('Building a Design System with Storybook');
+        expect(pinTitle).toBeInTheDocument();
+    },
 };
 
 export const FeedLatestComponent: Story = {
+    args: {
+        pins: mockPins,
+    },
     render: () => <FeedLatest pins={mockPins} />,
 };
 
 export const FeedArticlesVisual: Story = {
+    args: {
+        pins: mockPins,
+    },
     render: () => <FeedArticlesStaticPreview />,
 };

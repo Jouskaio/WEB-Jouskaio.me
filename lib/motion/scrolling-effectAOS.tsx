@@ -15,8 +15,7 @@ export const useScrollingAOS = () => {
 
             // Cleanup function to remove AOS when the component unmounts
             return () => {
-                // @ts-ignore
-                AOS.destroy();
+                // AOS 3.0.0-beta.6 does not have a destroy method
             };
         }
     }, []); // Empty array ensures that effect is only run on mount

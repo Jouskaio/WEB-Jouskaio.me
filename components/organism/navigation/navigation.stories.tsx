@@ -1,16 +1,18 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 
 import Footer from './footer';
 import Header from './header';
 
 const meta = {
     title: 'Organism/Navigation',
+    tags: ['ai-generated'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Vue d'ensemble des composants de navigation du niveau organism.",
+                    "Overview of the navigation components at the organism level.",
             },
         },
     },
@@ -59,6 +61,11 @@ export const HeaderComponent: Story = {
             <Header pages={mockPages} />
         </div>
     ),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const homeLink = canvas.getByText('home.');
+        expect(homeLink).toBeInTheDocument();
+    },
 };
 
 export const FooterComponent: Story = {

@@ -1,5 +1,6 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import Citation from './Citation';
 import Tag from './tag';
 import TextDefault from './TextDefault';
@@ -15,7 +16,7 @@ import TextSpanXS from './textSpanXS';
 
 const meta = {
     title: 'Atom/Typography',
-    tags: ['!autodocs'],
+    tags: ['ai-generated'],
     parameters: {
         docs: {
             description: {
@@ -27,7 +28,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj;
+type Story = StoryObj<typeof meta>;
 
 const sectionStyle = {
     display: 'grid',
@@ -115,4 +116,15 @@ export const BodyAndInline: Story = {
             <Citation>“Une citation de démonstration.”</Citation>
         </div>
     ),
+};
+
+export const CssCheck: Story = {
+    render: () => <TextH1>CSS Check</TextH1>,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const h1 = canvas.getByText('CSS Check');
+        const style = window.getComputedStyle(h1);
+        expect(style.fontSize).toBe('36px');
+        expect(style.fontWeight).toBe('700'); // bold
+    },
 };

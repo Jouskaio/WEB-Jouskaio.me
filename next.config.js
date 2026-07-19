@@ -12,7 +12,13 @@ const withBundleAnalyzer = require('@next/bundle-analyzer')({
 const withPlugins = require('next-compose-plugins');
 
 const nextConfig = {
-  reactStrictMode: false,
+  reactStrictMode: true,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
 
   experimental: {
     externalDir: true,

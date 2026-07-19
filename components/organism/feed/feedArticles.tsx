@@ -1,5 +1,5 @@
 import {getStrapiMedia} from "../../../lib/api/api";
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {useInView} from "react-intersection-observer";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -77,12 +77,12 @@ function FeedArticles() {
         }
     }, [loading, data]);
 
-    const fetchMoreData = () => {
+    const fetchMoreData = useCallback(() => {
         if (!loadingMore) {
             setLoadingMore(true);
             setPage((prevPage) => prevPage + 1);
         }
-    };
+    }, [loadingMore]);
 
     const [ref, inView] = useInView({
         triggerOnce: true,
@@ -93,7 +93,7 @@ function FeedArticles() {
         if (inView) {
             fetchMoreData();
         }
-    }, [inView]);
+    }, [inView, fetchMoreData]);
 
     return (
         <div>

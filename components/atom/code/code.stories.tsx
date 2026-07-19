@@ -1,10 +1,12 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import Code from './code';
 
 const meta: Meta<typeof Code> = {
     title: 'Atom/Code',
     component: Code,
+    tags: ['ai-generated'],
     parameters: {
         docs: {
             description: {
@@ -43,7 +45,15 @@ export default meta;
 
 type Story = StoryObj<typeof Code>;
 
-export const Default: Story = {};
+export const Default: Story = {
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const codeElement = canvasElement.querySelector('code');
+        expect(codeElement).toBeInTheDocument();
+        // Check for highlighting class if possible, react-highlight usually adds hljs
+        expect(codeElement).toHaveClass('hljs');
+    },
+};
 
 export const JavaScript: Story = {
     args: {

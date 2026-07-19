@@ -3,17 +3,18 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import Pin from './pin';
 import PinNews from './pinNews';
-
 const meta = {
     title: 'Molecule/Feed',
+    tags: ['!autodocs'],
     parameters: {
         docs: {
             description: {
-                component: "Vue d'ensemble des composants de type Feed.",
+                component: "Overview of Feed-type components.",
             },
         },
     },
 } satisfies Meta;
+
 
 export default meta;
 
@@ -21,8 +22,8 @@ type Story = StoryObj<typeof meta>;
 
 const pinArgs = {
     size: 'medium' as const,
-    title: 'Construire un Design System avec Storybook',
-    text: 'Créer une bibliothèque de composants cohérente, réutilisable et documentée.',
+    title: 'Building a Design System with Storybook',
+    text: 'Create a consistent, reusable, and documented component library.',
     media: 'https://placehold.co/600x400/2563eb/ffffff?text=Design+System',
     url: 'https://blog.jouskaio.me',
     tags: [
@@ -43,8 +44,8 @@ const pinArgs = {
 };
 
 const pinNewsArgs = {
-    title: 'WordPress et Next.js',
-    text: '<p>Utiliser WordPress comme CMS Headless afin d’alimenter une application Next.js.</p>',
+    title: 'WordPress and Next.js',
+    text: '<p>Using WordPress as a Headless CMS to power a Next.js application.</p>',
     media: 'https://placehold.co/200x110/21759b/ffffff?text=WP',
     url: 'headless-wordpress',
     tags: [

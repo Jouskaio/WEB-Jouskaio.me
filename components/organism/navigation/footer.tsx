@@ -1,5 +1,6 @@
 import TextDefault from '../../atom/text/TextDefault';
 import TextH3 from '../../atom/text/textH3';
+import Image from 'next/image';
 
 export type FooterProps = {
     classname?: string;
@@ -72,10 +73,12 @@ export default function Footer({ classname = '' }: FooterProps) {
                             target="_blank"
                             rel="noreferrer"
                         >
-                            <img
+                            <Image
                                 src={link.icon}
                                 className="o-footer__a-icons--img"
                                 alt={link.alt}
+                                width={24}
+                                height={24}
                             />
                         </a>
                     ))}

@@ -1,27 +1,29 @@
-// @ts-ignore
-import type { StorybookConfig } from '@storybook/nextjs';
+import type { StorybookConfig } from '@storybook/nextjs-vite';
+import { mergeConfig } from 'vite';
 
 const config: StorybookConfig = {
-  stories: [
-    '../components/**/*.stories.@(js|jsx|mjs|ts|tsx)',
+  staticDirs: ['../public'],
+  "stories": [
+    "../stories/**/*.mdx",
+    "../stories/**/*.stories.@(js|jsx|mjs|ts|tsx)",
+    "../components/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
-  addons: [
-    '@storybook/addon-essentials',
+  "addons": [
+    "@chromatic-com/storybook",
+    "@storybook/addon-vitest",
+    "@storybook/addon-a11y",
+    "@storybook/addon-docs",
+    "@storybook/addon-mcp"
   ],
-  framework: {
-    name: '@storybook/nextjs',
-    options: {},
-  },
-  staticDirs: [
-    '../public',
-    {
-      from: '../public',
-      to: '/public',
-    },
-  ],
-  docs: {
-    autodocs: true,
+  "framework": "@storybook/nextjs-vite",
+  async viteFinal(config) {
+    return mergeConfig(config, {
+      resolve: {
+        alias: {
+          'storybook/internal/theming': 'storybook/theming',
+        },
+      },
+    });
   },
 };
-
 export default config;

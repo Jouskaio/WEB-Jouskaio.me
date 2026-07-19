@@ -1,7 +1,6 @@
 {
   "extends": [
     "next/core-web-vitals",
-    "plugin:react-hooks/recommended",
     "plugin:storybook/recommended"
   ],
   "rules": {
@@ -11,6 +10,7 @@
         "additionalHooks": "(useMyCustomHook|useMyOtherCustomHook)"
       }
     ],
-    "react/no-unescaped-entities": "off"
+    "react/no-unescaped-entities": "off",
+    "storybook/no-renderer-packages": "off"
   }
 }

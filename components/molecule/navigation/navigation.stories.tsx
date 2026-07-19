@@ -1,20 +1,23 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 
 import Alert from './alert';
 import NavCategories from "./categories";
 
 const meta = {
     title: 'Molecule/Navigation',
+    tags: ['ai-generated', 'needs-work'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Vue d'ensemble des composants de navigation et d’alerte.",
+                    "Overview of navigation and alert components.",
             },
         },
     },
 } satisfies Meta;
+
 
 export default meta;
 
@@ -66,6 +69,11 @@ export const AlertComponent: Story = {
             </Alert>
         </div>
     ),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const alertText = canvas.getByText(/Ceci est une alerte/);
+        expect(alertText).toBeInTheDocument();
+    },
 };
 
 export const CategoriesComponent: Story = {

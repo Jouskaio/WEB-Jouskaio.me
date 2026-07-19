@@ -1,40 +1,43 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 import WidgetContact from "./contact/widgetContact";
 
 const meta = {
     title: 'Molecule/Widgets',
     component: WidgetContact,
+    tags: ['ai-generated'],
     parameters: {
         docs: {
             description: {
-                component: "Vue d'ensemble des widgets du projet.",
+                component: "Overview of the project widgets.",
             },
         },
     },
 } satisfies Meta<typeof WidgetContact>;
+
 
 export default meta;
 
 type Story = StoryObj<typeof WidgetContact>;
 
 const contactArgs = {
-    children: 'Me contacter',
+    children: 'Contact me',
     contacts: [
         {
             name: 'Email',
             url: 'mailto:hello@jouskaio.me',
-            description: 'Envoie-moi un email pour discuter d’un projet ou poser une question.',
+            description: 'Send me an email to discuss a project or ask a question.',
         },
         {
             name: 'LinkedIn',
             url: 'https://www.linkedin.com',
-            description: 'Retrouve-moi sur LinkedIn pour échanger autour du design et du web.',
+            description: 'Find me on LinkedIn to chat about design and the web.',
         },
         {
             name: 'GitHub',
             url: 'https://github.com',
-            description: 'Consulte mes repositories et mes expérimentations techniques.',
+            description: 'Check out my repositories and technical experiments.',
         },
     ],
     classname: '',
@@ -46,6 +49,11 @@ export const All: Story = {
 
 export const WidgetContactComponent: Story = {
     args: contactArgs,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const emailContact = canvas.getByText('Email');
+        expect(emailContact).toBeInTheDocument();
+    },
 };
 
 export const TwoContacts: Story = {
@@ -55,12 +63,12 @@ export const TwoContacts: Story = {
             {
                 name: 'Email',
                 url: 'mailto:hello@jouskaio.me',
-                description: 'Privilégie ce canal pour les demandes de mission.',
+                description: 'Prefer this channel for mission requests.',
             },
             {
                 name: 'Discord',
                 url: 'https://discord.com',
-                description: 'Disponible aussi sur Discord pour discuter plus rapidement.',
+                description: 'Also available on Discord for quicker conversations.',
             },
         ],
     },
@@ -73,7 +81,7 @@ export const SingleContact: Story = {
             {
                 name: 'Email',
                 url: 'mailto:hello@jouskaio.me',
-                description: 'Un seul mode de contact disponible ici.',
+                description: 'Only one contact method available here.',
             },
         ],
     },

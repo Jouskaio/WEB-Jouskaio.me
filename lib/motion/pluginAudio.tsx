@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import PropTypes from "prop-types";
 import ProgressBar from 'react-bootstrap/ProgressBar';
+import Image from 'next/image';
 
 const PluginAudio = ({ text, classname, id }) => {
     const [utterance, setUtterance] = useState(null);
@@ -96,12 +97,14 @@ const PluginAudio = ({ text, classname, id }) => {
 
     return (
         <div className="m-pluginAudio">
-            <img
+            <Image
                 id={"pluginAudio" + id.toString()}
                 className={`a-icon__audio ${classname}`}
                 src={isAudioIcon ? "/icons/play.svg" : "/icons/pause.svg"} // Utilisation de la variable d'état pour sélectionner l'icône appropriée
                 onClick={handleClick}
                 alt="Audio"
+                width={20}
+                height={20}
             />
             {/* TODO: The progress bar doesn't evolve
             <ProgressBar variant="info" now={progress} label={`${progress}%`} />

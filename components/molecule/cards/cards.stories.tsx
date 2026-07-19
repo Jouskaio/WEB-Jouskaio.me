@@ -1,5 +1,6 @@
-// @ts-ignore
+import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
+import { expect, within } from 'storybook/test';
 
 import CardCitation from './cardCitation';
 import CardInfos from './cardInfos';
@@ -11,6 +12,7 @@ import CardXL from './cardXL';
 
 const meta = {
     title: 'Molecule/Cards',
+    tags: ['ai-generated'],
     parameters: {
         docs: {
             description: {
@@ -307,4 +309,10 @@ export const XL: Story = {
             }}
         />
     ),
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        // Wait for dynamic component to load might be tricky, but we can check the button
+        const button = canvas.getByRole('button', { name: /Mettre la vidéo en pause|Lire la vidéo/i });
+        expect(button).toBeInTheDocument();
+    },
 };
