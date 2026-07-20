@@ -1,69 +1,19 @@
 {
-  "name": "jouskaio-front",
-  "version": "0.1.0",
+  "name": "jouskaio-portfolio-monorepo",
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint",
-    "postbuild": "next-sitemap",
-    "storybook": "storybook dev -p 6060",
-    "build-storybook": "storybook build",
-    "test-storybook": "test-storybook",
-    "test-storybook:ci": "test-storybook --ci --coverage"
-  },
-  "dependencies": {
-    "@apollo/client": "^3.6.9",
-    "@next/bundle-analyzer": "^12.1.6",
-    "@types/node": "^22.14.1",
-    "aos": "^3.0.0-beta.6",
-    "graphql": "^16.5.0",
-    "graphql-tag": "^2.12.6",
-    "next": "^14.2.6",
-    "next-compose-plugins": "^2.2.1",
-    "next-pwa": "^5.6.0",
-    "next-sitemap": "^4.2.3",
-    "nodemailer": "^6.9.5",
-    "react": "^18.1.0",
-    "react-bootstrap": "^2.10.1",
-    "react-dom": "^18.1.0",
-    "react-highlight": "^0.14.0",
-    "react-html-parser": "^2.0.2",
-    "react-infinite-scroll-component": "^6.1.0",
-    "react-intersection-observer": "^9.5.2",
-    "react-player": "^2.12.0",
-    "sass": "^1.86.3",
-    "sharp": "^0.34.1"
+    "build": "turbo build",
+    "dev": "turbo dev",
+    "lint": "turbo lint",
+    "test": "turbo test",
+    "storybook": "turbo storybook"
   },
   "devDependencies": {
-    "@chromatic-com/storybook": "^5.2.1",
-    "@storybook/addon-a11y": "^10.5.2",
-    "@storybook/addon-docs": "^10.5.2",
-    "@storybook/addon-mcp": "^0.7.0",
-    "@storybook/addon-vitest": "^10.5.2",
-    "@storybook/nextjs-vite": "^10.5.2",
-    "@storybook/test-runner": "^0.24.4",
-    "@types/aos": "^3.0.6",
-    "@types/react": "^18.3.12",
-    "@vitest/browser-playwright": "^4.1.10",
-    "@vitest/coverage-v8": "^4.1.10",
-    "eslint": "^8.57.0",
-    "eslint-config-next": "^14.2.6",
-    "eslint-plugin-react-hooks": "^4.6.2",
-    "eslint-plugin-storybook": "^10.5.2",
-    "mockdate": "^3.0.5",
-    "msw": "^2.15.0",
-    "msw-storybook-addon": "^2.0.7",
-    "playwright": "^1.61.1",
-    "storybook": "^10.5.2",
-    "typescript": "^5.8.3",
-    "vite": "^8.1.5",
-    "vitest": "^4.1.10"
+    "turbo": "^2.0.0"
   },
-  "msw": {
-    "workerDirectory": [
-      "public"
-    ]
-  }
+  "packageManager": "yarn@1.22.19"
 }
