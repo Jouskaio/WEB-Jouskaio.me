@@ -1,41 +1,47 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
-
-# dependencies
-/node_modules
+# Dependencies
+**/node_modules
 /.pnp
 .pnp.js
-.icloud
-# testing
-/coverage
-.env
 
-# next.json
-/.next/
+# Testing
+/coverage
+**/.eslintcache
+**/*.tsbuildinfo
+
+# Next.js
+**/.next/
 /out/
 
-# production
-/build
-.idea
-.idea/
-.idea/*
+# Production
+**/build
+**/dist
 
-# misc
+# Turbo
+**/.turbo
+
+# Storybook
+**/storybook-static
+*storybook.log
+
+# Environments
+.env
+.env*.local
+.env.local
+.env.production
+.env.development
+.env.test
+
+# IDE / OS
+.idea/
+.vscode/
 .DS_Store
 *.pem
-
-# debug
+*.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# local env files
-.env*.local
-.env
-.env.local
-.env.production
-# turbo
-.turbo
 # PWA files
 **/public/sw.js
 **/public/workbox-*.js
@@ -43,10 +49,11 @@ yarn-error.log*
 **/public/sw.js.map
 **/public/workbox-*.js.map
 **/public/worker-*.js.map
+
+# GraphQL (Keep these)
 !/pages/api/schema.graphql
 !/pages/api/.graphqlconfig
 
-*storybook.log
-storybook-static
+# Custom
 !/.junie/
 !/yarn.lock

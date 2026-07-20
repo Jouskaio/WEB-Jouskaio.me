@@ -1,0 +1,15 @@
+@use "../00-protons/mixins" as *;
+
+.m-feed {
+  margin: 0 auto;
+  padding: 0;
+  width: 100%;
+  justify-content: center;
+  display: grid;
+  grid-auto-rows: 8px;
+
+  @include medium {
+    grid-template-columns: repeat(auto-fill, 300px);
+
+  }
+}

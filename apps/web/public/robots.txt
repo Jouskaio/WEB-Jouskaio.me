@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.jouskaio.me
+
+# Sitemaps
+Sitemap: https://www.jouskaio.me/sitemap.xml
