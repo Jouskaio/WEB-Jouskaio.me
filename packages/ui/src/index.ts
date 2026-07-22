@@ -14,10 +14,12 @@ export { default as TextH6 } from './components/atom/text/textH6';
 export { default as TextLink } from './components/atom/text/textLink';
 export { default as TextMarked } from './components/atom/text/textMarked';
 export { default as TextSpanXS } from './components/atom/text/textSpanXS';
+export { default as Tag } from './components/atom/text/tag';
 
 // Molecules
 export { default as Alert } from './components/molecule/navigation/alert';
 export { default as CardCitation } from './components/molecule/cards/cardCitation';
+export { default as CardExperience } from './components/molecule/cards/cardExperience';
 export { default as CardInfos } from './components/molecule/cards/cardInfos';
 export { default as CardListIcons } from './components/molecule/cards/cardListIcons';
 export { default as CardListText } from './components/molecule/cards/cardListText';
@@ -38,6 +40,7 @@ export { default as Footer } from './components/organism/navigation/footer';
 export { default as Header } from './components/organism/navigation/header';
 
 // Hooks & Utils
+export { default as UseProcessor } from './lib/preload/preload-rehype';
 export { useWindowSize } from './lib/motion/sizeWindow';
 export { useScrollingAOS } from './lib/motion/scrolling-effectAOS';
 export { client } from './lib/api/apolloClient';

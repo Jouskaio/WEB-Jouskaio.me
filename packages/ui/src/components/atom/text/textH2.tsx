@@ -1,12 +1,23 @@
 import type { ReactNode } from 'react';
 
+/**
+ * TextH2 component properties.
+ */
 export type TextH2Props = {
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * H2 title content.
+     */
     children?: ReactNode;
 };
 
 /**
- * Atom: Title H2
+ * Atom Component: Title H2
+ *
+ * Stylized level 2 title.
  */
 export default function TextH2({
                                    classname = '',

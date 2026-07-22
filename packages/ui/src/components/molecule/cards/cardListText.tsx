@@ -3,18 +3,43 @@ import type { CSSProperties } from 'react';
 import TextH4 from '../../atom/text/textH4';
 import TextH6 from '../../atom/text/textH6';
 
+/**
+ * Properties of the CardListText component.
+ */
 export type CardListTextProps = {
+    /**
+     * List of points or details to display.
+     */
     details: string[];
+    /**
+     * Card title.
+     */
     title: string;
+    /**
+     * Background image URL.
+     */
     media: string;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
 };
 
 /**
- * Molecule: Card List Text
+ * Molecule Component: Card List Text
+ * A card with a background image displaying a title and a list of texts.
  */
 export default function CardListText({
                                          details,

@@ -1,5 +1,5 @@
 import React, { useState, useEffect, Fragment } from "react";
-import ReactHtmlParser from "react-html-parser";
+import _ReactHtmlParser from "react-html-parser";
 import TextDefault from "../../components/atom/text/TextDefault";
 import TextH3 from "../../components/atom/text/textH3";
 import TextH4 from "../../components/atom/text/textH4";
@@ -33,6 +33,7 @@ function UseProcessor({ content, size }) {
 
 // Render the content
 useEffect(() => {
+    const ReactHtmlParser: any = (_ReactHtmlParser as any).default || _ReactHtmlParser;
     const parsedContent = ReactHtmlParser(content, {
       decodeEntities: true,
       transform: (node, index) => {

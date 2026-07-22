@@ -18,17 +18,39 @@ const MONTH_NAMES = [
     'December',
 ];
 
+/**
+ * Properties of the CardInfos component.
+ */
 export type CardInfosProps = {
+    /**
+     * Date to display (string format compatible with Date).
+     */
     date: string;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
+    /**
+     * Message or informational content.
+     */
     children: string;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
 };
 
 /**
- * Molecule: Card Infos
+ * Molecule Component: Card Infos
+ * A card displaying a date (day, month, year) and an information message.
  */
 export default function CardInfos({
                                       date,

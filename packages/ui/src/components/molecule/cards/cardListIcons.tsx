@@ -11,26 +11,63 @@ import {
 import TextH4 from '../../atom/text/textH4';
 import TextDefault from '../../atom/text/TextDefault';
 
+/**
+ * Structure of an item in the icons list.
+ */
 export type CardListIconItem = {
+    /**
+     * Icon to display (URL or imported image).
+     */
     icon: string | StaticImageData;
+    /**
+     * Item title.
+     */
     title?: string;
+    /**
+     * Textual description.
+     */
     text: string;
+    /**
+     * Alternative text for the icon.
+     */
     alt?: string;
 };
 
+/**
+ * Properties of the CardListIcons component.
+ */
 export type CardListIconsProps = {
+    /**
+     * List of icons and their associated texts.
+     */
     icons: CardListIconItem[];
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
+    /**
+     * Display duration of each icon in milliseconds (automatic carousel).
+     */
     intervalDuration?: number;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
 };
 
 const SWIPE_THRESHOLD = 50;
 
 /**
- * Molecule: Card List Icons
+ * Molecule Component: Card List Icons
+ * A card displaying a list of animated icons in a carousel format (swipeable).
  */
 export default function CardListIcons({
                                           icons,

@@ -1,12 +1,23 @@
 import type { ReactNode } from 'react';
 
+/**
+ * TextH3 component properties.
+ */
 export type TextH3Props = {
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * H3 title content.
+     */
     children?: ReactNode;
 };
 
 /**
- * Atom: Title H3
+ * Atom Component: Title H3
+ *
+ * Stylized level 3 title.
  */
 export default function TextH3({
                                    classname = '',

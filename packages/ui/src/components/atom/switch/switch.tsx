@@ -1,13 +1,27 @@
 import { Component } from 'react';
 
+/**
+ * Switch component properties.
+ */
 export type SwitchProps = {
+    /**
+     * Field name (input name and id attributes).
+     */
     name: string;
+    /**
+     * Defines if the switch is checked by default.
+     */
     isChecked?: boolean;
+    /**
+     * Function called when the switch state changes.
+     */
     onClick?: (checked: boolean) => void;
 };
 
 /**
- * Atom: Switch
+ * Atom Component: Switch
+ *
+ * A toggle switch based on a checkbox.
  */
 export default class Switch extends Component<SwitchProps> {
     handleToggle = () => {

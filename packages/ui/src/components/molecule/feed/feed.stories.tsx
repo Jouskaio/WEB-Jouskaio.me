@@ -5,20 +5,21 @@ import Pin from './pin';
 import PinNews from './pinNews';
 const meta = {
     title: 'Molecule/Feed',
-    tags: ['!autodocs'],
+    component: Pin,
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
-                component: "Overview of Feed-type components.",
+                component: "Core components for the feed (Pinterest-like) and news articles.",
             },
         },
     },
-} satisfies Meta;
+} satisfies Meta<typeof Pin>;
 
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Pin>;
 
 const pinArgs = {
     size: 'medium' as const,
@@ -65,48 +66,23 @@ const pinNewsArgs = {
     },
 };
 
-export const All: Story = {
-    render: () => (
-        <div style={{ display: 'grid', gap: '48px' }}>
-            <div
-                style={{
-                    display: 'grid',
-                    gridTemplateColumns: 'repeat(3, 320px)',
-                    gridAutoRows: '6px',
-                    justifyContent: 'start',
-                }}
-            >
-                <Pin {...pinArgs} size="small" />
-                <Pin {...pinArgs} size="medium" />
-                <Pin {...pinArgs} size="large" />
-            </div>
-
-            <div style={{ maxWidth: 720 }}>
-                <PinNews {...pinNewsArgs} />
-            </div>
-        </div>
-    ),
+export const PinSmall: Story = {
+    args: { ...pinArgs, size: 'small' },
 };
 
-export const PinComponent: Story = {
-    render: () => (
-        <div
-            style={{
-                display: 'grid',
-                gridTemplateColumns: '320px',
-                gridAutoRows: '6px',
-                justifyContent: 'start',
-            }}
-        >
-            <Pin {...pinArgs} />
-        </div>
-    ),
+export const PinMedium: Story = {
+    args: { ...pinArgs, size: 'medium' },
 };
 
-export const PinNewsComponent: Story = {
-    render: () => (
+export const PinLarge: Story = {
+    args: { ...pinArgs, size: 'large' },
+};
+
+export const PinNewsComponent: StoryObj<typeof PinNews> = {
+    render: (args) => (
         <div style={{ maxWidth: 720 }}>
-            <PinNews {...pinNewsArgs} />
+            <PinNews {...args} />
         </div>
     ),
+    args: pinNewsArgs,
 };

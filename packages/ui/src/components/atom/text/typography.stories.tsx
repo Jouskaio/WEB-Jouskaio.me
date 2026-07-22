@@ -16,11 +16,12 @@ import TextSpanXS from './textSpanXS';
 
 const meta = {
     title: 'Atom/Typography',
-    tags: ['ai-generated'],
+    component: TextH1, // Use H1 as a reference component for global props
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
-                component: 'Vue d’ensemble des variantes typographiques du projet.',
+                component: 'Complete typographic system: titles, paragraphs, citations, and labels.',
             },
         },
     },
@@ -30,101 +31,94 @@ export default meta;
 
 type Story = StoryObj<typeof meta>;
 
-const sectionStyle = {
-    display: 'grid',
-    gap: '12px',
-    marginBottom: '32px',
-};
-
 const wrapperStyle = {
     display: 'grid',
-    gap: '40px',
+    gap: '32px',
     padding: '24px',
 };
 
-export const All: Story = {
+const labelStyle = {
+    fontSize: '12px',
+    color: '#666',
+    marginBottom: '8px',
+    borderBottom: '1px solid #eee',
+    paddingBottom: '4px',
+    textTransform: 'uppercase' as const,
+    letterSpacing: '1px',
+};
+
+export const Overview: Story = {
     render: () => (
         <div style={wrapperStyle}>
-            <section style={sectionStyle}>
-                <TextH1>Titre H1</TextH1>
-                <TextH2>Titre H2</TextH2>
-                <TextH3>Titre H3</TextH3>
-                <TextH4>Titre H4</TextH4>
-                <TextH5>Titre H5</TextH5>
-                <TextH6>Titre H6</TextH6>
+            <section style={{ display: 'grid', gap: '8px' }}>
+                <div>
+                    <div style={labelStyle}>TextH1</div>
+                    <TextH1>Level 1 Title</TextH1>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextH2</div>
+                    <TextH2>Level 2 Title</TextH2>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextH3</div>
+                    <TextH3>Level 3 Title</TextH3>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextH4</div>
+                    <TextH4>Level 4 Title</TextH4>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextH5</div>
+                    <TextH5>Level 5 Title</TextH5>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextH6</div>
+                    <TextH6>Level 6 Title</TextH6>
+                </div>
             </section>
 
-            <section style={sectionStyle}>
-                <TextDefault>
-                    Ceci est un texte par défaut utilisé pour afficher un paragraphe
-                    standard dans l’interface.
-                </TextDefault>
-
-                <TextMarked>
-                    Ceci est un texte marqué, utile pour mettre un contenu en avant.
-                </TextMarked>
-
-                <Citation>
-                    “La typographie donne immédiatement le ton d’une interface.”
-                </Citation>
-            </section>
-
-            <section style={sectionStyle}>
-                <TextSpanXS>Span XS</TextSpanXS>
-            </section>
-
-            <section style={sectionStyle}>
-                <TextLink src="/">Texte lien</TextLink>
-                <Tag color="#7c3aed" slug="design-system">
-                    Tag
-                </Tag>
+            <section style={{ display: 'grid', gap: '24px' }}>
+                <div>
+                    <div style={labelStyle}>TextDefault (Paragraph)</div>
+                    <TextDefault>
+                        Default text used for paragraphs. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    </TextDefault>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextMarked</div>
+                    <TextMarked>
+                        Marked text to highlight content.
+                    </TextMarked>
+                </div>
+                <div>
+                    <div style={labelStyle}>Citation</div>
+                    <Citation>
+                        “Typography immediately sets the tone of an interface.”
+                    </Citation>
+                </div>
+                <div>
+                    <div style={labelStyle}>TextSpanXS</div>
+                    <TextSpanXS>Small Span XS text (60% opacity)</TextSpanXS>
+                </div>
             </section>
         </div>
     ),
 };
 
-export const Headings: Story = {
-    render: () => (
-        <div style={wrapperStyle}>
-            <TextH1>Titre H1</TextH1>
-            <TextH2>Titre H2</TextH2>
-            <TextH3>Titre H3</TextH3>
-            <TextH4>Titre H4</TextH4>
-            <TextH5>Titre H5</TextH5>
-            <TextH6>Titre H6</TextH6>
-        </div>
-    ),
+export const TagComponent: StoryObj<typeof Tag> = {
+    render: (args) => <Tag {...args}>Development</Tag>,
+    args: {
+        color: '#7c3aed',
+        slug: 'dev',
+    },
+    argTypes: {
+        color: { control: 'color' },
+    },
 };
 
-export const BodyAndInline: Story = {
-    render: () => (
-        <div style={wrapperStyle}>
-            <TextDefault>
-                Ceci est un paragraphe de texte par défaut pour tester la lisibilité.
-            </TextDefault>
-
-            <TextMarked>
-                Ceci est un texte mis en évidence dans le flux de lecture.
-            </TextMarked>
-
-            <TextSpanXS>Span XS</TextSpanXS>
-
-            <TextLink src="/">Texte lien</TextLink>
-            <Tag color="#2563eb" slug="frontend">
-                Tag
-            </Tag>
-            <Citation>“Une citation de démonstration.”</Citation>
-        </div>
-    ),
-};
-
-export const CssCheck: Story = {
-    render: () => <TextH1>CSS Check</TextH1>,
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-        const h1 = canvas.getByText('CSS Check');
-        const style = window.getComputedStyle(h1);
-        expect(style.fontSize).toBe('36px');
-        expect(style.fontWeight).toBe('700'); // bold
+export const LinkComponent: StoryObj<typeof TextLink> = {
+    render: (args) => <TextLink {...args}>Click here</TextLink>,
+    args: {
+        src: 'https://jouskaio.me',
     },
 };

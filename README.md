@@ -1,57 +1,46 @@
-# Front-end portfolio 2022
+# Jouskaio Monorepo (Portfolio & UI Library)
 
-[![wakatime](https://wakatime.com/badge/user/421f3c4d-505e-46dd-a125-f4af7f23cc50/project/5f397f8d-865a-4945-b49c-12d2e440c04b.svg)](https://wakatime.com/badge/user/421f3c4d-505e-46dd-a125-f4af7f23cc50/project/5f397f8d-865a-4945-b49c-12d2e440c04b)
+This project is a monorepo managed with **Turborepo** and **Yarn Workspaces**. It contains Jouskaio's personal portfolio as well as a reusable UI component library.
+
+## Project Structure
+
+- `apps/web`: The Next.js application (Portfolio).
+- `packages/ui`: The UI component library (React + SCSS) and Storybook.
 
 ## Installation
 
-To run this application for the first time, make sure to execute `yarn istall`, `next build` and then `npm run dev`.
-
-- [Strapi - Build a blog with Next.JS](https://strapi.io/blog/build-a-blog-with-next-react-js-strapi)
-- [Strapi - Build a blog with React, Strapi and Apollo](https://strapi.io/blog/build-a-blog-with-react-strapi-and-apollo)
-- [Strapi Github](https://github.com/vercel/next.js/tree/canary/examples/cms-strapi)
-
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
-
-## Documentation
-
-For the first installation, be sure to run `yarn install`, `next build` and then `npm run dev`. 
-
-Several commands are possible to use with the project :
-- `next build` : build the project
-- `next dev` : start the server in development mode
-- `next start` : start the server in production mode
-- `next styleguide:build` : build the styleguidist auto documentation
-- `next styleguide` : start the server to visualize styleguidist documentation
-
-## Update SSL certificate on Heroku
-
-SSL certificate is approved and managed by Let's Encrypt but not automatically.
-To update the certificate, you need to run the following command :
-
-``` bash
-sudo certbot certonly --authenticator manual --installer heroku
+```bash
+yarn install
 ```
 
-To get the txt to add on the app run :
+## Main Commands
+
+All commands can be run from the project root:
+
+- `yarn dev`: Launches the portfolio and Storybook in development mode.
+- `yarn build`: Compiles all projects (Portfolio and Storybook).
+- `yarn lint`: Checks code quality across the entire monorepo.
+- `yarn test`: Runs tests across the entire monorepo.
+- `yarn storybook`: Launches only Storybook on port 6060.
+
+## Deployment
+
+Deployment is automated via GitHub Actions. For manual execution on the server via PM2:
 
 ```bash
-sudo certbot certonly --manual --preferred-challenges http --email YOUR-EMAIL --server https://acme-v02.api.letsencrypt.org/directory --agree-tos -d YOURDOMAIN.com -d www.YOURDOMAIN.com
-
+# In apps/web
+pm2 start ecosystem.config.js
 ```
-Follow then this tuto : [Uplift.ltd - Heroku SSL + Let's Encrypt](https://www.uplift.ltd/posts/heroku-ssl-letsencrypt/)
 
-## Packages installed
+## UI Library Usage
 
-- `depcheck` which allow visualizing which npm packages are unnecessary for the project
-- `babel-loader style-loader css-loader sass-loader` to use webpack loader in order to generate documentation with `styleguidist`
-- `sharp` to optimize images (Next.JS recommendation : https://nextjs.org/docs/messages/sharp-missing-in-production
-  )
-- `@types/component-emitter` because of an error while building the project.
-``` bash
-info  - Loaded env from /Users/jouskaio/Documents/Development/Projets/Portfolio/Jouskaio-Front/.env
-Failed to compile.
+To add the UI library to a new project in this monorepo:
 
-Type error: Cannot find type definition file for 'component-emitter'.
-  The file is in the program because:
-    Entry point for implicit type library 'component-emitter'
-```
+1. Add `"@jouskaio/ui": "*"` to your application's `package.json`.
+2. Import components: `import { Button } from '@jouskaio/ui'`.
+
+## Technical Documentation
+
+Consult the specific READMEs for more details:
+- [Web Application Documentation](./apps/web/README.md)
+- [UI Library Documentation](./packages/ui/README.md)

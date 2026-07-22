@@ -96,6 +96,7 @@
 .m-cardListIcons {
   position: relative;
   display: block;
+  perspective: 1000px;
   &__a-div {
     position: absolute;
     width: 100%;
@@ -130,14 +131,14 @@
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    transform: rotateX(0deg) rotateY(0deg) translateY(0); /* Réinitialisez la rotation à 0 degrés et la translation */
+    transform: rotateX(0deg) rotateY(0deg) translateY(0); /* Reset rotation to 0 degrees and translation */
     transform-style: preserve-3d;
     backface-visibility: hidden;
     opacity: 0;
     transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 
     &.active {
-      transform: rotateX(-360deg) rotateY(0deg) translateY(0); /* Faites tourner l'élément de -360 degrés (une rotation complète) */
+      transform: rotateX(-360deg) rotateY(0deg) translateY(0); /* Rotate the element by -360 degrees (a full rotation) */
       opacity: 1;
     }
   }

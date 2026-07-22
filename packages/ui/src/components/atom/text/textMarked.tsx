@@ -1,12 +1,23 @@
 import type { ReactNode } from 'react';
 
+/**
+ * TextMarked component properties.
+ */
 export type TextMarkedProps = {
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Text to highlight.
+     */
     children?: ReactNode;
 };
 
 /**
- * Atom: Text Marked
+ * Atom Component: Text Marked
+ *
+ * Highlighted text with a styled underline or background.
  */
 export default function TextMarked({
                                        classname = '',

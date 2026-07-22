@@ -268,23 +268,23 @@ export default function Home() {
                                 {
                                     name: 'Email',
                                     url: 'mailto:jouskaio.me@gmail.com',
-                                    description: "jouskaio.me@gmail.com"
+                                    description: "Send me an email for collaborations or inquiries."
                                 },
                                 {
                                     name: 'Twitter',
                                     url: 'https://twitter.com/Jouskaio_',
-                                    description: "@Jouskaio_"
+                                    description: "Follow me on Twitter for tech updates and news."
                                 },
                                 {
                                     name: 'Linkedin',
                                     url: 'https://www.linkedin.com/in/manonsalsou/',
-                                    description: "@manonsalsou"
+                                    description: "Connect with me on LinkedIn for professional networking."
                                 }
                             ]
                         }
                             aosDuration={1000}
                             aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}
-                        >Contact me.</WidgetContact>
+                        >Contact me</WidgetContact>
                         )}
                     </section>
                 </div>

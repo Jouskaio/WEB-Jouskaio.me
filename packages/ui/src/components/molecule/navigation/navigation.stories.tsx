@@ -7,32 +7,38 @@ import NavCategories from "./categories";
 
 const meta = {
     title: 'Molecule/Navigation',
-    tags: ['ai-generated', 'needs-work'],
+    component: Alert,
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Overview of navigation and alert components.",
+                    "Secondary navigation and user feedback components (alerts, categories).",
             },
         },
     },
-} satisfies Meta;
+    decorators: [
+        (Story) => (
+            <div style={{ padding: '24px', background: '#f9f9f9', minHeight: '100px', position: 'relative' }}>
+                {/* Force relative position for the alert in Storybook so it doesn't escape the container */}
+                <style>{`
+                    .m-alert { 
+                        position: relative !important; 
+                        bottom: auto !important; 
+                        left: auto !important;
+                        z-index: 1 !important;
+                    }
+                `}</style>
+                <Story />
+            </div>
+        ),
+    ],
+} satisfies Meta<typeof Alert>;
 
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
-
-const wrapperStyle = {
-    display: 'grid',
-    gap: '40px',
-    padding: '24px',
-};
-
-const sectionStyle = {
-    display: 'grid',
-    gap: '16px',
-};
+type Story = StoryObj<typeof Alert>;
 
 const mockCategories = [
     { name: 'Frontend', slug: 'frontend' },
@@ -41,49 +47,33 @@ const mockCategories = [
     { name: 'React', slug: 'react' },
 ];
 
-export const All: Story = {
-    render: () => (
-        <div style={wrapperStyle}>
-            <section style={sectionStyle}>
-                <Alert>
-                    Ceci est une alerte d’information affichée dans le design system.
-                </Alert>
-            </section>
-
-            <section style={sectionStyle}>
-                <NavCategories
-                    width={600}
-                    classname=""
-                    categories={mockCategories}
-                />
-            </section>
-        </div>
-    ),
-};
-
 export const AlertComponent: Story = {
-    render: () => (
-        <div style={{ maxWidth: 600, padding: '24px' }}>
-            <Alert>
-                Ceci est une alerte d’information affichée dans le design system.
-            </Alert>
-        </div>
-    ),
+    args: {
+        children: 'This is an information alert displayed in the design system.',
+    },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        const alertText = canvas.getByText(/Ceci est une alerte/);
+        const alertText = canvas.getByText(/This is an alert/);
         expect(alertText).toBeInTheDocument();
     },
 };
 
-export const CategoriesComponent: Story = {
-    render: () => (
+export const CategoriesComponent: StoryObj<typeof NavCategories> = {
+    render: (args) => (
         <div style={{ maxWidth: 700, padding: '24px' }}>
-            <NavCategories
-                width="100%"
-                classname=""
-                categories={mockCategories}
-            />
+            <NavCategories {...args} />
         </div>
     ),
+    args: {
+        width: "100%",
+        categories: mockCategories,
+    },
+    argTypes: {
+        width: {
+            control: 'text',
+        },
+        categories: {
+            control: 'object',
+        },
+    },
 };

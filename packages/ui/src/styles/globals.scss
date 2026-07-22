@@ -12,6 +12,7 @@
 // Atoms
 @use "01-atoms/text";
 @use "01-atoms/button";
+@use "01-atoms/code";
 
 // Molecules
 @use "02-molecules/card";
@@ -19,6 +20,7 @@
 @use "02-molecules/widget";
 @use "02-molecules/email";
 @use "02-molecules/alert";
+@use "02-molecules/experience";
 @use "02-molecules/plugins/audio";
 @use "02-molecules/table";
 @use "02-molecules/plugins/carousel";

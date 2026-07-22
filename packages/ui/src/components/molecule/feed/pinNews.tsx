@@ -6,24 +6,61 @@ import { shimmer, toBase64 } from '../../../lib/preload/preload-image';
 import Tag from '../../atom/text/tag';
 import TextH4 from '../../atom/text/textH4';
 
+/**
+ * Structure of a tag for a PinNews.
+ */
 export type PinNewsTag = {
+    /**
+     * Tag name.
+     */
     name?: string;
+    /**
+     * Tag color.
+     */
     color?: string;
+    /**
+     * Slug for the tag URL.
+     */
     slug?: string;
 };
 
+/**
+ * Properties of the PinNews component.
+ */
 export type PinNewsProps = {
+    /**
+     * List of tags associated with the article.
+     */
     tags: PinNewsTag[];
+    /**
+     * Title of the news or blog article.
+     */
     title: string;
+    /**
+     * Summary or content (supports HTML).
+     */
     text: string;
+    /**
+     * Thumbnail image URL.
+     */
     media: string;
+    /**
+     * URL of the full article.
+     */
     url: string;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
 };
 
 /**
- * Molecule: Pin News
+ * Molecule Component: Pin News
+ * A simplified feed element for blog articles with a thumbnail on the side.
  */
 export default function PinNews({
                                     tags,

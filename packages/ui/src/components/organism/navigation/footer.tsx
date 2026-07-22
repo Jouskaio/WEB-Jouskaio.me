@@ -2,12 +2,19 @@ import TextDefault from '../../atom/text/TextDefault';
 import TextH3 from '../../atom/text/textH3';
 import Image from 'next/image';
 
+/**
+ * Properties of the Footer component.
+ */
 export type FooterProps = {
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
 };
 
 /**
- * Organism: Footer
+ * Organism Component: Footer
+ * The website footer containing social media links and contact information.
  */
 export default function Footer({ classname = '' }: FooterProps) {
     const socialLinks = [

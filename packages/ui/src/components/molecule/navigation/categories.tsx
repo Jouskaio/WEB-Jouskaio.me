@@ -3,14 +3,35 @@ import Link from 'next/link';
 import CATEGORIES_QUERY from '../../../lib/api/category/categories';
 import Query from '../../../lib/api/api';
 
+/**
+ * Structure of a navigation category.
+ */
 export type NavCategoryItem = {
+    /**
+     * Category name.
+     */
     name: string;
+    /**
+     * Slug for the category URL.
+     */
     slug: string;
 };
 
+/**
+ * Properties of the NavCategories component.
+ */
 export type NavCategoriesProps = {
+    /**
+     * Width of the categories container.
+     */
     width?: string | number;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Optional list of categories. If not provided, they will be fetched via the API.
+     */
     categories?: NavCategoryItem[];
 };
 
@@ -42,7 +63,8 @@ function renderCategoryItems(categories: NavCategoryItem[]) {
 }
 
 /**
- * Molecule: Nav Categories
+ * Molecule Component: Nav Categories
+ * Displays a list of categories for blog navigation.
  */
 export default function NavCategories({
                                           width = '100%',

@@ -4,22 +4,53 @@ import Switch from '../../../atom/switch/switch';
 import TextDefault from '../../../atom/text/TextDefault';
 import TextH4 from '../../../atom/text/textH4';
 
+/**
+ * Structure of a contact in the widget.
+ */
 export type Contact = {
+    /**
+     * Name of the contact type (e.g., "Discord", "Email").
+     */
     name: string;
+    /**
+     * Redirection URL for this contact.
+     */
     url: string;
+    /**
+     * Description displayed for this contact type.
+     */
     description: string;
 };
 
+/**
+ * Properties of the WidgetContact component.
+ */
 export type WidgetContactProps = {
+    /**
+     * List of available contacts.
+     */
     contacts: Contact[];
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Widget title.
+     */
     children: string;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
 };
 
 /**
- * Molecule: WidgetContact
+ * Molecule Component: WidgetContact
+ * A contact widget that allows choosing a communication method and toggling a switch to open the link.
  */
 export default function WidgetContact({
                                           contacts,

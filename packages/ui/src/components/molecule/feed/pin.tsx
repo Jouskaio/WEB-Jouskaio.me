@@ -6,27 +6,70 @@ import { shimmer, toBase64 } from '../../../lib/preload/preload-image';
 import Tag from '../../atom/text/tag';
 import TextH4 from '../../atom/text/textH4';
 
+/**
+ * Structure of a tag for a Pin.
+ */
 export type PinTag = {
+    /**
+     * Tag name.
+     */
     name?: string;
+    /**
+     * Tag color.
+     */
     color?: string;
+    /**
+     * Slug for the tag URL.
+     */
     slug?: string;
 };
 
+/**
+ * Size of the Pin component.
+ */
 export type PinSize = 'small' | 'medium' | 'large';
 
+/**
+ * Properties of the Pin component.
+ */
 export type PinProps = {
+    /**
+     * List of associated tags.
+     */
     tags?: PinTag[];
+    /**
+     * Item title.
+     */
     title?: string;
+    /**
+     * Description text or content.
+     */
     text?: string;
+    /**
+     * Cover image URL.
+     */
     media?: string;
+    /**
+     * Destination URL on click.
+     */
     url?: string;
+    /**
+     * Defines the dimensions and style of the Pin.
+     */
     size: PinSize;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
 };
 
 /**
- * Molecule: Pin
+ * Molecule Component: Pin
+ * A feed element (Pinterest style) displaying an image, tags, a title, and a link.
  */
 export default function Pin({
                                 tags = [],

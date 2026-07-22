@@ -1,17 +1,36 @@
 import Link from 'next/link';
 
+/**
+ * Structure of a navigation page in the Header.
+ */
 export type HeaderPage = {
+    /**
+     * Destination URL (internal or external).
+     */
     source: string;
+    /**
+     * Additional CSS classes for the link.
+     */
     class: string;
+    /**
+     * Displayed name of the page.
+     */
     name: string;
 };
 
+/**
+ * Properties of the Header component.
+ */
 export type HeaderProps = {
+    /**
+     * List of navigation pages to display.
+     */
     pages: HeaderPage[];
 };
 
 /**
- * Organism: Header
+ * Organism Component: Header
+ * The main navigation bar of the site.
  */
 export default function Header({ pages }: HeaderProps) {
     return (

@@ -10,7 +10,7 @@ const meta: Meta<typeof Code> = {
     parameters: {
         docs: {
             description: {
-                component: 'Bloc de code avec coloration syntaxique via react-highlight.',
+                component: 'Code block with syntax highlighting via react-highlight.',
             },
         },
     },

@@ -7,20 +7,45 @@ import Header from './header';
 
 const meta = {
     title: 'Organism/Navigation',
-    tags: ['ai-generated'],
+    component: Header,
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Overview of the navigation components at the organism level.",
+                    "Main navigation components of the portfolio: Header (menu) and Footer.",
             },
         },
     },
-} satisfies Meta;
+    argTypes: {
+        pages: {
+            control: 'object',
+            description: 'List of navigation links',
+        },
+    },
+    decorators: [
+        (Story) => (
+            <div style={{ minHeight: '300px', position: 'relative', border: '1px dashed #ccc', padding: '20px', background: '#333' }}>
+                {/* Force absolute position for the header in Storybook so it stays within the story frame */}
+                <style>{`
+                    .o-header { 
+                        position: absolute !important; 
+                        bottom: 20px !important; 
+                        left: 50% !important;
+                        transform: translateX(-50%) !important;
+                        width: 90% !important;
+                    }
+                `}</style>
+                <Story />
+                <div style={{ height: '150px' }} />
+            </div>
+        ),
+    ],
+} satisfies Meta<typeof Header>;
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Header>;
 
 const mockPages = [
     {
@@ -45,22 +70,10 @@ const mockPages = [
     },
 ];
 
-
-export const All: Story = {
-    render: () => (
-        <div style={{ display: 'grid', gap: '64px', padding: '24px' }}>
-            <Header pages={mockPages} />
-            <Footer />
-        </div>
-    ),
-};
-
-export const HeaderComponent: Story = {
-    render: () => (
-        <div style={{ padding: '24px' }}>
-            <Header pages={mockPages} />
-        </div>
-    ),
+export const HeaderOnly: Story = {
+    args: {
+        pages: mockPages,
+    },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         const homeLink = canvas.getByText('home.');
@@ -68,10 +81,21 @@ export const HeaderComponent: Story = {
     },
 };
 
-export const FooterComponent: Story = {
-    render: () => (
-        <div style={{ padding: '24px' }}>
+export const FooterOnly: StoryObj<typeof Footer> = {
+    render: (args) => <Footer {...args} />,
+    args: {
+        classname: '',
+    },
+};
+
+export const Combined: Story = {
+    render: (args) => (
+        <div style={{ display: 'flex', flexDirection: 'column', minHeight: '80vh', justifyContent: 'space-between' }}>
+            <Header {...args} />
             <Footer />
         </div>
     ),
+    args: {
+        pages: mockPages,
+    },
 };

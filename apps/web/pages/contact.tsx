@@ -1,4 +1,5 @@
 import React from "react";
+import Image from "next/image";
 import { TextH1, TextDefault, Email, TextH3, CardCitation, useWindowSize } from "@jouskaio/ui";
 
 export default function Contact (props) {
@@ -8,17 +9,30 @@ export default function Contact (props) {
 
     return (
         <section className={"l-contact"}>
-            <TextH1 classname={"l-contact__a-title"}>Contact me</TextH1>
+            <TextH1 classname={"l-contact__a-title"}>Get in Touch</TextH1>
             <div className={"l-contact__m-flexDiv"}>
                 <div className={"l-contact__m-infoDiv"}>
-                    <TextDefault>Feel free to contact me through my portfolio or mail to discuss potential
-                        collaborations or projects !</TextDefault>
+                    <TextDefault>
+                        Got a project in mind, a question, or just want to say hello? I'm always open to discussing new creative ideas, technical challenges, or opportunities to be part of your vision. Let's build something amazing together!
+                    </TextDefault>
                     <br/>
                     <br/>
-                    <TextDefault><strong className={"l-contact__m-infoDiv--a-span"}>Availability</strong> <br/>Currently
-                        finishing my Master degree until September 2024 on Paris but after that I will be available to
-                        work anywhere. I was used to travel a lot where studying in engineering school so distance isn't
-                        a problem.</TextDefault>
+                    <TextDefault>
+                        <strong className={"l-contact__m-infoDiv--a-span"}>Current Status</strong>
+                        <br/>
+                        Available for worldwide collaborations. Currently based in Paris, I am open to full-time roles or freelance opportunities. With extensive experience in remote work and a passion for travel, I can adapt to your team's needs wherever you are.
+                    </TextDefault>
+                    <div className="l-contact__m-socials">
+                        <a href="https://www.linkedin.com/in/manonsalsou/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <Image src="/icons/linkedin.png" alt="" width={32} height={32} />
+                        </a>
+                        <a href="https://github.com/Jouskaio" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <Image src="/icons/github.png" alt="" width={32} height={32} />
+                        </a>
+                        <a href="https://twitter.com/Jouskaio_" target="_blank" rel="noopener noreferrer" aria-label="Twitter">
+                            <Image src="/icons/twitter.png" alt="" width={32} height={32} />
+                        </a>
+                    </div>
                     {statusAOS && (
                         <Email
                             url={process.env.JOUSKAIO_API}

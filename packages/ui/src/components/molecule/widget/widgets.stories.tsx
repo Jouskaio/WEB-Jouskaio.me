@@ -6,11 +6,11 @@ import WidgetContact from "./contact/widgetContact";
 const meta = {
     title: 'Molecule/Widgets',
     component: WidgetContact,
-    tags: ['ai-generated'],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
-                component: "Overview of the project widgets.",
+                component: "Interactive widgets, such as the contact list.",
             },
         },
     },
@@ -43,11 +43,7 @@ const contactArgs = {
     classname: '',
 };
 
-export const All: Story = {
-    args: contactArgs,
-};
-
-export const WidgetContactComponent: Story = {
+export const ContactList: Story = {
     args: contactArgs,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
@@ -69,19 +65,6 @@ export const TwoContacts: Story = {
                 name: 'Discord',
                 url: 'https://discord.com',
                 description: 'Also available on Discord for quicker conversations.',
-            },
-        ],
-    },
-};
-
-export const SingleContact: Story = {
-    args: {
-        ...contactArgs,
-        contacts: [
-            {
-                name: 'Email',
-                url: 'mailto:hello@jouskaio.me',
-                description: 'Only one contact method available here.',
             },
         ],
     },

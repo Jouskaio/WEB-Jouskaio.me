@@ -60,7 +60,7 @@ export default function WorkPage() {
                     <div className="m-carousel__item">
                         <a href="#" target="_blank" rel="noopener noreferrer">
                             <Image src="/images/img.png" alt="Image 1" width={300} height={200} />
-                            <p className="m-carousel__title">Titre 1</p>
+                            <p className="m-carousel__title">Title 1</p>
                             <p className="m-carousel__desc">Go to your next event with us</p>
                             <p className="m-carousel__tags">Design - Web - React</p>
                         </a>
@@ -68,7 +68,7 @@ export default function WorkPage() {
                     <div className="m-carousel__item">
                         <a href="#" target="_blank" rel="noopener noreferrer">
                             <Image src="/images/img.png" alt="Image 2" width={300} height={200} />
-                            <p className="m-carousel__title">Titre 2</p>
+                            <p className="m-carousel__title">Title 2</p>
                             <p className="m-carousel__desc">Another event experience</p>
                             <p className="m-carousel__tags">Design - Web - React</p>
                         </a>
@@ -76,7 +76,7 @@ export default function WorkPage() {
                     <div className="m-carousel__item">
                         <a href="#" target="_blank" rel="noopener noreferrer">
                             <Image src="/images/img.png" alt="Image 3" width={300} height={200} />
-                            <p className="m-carousel__title">Titre 3</p>
+                            <p className="m-carousel__title">Title 3</p>
                             <p className="m-carousel__desc">Something unique</p>
                             <p className="m-carousel__tags">Design - Web - React</p>
                         </a>

@@ -3,6 +3,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
 
 import CardCitation from './cardCitation';
+import CardExperience from './cardExperience';
 import CardInfos from './cardInfos';
 import CardListIcons from './cardListIcons';
 import CardListText from './cardListText';
@@ -12,16 +13,17 @@ import CardXL from './cardXL';
 
 const meta = {
     title: 'Molecule/Cards',
-    tags: ['ai-generated'],
+    component: CardCitation,
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Vue d'ensemble des différents composants Card du projet.",
+                    "Collection of cards used to display citations, information, projects (XL), or blog articles.",
             },
         },
     },
-} satisfies Meta;
+} satisfies Meta<typeof CardCitation>;
 
 export default meta;
 
@@ -33,9 +35,19 @@ const citationArgs = {
         'https://placehold.co/100x100/808080/ffffff?text=JS',
     urlProfile: 'https://blog.jouskaio.me',
     nameProfile: 'Jouska',
-    descriptionProfile: 'Développeuse Full Stack',
+    descriptionProfile: 'Full Stack Developer',
     children:
-        "La technologie est réellement utile lorsqu'elle devient simple à utiliser.",
+        "Technology is truly useful when it becomes simple to use.",
+    aosDuration: 800,
+    aosEffect: 'fade-up',
+};
+
+const experienceArgs = {
+    title: 'Lead Mobile Developer',
+    company: 'Innovatech Studio',
+    period: 'Jan 2022 - Present',
+    description: 'Leading the development of cross-platform mobile applications using React Native and Flutter. Improved application performance by 40% and mentored a team of 5 junior developers.',
+    technologies: ['React Native', 'Flutter', 'TypeScript', 'Firebase', 'Redux'],
     aosDuration: 800,
     aosEffect: 'fade-up',
 };
@@ -43,7 +55,7 @@ const citationArgs = {
 const infosArgs = {
     date: '2026-07-19',
     children:
-        'Une nouvelle version du site est maintenant disponible.',
+        'A new version of the website is now available.',
     aosDuration: 800,
     aosEffect: 'fade-up',
 };
@@ -71,20 +83,6 @@ const listIconsArgs = {
             text: 'Interactive web experiences',
             alt: 'Logo JavaScript',
         },
-        {
-            icon:
-                'https://placehold.co/56x56/61DAFB/111111?text=R',
-            title: 'React',
-            text: 'Reusable frontend components',
-            alt: 'Logo React',
-        },
-        {
-            icon:
-                'https://placehold.co/56x56/3178C6/ffffff?text=TS',
-            title: 'TypeScript',
-            text: 'Typed and maintainable code',
-            alt: 'Logo TypeScript',
-        },
     ],
     aosDuration: 800,
     aosEffect: 'fade-up',
@@ -92,14 +90,13 @@ const listIconsArgs = {
 };
 
 const listTextArgs = {
-    title: 'Compétences',
+    title: 'Skills',
     media:
-        'https://placehold.co/1200x700/27272a/ffffff?text=Compétences',
+        'https://placehold.co/1200x700/27272a/ffffff?text=Skills',
     details: [
-        'Développement Frontend',
-        'Développement Backend',
-        'Architecture logicielle',
-        'Administration système',
+        'Frontend Development',
+        'Backend Development',
+        'Software Architecture',
     ],
     aosDuration: 800,
     aosEffect: 'fade-up',
@@ -110,35 +107,15 @@ const newsArgs = {
         {
             media:
                 'https://placehold.co/800x450/2563eb/ffffff?text=Storybook',
-            title: 'Construire un Design System avec Storybook',
+            title: 'Building a Design System with Storybook',
             text:
-                'Découvrez comment organiser et documenter des composants React réutilisables.',
+                'Discover how to organize and document reusable React components.',
             url: 'https://blog.jouskaio.me',
             tags: [
                 {
                     name: 'Frontend',
                     color: '#2563eb',
                     slug: 'frontend',
-                },
-                {
-                    name: 'Storybook',
-                    color: '#7c3aed',
-                    slug: 'storybook',
-                },
-            ],
-        },
-        {
-            media:
-                'https://placehold.co/800x450/21759b/ffffff?text=WordPress',
-            title: 'Utiliser WordPress comme CMS Headless',
-            text:
-                'Une introduction à l’utilisation de l’API REST WordPress avec Next.js.',
-            url: 'https://blog.jouskaio.me',
-            tags: [
-                {
-                    name: 'WordPress',
-                    color: '#21759b',
-                    slug: 'wordpress',
                 },
             ],
         },
@@ -148,8 +125,8 @@ const newsArgs = {
 };
 
 const statusArgs = {
-    title: 'Projet en ligne',
-    text: 'Tous les services fonctionnent normalement.',
+    title: 'Project online',
+    text: 'All services are working normally.',
     color: '#22c55e',
     aosDuration: 800,
     aosEffect: 'fade-up',
@@ -158,161 +135,65 @@ const statusArgs = {
 const xlArgs = {
     media: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
     article: {
-        tag: 'Développement web',
-        title: 'Créer des expériences numériques utiles',
+        tag: 'Web Development',
+        title: 'Creating useful digital experiences',
         text:
-            'Conception et développement de produits numériques accessibles, performants et maintenables.',
+            'Design and development of accessible, high-performance, and maintainable digital products.',
     },
     aosDuration: 800,
     aosEffect: 'fade-up',
 };
 
-export const All: Story = {
-    render: () => (
-        <>
-            <CardCitation
-                {...citationArgs}
-                style={{
-                    width: 420,
-                    height: 280,
-                }}
-            />
-
-            <CardInfos
-                {...infosArgs}
-                style={{
-                    width: 340,
-                    minHeight: 180,
-                }}
-            />
-
-            <CardListIcons
-                {...listIconsArgs}
-                style={{
-                    width: 420,
-                    height: 320,
-                }}
-            />
-
-            <CardListText
-                {...listTextArgs}
-                style={{
-                    width: 500,
-                    height: 320,
-                }}
-            />
-
-            <CardNews
-                {...newsArgs}
-                style={{
-                    width: 420,
-                }}
-            />
-
-            <CardStatus
-                {...statusArgs}
-                style={{
-                    width: 450,
-                    minHeight: 140,
-                }}
-            />
-
-            <CardXL
-                {...xlArgs}
-                style={{
-                    width: 800,
-                    height: 450,
-                }}
-            />
-        </>
-    ),
+export const Citation: StoryObj<typeof CardCitation> = {
+    render: (args) => <CardCitation {...args} style={{ width: 420 }} />,
+    args: citationArgs,
 };
 
-export const Citation: Story = {
-    render: () => (
-        <CardCitation
-            {...citationArgs}
-            style={{
-                width: 420,
-                height: 280,
-            }}
-        />
-    ),
+export const Experience: StoryObj<typeof CardExperience> = {
+    render: (args) => <CardExperience {...args} style={{ width: 500 }} />,
+    args: experienceArgs,
 };
 
-export const Infos: Story = {
-    render: () => (
-        <CardInfos
-            {...infosArgs}
-            style={{
-                width: 340,
-                minHeight: 180,
-            }}
-        />
-    ),
+export const Infos: StoryObj<typeof CardInfos> = {
+    render: (args) => <CardInfos {...args} style={{ width: 340 }} />,
+    args: infosArgs,
 };
 
-export const ListIcons: Story = {
-    render: () => (
-        <CardListIcons
-            {...listIconsArgs}
-            style={{
-                width: 420,
-                height: 320,
-            }}
-        />
-    ),
+export const ListIcons: StoryObj<typeof CardListIcons> = {
+    render: (args) => <CardListIcons {...args} style={{ width: 420, height: 320 }} />,
+    args: listIconsArgs,
 };
 
-export const ListText: Story = {
-    render: () => (
-        <CardListText
-            {...listTextArgs}
-            style={{
-                width: 500,
-                height: 320,
-            }}
-        />
-    ),
+export const ListText: StoryObj<typeof CardListText> = {
+    render: (args) => <CardListText {...args} style={{ width: 500 }} />,
+    args: listTextArgs,
 };
 
-export const News: Story = {
-    render: () => (
-        <CardNews
-            {...newsArgs}
-            style={{
-                width: 420,
-            }}
-        />
-    ),
+export const News: StoryObj<typeof CardNews> = {
+    render: (args) => <CardNews {...args} style={{ width: 420 }} />,
+    args: newsArgs,
 };
 
-export const Status: Story = {
-    render: () => (
-        <CardStatus
-            {...statusArgs}
-            style={{
-                width: 450,
-                minHeight: 140,
-            }}
-        />
-    ),
+export const Status: StoryObj<typeof CardStatus> = {
+    render: (args) => <CardStatus {...args} style={{ width: 450 }} />,
+    args: statusArgs,
 };
 
-export const XL: Story = {
-    render: () => (
-        <CardXL
-            {...xlArgs}
-            style={{
-                width: 800,
-                height: 450,
-            }}
-        />
-    ),
+export const XL: StoryObj<typeof CardXL> = {
+    render: (args) => <CardXL {...args} style={{ width: 800, height: 450 }} />,
+    args: xlArgs,
+    argTypes: {
+        media: {
+            control: 'text',
+            description: 'Media URL (YouTube video, Vimeo, MP4, etc.)',
+        },
+        article: {
+            control: 'object',
+        },
+    },
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
-        // Wait for dynamic component to load might be tricky, but we can check the button
-        const button = canvas.getByRole('button', { name: /Mettre la vidéo en pause|Lire la vidéo/i });
+        const button = canvas.getByRole('button', { name: /Pause video|Play video/i });
         expect(button).toBeInTheDocument();
     },
 };

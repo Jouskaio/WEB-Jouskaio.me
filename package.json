@@ -1,5 +1,5 @@
 {
-  "name": "jouskaio-portfolio-monorepo",
+  "name": "jouskaio-ui",
   "private": true,
   "workspaces": [
     "apps/*",

@@ -9,16 +9,35 @@ type EmailFormData = {
     message: string;
 };
 
+/**
+ * Properties of the Email component.
+ */
 export type EmailProps = {
+    /**
+     * Base URL of the API for sending the email.
+     */
     url?: string;
+    /**
+     * Additional CSS classes.
+     */
     className?: string;
+    /**
+     * Callback function to display a custom alert.
+     */
     alert?: (message: string) => void;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
 };
 
 /**
- * Molecule: Email
+ * Organism Component: Email
+ * A complete contact form for sending an email via an API.
  */
 export default function Email({
                                   url = '',

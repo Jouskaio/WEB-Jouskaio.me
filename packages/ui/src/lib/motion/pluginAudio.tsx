@@ -8,25 +8,25 @@ const PluginAudio = ({ text, classname, id }) => {
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [isProcessingClick, setIsProcessingClick] = useState(false);
-    const [isAudioIcon, setIsAudioIcon] = useState(true); // Variable d'état pour suivre l'état de l'icône
-    const [startTime, setStartTime] = useState(0); // Temps de début de la lecture
-    const [elapsedTime, setElapsedTime] = useState(0); // Temps écoulé depuis le début de la lecture
-    const [progress, setProgress] = useState(0); // Pour suivre la progression de la lecture audio
-    const [totalDuration, setTotalDuration] = useState(0); // Durée totale de l'audio en secondes
+    const [isAudioIcon, setIsAudioIcon] = useState(true); // State variable to track the icon state
+    const [startTime, setStartTime] = useState(0); // Playback start time
+    const [elapsedTime, setElapsedTime] = useState(0); // Elapsed time since the beginning of playback
+    const [progress, setProgress] = useState(0); // To track audio playback progress
+    const [totalDuration, setTotalDuration] = useState(0); // Total audio duration in seconds
 
     useEffect(() => {
-        // Ajouter un gestionnaire d'événements pour la fin de la parole
+        // Add an event listener for when speech ends
         const handleEnd = () => {
             setIsPlaying(false);
             setIsPaused(false);
             setUtterance(null);
-            setProgress(0); // Réinitialiser la progression
-            setElapsedTime(0); // Réinitialiser le temps écoulé
-            setTotalDuration(0); // Réinitialiser la durée totale
+            setProgress(0); // Reset progress
+            setElapsedTime(0); // Reset elapsed time
+            setTotalDuration(0); // Reset total duration
         };
         speechSynthesis.addEventListener("end", handleEnd);
         return () => {
-            // Retirer les gestionnaires d'événements
+            // Remove event listeners
             speechSynthesis.removeEventListener("end", handleEnd);
         };
     }, []);
@@ -35,15 +35,15 @@ const PluginAudio = ({ text, classname, id }) => {
         if (!utterance) return;
 
         const handleStart = () => {
-            setStartTime(performance.now()); // Enregistrer le temps de début de la lecture
+            setStartTime(performance.now()); // Record playback start time
         };
 
         const handleProgress = () => {
             if (utterance.currentTime === 0) {
-                setTotalDuration(utterance.duration); // Mettre à jour la durée totale de l'audio lorsque les métadonnées sont chargées
+                setTotalDuration(utterance.duration); // Update total audio duration when metadata is loaded
             }
-            const currentTime = isPaused ? elapsedTime : performance.now() - startTime; // Utiliser le temps écoulé si en pause, sinon mesurer à nouveau le temps écoulé
-            const percentage = (currentTime / (totalDuration * 1000)) * 100; // Convertir le temps en secondes et calculer le pourcentage de progression
+            const currentTime = isPaused ? elapsedTime : performance.now() - startTime; // Use elapsed time if paused, otherwise measure elapsed time again
+            const percentage = (currentTime / (totalDuration * 1000)) * 100; // Convert time to seconds and calculate progress percentage
             setProgress(percentage);
         };
 
@@ -57,7 +57,7 @@ const PluginAudio = ({ text, classname, id }) => {
     }, [utterance, isPaused, startTime, elapsedTime, totalDuration]);
 
     const handleClick = () => {
-        // Si un clic est déjà en cours de traitement, ignorer ce clic.
+        // If a click is already being processed, ignore this click.
         if (isProcessingClick) {
             return;
         }
@@ -69,28 +69,28 @@ const PluginAudio = ({ text, classname, id }) => {
         newUtterance.rate = 0.75;
 
         if (isPlaying && !isPaused) {
-            // En pause
+            // Paused
             speechSynthesis.pause();
             setIsPaused(true);
             setIsPlaying(false);
-            setIsAudioIcon(true); // Basculer vers l'icône audio
-            setElapsedTime(performance.now() - startTime); // Mettre à jour le temps écoulé
+            setIsAudioIcon(true); // Toggle to audio icon
+            setElapsedTime(performance.now() - startTime); // Update elapsed time
             setIsProcessingClick(false);
         } else if (isPaused) {
-            // Reprise de la lecture
+            // Resume playback
             speechSynthesis.resume();
             setIsPaused(false);
             setIsPlaying(true);
-            setIsAudioIcon(false); // Basculer vers l'icône de pause
-            setStartTime(performance.now() - elapsedTime); // Mettre à jour le temps de début pour calculer le temps écoulé correctement
+            setIsAudioIcon(false); // Toggle to pause icon
+            setStartTime(performance.now() - elapsedTime); // Update start time to calculate elapsed time correctly
             setIsProcessingClick(false);
         } else {
-            // Nouvelle lecture
+            // New playback
             speechSynthesis.cancel();
-            setUtterance(newUtterance); // Définir l'utterance
+            setUtterance(newUtterance); // Set the utterance
             speechSynthesis.speak(newUtterance);
             setIsPlaying(true);
-            setIsAudioIcon(false); // Basculer vers l'icône de pause
+            setIsAudioIcon(false); // Toggle to pause icon
             setIsProcessingClick(false);
         }
     };
@@ -100,7 +100,7 @@ const PluginAudio = ({ text, classname, id }) => {
             <Image
                 id={"pluginAudio" + id.toString()}
                 className={`a-icon__audio ${classname}`}
-                src={isAudioIcon ? "/icons/play.svg" : "/icons/pause.svg"} // Utilisation de la variable d'état pour sélectionner l'icône appropriée
+                src={isAudioIcon ? "/icons/play.svg" : "/icons/pause.svg"} // Use state variable to select the appropriate icon
                 onClick={handleClick}
                 alt="Audio"
                 width={20}

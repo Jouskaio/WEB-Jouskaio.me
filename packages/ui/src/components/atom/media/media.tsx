@@ -3,24 +3,40 @@ import Image from "next/image";
 import PropTypes from "prop-types";
 import { shimmer, toBase64 } from "../../../lib/preload/preload-image";
 
+/**
+ * Media component properties.
+ */
 type MediaProps = {
+    /**
+     * Source URL of the media (image).
+     */
     src: string;
+    /**
+     * Width of the image.
+     */
     width?: number | `${number}`;
+    /**
+     * Height of the image.
+     */
     height?: number | `${number}`;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Alternative text for the image.
+     */
     alt?: string;
+    /**
+     * In-line CSS styles.
+     */
     style?: React.CSSProperties;
 };
 
 /**
- * Atom: Media
+ * Atom Component: Media
  *
- * @param src : string
- * @param width : number
- * @param height : number
- * @param classname : string
- * @param alt : string
- * @param style : React.CSSProperties (ex: { objectFit: "cover" })
+ * An optimized wrapper for Next.js images with a loading placeholder (shimmer).
  */
 const Media = ({
        src,

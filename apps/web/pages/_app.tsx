@@ -35,6 +35,11 @@ function MyApp({ Component, pageProps }) {
                       class: "o-header__page"
                   },
                   {
+                      name: "about.",
+                      source: "/about",
+                      class: "o-header__page"
+                  },
+                  {
                       name: "work.",
                       source: "/work",
                       class: "o-header__page"

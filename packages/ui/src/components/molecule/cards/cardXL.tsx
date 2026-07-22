@@ -1,29 +1,64 @@
-import type { CSSProperties } from 'react';
-import dynamic from 'next/dynamic';
+import React, { useEffect, useState, type CSSProperties, Suspense, lazy } from 'react';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
 
-const ReactPlayer = dynamic(() => import('react-player/lazy'), {
-    ssr: false,
-});
+const ReactPlayer = lazy(() => 
+    import('react-player/lazy').then((mod) => {
+        const Player = (mod as any).default || mod;
+        return { default: Player.default || Player };
+    })
+);
 
+/**
+ * Structure of the article displayed on the XL card.
+ */
 export type CardXLArticle = {
+    /**
+     * Category tag.
+     */
     tag?: string;
+    /**
+     * Article title.
+     */
     title?: string;
+    /**
+     * Short description text.
+     */
     text?: string;
 };
 
+/**
+ * Properties of the CardXL component.
+ */
 export type CardXLProps = {
+    /**
+     * URL of the media to display (supported by ReactPlayer: YouTube, Vimeo, MP4, etc.).
+     */
     media: string;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Inline CSS styles.
+     */
     style?: CSSProperties;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
+    /**
+     * Article data to display as an overlay.
+     */
     article?: CardXLArticle;
 };
 
 /**
- * Molecule: Card XL
+ * Molecule Component: Card XL
+ * A large multimedia card displaying a background video with textual information.
  */
 export default function CardXL({
                                    media,
@@ -53,21 +88,26 @@ export default function CardXL({
         >
             {!isReady && (
                 <div className="video-loader" role="status">
-                    Chargement...
+                    Loading...
                 </div>
             )}
 
-            <ReactPlayer
-                className="m-cardXL__a-media"
-                url={media}
-                controls={false}
-                playing={isPlaying}
-                muted
-                width="100%"
-                height="100%"
-                loop
-                onReady={() => setIsReady(true)}
-            />
+            <Suspense fallback={null}>
+                <div className="m-cardXL__a-media">
+                    <ReactPlayer
+                        //@ts-ignore
+                        url={media}
+                        controls={false}
+                        playing={isPlaying}
+                        muted
+                        width="100%"
+                        height="100%"
+                        loop
+                        onReady={() => setIsReady(true)}
+                        onError={(e: any) => console.error('ReactPlayer Error:', e)}
+                    />
+                </div>
+            </Suspense>
 
             <button
                 type="button"
@@ -80,8 +120,8 @@ export default function CardXL({
                 onClick={handleTogglePlayback}
                 aria-label={
                     isPlaying
-                        ? 'Mettre la vidéo en pause'
-                        : 'Lire la vidéo'
+                        ? 'Pause video'
+                        : 'Play video'
                 }
                 aria-pressed={isPlaying}
             >

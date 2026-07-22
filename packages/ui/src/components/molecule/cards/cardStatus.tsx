@@ -3,18 +3,43 @@ import type { CSSProperties } from 'react';
 import TextDefault from '../../atom/text/TextDefault';
 import TextH4 from '../../atom/text/textH4';
 
+/**
+ * Properties of the CardStatus component.
+ */
 export type CardStatusProps = {
+    /**
+     * Status title (e.g., "Operational services").
+     */
     title: string;
+    /**
+     * Detailed status description.
+     */
     text: string;
+    /**
+     * Color of the vertical status bar (hexadecimal code).
+     */
     color: string;
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
 };
 
 /**
- * Molecule: Card Status
+ * Molecule Component: Card Status
+ * A card displaying a colored status indicator with a title and a description.
  */
 export default function CardStatus({
                                        title,

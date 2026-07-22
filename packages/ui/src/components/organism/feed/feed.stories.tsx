@@ -8,13 +8,13 @@ import FeedLatest from "./feedLastest";
 
 const meta = {
     title: 'Organism/Feed',
-    tags: ['ai-generated'],
     component: Feed,
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Visual overview of the components in the feed folder.",
+                    "Feed of articles and projects using a grid layout (Pinterest-like).",
             },
         },
     },
@@ -23,7 +23,7 @@ const meta = {
 
 export default meta;
 
-type Story = StoryObj<typeof meta>;
+type Story = StoryObj<typeof Feed>;
 
 const mockPins = [
     {
@@ -113,32 +113,10 @@ function FeedArticlesStaticPreview() {
     );
 }
 
-export const All: Story = {
+export const StandardFeed: Story = {
     args: {
         pins: mockPins,
     },
-    render: () => (
-        <div style={{ display: 'grid', gap: '64px' }}>
-            <section>
-                <Feed pins={mockPins} />
-            </section>
-
-            <section>
-                <FeedLatest pins={mockPins} />
-            </section>
-
-            <section>
-                <FeedArticlesStaticPreview />
-            </section>
-        </div>
-    ),
-};
-
-export const FeedComponent: Story = {
-    args: {
-        pins: mockPins,
-    },
-    render: () => <Feed pins={mockPins} />,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);
         const pinTitle = canvas.getByText('Building a Design System with Storybook');
@@ -146,16 +124,13 @@ export const FeedComponent: Story = {
     },
 };
 
-export const FeedLatestComponent: Story = {
+export const LatestFeed: StoryObj<typeof FeedLatest> = {
+    render: (args) => <FeedLatest {...args} />,
     args: {
         pins: mockPins,
     },
-    render: () => <FeedLatest pins={mockPins} />,
 };
 
-export const FeedArticlesVisual: Story = {
-    args: {
-        pins: mockPins,
-    },
+export const FullBlogFeed: Story = {
     render: () => <FeedArticlesStaticPreview />,
 };

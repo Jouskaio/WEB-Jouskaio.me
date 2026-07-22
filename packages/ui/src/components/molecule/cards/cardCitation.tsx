@@ -4,21 +4,55 @@ import Media from '../../atom/media/media';
 import TextDefault from '../../atom/text/TextDefault';
 import TextSpanXS from '../../atom/text/textSpanXS';
 
+/**
+ * Properties of the CardCitation component.
+ */
 export type CardCitationProps = {
+    /**
+     * Additional CSS classes.
+     */
     classname?: string;
+    /**
+     * Inlined CSS styles.
+     */
     style?: CSSProperties;
+    /**
+     * URL of the citation source.
+     */
     urlSource?: string;
+    /**
+     * The citation text.
+     */
     children?: ReactNode;
+    /**
+     * URL of the author's profile picture.
+     */
     urlPhotoProfile?: string;
+    /**
+     * URL of the author's profile.
+     */
     urlProfile?: string;
+    /**
+     * Author's name.
+     */
     nameProfile?: string;
+    /**
+     * Description or title of the author (e.g., "Developer").
+     */
     descriptionProfile?: string;
+    /**
+     * AOS animation duration in milliseconds.
+     */
     aosDuration?: number;
+    /**
+     * AOS animation effect (e.g., "fade-up").
+     */
     aosEffect?: string;
 };
 
 /**
- * Molecule: Card Citation
+ * Molecule Component: Card Citation
+ * A card displaying a citation with the photo and profile of its author.
  */
 export default function CardCitation({
                                          classname = '',
@@ -45,8 +79,8 @@ export default function CardCitation({
                     src={urlPhotoProfile}
                     alt={
                         nameProfile
-                            ? `Photo de profil de ${nameProfile}`
-                            : 'Photo de profil'
+                            ? `Profile picture of ${nameProfile}`
+                            : 'Profile picture'
                     }
                     height="100"
                     width="100"

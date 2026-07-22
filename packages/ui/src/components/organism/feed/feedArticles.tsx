@@ -37,7 +37,7 @@ function createPins(articles) {
             }))
             : [];
 
-        // Ajouter les catégories aux tags si elles existent
+        // Add categories to tags if they exist
         if (Array.isArray(article.attributes.categories.data) && article.attributes.categories.data.length > 0) {
             article.attributes.categories.data.forEach((category) => {
                 tags.push({
@@ -60,6 +60,10 @@ function createPins(articles) {
     });
 }
 
+/**
+ * Organism Component: FeedArticles
+ * Manages the display of an article feed with infinite scroll from Strapi.
+ */
 function FeedArticles() {
     const [articles, setArticles] = useState([]);
     const [page, setPage] = useState(1);
@@ -133,4 +137,4 @@ function FeedArticles() {
     );
 }
 
-export { FeedArticles };
+export default FeedArticles;

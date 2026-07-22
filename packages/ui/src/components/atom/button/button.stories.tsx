@@ -6,7 +6,7 @@ import Button from './button';
 const meta = {
     title: 'Atom/Button',
     component: Button,
-    tags: ['ai-generated'],
+    tags: ['ai-generated', 'autodocs'],
     parameters: {
         docs: {
             description: {

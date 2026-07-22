@@ -7,12 +7,12 @@ import Email from './email';
 const meta = {
     title: 'Organism/Interaction',
     component: Email,
-    tags: ['ai-generated'],
+    tags: ['autodocs'],
     parameters: {
         docs: {
             description: {
                 component:
-                    "Vue d'ensemble des composants d’interaction du projet.",
+                    "Contact form with validation and AOS animations.",
             },
         },
     },
@@ -30,11 +30,7 @@ const baseArgs = {
     },
 };
 
-export const All: Story = {
-    args: baseArgs,
-};
-
-export const EmailComponent: Story = {
+export const ContactForm: Story = {
     args: baseArgs,
     play: async ({ canvasElement }) => {
         const canvas = within(canvasElement);

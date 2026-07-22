@@ -19,8 +19,7 @@ class MyDocument extends Document {
                 content=" Jouskaio.me is the official website of Manon Salsou to discover all of her projects and minds about web/mobile development, AR/VR/3D and latest innovations"/>
           <meta name="robots" content="max-image-preview:large"/>
           {/*<meta name="google-site-verification" content="D-ae7-imhZ5eSM9FC0rKEja4JNM_U0uLDb1AJQhDK3g">*/}
-          <meta property="og:locale:alternate" content="fr_FR"/>
-          <meta property="og:locale:alternate" content="es_ES"/>
+          <meta property="og:locale" content="en_US"/>
           <meta property="og:site_name" content="Manon Salsou - Jouskaio's portfolio"/>
           <meta property="og:type" content="article"/>
           <meta property="og:title" content="Manon Salsou - Jouskaio's portfolio"/>
@@ -40,7 +39,7 @@ class MyDocument extends Document {
           <meta name="twitter:image" content="http://www.jouskaio.me/icon-x512.png"/>
           <meta name="google" content="nositelinkssearchbox"/>
           <meta property="og:site_name" content="Manon Salsou - Jouskaio's portfolio"/>
-          <meta property="og:locale" content="es_ES"/>
+          <meta property="og:locale" content="en_US"/>
           <meta property="og:type" content="website"/>
           <meta property="og:image:width" content="192"/>
           <meta property="og:image:height" content="192"/>
