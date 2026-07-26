@@ -1,0 +1,78 @@
+@use "../00-protons/mixins" as *;
+
+.m-cardExperience {
+  background-color: var(--primary-lightest);
+  border-radius: var(--border-radius);
+  padding: 24px;
+  margin-bottom: 20px;
+  color: var(--background-color);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  &__header {
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    color: var(--background-color);
+    margin-bottom: 4px;
+  }
+
+  &__info {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.9rem;
+    color: var(--background-color);
+    opacity: 0.8;
+  }
+
+  &__company {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__period {
+    font-style: italic;
+  }
+
+  &__description {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--background-color);
+  }
+
+  &__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  &__tag {
+    font-size: 0.75rem !important;
+  }
+}
+
+// Timeline layout for About page
+.l-about {
+  &__experience-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__skills-section {
+    margin-top: 60px;
+    margin-bottom: 60px;
+  }
+
+  &__a-title {
+    margin-bottom: 30px;
+  }
+}

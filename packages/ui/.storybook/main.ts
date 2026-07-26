@@ -22,7 +22,7 @@ const config: StorybookConfig = {
     autodocs: true,
   },
   typescript: {
-    reactDocgen: 'react-docgen-typescript',
+    reactDocgen: 'react-docgen',
   },
   async viteFinal(config) {
     return mergeConfig(config, {
@@ -74,9 +74,7 @@ const config: StorybookConfig = {
         include: [
           'react-highlight',
           'react-player',
-          'react-player/lazy',
-          'react-dom',
-          'react-dom/client'
+          'react-player/lazy'
         ],
       },
     });
