@@ -6,23 +6,43 @@ import 'highlight.js/styles/github.css';
 import 'aos/dist/aos.css';
 import { ApolloProvider } from '@apollo/client';
 import { themes } from 'storybook/theming';
-import { initialize, mswLoader } from 'msw-storybook-addon';
 import { mswHandlers } from './msw-handlers';
 import MockDate from 'mockdate';
 import AOS from 'aos';
 import {client} from "../src/lib/api/apolloClient";
 
-initialize({ onUnhandledRequest: 'bypass' });
+let aosInitialized = false;
 
 const preview: Preview = {
     tags: ['autodocs'],
-    loaders: [mswLoader],
     decorators: [
-        (Story) => (
-            <ApolloProvider client={client}>
-                <Story />
-            </ApolloProvider>
-        ),
+        (Story) => {
+            React.useEffect(() => {
+                if (!aosInitialized) {
+                    AOS.init({
+                        duration: 800,
+                        once: true,
+                        mirror: false,
+                        offset: 50,
+                        disable: window.location.search.includes('viewMode=docs'),
+                    });
+                    aosInitialized = true;
+                }
+            }, []);
+
+            React.useEffect(() => {
+                const timer = setTimeout(() => {
+                    AOS.refresh();
+                }, 100);
+                return () => clearTimeout(timer);
+            }, []);
+
+            return (
+                <ApolloProvider client={client}>
+                    <Story />
+                </ApolloProvider>
+            );
+        },
     ],
     parameters: {
         darkMode: {
@@ -45,12 +65,6 @@ const preview: Preview = {
     },
     async beforeEach() {
         MockDate.set('2024-04-01T12:00:00Z');
-        if (typeof window !== 'undefined') {
-            AOS.init({
-                once: false,
-                mirror: true,
-            });
-        }
     },
 };
 

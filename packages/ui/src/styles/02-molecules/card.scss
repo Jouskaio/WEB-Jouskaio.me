@@ -27,6 +27,30 @@
   &__a-article {
     position: relative;
     z-index: 2;
+    padding: 24px;
+    color: var(--primary-lightest);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    height: 100%;
+    pointer-events: none;
+
+    h3, h5, p {
+      color: inherit;
+      margin: 0;
+    }
+    
+    h3 {
+      font-size: var(--font-size-XL);
+      margin-bottom: 8px;
+    }
+    
+    h5 {
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      opacity: 0.8;
+    }
   }
 
   &__a-play {
@@ -50,10 +74,20 @@
   }
 }
 
+.m-cardStatus, .m-cardInfos, .m-cardNews, .m-cardCitation {
+  box-shadow: 0 4px 12px var(--shadow);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px var(--shadow);
+  }
+}
+
 // STATUS
 .m-cardStatus {
   //height: fit-content;
   background-color: var(--primary-lightest);
+  color: var(--background-color);
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -65,7 +99,7 @@
   &__a-verticalBar {
     width: 6px;
     border-radius: var(--border-radius);
-    height: auto;
+    min-height: 40px;
     background-color: var(--accent-color);
     margin-left: 16px;
     margin-right: 8px;
@@ -73,7 +107,9 @@
 
   &__a-div {
     display: flex;
-    flex-wrap: nowrap;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
   }
 
   &__a-title {
@@ -187,21 +223,26 @@
   justify-content: space-between;
   padding: 18px;
   background-color: var(--primary-lightest);
+  color: var(--background-color);
   border-radius: var(--border-radius);
   &__m-datetime {
     color: var(--background-color);
-    width: 30%;
+    min-width: 100px;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
+    justify-content: center;
     &--a-mmYY {
       font-weight: var(--font-weight-semibold);
     }
   }
   &__m-message {
     color: var(--background-color);
-    width: 60%;
+    flex: 1;
+    margin-left: 16px;
     font-style: italic;
+    display: flex;
+    align-items: center;
   }
 }
 

@@ -8,6 +8,8 @@
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
+    "start": "turbo start",
+    "prod": "yarn build && yarn start",
     "lint": "turbo lint",
     "test": "turbo test",
     "storybook": "turbo storybook"

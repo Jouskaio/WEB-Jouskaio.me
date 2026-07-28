@@ -1,4 +1,4 @@
-import type { CSSProperties, ReactNode } from 'react';
+import React, { type CSSProperties, type ReactNode } from 'react';
 
 import Media from '../../atom/media/media';
 import TextDefault from '../../atom/text/TextDefault';
@@ -70,7 +70,7 @@ export default function CardCitation({
         <div
             className={`m-cardCitation ${classname}`.trim()}
             style={style}
-            data-aos={aosEffect}
+            data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             <div className="m-cardCitation__m-divImage">

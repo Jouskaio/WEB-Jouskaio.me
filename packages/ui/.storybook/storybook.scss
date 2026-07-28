@@ -1,7 +1,8 @@
-html,
-body,
-#storybook-root,
-.sb-show-main,
-.sb-main-padded {
-  background: unset !important;
+
+/* Force visibility of AOS elements in Docs mode to avoid blank previews */
+.sb-show-docs [data-aos] {
+  opacity: 1 !important;
+  transform: none !important;
+  visibility: visible !important;
+  transition: none !important;
 }

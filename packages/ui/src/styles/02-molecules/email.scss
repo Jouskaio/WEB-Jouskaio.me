@@ -14,6 +14,8 @@
     & > div {
       display: flex;
       flex-direction: column;
+      flex-wrap: nowrap;
+      justify-content: space-between;
       @include large {
         flex-direction: row;
         & > label {
@@ -26,8 +28,6 @@
           }
         }
       }
-      flex-wrap: nowrap;
-      justify-content: space-between;
     }
     & > label {
       display: flex;

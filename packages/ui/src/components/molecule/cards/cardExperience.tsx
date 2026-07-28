@@ -64,7 +64,7 @@ export default function CardExperience({
         <div
             className={`m-cardExperience ${classname}`.trim()}
             style={style}
-            data-aos={aosEffect}
+            data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             <div className="m-cardExperience__header">

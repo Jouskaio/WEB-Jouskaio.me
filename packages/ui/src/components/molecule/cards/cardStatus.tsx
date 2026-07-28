@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 
 import TextDefault from '../../atom/text/TextDefault';
 import TextH4 from '../../atom/text/textH4';
@@ -54,7 +54,7 @@ export default function CardStatus({
         <div
             className={`m-cardStatus ${classname}`.trim()}
             style={style}
-            data-aos={aosEffect}
+            data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             <div
@@ -63,7 +63,7 @@ export default function CardStatus({
                 aria-hidden="true"
             />
 
-            <div>
+            <div className="m-cardStatus__a-div">
                 <TextH4 classname="m-cardStatus__a-title">
                     {title}
                 </TextH4>

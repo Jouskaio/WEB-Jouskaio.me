@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 
 import TextDefault from '../../atom/text/TextDefault';
 import TextH1 from '../../atom/text/textH1';
@@ -61,15 +61,18 @@ export default function CardInfos({
                                       aosEffect,
                                   }: CardInfosProps) {
     const datetime = new Date(date);
+    const isValidDate = !isNaN(datetime.getTime());
 
-    const day = datetime.getDate();
-    const mmYY = `${MONTH_NAMES[datetime.getMonth()]} ${datetime.getFullYear()}`;
+    const day = isValidDate ? datetime.getDate() : '--';
+    const month = isValidDate ? MONTH_NAMES[datetime.getMonth()] : 'Invalid Date';
+    const year = isValidDate ? datetime.getFullYear() : '';
+    const mmYY = isValidDate ? `${month} ${year}` : month;
 
     return (
         <div
             className={`m-cardInfos ${classname}`.trim()}
             style={style}
-            data-aos={aosEffect}
+            data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             <div className="m-cardInfos__m-datetime">

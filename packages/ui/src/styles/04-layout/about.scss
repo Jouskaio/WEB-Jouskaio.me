@@ -1,0 +1,91 @@
+@use "../00-protons/mixins" as *;
+
+.l-about {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  margin-top: 16px;
+  padding: 0 16px;
+
+  @include medium {
+    display: grid;
+    margin-top: 50px;
+    padding: 0;
+    grid-template-columns: repeat(6, 1fr);
+    grid-gap: 16px;
+  }
+
+  &__hero {
+    margin-bottom: 32px;
+    @include medium {
+      grid-column: 1 / 7;
+    }
+
+    .l-about__a-title {
+      margin-bottom: 8px;
+    }
+  }
+
+  &__widget {
+    margin-bottom: 16px;
+    @include medium {
+      margin-bottom: 0;
+    }
+
+    &--full {
+      @include medium {
+        grid-column: 1 / 7;
+      }
+    }
+
+    &--half {
+      @include medium {
+        grid-column: span 3;
+      }
+    }
+
+    &--third {
+      @include medium {
+        grid-column: span 2;
+      }
+    }
+
+    &--two-thirds {
+      @include medium {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__section-title {
+    margin-top: 40px;
+    margin-bottom: 16px;
+    @include medium {
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__experience-intro {
+      margin-bottom: 24px;
+      @include medium {
+          grid-column: 1 / 7;
+      }
+  }
+
+  &__experience-grid, &__skills-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    @include medium {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      grid-column: 1 / 7;
+    }
+  }
+
+  &__skills-grid {
+      @include medium {
+          grid-template-columns: repeat(3, 1fr);
+      }
+  }
+}

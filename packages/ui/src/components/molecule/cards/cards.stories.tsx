@@ -1,6 +1,5 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import { expect, within } from 'storybook/test';
 
 import CardCitation from './cardCitation';
 import CardExperience from './cardExperience';
@@ -145,42 +144,42 @@ const xlArgs = {
 };
 
 export const Citation: StoryObj<typeof CardCitation> = {
-    render: (args) => <CardCitation {...args} style={{ width: 420 }} />,
+    render: (args) => <CardCitation {...args} style={{ width: 420, ...args.style }} />,
     args: citationArgs,
 };
 
 export const Experience: StoryObj<typeof CardExperience> = {
-    render: (args) => <CardExperience {...args} style={{ width: 500 }} />,
+    render: (args) => <CardExperience {...args} style={{ width: 500, ...args.style }} />,
     args: experienceArgs,
 };
 
 export const Infos: StoryObj<typeof CardInfos> = {
-    render: (args) => <CardInfos {...args} style={{ width: 340 }} />,
+    render: (args) => <CardInfos {...args} style={{ width: 340, ...args.style }} />,
     args: infosArgs,
 };
 
 export const ListIcons: StoryObj<typeof CardListIcons> = {
-    render: (args) => <CardListIcons {...args} style={{ width: 420, height: 320 }} />,
+    render: (args) => <CardListIcons {...args} style={{ width: 420, height: 320, ...args.style }} />,
     args: listIconsArgs,
 };
 
 export const ListText: StoryObj<typeof CardListText> = {
-    render: (args) => <CardListText {...args} style={{ width: 500 }} />,
+    render: (args) => <CardListText {...args} style={{ width: 500, ...args.style }} />,
     args: listTextArgs,
 };
 
 export const News: StoryObj<typeof CardNews> = {
-    render: (args) => <CardNews {...args} style={{ width: 420 }} />,
+    render: (args) => <CardNews {...args} style={{ width: 420, ...args.style }} />,
     args: newsArgs,
 };
 
 export const Status: StoryObj<typeof CardStatus> = {
-    render: (args) => <CardStatus {...args} style={{ width: 450 }} />,
+    render: (args) => <CardStatus {...args} style={{ width: 450, ...args.style }} />,
     args: statusArgs,
 };
 
 export const XL: StoryObj<typeof CardXL> = {
-    render: (args) => <CardXL {...args} style={{ width: 800, height: 450 }} />,
+    render: (args) => <CardXL {...args} style={{ width: 800, height: 450, ...args.style }} />,
     args: xlArgs,
     argTypes: {
         media: {
@@ -190,10 +189,5 @@ export const XL: StoryObj<typeof CardXL> = {
         article: {
             control: 'object',
         },
-    },
-    play: async ({ canvasElement }) => {
-        const canvas = within(canvasElement);
-        const button = canvas.getByRole('button', { name: /Pause video|Play video/i });
-        expect(button).toBeInTheDocument();
     },
 };

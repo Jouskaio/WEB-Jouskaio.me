@@ -1,29 +1,39 @@
+// This file has been automatically migrated to valid ESM format by Storybook.
 import type { StorybookConfig } from '@storybook/nextjs-vite';
 import { mergeConfig } from 'vite';
-import path from 'path';
+import path, { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
+import { createRequire } from 'module';
 
+const require = createRequire(import.meta.url);
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const config: StorybookConfig = {
+  core: {
+    allowedHosts: ['all'],
+  },
+
   staticDirs: [path.join(__dirname, '../../../apps/web/public')],
+
   "stories": [
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
+
   "addons": [
-    "@storybook/addon-docs",
-    "@storybook/addon-a11y",
-    "storybook-dark-mode"
+    getAbsolutePath("@storybook/addon-docs"),
+    getAbsolutePath("@storybook/addon-a11y"),
+    getAbsolutePath("storybook-dark-mode"),
+    getAbsolutePath("msw-storybook-addon")
   ],
-  "framework": "@storybook/nextjs-vite",
-  docs: {
-    autodocs: true,
-  },
+
+  "framework": getAbsolutePath("@storybook/nextjs-vite"),
+
   typescript: {
     reactDocgen: 'react-docgen',
   },
+
   async viteFinal(config) {
     return mergeConfig(config, {
       plugins: [
@@ -39,16 +49,20 @@ const config: StorybookConfig = {
               return `
                 import React from 'react';
                 export function getImageProps(props) { return { props: { ...props, src: typeof props.src === 'string' ? props.src : props.src?.src } }; }
-                export default function Image({ src, alt, width, height, className, style, ...props }) {
+                export default function Image({ src, alt, width, height, className, style, fill, ...props }) {
                   if (!src) return null;
                   const imageSrc = (typeof src === 'object' && src !== null) ? (src.src || src.default?.src) : src;
+                  const finalStyle = {
+                    ...style,
+                    ...(fill ? { position: 'absolute', height: '100%', width: '100%', left: 0, top: 0, objectFit: 'cover' } : {}),
+                  };
                   return React.createElement('img', {
                     src: imageSrc,
                     alt: alt || '',
-                    width,
-                    height,
+                    width: fill ? undefined : width,
+                    height: fill ? undefined : height,
                     className,
-                    style,
+                    style: finalStyle,
                     loading: 'lazy',
                     decoding: 'async',
                   });
@@ -78,6 +92,14 @@ const config: StorybookConfig = {
         ],
       },
     });
-  },
+  }
 };
 export default config;
+
+function getAbsolutePath(value: string): any {
+  try {
+    return dirname(require.resolve(join(value, "package.json")));
+  } catch (e) {
+    return value;
+  }
+}

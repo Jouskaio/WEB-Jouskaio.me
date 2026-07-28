@@ -1,4 +1,4 @@
-import type { CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
 
 import PinNews from '../feed/pinNews';
 import TextH5 from '../../atom/text/textH5';
@@ -92,7 +92,7 @@ export default function CardNews({
         <div
             className={`m-cardNews ${classname}`.trim()}
             style={style}
-            data-aos={aosEffect}
+            data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             <TextH5 classname="m-cardNews__a-title">

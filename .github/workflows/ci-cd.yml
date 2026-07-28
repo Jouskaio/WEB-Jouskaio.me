@@ -48,6 +48,49 @@ jobs:
       - name: Run Tests
         run: yarn test
 
+  publish-ui:
+    name: Publish UI Package
+    needs: quality
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          registry-url: 'https://registry.npmjs.org'
+          cache: 'yarn'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Build UI Package
+        run: yarn workspace @jouskaio/ui build
+
+      - name: Publish to NPM
+        run: yarn workspace @jouskaio/ui run publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+
+      - name: Discord Notification on Success
+        if: success()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"📦 Package **@jouskaio/ui** successfully published on NPM ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          "${{ secrets.DISCORD_WEBHOOK_URL }}"
+
+      - name: Discord Notification on Failure
+        if: failure()
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \"🚨 Failed to publish package **@jouskaio/ui** on NPM ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          "${{ secrets.DISCORD_WEBHOOK_URL }}"
+
   deploy:
     name: Deployment
     needs: quality

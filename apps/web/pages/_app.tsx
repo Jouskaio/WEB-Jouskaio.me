@@ -48,11 +48,6 @@ function MyApp({ Component, pageProps }) {
                       name: "blog.",
                       source: "https://blog.jouskaio.me",
                       class: "o-header__page"
-                  },
-                  {
-                      name: "contact.",
-                      source: "/contact",
-                      class: "o-header__page"
                   }
               ]}/>
 

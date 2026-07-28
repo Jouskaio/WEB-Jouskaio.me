@@ -1,4 +1,5 @@
 import React, { useEffect, useState, type CSSProperties, Suspense, lazy } from 'react';
+
 import Image from 'next/image';
 
 const ReactPlayer = lazy(() => 
@@ -83,7 +84,7 @@ export default function CardXL({
         <div
             className={`m-cardXL ${classname}`.trim()}
             style={style}
-            data-aos={aosEffect}
+            data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             {!isReady && (

@@ -21,9 +21,18 @@
       "cache": false,
       "persistent": true
     },
+    "start": {
+      "dependsOn": ["build"],
+      "cache": false,
+      "persistent": true
+    },
     "storybook": {
       "cache": false,
       "persistent": true
+    },
+    "publish": {
+      "dependsOn": ["build"],
+      "cache": false
     }
   }
 }
