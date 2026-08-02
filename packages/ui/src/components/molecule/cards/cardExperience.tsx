@@ -28,6 +28,14 @@ export type CardExperienceProps = {
      */
     technologies?: string[];
     /**
+     * URL of the company logo.
+     */
+    logoUrl?: string;
+    /**
+     * URL of the company website.
+     */
+    companyUrl?: string;
+    /**
      * Additional CSS classes.
      */
     classname?: string;
@@ -55,6 +63,8 @@ export default function CardExperience({
     period,
     description,
     technologies = [],
+    logoUrl,
+    companyUrl,
     classname = '',
     style,
     aosDuration,
@@ -62,17 +72,30 @@ export default function CardExperience({
 }: CardExperienceProps) {
     return (
         <div
-            className={`m-cardExperience ${classname}`.trim()}
+            className={`m-cardExperience ${classname} ${logoUrl ? 'm-cardExperience--with-logo' : ''}`.trim()}
             style={style}
             data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
             <div className="m-cardExperience__header">
-                <TextH4 classname="m-cardExperience__title">{title}</TextH4>
-                <div className="m-cardExperience__info">
-                    <span className="m-cardExperience__company">{company}</span>
-                    <span className="m-cardExperience__separator">|</span>
-                    <span className="m-cardExperience__period">{period}</span>
+                {logoUrl && (
+                    <div className="m-cardExperience__logo">
+                        {companyUrl ? (
+                            <a href={companyUrl} target="_blank" rel="noopener noreferrer">
+                                <img src={logoUrl} alt={`${company} logo`} />
+                            </a>
+                        ) : (
+                            <img src={logoUrl} alt={`${company} logo`} />
+                        )}
+                    </div>
+                )}
+                <div className="m-cardExperience__header-content">
+                    <TextH4 classname="m-cardExperience__title">{title}</TextH4>
+                    <div className="m-cardExperience__info">
+                        <TextDefault classname="m-cardExperience__company">{company}</TextDefault>
+                        <TextDefault classname="m-cardExperience__separator">|</TextDefault>
+                        <TextDefault classname="m-cardExperience__period">{period}</TextDefault>
+                    </div>
                 </div>
             </div>
             

@@ -1,0 +1,75 @@
+@use "../00-protons/mixins" as *;
+
+.m-widgetTimeline {
+  position: relative;
+  padding: 20px 0;
+  width: fit-content;
+  min-width: 120px;
+  min-height: 100px; // Ensure it's not collapsed if items are small or hidden
+
+  &__line {
+    position: absolute;
+    left: 7px; // Half of dot width (14px)
+    top: 20px;
+    bottom: 20px;
+    width: 2px;
+    background-color: var(--primary-light);
+    z-index: 1;
+  }
+
+  &__items {
+    position: relative;
+    z-index: 2;
+  }
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    position: relative;
+
+    &--current {
+      .m-widgetTimeline__dot {
+        background-color: var(--background-color);
+        border: 2px solid var(--primary-light);
+      }
+      .m-widgetTimeline__year {
+        font-weight: bold;
+      }
+    }
+  }
+
+  &__dot {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: var(--primary-light);
+    flex-shrink: 0;
+    margin-top: 4px;
+    border: 2px solid var(--primary-lightest);
+    transition: transform 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__year {
+    color: var(--text-color);
+    line-height: 1;
+    margin-bottom: 4px;
+    white-space: nowrap;
+  }
+
+  &__label {
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-XXS);
+    color: var(--text-color-light);
+    opacity: 0.8;
+  }
+}

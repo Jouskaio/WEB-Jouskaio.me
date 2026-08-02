@@ -6,6 +6,8 @@ import CardExperience from './cardExperience';
 import CardInfos from './cardInfos';
 import CardListIcons from './cardListIcons';
 import CardListText from './cardListText';
+import CardMap from './cardMap';
+import CardMultiStatus from './cardMultiStatus';
 import CardNews from './cardNews';
 import CardStatus from './cardStatus';
 import CardXL from './cardXL';
@@ -47,6 +49,8 @@ const experienceArgs = {
     period: 'Jan 2022 - Present',
     description: 'Leading the development of cross-platform mobile applications using React Native and Flutter. Improved application performance by 40% and mentored a team of 5 junior developers.',
     technologies: ['React Native', 'Flutter', 'TypeScript', 'Firebase', 'Redux'],
+    logoUrl: 'https://placehold.co/48x48/656DB6/ffffff?text=IS',
+    companyUrl: 'https://innovatech.studio',
     aosDuration: 800,
     aosEffect: 'fade-up',
 };
@@ -131,6 +135,32 @@ const statusArgs = {
     aosEffect: 'fade-up',
 };
 
+const multiStatusArgs = {
+    items: [
+        {
+            title: 'Frontend Development',
+            text: 'Building responsive and interactive user interfaces with React and Next.js.',
+        },
+        {
+            title: 'Backend Systems',
+            text: 'Designing scalable APIs and database architectures using Node.js and SQL.',
+        }
+    ],
+    color: '#656DB6',
+    aosDuration: 800,
+    aosEffect: 'fade-up',
+};
+
+const mapArgs = {
+    lat: 48.8566,
+    lng: 2.3522,
+    zoom: 12,
+    markerLabel: 'Based in Paris',
+    title: 'Paris, France',
+    aosDuration: 800,
+    aosEffect: 'fade-up',
+};
+
 const xlArgs = {
     media: 'https://www.youtube.com/watch?v=LXb3EKWsInQ',
     article: {
@@ -176,6 +206,16 @@ export const News: StoryObj<typeof CardNews> = {
 export const Status: StoryObj<typeof CardStatus> = {
     render: (args) => <CardStatus {...args} style={{ width: 450, ...args.style }} />,
     args: statusArgs,
+};
+
+export const MultiStatus: StoryObj<typeof CardMultiStatus> = {
+    render: (args) => <CardMultiStatus {...args} style={{ width: 500, ...args.style }} />,
+    args: multiStatusArgs,
+};
+
+export const Map: StoryObj<typeof CardMap> = {
+    render: (args) => <CardMap {...args} style={{ width: 400, height: 300, ...args.style }} />,
+    args: mapArgs,
 };
 
 export const XL: StoryObj<typeof CardXL> = {

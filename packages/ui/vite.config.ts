@@ -36,7 +36,9 @@ export default defineConfig({
         'graphql-tag',
         'react-highlight',
         'react-html-parser',
-        'react-player'
+        'react-player',
+        'leaflet',
+        'react-leaflet'
       ],
       output: {
         globals: {

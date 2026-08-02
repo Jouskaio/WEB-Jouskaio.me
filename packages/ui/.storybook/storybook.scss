@@ -1,6 +1,8 @@
 
 /* Force visibility of AOS elements in Docs mode to avoid blank previews */
-.sb-show-docs [data-aos] {
+.is-docs-mode [data-aos],
+.sb-show-docs [data-aos],
+.storybook-docs-container [data-aos] {
   opacity: 1 !important;
   transform: none !important;
   visibility: visible !important;

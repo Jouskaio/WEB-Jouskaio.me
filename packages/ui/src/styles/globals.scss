@@ -16,8 +16,12 @@
 
 // Molecules
 @use "02-molecules/card";
+@use "02-molecules/cardHeroAbout";
+@use "02-molecules/cardMap";
+@use "02-molecules/cardMultiStatus";
 @use "02-molecules/pin";
 @use "02-molecules/widget";
+@use "02-molecules/widgetTimeline";
 @use "02-molecules/email";
 @use "02-molecules/alert";
 @use "02-molecules/experience";

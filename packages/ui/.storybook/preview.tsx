@@ -16,26 +16,33 @@ let aosInitialized = false;
 const preview: Preview = {
     tags: ['autodocs'],
     decorators: [
-        (Story) => {
+        (Story, context) => {
+            const isDocs = context.viewMode === 'docs';
+
             React.useEffect(() => {
-                if (!aosInitialized) {
-                    AOS.init({
-                        duration: 800,
-                        once: true,
-                        mirror: false,
-                        offset: 50,
-                        disable: window.location.search.includes('viewMode=docs'),
-                    });
-                    aosInitialized = true;
-                }
-            }, []);
+                AOS.init({
+                    duration: 800,
+                    once: true,
+                    mirror: false,
+                    offset: 50,
+                    disable: isDocs,
+                });
+            }, [isDocs]);
 
             React.useEffect(() => {
                 const timer = setTimeout(() => {
                     AOS.refresh();
                 }, 100);
                 return () => clearTimeout(timer);
-            }, []);
+            }, [context.args]);
+
+            React.useEffect(() => {
+                if (isDocs) {
+                    document.body.classList.add('is-docs-mode');
+                } else {
+                    document.body.classList.remove('is-docs-mode');
+                }
+            }, [isDocs]);
 
             return (
                 <ApolloProvider client={client}>

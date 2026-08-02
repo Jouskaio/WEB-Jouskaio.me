@@ -1,0 +1,80 @@
+@use "../00-protons/mixins" as *;
+
+.m-cardHeroAbout {
+  margin-bottom: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  align-items: flex-start;
+ 
+  @include medium {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas:
+      "img title"
+      "img text";
+    grid-template-rows: auto 1fr;
+    column-gap: 40px;
+    align-items: flex-start;
+  }
+ 
+  &__title-container {
+    grid-area: title;
+    width: 100%;
+ 
+    .m-cardHeroAbout__a-title {
+      margin-bottom: 8px;
+    }
+  }
+ 
+  &__image-container {
+    grid-area: img;
+    align-self: center;
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    flex-shrink: 0;
+    border-radius: 24px;
+    overflow: hidden;
+
+    @include medium {
+      align-self: stretch;
+      aspect-ratio: auto;
+      height: 100%;
+    }
+
+    .a-image {
+      object-fit: cover;
+    }
+  }
+ 
+  &__text-container {
+    grid-area: text;
+    width: 100%;
+ 
+    @include medium {
+        margin-top: 0;
+    }
+  }
+ 
+  &__subtitle {
+    margin-bottom: 24px;
+  }
+ 
+  &__intro {
+    &-title {
+      margin-bottom: 12px;
+      color: var(--accent-purple-dark);
+    }
+ 
+    &-text {
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+  }
+
+  &__extra {
+    margin-top: 32px;
+    width: 100%;
+  }
+}

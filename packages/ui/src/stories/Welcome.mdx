@@ -14,10 +14,33 @@ This Storybook showcases the components used in the portfolio of **Jouskaio**.
 - **Animations:** AOS (Animate On Scroll)
 - **Code Highlighting:** highlight.js
 
-## Component Library
+## Installation
 
-Browse the components in the sidebar to see their variations and test their behavior.
-Every component marked with `ai-generated` has been set up with automated tests.
+To install the library in your project, run:
+
+```bash
+yarn add @jouskaio/ui
+# or
+npm install @jouskaio/ui
+```
+
+### Usage
+
+Don't forget to import the styles in your application (e.g., in `_app.tsx` or `layout.tsx`):
+
+```tsx
+import '@jouskaio/ui/styles';
+```
+
+Then you can use the components:
+
+```tsx
+import { TextH1 } from '@jouskaio/ui';
+
+const MyPage = () => (
+  <TextH1>Hello World</TextH1>
+);
+```
 
 ## Development
 

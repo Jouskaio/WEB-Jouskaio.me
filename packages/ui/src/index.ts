@@ -20,9 +20,12 @@ export { default as Tag } from './components/atom/text/tag';
 export { default as Alert } from './components/molecule/navigation/alert';
 export { default as CardCitation } from './components/molecule/cards/cardCitation';
 export { default as CardExperience } from './components/molecule/cards/cardExperience';
+export { default as CardHeroAbout } from './components/molecule/cards/cardHeroAbout';
 export { default as CardInfos } from './components/molecule/cards/cardInfos';
 export { default as CardListIcons } from './components/molecule/cards/cardListIcons';
 export { default as CardListText } from './components/molecule/cards/cardListText';
+export { default as CardMap } from './components/molecule/cards/cardMap';
+export { default as CardMultiStatus } from './components/molecule/cards/cardMultiStatus';
 export { default as CardNews } from './components/molecule/cards/cardNews';
 export { default as CardStatus } from './components/molecule/cards/cardStatus';
 export { default as CardXL } from './components/molecule/cards/cardXL';
@@ -30,6 +33,7 @@ export { default as Categories } from './components/molecule/navigation/categori
 export { default as Pin } from './components/molecule/feed/pin';
 export { default as PinNews } from './components/molecule/feed/pinNews';
 export { default as WidgetContact } from './components/molecule/widget/contact/widgetContact';
+export { default as WidgetTimeline } from './components/molecule/widget/timeline/WidgetTimeline';
 
 // Organisms
 export { default as Email } from './components/organism/interaction/email';
