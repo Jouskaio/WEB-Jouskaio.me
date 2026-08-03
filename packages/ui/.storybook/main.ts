@@ -31,11 +31,26 @@ const config: StorybookConfig = {
   "framework": getAbsolutePath("@storybook/nextjs-vite"),
 
   typescript: {
-    reactDocgen: 'react-docgen',
+    reactDocgen: false,
   },
 
   async viteFinal(config) {
     return mergeConfig(config, {
+      resolve: {
+        alias: {
+          '@jouskaio/ui': path.resolve(__dirname, '../src'),
+        },
+      },
+      server: {
+        fs: {
+          // Strict isolation: only allow UI package and node_modules
+          allow: [
+            path.resolve(__dirname, '..'),
+            path.resolve(__dirname, '../../../node_modules'),
+            path.resolve(__dirname, '../../../apps/web/public'),
+          ],
+        },
+      },
       plugins: [
         {
           name: 'mock-next-image',
@@ -92,6 +107,8 @@ const config: StorybookConfig = {
         ],
       },
       build: {
+        sourcemap: false,
+        minify: 'esbuild',
         rollupOptions: {
           output: {
             manualChunks: (id: string | string[]) => {
