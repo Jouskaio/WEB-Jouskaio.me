@@ -25,26 +25,40 @@
     width: 100%;
     height: 100%;
     z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    // Fix leaflet controls style to match bento theme
-    .leaflet-control-zoom {
-      border: none !important;
-      box-shadow: 0 2px 8px var(--shadow) !important;
-      border-radius: 8px !important;
-      overflow: hidden;
+    svg {
+      width: 100%;
+      height: 100%;
+    }
 
-      a {
-        background-color: var(--primary-lightest) !important;
-        color: var(--background-color) !important;
-        border: none !important;
-        &:hover {
-          background-color: var(--primary-light) !important;
-        }
+    .rsm-geography {
+      fill: var(--primary-lightest);
+      stroke: var(--primary-light);
+      stroke-width: 0.5;
+      outline: none;
+      transition: fill 0.3s ease;
+
+      &:hover {
+        fill: var(--primary-light);
       }
     }
 
-    .leaflet-bar {
-      border: none !important;
+    .rsm-marker {
+      circle {
+        fill: var(--primary);
+        stroke: var(--primary-lightest);
+        stroke-width: 2;
+      }
+
+      text {
+        font-family: var(--font-primary);
+        font-size: 10px;
+        fill: var(--background-color);
+        pointer-events: none;
+      }
     }
   }
 

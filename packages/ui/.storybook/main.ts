@@ -40,11 +40,11 @@ const config: StorybookConfig = {
         {
           name: 'mock-next-image',
           enforce: 'pre',
-          resolveId(id) {
+          resolveId(id: string) {
             if (id === 'next/image') return '\0next/image';
             if (id === 'next/link') return '\0next/link';
           },
-          load(id) {
+          load(id: string) {
             if (id === '\0next/image') {
               return `
                 import React from 'react';
@@ -91,6 +91,21 @@ const config: StorybookConfig = {
           'react-player/lazy'
         ],
       },
+      build: {
+        rollupOptions: {
+          output: {
+            manualChunks: (id: string | string[]) => {
+              if (id.includes('node_modules')) {
+                if (id.includes('react-player')) return 'react-player';
+                if (id.includes('apollo') || id.includes('graphql')) return 'apollo';
+                if (id.includes('highlight.js')) return 'highlight';
+                return 'vendor';
+              }
+            }
+          }
+        },
+        chunkSizeWarningLimit: 1000,
+      }
     });
   }
 };

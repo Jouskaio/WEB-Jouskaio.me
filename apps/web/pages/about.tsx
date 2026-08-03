@@ -151,7 +151,7 @@ export default function AboutPage() {
                 <CardMap
                     lat={48.8566}
                     lng={2.3522}
-                    zoom={11}
+                    zoom={1}
                     markerLabel="Based in Paris"
                     title="Paris, France"
                     aosDuration={1000}

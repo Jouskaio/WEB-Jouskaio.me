@@ -20,11 +20,7 @@ const Query = ({ children, query, value = null }: QueryProps) => {
     variables: { value: value },
   });
 
-  // Use refetch to ensure an error where React cannot fetch data. Do not delete the variable's name otherwise the error
-  // will come back
-  // Documentation : https://github.com/apollographql/react-apollo/issues/3862
-  // eslint-disable-next-line react-hooks/rules-of-hooks
-  setTimeout(() => _refetch(), 0);
+  // Use refetch only if necessary. Calling it in a timeout at every render is a major performance bottleneck.
   if (loading) return (
       <main className={"l-main__a-sizeSection"}>
         {/*TODO: Make an animation loading*/}

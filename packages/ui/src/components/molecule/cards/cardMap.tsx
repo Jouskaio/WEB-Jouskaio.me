@@ -1,24 +1,34 @@
-import React, { useEffect, useState, type CSSProperties } from 'react';
+import React, { type CSSProperties } from 'react';
+import {
+    ComposableMap,
+    Geographies,
+    Geography,
+    Marker,
+    ZoomableGroup
+} from "react-simple-maps";
 import TextSpanXS from '../../atom/text/textSpanXS';
+
+// URL for France departments TopoJSON (includes departments for better look)
+const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/france/france-departments.json";
 
 /**
  * Properties of the CardMap component.
  */
 export type CardMapProps = {
     /**
-     * Latitude of the map center and marker.
+     * Latitude of the marker.
      */
     lat: number;
     /**
-     * Longitude of the map center and marker.
+     * Longitude of the marker.
      */
     lng: number;
     /**
-     * Initial zoom level.
+     * Zoom level (optional, defaults to 1).
      */
     zoom?: number;
     /**
-     * Label displayed in a popup when the marker is clicked.
+     * Label displayed near the marker.
      */
     markerLabel?: string;
     /**
@@ -41,87 +51,23 @@ export type CardMapProps = {
      * Inlined CSS styles.
      */
     style?: CSSProperties;
-    /**
-     * Tile layer URL (optional, defaults to OSM).
-     */
-    tileUrl?: string;
 };
 
 /**
  * Molecule Component: Card Map
- * A card displaying an interactive geographic map using Leaflet.
+ * A card displaying a stylized vector geographic map using react-simple-maps.
  */
 export default function CardMap({
                                     lat,
                                     lng,
-                                    zoom = 13,
+                                    zoom = 1,
                                     markerLabel,
                                     title,
                                     classname = '',
                                     aosDuration,
                                     aosEffect,
                                     style,
-                                    tileUrl = 'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
                                 }: CardMapProps) {
-    const [isClient, setIsClient] = useState(false);
-    const [MapComponents, setMapComponents] = useState<any>(null);
-
-    useEffect(() => {
-        const loadLeaflet = async () => {
-            try {
-                // @ts-ignore
-                const [L, ReactLeaflet] = await Promise.all([
-                    import('leaflet'),
-                    import('react-leaflet'),
-                    import('leaflet/dist/leaflet.css')
-                ]);
-
-                const Leaflet = L.default || L;
-
-                // Fix for leaflet default icon issue in webpack/vite environments
-                if (Leaflet.Icon && Leaflet.Icon.Default) {
-                    delete (Leaflet.Icon.Default.prototype as any)._getIconUrl;
-                    Leaflet.Icon.Default.mergeOptions({
-                        iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-                        iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-                        shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-                    });
-                }
-
-                setMapComponents({
-                    MapContainer: ReactLeaflet.MapContainer,
-                    TileLayer: ReactLeaflet.TileLayer,
-                    Marker: ReactLeaflet.Marker,
-                    Popup: ReactLeaflet.Popup
-                });
-                setIsClient(true);
-            } catch (error) {
-                console.error("Failed to load Leaflet:", error);
-            }
-        };
-
-        loadLeaflet();
-    }, []);
-
-    if (!isClient || !MapComponents) {
-        return (
-            <div
-                className={`m-cardMap ${classname}`.trim()}
-                style={{ minHeight: '200px', ...style }}
-                data-aos={aosEffect || undefined}
-                data-aos-duration={aosDuration}
-            >
-                {title && (
-                    <div className="m-cardMap__a-title">
-                        <TextSpanXS>{title}</TextSpanXS>
-                    </div>
-                )}
-            </div>
-        );
-    }
-
-    const { MapContainer, TileLayer, Marker, Popup } = MapComponents;
-
     return (
         <div
             className={`m-cardMap ${classname}`.trim()}
@@ -134,24 +80,43 @@ export default function CardMap({
                     <TextSpanXS>{title}</TextSpanXS>
                 </div>
             )}
-            <MapContainer
-                center={[lat, lng]}
-                zoom={zoom}
-                scrollWheelZoom={false}
-                className="m-cardMap__container"
-            >
-                <TileLayer
-                    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                    url={tileUrl}
-                />
-                <Marker position={[lat, lng]}>
-                    {markerLabel && (
-                        <Popup>
-                            {markerLabel}
-                        </Popup>
-                    )}
-                </Marker>
-            </MapContainer>
+            <div className="m-cardMap__container">
+                <ComposableMap
+                    projection="geoAzimuthalEqualArea"
+                    projectionConfig={{
+                        rotate: [-2.5, -46.5, 0],
+                        scale: 2500
+                    }}
+                    width={800}
+                    height={600}
+                >
+                    <ZoomableGroup zoom={zoom} center={[lng, lat]} filterZoomEvent={() => false}>
+                        <Geographies geography={geoUrl}>
+                            {({ geographies }: { geographies: any[] }) =>
+                                geographies.map((geo: any) => (
+                                    <Geography
+                                        key={geo.rsmKey}
+                                        geography={geo}
+                                        className="rsm-geography"
+                                    />
+                                ))
+                            }
+                        </Geographies>
+                        <Marker coordinates={[lng, lat]}>
+                            <circle r={8} />
+                            {markerLabel && (
+                                <text
+                                    textAnchor="middle"
+                                    y={-20}
+                                    className="rsm-marker-text"
+                                >
+                                    {markerLabel}
+                                </text>
+                            )}
+                        </Marker>
+                    </ZoomableGroup>
+                </ComposableMap>
+            </div>
         </div>
     );
 }

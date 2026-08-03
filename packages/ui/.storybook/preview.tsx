@@ -20,6 +20,7 @@ const preview: Preview = {
             const isDocs = context.viewMode === 'docs';
 
             React.useEffect(() => {
+                // Initialize AOS once or when switching between Docs/Story mode
                 AOS.init({
                     duration: 800,
                     once: true,
@@ -30,11 +31,14 @@ const preview: Preview = {
             }, [isDocs]);
 
             React.useEffect(() => {
+                // Only refresh AOS if not in docs mode to save resources
+                if (isDocs) return;
+
                 const timer = setTimeout(() => {
                     AOS.refresh();
                 }, 100);
                 return () => clearTimeout(timer);
-            }, [context.args]);
+            }, [context.args, isDocs]);
 
             React.useEffect(() => {
                 if (isDocs) {
