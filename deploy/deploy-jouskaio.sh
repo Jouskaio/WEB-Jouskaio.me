@@ -51,7 +51,9 @@ yarn workspace @jouskaio/ui build-storybook
 # Relance des services PM2
 echo "🔄 Redémarrage des services PM2..."
 if command -v pm2 > /dev/null; then
-    pm2 startOrReload apps/web/ecosystem.config.js --update-env
+    # Suppression des anciens processus pour éviter les conflits de configuration
+    pm2 delete WEB-jouskaio.me WEB-storybook || true
+    pm2 start apps/web/ecosystem.config.js --update-env
     pm2 save
 else
     echo "⚠️ PM2 n'est pas installé, les services n'ont pas été redémarrés."

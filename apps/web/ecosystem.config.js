@@ -3,7 +3,7 @@ module.exports = {
         {
             name: 'WEB-jouskaio.me',
             cwd: 'apps/web',
-            script: 'yarn',
+            script: 'npm',
             args: 'start',
             env: {
                 NODE_ENV: 'production',
@@ -14,7 +14,7 @@ module.exports = {
             name: 'WEB-storybook',
             cwd: 'packages/ui',
             script: 'npx',
-            args: 'serve -s storybook-static -l tcp://0.0.0.0:6060',
+            args: 'serve -s storybook-static -l 6060',
             env: {
                 NODE_ENV: 'production',
             },
