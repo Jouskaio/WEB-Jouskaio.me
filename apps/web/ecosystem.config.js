@@ -2,7 +2,7 @@ module.exports = {
     apps: [
         {
             name: 'WEB-jouskaio.me',
-            cwd: './',
+            cwd: 'apps/web',
             script: 'yarn',
             args: 'start',
             env: {
@@ -12,7 +12,7 @@ module.exports = {
         },
         {
             name: 'WEB-storybook',
-            cwd: '../../packages/ui',
+            cwd: 'packages/ui',
             script: 'npx',
             args: 'serve -s storybook-static -l tcp://0.0.0.0:6060',
             env: {

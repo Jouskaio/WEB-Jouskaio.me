@@ -1,17 +1,21 @@
-// @ts-ignore
-import React, {useCallback} from "react";
-// @ts-ignore
-import {useQuery} from "@apollo/client";
+import React from "react";
+import {useQuery, DocumentNode} from "@apollo/client";
 import TextDefault from "../../components/atom/text/TextDefault";
 
 /** Fetch results of custom query request into a JSON format
- * @param children : object
+ * @param children : function
  * @param query : graphql request asked
  * @param value : int for custom variable search
  * @return JSON format
  */
 
-const Query = ({ children=null, query=null, value: value = null }) => {
+interface QueryProps {
+  children: (result: { data: any }) => React.ReactNode;
+  query: DocumentNode;
+  value?: string | number | null;
+}
+
+const Query = ({ children, query, value = null }: QueryProps) => {
   const { data, loading, error, refetch: _refetch } = useQuery(query, {
     variables: { value: value },
   });
@@ -28,16 +32,16 @@ const Query = ({ children=null, query=null, value: value = null }) => {
       </main>
   )
   if (error) return <TextDefault>Error: {JSON.stringify(error)}</TextDefault>;
-  return children({data})
-  //return children({ data });
+  return <>{children({data})}</>;
 };
 export default Query;
 
-export function getStrapiMedia(media) {
+export function getStrapiMedia(media: any) {
+  if (!media) return "";
   const imageUrl =
     typeof media === "string"
-      ? process.env.BLOG_API_URL_URL + media
-      : process.env.BLOG_API_URL_URL +
-      media.data.attributes.url;
+      ? (process.env.BLOG_API_URL_URL || "") + media
+      : (process.env.BLOG_API_URL_URL || "") +
+      (media.data?.attributes?.url || "");
   return imageUrl;
 }

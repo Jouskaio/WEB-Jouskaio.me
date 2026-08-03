@@ -3,8 +3,14 @@ import PropTypes from "prop-types";
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import Image from 'next/image';
 
-const PluginAudio = ({ text, classname, id }) => {
-    const [utterance, setUtterance] = useState(null);
+interface PluginAudioProps {
+    text: string;
+    classname?: string;
+    id: string | number;
+}
+
+const PluginAudio = ({ text, classname = "", id }: PluginAudioProps) => {
+    const [utterance, setUtterance] = useState<SpeechSynthesisUtterance | null>(null);
     const [isPlaying, setIsPlaying] = useState(false);
     const [isPaused, setIsPaused] = useState(false);
     const [isProcessingClick, setIsProcessingClick] = useState(false);
@@ -39,20 +45,19 @@ const PluginAudio = ({ text, classname, id }) => {
         };
 
         const handleProgress = () => {
-            if (utterance.currentTime === 0) {
-                setTotalDuration(utterance.duration); // Update total audio duration when metadata is loaded
-            }
-            const currentTime = isPaused ? elapsedTime : performance.now() - startTime; // Use elapsed time if paused, otherwise measure elapsed time again
-            const percentage = (currentTime / (totalDuration * 1000)) * 100; // Convert time to seconds and calculate progress percentage
+            // SpeechSynthesisUtterance doesn't have currentTime/duration
+            // This is a placeholder for logic that might be improved later
+            const currentTime = isPaused ? elapsedTime : performance.now() - startTime; 
+            const percentage = totalDuration > 0 ? (currentTime / (totalDuration * 1000)) * 100 : 0;
             setProgress(percentage);
         };
 
         utterance.addEventListener("start", handleStart);
-        utterance.addEventListener("timeupdate", handleProgress);
+        // utterance.addEventListener("timeupdate", handleProgress); // Not supported
 
         return () => {
             utterance.removeEventListener("start", handleStart);
-            utterance.removeEventListener("timeupdate", handleProgress);
+            // utterance.removeEventListener("timeupdate", handleProgress);
         };
     }, [utterance, isPaused, startTime, elapsedTime, totalDuration]);
 

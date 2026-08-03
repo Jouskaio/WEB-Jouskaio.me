@@ -2,7 +2,7 @@ export const fetchLatestArticles = async () => {
     const response = await fetch('https://blog.jouskaio.me/wp-json/wp/v2/posts?per_page=3');
     const posts = await response.json();
 
-    return await Promise.all(posts.map(async (post) => {
+    return await Promise.all(posts.map(async (post: any) => {
         let featuredImageUrl = '';
         if (post.featured_media) {
             const mediaResponse = await fetch(`https://blog.jouskaio.me/wp-json/wp/v2/media/${post.featured_media}`);

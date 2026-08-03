@@ -97,14 +97,14 @@ export default function NavCategories({
                 style={{ width }}
             >
                 <Query query={CATEGORIES_QUERY}>
-                    {(result: CategoriesQueryResult) => {
+                    {(result: any) => {
                         const fetchedCategories =
-                            result?.data?.categories?.data?.map((category) => ({
+                            result?.data?.categories?.data?.map((category: any) => ({
                                 slug: category.attributes.slug,
                                 name: category.attributes.name,
                             })) ?? [];
 
-                        return renderCategoryItems(fetchedCategories);
+                        return <>{renderCategoryItems(fetchedCategories)}</>;
                     }}
                 </Query>
 

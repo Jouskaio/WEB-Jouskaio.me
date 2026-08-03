@@ -3,7 +3,7 @@ import AOS from 'aos';
 
 export const useScrollingAOS = () => {
     // Initialize state with undefined width/height, so the server and client render match
-    const [scrollAOS, setScrollAOS] = useState(undefined);
+    const [scrollAOS, setScrollAOS] = useState<any>(undefined);
 
     useEffect(() => {
         // only execute all the code below on the client side

@@ -1,7 +1,5 @@
-import {node} from "prop-types";
-
-export const switchListStyle = node => {
-  switch (node.attribs.style) {
+export const switchListStyle = (node: any) => {
+  switch (node.attribs?.style) {
     case "list-style-type:decimal;":
       return "decimal"
     case "list-style-type:lower-alpha;":

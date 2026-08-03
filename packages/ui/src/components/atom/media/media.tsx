@@ -53,7 +53,7 @@ const Media = ({
             width={width}
             unoptimized={true}
             placeholder="blur"
-            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width, height))}`}
+            blurDataURL={`data:image/svg+xml;base64,${toBase64(shimmer(width || 100, height || 100))}`}
             style={style}
             className={`a-media ${classname}`}
         />

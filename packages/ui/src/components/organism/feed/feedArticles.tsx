@@ -8,7 +8,7 @@ import Feed from "./feed";
 import ARTICLES_QUERY from "../../../lib/api/article/articles";
 import Link from "next/link";
 
-function computePinSize(titleLength, descriptionLength) {
+function computePinSize(titleLength: number, descriptionLength: number) {
     if (
         (titleLength <= 28 && descriptionLength <= 82) ||
         (titleLength <= 56 && descriptionLength <= 42)
@@ -25,12 +25,12 @@ function computePinSize(titleLength, descriptionLength) {
     }
 }
 
-function createPins(articles) {
-    return articles.map((article) => {
+function createPins(articles: any[]) {
+    return articles.map((article: any) => {
         const title = article.attributes.title;
         const description = article.attributes.description;
         const tags = Array.isArray(article.attributes.tags.data) && article.attributes.tags.data.length > 0
-            ? article.attributes.tags.data.map((tag) => ({
+            ? article.attributes.tags.data.map((tag: any) => ({
                 name: tag.attributes.name,
                 color: tag.attributes.color,
                 slug: tag.attributes.slug,
@@ -39,7 +39,7 @@ function createPins(articles) {
 
         // Add categories to tags if they exist
         if (Array.isArray(article.attributes.categories.data) && article.attributes.categories.data.length > 0) {
-            article.attributes.categories.data.forEach((category) => {
+            article.attributes.categories.data.forEach((category: any) => {
                 tags.push({
                     name: category.attributes.name,
                     color: category.attributes.color,
@@ -55,7 +55,7 @@ function createPins(articles) {
             url: `blog/article/${article.attributes.slug}`,
             media: getStrapiMedia(article.attributes.image),
             tags: tags,
-            size: size,
+            size: size as "small" | "medium" | "large",
         };
     });
 }
@@ -65,7 +65,7 @@ function createPins(articles) {
  * Manages the display of an article feed with infinite scroll from Strapi.
  */
 function FeedArticles() {
-    const [articles, setArticles] = useState([]);
+    const [articles, setArticles] = useState<any[]>([]);
     const [page, setPage] = useState(1);
     const limit = 6;
     const [loadingMore, setLoadingMore] = useState(false);
@@ -103,9 +103,9 @@ function FeedArticles() {
         <div>
             <div className={"l-blog__m-categories"}>
                 <ul className={'l-blog__m-categoriesUl'}>
-                    {Array.isArray(articles) && articles.length > 0 && articles.map((article, index) => {
+                    {Array.isArray(articles) && articles.length > 0 && articles.map((article: any, index: number) => {
                         const categories = Array.isArray(article.attributes.categories.data) && article.attributes.categories.data.length > 0
-                            ? article.attributes.categories.data.map((category, categoryIndex) => (
+                            ? article.attributes.categories.data.map((category: any, categoryIndex: number) => (
                                 <li key={category.id}>
                                     <Link href={"/blog/category/"+category.attributes.slug}>{category.attributes.name}</Link>
                                 </li>

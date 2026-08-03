@@ -135,7 +135,7 @@ jobs:
       - name: Deploy on remote server
         run: |
           ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} \
-          "cd /home/user/Documents/jouskaio.me/WEB-Jouskaio.me && git fetch origin && git reset --hard origin/main && chmod +x deploy/deploy-jouskaio.sh && deploy/deploy-jouskaio.sh"
+          "cd /home/user/Documents/jouskaio.me/WEB-Jouskaio.me && git fetch origin && git reset --hard origin/main && chmod +x deploy/deploy-jouskaio.sh && ./deploy/deploy-jouskaio.sh"
 
       - name: Stop WireGuard
         if: always()

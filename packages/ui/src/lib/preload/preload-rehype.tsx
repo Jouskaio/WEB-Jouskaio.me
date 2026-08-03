@@ -13,12 +13,17 @@ import {shimmer, toBase64} from "./preload-image";
 import {switchListStyle} from "./preload-rehype-tools";
 import Image from "next/image";
 
-function UseProcessor({ content, size }) {
-  const [contentElements, setContentElements] = useState([]);
-  function preloadListProcessor(child, i) {
+interface UseProcessorProps {
+  content: string;
+  size: { width: number; height: number };
+}
+
+function UseProcessor({ content, size }: UseProcessorProps) {
+  const [contentElements, setContentElements] = useState<any[]>([]);
+  function preloadListProcessor(child: any, i: number) {
         if (child.name == "li") {
             return (
-                <li key={i}>{child.children.map((subChild, j) => {
+                <li key={i}>{child.children.map((subChild: any, j: number) => {
                     if (subChild.type === "text") {
                         return <span key={j}>{subChild.data}</span>;
                     } else if (subChild.name === "code") {
@@ -26,9 +31,11 @@ function UseProcessor({ content, size }) {
                     } else if (subChild.name === "p") {
                         return <p key={j}>{subChild.children[0].data}</p>;
                     }
+                    return null;
                 })}</li>
             );
         }
+        return null;
     }
 
 // Render the content
@@ -36,31 +43,31 @@ useEffect(() => {
     const ReactHtmlParser: any = (_ReactHtmlParser as any).default || _ReactHtmlParser;
     const parsedContent = ReactHtmlParser(content, {
       decodeEntities: true,
-      transform: (node, index) => {
+      transform: (node: any, index: number) => {
         //console.log(node)
         if (node.type === "text") {
           return <TextDefault key={index}>{node.data}</TextDefault>;
         } else if (node.name === "h1") {
-          return <TextH1 key={index} classname={"o-processor__a-textH1"}>{node.children[0].data}</TextH1>;
+          return <TextH1 key={index} classname={"o-processor__a-textH1"}>{node.children[0]?.data}</TextH1>;
         } else if (node.name === "h2") {
-          return <TextH2 key={index} classname={"o-processor__a-textH2"}>{node.children[0].data}</TextH2>;
+          return <TextH2 key={index} classname={"o-processor__a-textH2"}>{node.children[0]?.data}</TextH2>;
         } else if (node.name === "h3") {
-          return <TextH3 key={index} classname={"o-processor__a-textH3"}>{node.children[0].data}</TextH3>;
+          return <TextH3 key={index} classname={"o-processor__a-textH3"}>{node.children[0]?.data}</TextH3>;
         } else if (node.name === "h4") {
-          return <TextH4 key={index} classname={"o-processor__a-textH4"}>{node.children[0].data}</TextH4>;
+          return <TextH4 key={index} classname={"o-processor__a-textH4"}>{node.children[0]?.data}</TextH4>;
         } else if (node.name === "h5") {
-          return <TextH5 key={index} classname={"o-processor__a-textH5"}>{node.children[0].data}</TextH5>;
+          return <TextH5 key={index} classname={"o-processor__a-textH5"}>{node.children[0]?.data}</TextH5>;
         } else if (node.name === "mark") {
-          return <TextMarked key={index}>{node.children[0].data}</TextMarked>;
+          return <TextMarked key={index}>{node.children[0]?.data}</TextMarked>;
         } else if (node.name === "code") {
           return <nav style={{maxWidth: size.width - 32}} key={index}>
-                <Code classname={"o-processor__a-code"}>{node.children[0].data}</Code>
+                <Code classname={"o-processor__a-code"}>{node.children[0]?.data}</Code>
               </nav>
         } else if (node.name == "img") {
           return (
               <nav className={"o-processor__a-image"} key={index}>
                 <Image
-                    src={getStrapiMedia(node.attribs.src)}
+                    src={getStrapiMedia(node.attribs?.src)}
                     placeholder="blur"
                     layout="responsive"
                     onLoad={() => `data:image/svg+xml;base64,${toBase64(shimmer("100%", "100%"))}`}
@@ -72,44 +79,49 @@ useEffect(() => {
         } else if (node.name === "table") {
           return <nav style={{maxWidth: size.width, overflowX: "auto"}} key={index}>
                 <table className={"m-table"}>
-                  {node.children.map((child, i) => {
+                  {node.children.map((child: any, i: number) => {
                     if (child.name === "thead") {
                       return (
                           <thead key={i}>
-                          {child.children.map((child, i) => {
+                          {child.children.map((child: any, i: number) => {
                             if (child.name === "tr") {
                               return (
                                   <tr key={i}>
-                                    {child.children.map((child, i) => {
+                                    {child.children.map((child: any, i: number) => {
                                       if (child.name === "th") {
-                                        return <th key={i}>{child.children[0].data}</th>;
+                                        return <th key={i}>{child.children[0]?.data}</th>;
                                       }
+                                      return null;
                                     })}
                                   </tr>
                               );
                             }
+                            return null;
                           })}
                           </thead>
                       );
                     } else if (child.name === "tbody") {
                       return (
                           <tbody key={i}>
-                          {child.children.map((child, i) => {
+                          {child.children.map((child: any, i: number) => {
                             if (child.name === "tr") {
                               return (
                                   <tr key={i}>
-                                    {child.children.map((child, i) => {
+                                    {child.children.map((child: any, i: number) => {
                                       if (child.name === "td") {
-                                        return <td key={i}>{child.children[0].data}</td>;
+                                        return <td key={i}>{child.children[0]?.data}</td>;
                                       }
+                                      return null;
                                     })}
                                   </tr>
                               );
                             }
+                            return null;
                           })}
                           </tbody>
                       );
                     }
+                    return null;
                   })}
                 </table>
               </nav>
@@ -129,8 +141,8 @@ useEffect(() => {
           return (
               <blockquote key={index} className={"o-processor__m-citation"}>
                 <span className={"o-processor__m-citation--span"}>"<br/></span>
-                {node.children.map((child, i) => {
-                  return <TextDefault classname={"o-processor__m-citation--content"} key={i}>{child.children[0].data}<br/></TextDefault>;
+                {node.children.map((child: any, i: number) => {
+                  return <TextDefault classname={"o-processor__m-citation--content"} key={i}>{child.children[0]?.data}<br/></TextDefault>;
                 })}
                 <span className={"o-processor__m-citation--span o-processor__m-citation--spanLast"}>"<br/></span>
               </blockquote>
