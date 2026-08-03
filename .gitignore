@@ -56,5 +56,3 @@ yarn-error.log*
 
 # Custom
 !/.junie/
-!/yarn.lock
-!/yarn.lock
