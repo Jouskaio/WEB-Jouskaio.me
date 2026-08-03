@@ -46,7 +46,9 @@ yarn build
 
 # Build de Storybook
 echo "📚 Build de Storybook..."
+export NODE_OPTIONS="--max-old-space-size=4096"
 yarn workspace @jouskaio/ui build-storybook
+unset NODE_OPTIONS
 
 # Relance des services PM2
 echo "🔄 Redémarrage des services PM2..."

@@ -99,6 +99,7 @@ const config: StorybookConfig = {
                 if (id.includes('react-player')) return 'react-player';
                 if (id.includes('apollo') || id.includes('graphql')) return 'apollo';
                 if (id.includes('highlight.js')) return 'highlight';
+                if (id.includes('d3') || id.includes('topojson')) return 'd3-maps';
                 return 'vendor';
               }
             }
