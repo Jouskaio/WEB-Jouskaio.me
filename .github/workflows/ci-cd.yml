@@ -75,18 +75,30 @@ jobs:
         run: yarn workspace @jouskaio/ui build
 
       - name: Publish to NPM
+        id: npm-publish
         run: |
           cd packages/ui
-          npm publish --access public
+          VERSION=$(node -p "require('./package.json').version")
+          if npm view @jouskaio/ui@$VERSION version > /dev/null 2>&1; then
+            echo "Version $VERSION already exists on NPM. Skipping publish."
+            echo "skipped=true" >> $GITHUB_OUTPUT
+          else
+            npm publish --access public
+            echo "skipped=false" >> $GITHUB_OUTPUT
+          fi
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Discord Notification on Success
         if: success()
         run: |
+          MESSAGE="📦 Package **@jouskaio/ui** successfully published on NPM !"
+          if [[ "${{ steps.npm-publish.outputs.skipped }}" == "true" ]]; then
+            MESSAGE="ℹ️ Package **@jouskaio/ui** already up to date on NPM (version $(node -p "require('./packages/ui/package.json').version"))."
+          fi
           curl -H "Content-Type: application/json" \
           -X POST \
-          -d "{\"content\": \"📦 Package **@jouskaio/ui** successfully published on NPM ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
+          -d "{\"content\": \"$MESSAGE [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
           "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
       - name: Discord Notification on Failure

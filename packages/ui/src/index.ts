@@ -43,6 +43,9 @@ export { default as FeedLastest } from './components/organism/feed/feedLastest';
 export { default as Footer } from './components/organism/navigation/footer';
 export { default as Header } from './components/organism/navigation/header';
 
+// Providers
+export { default as JouskaioProvider } from './providers/JouskaioProvider';
+
 // Hooks & Utils
 export { default as UseProcessor } from './lib/preload/preload-rehype';
 export { useWindowSize } from './lib/motion/sizeWindow';

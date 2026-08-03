@@ -1,14 +1,12 @@
-import '@jouskaio/ui/src/styles/globals.scss'
 // @ts-ignore
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import Image from 'next/image'
 
-import { Footer, Header, Alert, useWindowSize, useScrollingAOS } from "@jouskaio/ui";
+import { Footer, Header, Alert, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
 
 
 function MyApp({ Component, pageProps }) {
 
-    const useAOS = useScrollingAOS();
     const size = useWindowSize();
     const sizeAOS = size && size.width !== undefined;
 
@@ -26,47 +24,49 @@ function MyApp({ Component, pageProps }) {
     };
 
     return (
-      <main className={"l-main"}>
-          <Header
-              pages={[
-                  {
-                      name: "home.",
-                      source: "/",
-                      class: "o-header__page"
-                  },
-                  {
-                      name: "about.",
-                      source: "/about",
-                      class: "o-header__page"
-                  },
-                  {
-                      name: "work.",
-                      source: "/work",
-                      class: "o-header__page"
-                  },
-                  {
-                      name: "blog.",
-                      source: "https://blog.jouskaio.me",
-                      class: "o-header__page"
-                  }
-              ]}/>
+      <JouskaioProvider>
+          <main className={"l-main"}>
+              <Header
+                  pages={[
+                      {
+                          name: "home.",
+                          source: "/",
+                          class: "o-header__page"
+                      },
+                      {
+                          name: "about.",
+                          source: "/about",
+                          class: "o-header__page"
+                      },
+                      {
+                          name: "work.",
+                          source: "/work",
+                          class: "o-header__page"
+                      },
+                      {
+                          name: "blog.",
+                          source: "https://blog.jouskaio.me",
+                          class: "o-header__page"
+                      }
+                  ]}/>
 
-          <div className={"l-main__o-paramsDiv"}>
-              {sizeAOS && (
-                  <>
-                      <button className={"l-main__a-moreMenu"} data-aos={size && size.width <= 768 ? "fade-down" : "fade-left"} data-aos-duration={1000}><Image src="/icons/more.svg" alt="More" height={"16"} width={"16"}/></button>
-                      <button className={"l-main__a-param"} data-aos={size && size.width <= 768 ? "fade-down" : "fade-left"} data-aos-duration={1200}><Image src={"/icons/params.svg"} alt={"Param"} height={"16"} width={"16"}/></button>
-                  </>
+              <div className={"l-main__o-paramsDiv"}>
+                  {sizeAOS && (
+                      <>
+                          <button className={"l-main__a-moreMenu"} data-aos={size && size.width <= 768 ? "fade-down" : "fade-left"} data-aos-duration={1000}><Image src="/icons/more.svg" alt="More" height={"16"} width={"16"}/></button>
+                          <button className={"l-main__a-param"} data-aos={size && size.width <= 768 ? "fade-down" : "fade-left"} data-aos-duration={1200}><Image src={"/icons/params.svg"} alt={"Param"} height={"16"} width={"16"}/></button>
+                      </>
+                  )}
+              </div>
+              <Component {...pageProps} alert={alert} />
+              {showAlert && (
+                  <Alert classname={"l-main__o-alert"}>
+                        {alertMessage}
+                  </Alert>
               )}
-          </div>
-          <Component {...pageProps} alert={alert} />
-          {showAlert && (
-              <Alert classname={"l-main__o-alert"}>
-                    {alertMessage}
-              </Alert>
-          )}
-          <Footer classname={"l-main__o-footer"}/>
-      </main>
+              <Footer classname={"l-main__o-footer"}/>
+          </main>
+      </JouskaioProvider>
   )
 }
 

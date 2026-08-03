@@ -26,19 +26,30 @@ npm install @jouskaio/ui
 
 ### Usage
 
-Don't forget to import the styles in your application (e.g., in `_app.tsx` or `layout.tsx`):
+1. Import the **JouskaioProvider** in your application (e.g., in `_app.tsx` or `layout.tsx`). The provider automatically handles global styles and initializations like animations (AOS).
 
 ```tsx
-import '@jouskaio/ui/styles';
+import { JouskaioProvider } from '@jouskaio/ui';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <JouskaioProvider>
+      <Component {...pageProps} />
+    </JouskaioProvider>
+  );
+}
 ```
 
-Then you can use the components:
+2. Then you can use any component from the library:
 
 ```tsx
-import { TextH1 } from '@jouskaio/ui';
+import { TextH1, CardStatus } from '@jouskaio/ui';
 
 const MyPage = () => (
-  <TextH1>Hello World</TextH1>
+  <>
+    <TextH1>Hello World</TextH1>
+    <CardStatus title="Status" text="Everything is working fine!" />
+  </>
 );
 ```
 
