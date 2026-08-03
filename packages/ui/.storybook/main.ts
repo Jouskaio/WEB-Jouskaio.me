@@ -117,6 +117,8 @@ const config: StorybookConfig = {
                 if (id.includes('apollo') || id.includes('graphql')) return 'apollo';
                 if (id.includes('highlight.js')) return 'highlight';
                 if (id.includes('d3') || id.includes('topojson')) return 'd3-maps';
+                if (id.includes('react') || id.includes('react-dom') || id.includes('scheduler') || id.includes('prop-types')) return 'framework';
+                if (id.includes('lucide-react') || id.includes('icons')) return 'icons';
                 return 'vendor';
               }
             }
