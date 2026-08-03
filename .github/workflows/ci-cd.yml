@@ -69,6 +69,7 @@ jobs:
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
+
       - name: Build UI Package
         run: yarn workspace @jouskaio/ui build
 
