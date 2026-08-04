@@ -1,10 +1,20 @@
 {
   "name": "@jouskaio/ui",
-  "version": "0.1.13",
+  "version": "0.1.15",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jouskaio/WEB-Jouskaio.me.git",
+    "directory": "packages/ui"
+  },
+  "bugs": {
+    "url": "https://github.com/Jouskaio/WEB-Jouskaio.me/issues"
+  },
+  "homepage": "https://github.com/Jouskaio/WEB-Jouskaio.me/tree/main/packages/ui#readme",
   "publishConfig": {
     "access": "public",
-    "registry": "https://registry.npmjs.org/"
+    "registry": "https://registry.npmjs.org/",
+    "provenance": true
   },
   "type": "module",
   "main": "./dist/index.js",

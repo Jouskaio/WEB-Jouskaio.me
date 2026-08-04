@@ -4,7 +4,6 @@ import TextDefault from "../../components/atom/text/TextDefault";
 
 /** Fetch results of custom query request into a JSON format
  * @param children : function
- * @param query : graphql request asked
  * @param value : int for custom variable search
  * @return JSON format
  */

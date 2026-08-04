@@ -55,6 +55,9 @@ jobs:
     needs: quality
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -79,12 +82,16 @@ jobs:
         run: |
           cd packages/ui
           VERSION=$(node -p "require('./package.json').version")
-          # Vérifier si la version existe déjà sur NPM sans faire échouer le script
-          if npm show @jouskaio/ui@$VERSION version > /dev/null 2>&1; then
+          echo "Checking if version $VERSION already exists on NPM..."
+          
+          # Utiliser npm view pour vérifier la version spécifique
+          EXISTING_VERSION=$(npm view @jouskaio/ui@$VERSION version 2>/dev/null || echo "")
+          
+          if [ "$EXISTING_VERSION" == "$VERSION" ]; then
             echo "Version $VERSION already exists on NPM. Skipping publish."
             echo "skipped=true" >> $GITHUB_OUTPUT
           else
-            echo "Publishing version $VERSION..."
+            echo "Version $VERSION not found on NPM. Proceeding with publication..."
             npm publish --access public
             echo "skipped=false" >> $GITHUB_OUTPUT
           fi
