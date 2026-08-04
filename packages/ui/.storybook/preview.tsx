@@ -56,6 +56,11 @@ const preview: Preview = {
         },
     ],
     parameters: {
+        options: {
+            storySort: {
+                order: ['Welcome', '*'],
+            },
+        },
         darkMode: {
             dark: { ...themes.dark, appBg: '#1A1A1A' },
             light: { ...themes.normal, appBg: '#FFFFFF' }

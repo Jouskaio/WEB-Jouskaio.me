@@ -33,6 +33,9 @@ const config: StorybookConfig = {
   typescript: {
     reactDocgen: false,
   },
+  features: {
+    buildStoriesJson: true,
+  },
 
   async viteFinal(config) {
     return mergeConfig(config, {

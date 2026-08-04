@@ -154,7 +154,7 @@ const multiStatusArgs = {
 const mapArgs = {
     lat: 48.8566,
     lng: 2.3522,
-    zoom: 12,
+    zoom: 1,
     markerLabel: 'Based in Paris',
     title: 'Paris, France',
     aosDuration: 800,
