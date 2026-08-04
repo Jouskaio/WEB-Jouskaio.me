@@ -361,5 +361,8 @@
     &--title {
       font-weight: var(--font-weight-semibold);
     }
+    & > .a-spanXS {
+      color: var(--background-color) !important;
+    }
   }
 }

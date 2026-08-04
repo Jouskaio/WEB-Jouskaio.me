@@ -34,7 +34,7 @@ export default function AboutPage() {
             company: "RATP Group",
             period: "2021 — 2024",
             description: "At RATP, I contributed to large-scale IoT experimentation projects focused on monitoring physical parameters across infrastructure environments. My role involved identifying, developing, and testing connected sensors, connecting non-communicating devices, administering SaaS information systems, working with cloud environments, building dashboards, and exploring AI-driven approaches for predictive maintenance.",
-            technologies: ["IoT", "Sensors", "SaaS", "Cloud", "AI"],
+            technologies: ["IoT", "Sensors", "SaaS", "Cloud computing", "Infrastructures"],
             logoUrl: "/icons/RATP.svg",
             companyUrl: "https://www.ratp.fr/"
         },
@@ -151,8 +151,8 @@ export default function AboutPage() {
                 <CardMap
                     lat={48.8566}
                     lng={2.3522}
-                    zoom={1}
-                    markerLabel="Based in Paris"
+                    zoom={2}
+                    markerLabel="Here !"
                     title="Paris, France"
                     aosDuration={1000}
                     aosEffect="fade-up"

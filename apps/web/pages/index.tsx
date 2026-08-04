@@ -54,7 +54,7 @@ export default function Home() {
             details={['Drawing', 'Architecture', 'Fashion', 'Animation', 'Design']}
             title={'Arts'}
             media={
-                'http://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif'
+                'https://33.media.tumblr.com/0ffebed62366b224c7173c977257f229/tumblr_nmn9lkyHjK1u4two5o1_1280.gif'
             }
             classname={'l-homepage__o-passions--card'}
             aosEffect={"fade-up"}

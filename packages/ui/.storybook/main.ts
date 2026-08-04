@@ -109,20 +109,6 @@ const config: StorybookConfig = {
       build: {
         sourcemap: false,
         minify: 'esbuild',
-        rollupOptions: {
-          output: {
-            manualChunks: (id: string) => {
-              if (id.includes('node_modules')) {
-                // Focus ONLY on truly heavy third-party libs that are not part of SB core
-                if (id.includes('react-player')) return 'vendor-player';
-                if (id.includes('apollo') || id.includes('graphql')) return 'vendor-apollo';
-                if (id.includes('highlight.js')) return 'vendor-highlight';
-                if (id.includes('d3') || id.includes('topojson')) return 'vendor-d3';
-                // Do NOT chunk react or storybook modules manually to avoid ReferenceErrors
-              }
-            }
-          }
-        },
         chunkSizeWarningLimit: 1000,
       }
     });

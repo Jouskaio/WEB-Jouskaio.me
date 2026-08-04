@@ -106,7 +106,7 @@ export default function CardExperience({
             {technologies.length > 0 && (
                 <div className="m-cardExperience__tags">
                     {technologies.map((tech, index) => (
-                        <Tag key={`${tech}-${index}`} classname="m-cardExperience__tag" color={"red"} slug={"Test"}>
+                        <Tag key={`${tech}-${index}`} classname="m-cardExperience__tag" color={"#656DB6"} slug={"#"}>
                             {tech}
                         </Tag>
                     ))}

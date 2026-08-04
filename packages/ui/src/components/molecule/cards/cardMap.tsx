@@ -6,10 +6,11 @@ import {
     Marker,
     ZoomableGroup
 } from "react-simple-maps";
-import TextSpanXS from '../../atom/text/textSpanXS';
+import worldGeo from '../../../assets/world.json';
+import TextDefault from "../../atom/text/TextDefault";
 
-// URL for France departments TopoJSON (includes departments for better look)
-const geoUrl = "https://raw.githubusercontent.com/deldersveld/topojson/master/countries/france/france-departments.json";
+// Use the imported JSON directly
+const geoUrl = worldGeo;
 
 /**
  * Properties of the CardMap component.
@@ -77,7 +78,7 @@ export default function CardMap({
         >
             {title && (
                 <div className="m-cardMap__a-title">
-                    <TextSpanXS>{title}</TextSpanXS>
+                    <TextDefault>{title}</TextDefault>
                 </div>
             )}
             <div className="m-cardMap__container">
@@ -85,7 +86,7 @@ export default function CardMap({
                     projection="geoAzimuthalEqualArea"
                     projectionConfig={{
                         rotate: [-2.5, -46.5, 0],
-                        scale: 2500
+                        scale: 1000
                     }}
                     width={800}
                     height={600}
@@ -93,25 +94,33 @@ export default function CardMap({
                     <ZoomableGroup zoom={zoom} center={[lng, lat]} filterZoomEvent={() => false}>
                         <Geographies geography={geoUrl}>
                             {({ geographies }: { geographies: any[] }) =>
-                                geographies.map((geo: any) => (
-                                    <Geography
-                                        key={geo.rsmKey}
-                                        geography={geo}
-                                        className="rsm-geography"
-                                    />
-                                ))
+                                geographies.map((geo: any) => {
+                                    const isFrance = geo.properties.name === "France";
+                                    return (
+                                        <Geography
+                                            key={geo.rsmKey}
+                                            geography={geo}
+                                            className={isFrance ? "rsm-geography--france" : "rsm-geography--neighbor"}
+                                        />
+                                    );
+                                })
                             }
                         </Geographies>
                         <Marker coordinates={[lng, lat]}>
                             <circle r={8} />
                             {markerLabel && (
-                                <text
-                                    textAnchor="middle"
-                                    y={-20}
-                                    className="rsm-marker-text"
-                                >
-                                    {markerLabel}
-                                </text>
+                                <foreignObject x="-80" y="-35" width="160" height="30">
+                                    <div style={{
+                                        display: 'flex',
+                                        justifyContent: 'center',
+                                        width: '100%',
+                                        pointerEvents: 'none'
+                                    }}>
+                                        <TextDefault classname="m-cardMap__marker-label">
+                                            {markerLabel}
+                                        </TextDefault>
+                                    </div>
+                                </foreignObject>
                             )}
                         </Marker>
                     </ZoomableGroup>

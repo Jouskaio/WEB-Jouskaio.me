@@ -34,30 +34,32 @@
       height: 100%;
     }
 
-    .rsm-geography {
-      fill: var(--primary-lightest);
-      stroke: var(--primary-light);
+    .rsm-geography--france {
+      fill: var(--accent-purple-dark);
+      stroke: var(--primary-lightest);
       stroke-width: 0.5;
       outline: none;
       transition: fill 0.3s ease;
 
       &:hover {
-        fill: var(--primary-light);
+        fill: var(--accent-purple-light);
       }
+    }
+
+    .rsm-geography--neighbor {
+      fill: var(--primary-light);
+      fill-opacity: 0.5;
+      stroke: var(--primary-light);
+      stroke-opacity: 0.3;
+      stroke-width: 0.3;
+      outline: none;
     }
 
     .rsm-marker {
       circle {
-        fill: var(--primary);
+        fill: var(--accent-purple-dark);
         stroke: var(--primary-lightest);
         stroke-width: 2;
-      }
-
-      text {
-        font-family: var(--font-primary);
-        font-size: 10px;
-        fill: var(--background-color);
-        pointer-events: none;
       }
     }
   }
@@ -74,8 +76,20 @@
     pointer-events: none;
     box-shadow: 0 2px 8px var(--shadow);
 
-    .a-spanXS {
+    .a-text {
       color: inherit;
+      font-weight: var(--font-weight-semibold);
     }
+  }
+
+  &__marker-label {
+    background-color: var(--background-color);
+    color: var(--primary-lightest);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 12px;
+    font-weight: var(--font-weight-semibold);
+    box-shadow: 0 2px 6px var(--shadow);
+    white-space: nowrap;
   }
 }
