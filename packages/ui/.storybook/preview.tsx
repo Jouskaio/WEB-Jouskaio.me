@@ -58,7 +58,7 @@ const preview: Preview = {
     parameters: {
         options: {
             storySort: {
-                order: ['Welcome', '*'],
+                order: ['Welcome', 'Atom', 'Molecule', 'Organism', '*'],
             },
         },
         darkMode: {

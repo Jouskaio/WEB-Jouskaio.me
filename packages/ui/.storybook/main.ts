@@ -17,6 +17,7 @@ const config: StorybookConfig = {
   staticDirs: [path.join(__dirname, '../../../apps/web/public')],
 
   "stories": [
+    "../src/stories/Welcome.mdx",
     "../src/**/*.mdx",
     "../src/**/*.stories.@(js|jsx|mjs|ts|tsx)"
   ],
@@ -111,8 +112,8 @@ const config: StorybookConfig = {
       },
       build: {
         sourcemap: false,
-        minify: 'esbuild',
-        chunkSizeWarningLimit: 1000,
+        minify: false, // Désactiver la minification pour éviter de casser les globales Storybook en production
+        chunkSizeWarningLimit: 2000,
       }
     });
   }
