@@ -119,7 +119,6 @@ jobs:
           -d "{\"content\": \"🚨 Failed to publish package **@jouskaio/ui** on NPM ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
           "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
-
   deploy:
     name: Deployment
     needs: quality
@@ -133,24 +132,16 @@ jobs:
         uses: tailscale/github-action@v3
         with:
           oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
-          oauth-client-secret: ${{ secrets.TS_OAUTH_CLIENT_SECRET }}
+          oauth-secret: ${{ secrets.TS_OAUTH_CLIENT_SECRET }}
           tags: tag:ci
           version: latest
 
-      - name: Test VPN connectivity
-        run: |
-          ping -c 2 192.168.1.101
-
-      - name: Prepare SSH
-        run: |
-          mkdir -p ~/.ssh
-          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
-          chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H 192.168.1.101 >> ~/.ssh/known_hosts
+      - name: Install sshpass
+        run: sudo apt-get update && sudo apt-get install -y sshpass
 
       - name: Deploy on remote server
         run: |
-          ssh ${{ secrets.SERVER_USERNAME }}@192.168.1.101 \
+          sshpass -p "${{ secrets.SERVER_PASSWORD }}" ssh -o StrictHostKeyChecking=no ${{ secrets.SERVER_USERNAME }}@192.168.1.101 \
           "cd /home/user/Documents/jouskaio.me/WEB-Jouskaio.me && git fetch origin && git reset --hard origin/main && chmod +x deploy/deploy-jouskaio.sh && ./deploy/deploy-jouskaio.sh"
 
       - name: Discord Notification on Success
