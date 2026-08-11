@@ -119,6 +119,7 @@ jobs:
           -d "{\"content\": \"🚨 Failed to publish package **@jouskaio/ui** on NPM ! [Voir les logs](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }})\"}" \
           "${{ secrets.DISCORD_WEBHOOK_URL }}"
 
+
   deploy:
     name: Deployment
     needs: quality
