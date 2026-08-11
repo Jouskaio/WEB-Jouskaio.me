@@ -128,41 +128,29 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install WireGuard
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y wireguard wireguard-tools
-
-      - name: Create WireGuard config
-        run: |
-          echo "${{ secrets.WG_CONFIG }}" | sudo tee /etc/wireguard/wg0.conf > /dev/null
-          sudo chmod 600 /etc/wireguard/wg0.conf
-
-      - name: Start WireGuard
-        run: |
-          sudo wg-quick up wg0
-          sudo wg show
+      - name: Connect to Tailscale
+        uses: tailscale/github-action@v3
+        with:
+          oauth-client-id: ${{ secrets.TS_OAUTH_CLIENT_ID }}
+          oauth-client-secret: ${{ secrets.TS_OAUTH_CLIENT_SECRET }}
+          tags: tag:ci
+          version: latest
 
       - name: Test VPN connectivity
         run: |
-          ping -c 2 ${{ secrets.SERVER_HOST }}
+          ping -c 2 192.168.1.101
 
       - name: Prepare SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
-          ssh-keyscan -H ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
+          ssh-keyscan -H 192.168.1.101 >> ~/.ssh/known_hosts
 
       - name: Deploy on remote server
         run: |
-          ssh ${{ secrets.SERVER_USERNAME }}@${{ secrets.SERVER_HOST }} \
+          ssh ${{ secrets.SERVER_USERNAME }}@192.168.1.101 \
           "cd /home/user/Documents/jouskaio.me/WEB-Jouskaio.me && git fetch origin && git reset --hard origin/main && chmod +x deploy/deploy-jouskaio.sh && ./deploy/deploy-jouskaio.sh"
-
-      - name: Stop WireGuard
-        if: always()
-        run: |
-          sudo wg-quick down wg0 || true
 
       - name: Discord Notification on Success
         if: success()
