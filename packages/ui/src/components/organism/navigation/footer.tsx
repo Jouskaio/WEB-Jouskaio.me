@@ -95,7 +95,7 @@ export default function Footer({ classname = '' }: FooterProps) {
             <nav className="o-footer__m-divRow o-footer__m-divRowTwo">
                 <TextDefault>Made with ♥ in Paris</TextDefault>
                 <TextDefault classname="o-footer__a-rowLast">
-                    ©2023 Manon Salsou
+                    ©{new Date().getFullYear()} Manon Salsou
                 </TextDefault>
             </nav>
         </div>
