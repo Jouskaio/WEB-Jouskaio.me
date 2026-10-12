@@ -3,8 +3,20 @@ import { TextH1, CardXL, CardStatus, CardListIcons, TextDefault, CardInfos, Card
 import Head from 'next/head';
 import React, {useEffect, useState} from 'react';
 import { ApolloProvider } from '@apollo/client';
+import { fetchNewsCard, type NewsCard } from '../lib/news-card';
 
-export default function Home() {
+/**
+ * The news card comes from API-Jouskaio.me. It is fetched on the server so the token stays
+ * secret, and the page is regenerated at most every 5 minutes.
+ */
+export async function getStaticProps() {
+    return {
+        props: { news: await fetchNewsCard() },
+        revalidate: 300,
+    };
+}
+
+export default function Home({ news }: { news: NewsCard }) {
     const [displayNewsletter, setNewsletter] = useState('false');
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
@@ -233,13 +245,11 @@ export default function Home() {
                     <section className={'l-homepage__o-infos'}>
                         {statusAOS && (
                             <CardInfos
-                                date={'2023-08-01T00:00:00'}
+                                date={`${news.date}T00:00:00`}
                                 aosDuration={1000}
                                 aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}
                             >
-                                “My blog is finally created and you can now check last articles :)
-                                I'm currently working on my first project presentation.
-                                “
+                                {`“${news.message}”`}
                             </CardInfos>
                         )}
                     </section>
