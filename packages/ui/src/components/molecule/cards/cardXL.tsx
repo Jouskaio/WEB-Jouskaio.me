@@ -73,7 +73,8 @@ export default function CardXL({
     const [isReady, setIsReady] = useState(false);
 
     useEffect(() => {
-        setIsPlaying(true);
+        // The video starts paused for visitors who asked for reduced motion
+        setIsPlaying(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
     }, []);
 
     const handleTogglePlayback = () => {

@@ -110,7 +110,7 @@ export default function Home({ news }: { news: NewsCard }) {
                 <title>Manon Salsou - Jouskaio's portfolio</title>
                 <meta
                     name="viewport"
-                    content="user-scalable=no, width=device-width, initial-scale=1.0"
+                    content="width=device-width, initial-scale=1.0"
                 />
                 <link rel="icon" href="/favicon.ico" />
                 <script

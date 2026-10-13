@@ -107,6 +107,15 @@ const PluginAudio = ({ text, classname = "", id }: PluginAudioProps) => {
                 className={`a-icon__audio ${classname}`}
                 src={isAudioIcon ? "/icons/play.svg" : "/icons/pause.svg"} // Use state variable to select the appropriate icon
                 onClick={handleClick}
+                onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                        event.preventDefault();
+                        handleClick();
+                    }
+                }}
+                role="button"
+                tabIndex={0}
+                aria-label={isAudioIcon ? 'Listen to the article' : 'Pause the audio'}
                 alt="Audio"
                 width={20}
                 height={20}
