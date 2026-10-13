@@ -6,6 +6,22 @@ import { ApolloProvider } from '@apollo/client';
 import { fetchNewsCard, type NewsCard } from '../lib/news-card';
 
 /**
+ * Structured data (schema.org) describing the owner of the portfolio, for search engines.
+ */
+const PERSON_JSON_LD = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Manon Salsou',
+    url: 'https://www.jouskaio.me/',
+    jobTitle: 'Mobile / Web developer and IoT software engineer',
+    sameAs: [
+        'https://github.com/Jouskaio',
+        'https://www.linkedin.com/in/manonsalsou/',
+        'https://twitter.com/Jouskaio_',
+    ],
+};
+
+/**
  * The news card comes from API-Jouskaio.me. It is fetched on the server so the token stays
  * secret, and the page is regenerated at most every 5 minutes.
  */
@@ -97,6 +113,10 @@ export default function Home({ news }: { news: NewsCard }) {
                     content="user-scalable=no, width=device-width, initial-scale=1.0"
                 />
                 <link rel="icon" href="/favicon.ico" />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(PERSON_JSON_LD) }}
+                />
             </Head>
 
             <ApolloProvider client={client}>
