@@ -17,7 +17,12 @@ This file is used after _colors and _fonts: same specificity, so these rules win
 
   --accent-purple-dark: #4B52A3;
   --accent-blue: #2F6F84;
-  --accent-yellow: #6B5800;
+  --accent-yellow: #574700;
+
+  --surface-translucent: rgba(27, 27, 34, 0.72);
+  --text-on-accent: #FFFFFF;
+  --accent-color-surface: #9AA2F0;
+  --text-on-translucent: #F4F4F6;
 }
 
 // High contrast, on the dark theme
@@ -32,6 +37,11 @@ This file is used after _colors and _fonts: same specificity, so these rules win
   --accent-purple-dark: #B3BAFF;
   --accent-blue: #8FD3EA;
   --accent-yellow: #FFEB66;
+
+  --surface-translucent: rgba(255, 255, 255, 0.90);
+  --text-on-accent: #000000;
+  --accent-color-surface: #2A2F80;
+  --text-on-translucent: #000000;
 
   a {
     text-decoration: underline;
@@ -50,6 +60,11 @@ This file is used after _colors and _fonts: same specificity, so these rules win
   --accent-purple-dark: #2A2F80;
   --accent-blue: #00506B;
   --accent-yellow: #4A3C00;
+
+  --surface-translucent: rgba(0, 0, 0, 0.90);
+  --text-on-accent: #FFFFFF;
+  --accent-color-surface: #B3BAFF;
+  --text-on-translucent: #FFFFFF;
 }
 
 // Text size: every --font-size-* follows --text-scale
