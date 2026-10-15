@@ -58,8 +58,10 @@ export default function CardListText({
                     rgba(0, 0, 0, 0.4),
                     rgba(0, 0, 0, 0.5)
                 ), url("${media}")`,
+                // The light theme shows the image blurred under the glass
+                '--media': `url("${media}")`,
                 ...style,
-            }}
+            } as CSSProperties}
             data-aos={aosEffect}
             data-aos-duration={aosDuration}
         >
