@@ -1,6 +1,7 @@
 // @ts-ignore
 import React, {useState} from "react";
 
+import { projects as projectList } from "../lib/projects";
 import { Footer, Header, Alert, Toolbar, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
 
 
@@ -13,10 +14,13 @@ const pages = [
 ];
 
 // Case studies and CVs of the menu
-const projects = [
-    { name: "Babel", tagline: "Library, reading and notes", url: "/work", icon: "/images/work/babel-icon.svg", tags: ["Flutter", "FastAPI"] },
-    { name: "Toolkit", tagline: "SSH and server toolkit", url: "/work", tags: ["Bash", "jq"] },
-];
+const projects = projectList.map(({ slug, name, tagline, icon, stack }) => ({
+    name,
+    tagline,
+    url: `/work/${slug}`,
+    icon,
+    tags: stack.slice(0, 2),
+}));
 
 const resumes = [
     { name: "CV (français)", url: "/cv/manon-salsou-cv-fr.pdf", lang: "fr" },

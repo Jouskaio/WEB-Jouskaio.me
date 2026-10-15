@@ -1,106 +1,52 @@
-import { useEffect, useRef, useState } from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { useWindowSize, TextH1 } from "@jouskaio/ui";
+import Link from "next/link";
+import { TextH1 } from "@jouskaio/ui";
+
+import { projects } from "../../lib/projects";
 
 export default function WorkPage() {
-    const [currentIndex, setCurrentIndex] = useState(0);
-    const carouselRef = useRef<HTMLDivElement | null>(null);
-    const size = useWindowSize();
-    const intervalRef = useRef<NodeJS.Timeout | null>(null);
-
-    const itemsLength = carouselRef.current?.children.length || 0;
-
-    const scrollCarousel = (direction: number) => {
-        let newIndex = currentIndex + direction;
-
-        if (newIndex < 0) newIndex = itemsLength - 1;
-        else if (newIndex >= itemsLength) newIndex = 0;
-
-        setCurrentIndex(newIndex);
-    };
-
-    // Autoplay every 3 seconds
-    useEffect(() => {
-        if (itemsLength <= 1) return;
-
-        intervalRef.current = setInterval(() => {
-            setCurrentIndex((prev) => (prev + 1) % itemsLength);
-        }, 3000);
-
-        return () => {
-            if (intervalRef.current) clearInterval(intervalRef.current);
-        };
-    }, [itemsLength]);
-
-    const offset = -currentIndex * (302 + 20);
-    const statusAOS = size?.width !== undefined;
-
     return (
         <section className="l-works">
             <Head>
                 <title>Works – Jouskaio</title>
+                <meta
+                    name="description"
+                    content="Case studies of Manon Salsou: Babel, a personal and social library, and Toolkit, a set of shell tools for servers."
+                />
+                <link rel="canonical" href="https://jouskaio.me/work" />
             </Head>
 
             <TextH1 classname="l-works__a-title">Works</TextH1>
 
-            <div
-                className="l-works__carousel m-carousel-container"
-                style={
-                    statusAOS && size.width > 768
-                        ? { width: `${size.width - 150}px` }
-                        : {}
-                }
-            >
-                <div
-                    className="m-carousel"
-                    ref={carouselRef}
-                    style={{ transform: `translateX(${offset}px)` }}
-                >
-                    <div className="m-carousel__item">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <Image src="/images/img.png" alt="Image 1" width={300} height={200} />
-                            <p className="m-carousel__title">Title 1</p>
-                            <p className="m-carousel__desc">Go to your next event with us</p>
-                            <p className="m-carousel__tags">Design - Web - React</p>
-                        </a>
-                    </div>
-                    <div className="m-carousel__item">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <Image src="/images/img.png" alt="Image 2" width={300} height={200} />
-                            <p className="m-carousel__title">Title 2</p>
-                            <p className="m-carousel__desc">Another event experience</p>
-                            <p className="m-carousel__tags">Design - Web - React</p>
-                        </a>
-                    </div>
-                    <div className="m-carousel__item">
-                        <a href="#" target="_blank" rel="noopener noreferrer">
-                            <Image src="/images/img.png" alt="Image 3" width={300} height={200} />
-                            <p className="m-carousel__title">Title 3</p>
-                            <p className="m-carousel__desc">Something unique</p>
-                            <p className="m-carousel__tags">Design - Web - React</p>
-                        </a>
-                    </div>
-                </div>
-
-               <nav className={"m-carousel-buttonsNav"}>
-                   <div className="m-navCarousel-buttons">
-                       <button
-                           className="m-navCarousel-button m-navCarousel-button--left"
-                           onClick={() => scrollCarousel(-1)}
-                       >
-                           <Image src={"/icons/next.svg"} className={"m-carousel__buttonImg"} alt={"Previous"} width={30} height={30} />
-                       </button>
-                       <button
-                           className="m-navCarousel-button m-navCarousel-button--right"
-                           onClick={() => scrollCarousel(1)}
-                       >
-                           <Image src={"/icons/next.svg"} alt={"Previous"} width={30} height={30} />
-
-                       </button>
-                   </div>
-               </nav>
-            </div>
+            <ul className="l-works__m-grid">
+                {projects.map((project, index) => (
+                    <li key={project.slug} data-aos="fade-up" data-aos-duration={800} data-aos-delay={index * 120}>
+                        <Link href={`/work/${project.slug}`} className="l-works__m-card">
+                            {project.icon ? (
+                                // A plain <img>: a small static file, no need for the image optimizer (which refuses SVG)
+                                <img className="l-works__a-icon" src={project.icon} alt="" width={64} height={64} />
+                            ) : (
+                                <span className="l-works__a-icon l-works__a-icon--letter" aria-hidden="true">
+                                    {project.name.charAt(0)}
+                                </span>
+                            )}
+                            <span className="l-works__a-name">{project.name}</span>
+                            <span className="l-works__a-tagline">{project.tagline}</span>
+                            <span className="l-works__a-summary">{project.summary}</span>
+                            <span className="l-works__m-tags">
+                                {project.stack.slice(0, 4).map((tech) => (
+                                    <span key={tech} className="l-works__a-tag">
+                                        {tech}
+                                    </span>
+                                ))}
+                            </span>
+                            <span className="l-works__a-more">
+                                See the case study <span aria-hidden="true">→</span>
+                            </span>
+                        </Link>
+                    </li>
+                ))}
+            </ul>
         </section>
     );
 }
