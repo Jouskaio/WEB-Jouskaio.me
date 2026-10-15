@@ -14,7 +14,7 @@ module.exports = {
             name: 'WEB-storybook',
             cwd: 'packages/ui',
             script: 'npx',
-            args: 'serve storybook-static -l 6060',
+            args: 'serve storybook-static -l 6060 -c ../serve.json',
             env: {
                 NODE_ENV: 'production',
             },
