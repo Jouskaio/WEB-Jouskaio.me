@@ -121,7 +121,8 @@ export default function QuickNav({
                                 <a className="o-quickNav__m-card" onClick={onNavigate}>
                                     <span className="o-quickNav__a-cardIcon" aria-hidden="true">
                                         {project.icon ? (
-                                            <Image src={project.icon} alt="" width={40} height={40} unoptimized={project.icon.endsWith('.svg')} />
+                                            // A plain <img>: the icons are small static files, no need for the image optimizer (which refuses SVG)
+                                            <img src={project.icon} alt="" width={40} height={40} />
                                         ) : (
                                             project.name.charAt(0)
                                         )}
