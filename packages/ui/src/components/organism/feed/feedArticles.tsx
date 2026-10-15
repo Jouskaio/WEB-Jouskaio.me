@@ -3,7 +3,7 @@ import React, {useCallback, useEffect, useState} from "react";
 import {useQuery} from "@apollo/client";
 import {useInView} from "react-intersection-observer";
 import InfiniteScroll from "react-infinite-scroll-component";
-import TextDefault from "../../atom/text/TextDefault";
+import TextDefault from "../../atom/text/textDefault";
 import Feed from "./feed";
 import ARTICLES_QUERY from "../../../lib/api/article/articles";
 import Link from "next/link";

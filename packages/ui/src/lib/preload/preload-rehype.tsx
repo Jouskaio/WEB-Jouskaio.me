@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from "react";
 import _ReactHtmlParser from "react-html-parser";
-import TextDefault from "../../components/atom/text/TextDefault";
+import TextDefault from "../../components/atom/text/textDefault";
 import TextH3 from "../../components/atom/text/textH3";
 import TextH4 from "../../components/atom/text/textH4";
 import TextH5 from "../../components/atom/text/textH5";

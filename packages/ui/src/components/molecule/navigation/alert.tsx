@@ -1,5 +1,5 @@
 import type { ReactNode } from 'react';
-import TextDefault from '../../atom/text/TextDefault';
+import TextDefault from '../../atom/text/textDefault';
 
 /**
  * Properties of the Alert component.

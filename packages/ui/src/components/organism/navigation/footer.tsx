@@ -1,4 +1,4 @@
-import TextDefault from '../../atom/text/TextDefault';
+import TextDefault from '../../atom/text/textDefault';
 import TextH3 from '../../atom/text/textH3';
 import Image from 'next/image';
 

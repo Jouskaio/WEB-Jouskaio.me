@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import TextDefault from '../../atom/text/TextDefault';
+import TextDefault from '../../atom/text/textDefault';
 
 type EmailFormData = {
     name: string;

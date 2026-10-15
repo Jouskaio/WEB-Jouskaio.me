@@ -1,6 +1,6 @@
 import React from "react";
 import {useQuery, DocumentNode} from "@apollo/client";
-import TextDefault from "../../components/atom/text/TextDefault";
+import TextDefault from "../../components/atom/text/textDefault";
 
 /** Fetch results of custom query request into a JSON format
  * @param children : function

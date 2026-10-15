@@ -7,7 +7,7 @@ import {
     ZoomableGroup
 } from "react-simple-maps";
 import worldGeo from '../../../assets/world.json';
-import TextDefault from "../../atom/text/TextDefault";
+import TextDefault from "../../atom/text/textDefault";
 
 // Use the imported JSON directly
 const geoUrl = worldGeo;
