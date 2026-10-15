@@ -53,7 +53,7 @@
     }
   }
 
-  // The icon is a mask painted with the accent color, so it follows the palette
+  // The icon is a mask painted with the accent color, so it follows the accent
   &__a-playIcon {
     display: block;
     width: 24px;
@@ -141,11 +141,6 @@
 
 // CARDLISTICONS
 .m-cardListIcons {
-  @for $i from 1 through 5 {
-    &:nth-child(5n + #{$i}) {
-      --step: #{$i - 1};
-    }
-  }
 
   position: relative;
   display: block;
@@ -156,12 +151,7 @@
     height: 100%;
     top: 0;
     left: 0;
-    // Each card takes the next step of the gradient between the two tones of the palette
-    background: linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--surface-a) calc(100% - var(--step, 0) * 25%), var(--surface-b)),
-      color-mix(in srgb, var(--surface-a) calc(75% - var(--step, 0) * 25%), var(--surface-b))
-    );
+    background: var(--surface-translucent);
     overflow: hidden;
     padding: 16px;
     box-sizing: border-box;
@@ -386,38 +376,6 @@
     }
     & > .a-spanXS {
       color: var(--background-color) !important;
-    }
-  }
-}
-// Light theme with a palette: glass cards, one step of the pastel gradient after the other
-:root[data-palette][data-theme="light"]:not([data-contrast="high"]) {
-  .m-cardStatus,
-  .m-cardInfos,
-  .m-cardNews,
-  .m-cardCitation,
-  .m-cardListIcons__a-div {
-    --background-color: #1b1b22; // the text of these cards
-    background-color: transparent;
-    background-image: linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--surface-a) calc(100% - var(--step, 0) * 25%), var(--surface-b)),
-      color-mix(in srgb, var(--surface-a) calc(75% - var(--step, 0) * 25%), var(--surface-b))
-    );
-    border: 1px solid rgba(255, 255, 255, 0.7);
-    box-shadow: 0 8px 24px rgba(27, 27, 34, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(14px) saturate(1.4);
-    -webkit-backdrop-filter: blur(14px) saturate(1.4);
-    color: #1b1b22;
-  }
-
-  .m-cardStatus,
-  .m-cardInfos,
-  .m-cardNews,
-  .m-cardCitation {
-    @for $i from 1 through 5 {
-      &:nth-child(5n + #{$i}) {
-        --step: #{$i - 1};
-      }
     }
   }
 }

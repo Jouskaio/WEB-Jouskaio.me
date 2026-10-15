@@ -77,8 +77,3 @@
     border: 1px solid var(--primary-light);
   }
 }
-
-// Light theme with a palette: the gear keeps a light tone on its dark circle
-:root[data-palette][data-theme="light"]:not([data-contrast="high"]) .l-main__a-param {
-  color: var(--accent-purple-light);
-}
