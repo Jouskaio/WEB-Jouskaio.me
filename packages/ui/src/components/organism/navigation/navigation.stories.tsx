@@ -25,7 +25,7 @@ const meta = {
     },
     decorators: [
         (Story) => (
-            <div style={{ minHeight: '300px', position: 'relative', border: '1px dashed #ccc', padding: '20px', background: '#333' }}>
+            <div style={{ minHeight: '300px', position: 'relative', border: '1px dashed #ccc', padding: '20px', background: 'var(--background-color)' }}>
                 {/* Force absolute position for the header in Storybook so it stays within the story frame */}
                 <style>{`
                     .o-header { 

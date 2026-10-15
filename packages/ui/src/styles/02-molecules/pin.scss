@@ -13,6 +13,11 @@
   &--medium {
     grid-row-end: span 57;
     background: var(--accent-color);
+
+    .m-pin__a-title--medium,
+    .m-pin__a-link--medium {
+      color: var(--text-on-accent);
+    }
   }
 
   &--large {

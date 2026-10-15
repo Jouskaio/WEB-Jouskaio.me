@@ -11,7 +11,7 @@
   justify-content: space-evenly;
   height: 92px;
   border-radius: 31px;
-  background: rgba(217, 217, 217, 0.30);
+  background: var(--surface-translucent);
   backdrop-filter: blur(2px);
   align-items: center;
   @include medium {
