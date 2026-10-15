@@ -38,21 +38,29 @@ export const projects: Project[] = [
     {
         slug: 'babel',
         name: 'Babel',
-        tagline: 'A personal and social library',
+        tagline: 'Your whole library, in one place',
         summary:
-            'All my reading in one place: ebooks, audiobooks, comics, fanfiction and paper books, with annotated reading, e-reader sync, statistics and a monthly Wrap.',
+            'Paper or digital books, comics, audiobooks and fanfiction: organise your whole library, track your reading and share it with your friends. No ads, and your data stays yours.',
         role: 'Design, API, app and deployment',
         status: 'In development (app 0.60)',
         stack: ['Flutter', 'FastAPI', 'Dart', 'Python', 'OpenAPI', 'Docker'],
         icon: '/images/work/babel-icon.svg',
         features: [
             {
-                title: 'Every kind of book',
-                text: 'Ebooks, audiobooks, comics, fanfiction and paper books live on the same shelves.',
+                title: 'Everything in one place',
+                text: 'Paper books, ebooks, audiobooks, comics and fanfiction on the same shelves. Scan your paper books and import your files.',
             },
             {
-                title: 'Reading in the margin',
-                text: 'Annotate while you read and keep your notes with the book.',
+                title: 'Your sources, everywhere',
+                text: 'Import your EPUBs or connect your own sources: GitHub, OPDS, WebDAV, Kavita, Audiobookshelf and AO3. Metadata comes from Hardcover, Open Library, Wikidata, TMDB, Goodreads, Booknode and Pagebound.',
+            },
+            {
+                title: 'Notes in the margin',
+                text: 'Highlight, comment and find your favourite passages again, with your notes kept with the book.',
+            },
+            {
+                title: 'Your reading, in numbers',
+                text: 'Statistics, goals, a monthly Wrap and a year in review you will want to share.',
             },
             {
                 title: 'E-reader sync',
@@ -63,16 +71,8 @@ export const projects: Project[] = [
                 text: 'In the metro or a bookshop, scans, searches, additions, progress and notes wait in a queue and are replayed when the network is back, without duplicates. Shelves stay readable offline, with a clear "No connection" screen and a retry.',
             },
             {
-                title: 'Statistics and Wraps',
-                text: 'Reading statistics and a monthly Wrap of what you read.',
-            },
-            {
                 title: 'One app everywhere',
                 text: 'Phone, tablet, desktop, web and Boox from a single Flutter client.',
-            },
-            {
-                title: 'Many sources',
-                text: 'Files from Kavita, Audiobookshelf, OPDS, WebDAV, GitHub and AO3. Metadata from Hardcover, Open Library, Wikidata, TMDB, Goodreads, Booknode and Pagebound.',
             },
         ],
         how: {
