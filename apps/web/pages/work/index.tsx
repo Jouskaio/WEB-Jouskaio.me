@@ -1,10 +1,14 @@
 import Head from "next/head";
 import Link from "next/link";
-import { TextH1 } from "@jouskaio/ui";
+import { TextH1, useWindowSize } from "@jouskaio/ui";
 
+import { gridEffect } from "../../lib/aos";
 import { projects } from "../../lib/projects";
 
 export default function WorkPage() {
+    const size = useWindowSize();
+    const twoColumns = !!size && size.width !== undefined && size.width >= 768;
+
     return (
         <section className="l-works">
             <Head>
@@ -20,7 +24,7 @@ export default function WorkPage() {
 
             <ul className="l-works__m-grid">
                 {projects.map((project, index) => (
-                    <li key={project.slug} data-aos="fade-up" data-aos-duration={800} data-aos-delay={index * 120}>
+                    <li key={project.slug} data-aos={gridEffect(index, twoColumns)} data-aos-duration={800} data-aos-delay={Math.floor(index / 2) * 120}>
                         <Link href={`/work/${project.slug}`} className="l-works__m-card">
                             {project.icon ? (
                                 // A plain <img>: a small static file, no need for the image optimizer (which refuses SVG)

@@ -2,13 +2,16 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import { TextH1, TextDefault } from "@jouskaio/ui";
+import { TextH1, TextDefault, useWindowSize } from "@jouskaio/ui";
 
+import { gridEffect } from "../../lib/aos";
 import { getProject, projects, type Project } from "../../lib/projects";
 
 const SITE = "https://jouskaio.me";
 
 export default function ProjectPage({ project }: { project: Project }) {
+    const size = useWindowSize();
+    const twoColumns = !!size && size.width !== undefined && size.width >= 768;
     const title = `${project.name} – Jouskaio`;
     const url = `${SITE}/work/${project.slug}`;
 
@@ -27,7 +30,7 @@ export default function ProjectPage({ project }: { project: Project }) {
                 <span aria-hidden="true">←</span> All work
             </Link>
 
-            <header className="l-project__m-hero" data-aos="fade-up" data-aos-duration={800}>
+            <header className="l-project__m-hero" data-aos="fade-down" data-aos-duration={800}>
                 {project.icon ? (
                     // A plain <img>: a small static file, no need for the image optimizer (which refuses SVG)
                     <img className="l-project__a-icon" src={project.icon} alt="" width={96} height={96} />
@@ -113,9 +116,9 @@ export default function ProjectPage({ project }: { project: Project }) {
                         <li
                             key={feature.title}
                             className="l-project__m-feature"
-                            data-aos="fade-up"
+                            data-aos={gridEffect(index, twoColumns)}
                             data-aos-duration={700}
-                            data-aos-delay={Math.min(index, 3) * 80}
+                            data-aos-delay={Math.min(Math.floor(index / 2), 3) * 80}
                         >
                             <h3 className="l-project__a-featureTitle">{feature.title}</h3>
                             <p className="l-project__a-featureText">{feature.text}</p>
