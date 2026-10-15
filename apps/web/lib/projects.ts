@@ -51,6 +51,20 @@ export const projects: Project[] = [
         icon: '/images/work/babel-icon.svg',
         screens: [
             {
+                src: '/images/work/babel-home.jpg',
+                width: 1401,
+                height: 840,
+                alt: 'The home screen of Babel: recommendations by genre, reading level and challenges, and moods to explore.',
+                caption: 'Home: recommendations from what you read, your progress and moods to explore.',
+            },
+            {
+                src: '/images/work/babel-library.jpg',
+                width: 1401,
+                height: 840,
+                alt: 'The library screen of Babel: a shelf of books with their format and reading status.',
+                caption: 'The library: paper books and ebooks side by side, with their status (to read, reading, read).',
+            },
+            {
                 src: '/images/work/babel-profile.jpg',
                 width: 1401,
                 height: 840,
