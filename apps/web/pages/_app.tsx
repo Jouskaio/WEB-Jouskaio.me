@@ -1,9 +1,24 @@
 // @ts-ignore
 import React, {useState} from "react";
-import Image from 'next/image'
 
-import { Footer, Header, Alert, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
+import { Footer, Header, Alert, Toolbar, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
 
+
+// Shown in the header and in the quick navigation of the toolbar
+const pages = [
+    { name: "home.", url: "/" },
+    { name: "about.", url: "/about" },
+    { name: "work.", url: "/work" },
+    { name: "blog.", url: "https://blog.jouskaio.me" },
+];
+
+const contacts = [
+    { name: "LinkedIn", url: "https://www.linkedin.com/in/manonsalsou/" },
+    { name: "GitHub", url: "https://github.com/Jouskaio" },
+];
+
+// Same address as the footer
+const EMAIL = "manon.salsou@icloud.com";
 
 function MyApp({ Component, pageProps }) {
 
@@ -27,35 +42,19 @@ function MyApp({ Component, pageProps }) {
       <JouskaioProvider>
           <main className={"l-main"}>
               <Header
-                  pages={[
-                      {
-                          name: "home.",
-                          source: "/",
-                          class: "o-header__page"
-                      },
-                      {
-                          name: "about.",
-                          source: "/about",
-                          class: "o-header__page"
-                      },
-                      {
-                          name: "work.",
-                          source: "/work",
-                          class: "o-header__page"
-                      },
-                      {
-                          name: "blog.",
-                          source: "https://blog.jouskaio.me",
-                          class: "o-header__page"
-                      }
-                  ]}/>
+                  pages={pages.map((page) => ({ name: page.name, source: page.url, class: "o-header__page" }))}
+              />
 
               <div className={"l-main__o-paramsDiv"}>
                   {sizeAOS && (
-                      <>
-                          <button className={"l-main__a-moreMenu"} data-aos={size && size.width <= 768 ? "fade-down" : "fade-left"} data-aos-duration={1000}><Image src="/icons/more.svg" alt="More" height={"16"} width={"16"}/></button>
-                          <button className={"l-main__a-param"} data-aos={size && size.width <= 768 ? "fade-down" : "fade-left"} data-aos-duration={1200}><Image src={"/icons/params.svg"} alt={"Param"} height={"16"} width={"16"}/></button>
-                      </>
+                      <Toolbar
+                          pages={pages.map((page) => ({ name: page.name.replace(/\.$/, ""), url: page.url }))}
+                          contacts={contacts}
+                          email={EMAIL}
+                          menuClassName={"l-main__a-moreMenu"}
+                          settingsClassName={"l-main__a-param"}
+                          aosEffect={size && size.width <= 768 ? "fade-down" : "fade-left"}
+                      />
                   )}
               </div>
               <Component {...pageProps} alert={alert} />

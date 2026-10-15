@@ -3,12 +3,15 @@ import Document, { Html, Head, Main, NextScript } from "next/document";
 // @ts-ignore
 import Script from "next/script";
 import React from "react";
+import { DISPLAY_SETTINGS_INIT_SCRIPT } from "@jouskaio/ui/lib/accessibility/displaySettings";
 
 class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
         <Head>
+          {/* Applies the display settings saved by the visitor before the first paint (no flash) */}
+          <script dangerouslySetInnerHTML={{ __html: DISPLAY_SETTINGS_INIT_SCRIPT }}/>
           <link rel="manifest" href="/manifest.json"/>
           <link rel="apple-touch-icon" href="/icons/icon-x128.png"></link>
           <meta name="theme-color" content="#AA3C1E"/>
