@@ -124,7 +124,7 @@
     background: var(--surface-translucent);
 
     dt {
-      margin-bottom: 8px;
+      margin-bottom: 12px;
       font-size: var(--font-size-S);
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -140,7 +140,8 @@
   &__m-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 8px;
+    gap: 10px;
+    margin-top: 12px;
   }
 
   &__a-tag {
