@@ -1,6 +1,7 @@
 import React, { useEffect, useState, type CSSProperties, Suspense, lazy } from 'react';
 
 import Image from 'next/image';
+import { useReducedMotion } from '../../../lib/accessibility/useReducedMotion';
 
 const ReactPlayer = lazy(() => 
     import('react-player/lazy').then((mod) => {
@@ -72,10 +73,12 @@ export default function CardXL({
     const [isPlaying, setIsPlaying] = useState(false);
     const [isReady, setIsReady] = useState(false);
 
+    const reducedMotion = useReducedMotion();
+
     useEffect(() => {
         // The video starts paused for visitors who asked for reduced motion
-        setIsPlaying(!window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-    }, []);
+        setIsPlaying(!reducedMotion);
+    }, [reducedMotion]);
 
     const handleTogglePlayback = () => {
         setIsPlaying((previousState) => !previousState);

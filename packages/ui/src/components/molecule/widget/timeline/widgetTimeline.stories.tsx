@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
-import WidgetTimeline from "./WidgetTimeline";
+import WidgetTimeline from "./widgetTimeline";
 
 const meta = {
     title: 'Molecule/Widgets/Timeline',

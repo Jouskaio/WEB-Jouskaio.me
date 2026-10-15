@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import AOS from 'aos';
+import { prefersReducedMotion } from '../accessibility/useReducedMotion';
 
 export const useScrollingAOS = () => {
     // Initialize state with undefined width/height, so the server and client render match
@@ -9,9 +10,9 @@ export const useScrollingAOS = () => {
         // only execute all the code below on the client side
         if (typeof window !== 'undefined') {
             // Initialize AOS when the component mounts
-            // Respect the system setting "reduce motion": elements are shown without animation
+            // Respect "reduce motion" (system or display panel): elements are shown without animation
             AOS.init({
-                disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+                disable: () => prefersReducedMotion(),
             });
             AOS.refresh();
             setScrollAOS(AOS);

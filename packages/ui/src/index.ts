@@ -4,7 +4,7 @@ export { default as Code } from './components/atom/code/code';
 export { default as Icon } from './components/atom/icon/icon';
 export { default as Media } from './components/atom/media/media';
 export { default as Switch } from './components/atom/switch/switch';
-export { default as TextDefault } from './components/atom/text/TextDefault';
+export { default as TextDefault } from './components/atom/text/textDefault';
 export { default as TextH1 } from './components/atom/text/textH1';
 export { default as TextH2 } from './components/atom/text/textH2';
 export { default as TextH3 } from './components/atom/text/textH3';
@@ -19,7 +19,7 @@ export { default as Tag } from './components/atom/text/tag';
 // Molecules
 export { default as Alert } from './components/molecule/navigation/alert';
 export { default as CardCitation } from './components/molecule/cards/cardCitation';
-export { default as Citation } from './components/atom/text/Citation';
+export { default as Citation } from './components/atom/text/citation';
 export { default as PluginAudio } from './components/molecule/plugins/pluginAudio';
 export { default as CardExperience } from './components/molecule/cards/cardExperience';
 export { default as CardHeroAbout } from './components/molecule/cards/cardHeroAbout';
@@ -35,18 +35,20 @@ export { default as Categories } from './components/molecule/navigation/categori
 export { default as Pin } from './components/molecule/feed/pin';
 export { default as PinNews } from './components/molecule/feed/pinNews';
 export { default as WidgetContact } from './components/molecule/widget/contact/widgetContact';
-export { default as WidgetTimeline } from './components/molecule/widget/timeline/WidgetTimeline';
+export { default as WidgetTimeline } from './components/molecule/widget/timeline/widgetTimeline';
 
 // Organisms
 export { default as Email } from './components/organism/interaction/email';
 export { default as Feed } from './components/organism/feed/feed';
 export { default as FeedArticles } from './components/organism/feed/feedArticles';
-export { default as FeedLastest } from './components/organism/feed/feedLastest';
+export { default as FeedLatest } from './components/organism/feed/feedLatest';
+/** @deprecated Misspelled name kept for existing consumers: use FeedLatest. */
+export { default as FeedLastest } from './components/organism/feed/feedLatest';
 export { default as Footer } from './components/organism/navigation/footer';
 export { default as Header } from './components/organism/navigation/header';
 
 // Providers
-export { default as JouskaioProvider } from './providers/JouskaioProvider';
+export { default as JouskaioProvider } from './providers/jouskaioProvider';
 
 // Hooks & Utils
 export { default as UseProcessor } from './lib/preload/preload-rehype';
@@ -54,3 +56,16 @@ export { useWindowSize } from './lib/motion/sizeWindow';
 export { useScrollingAOS } from './lib/motion/scrolling-effectAOS';
 export { client } from './lib/api/apolloClient';
 export { fetchLatestArticles } from './lib/api/blog.jouskaio.me/fetchLatestPost';
+
+// Accessibility
+export { default as Dialog } from './components/molecule/dialog/dialog';
+export { default as DisplayPanel } from './components/organism/interaction/displayPanel';
+export { default as QuickNav } from './components/organism/navigation/quickNav';
+export { default as Toolbar } from './components/organism/navigation/toolbar';
+export { useDisplaySettings } from './lib/accessibility/useDisplaySettings';
+export { useReducedMotion, prefersReducedMotion } from './lib/accessibility/useReducedMotion';
+export {
+    DEFAULT_DISPLAY_SETTINGS,
+    DISPLAY_OPTIONS,
+    type DisplaySettings,
+} from './lib/accessibility/displaySettings';

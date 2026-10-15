@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 import Switch from '../../../atom/switch/switch';
-import TextDefault from '../../../atom/text/TextDefault';
+import TextDefault from '../../../atom/text/textDefault';
 import TextH4 from '../../../atom/text/textH4';
 
 /**

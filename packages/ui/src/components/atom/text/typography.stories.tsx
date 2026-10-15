@@ -1,9 +1,9 @@
 import React from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import { expect, within } from 'storybook/test';
-import Citation from './Citation';
+import Citation from './citation';
 import Tag from './tag';
-import TextDefault from './TextDefault';
+import TextDefault from './textDefault';
 import TextH1 from './textH1';
 import TextH2 from './textH2';
 import TextH3 from './textH3';

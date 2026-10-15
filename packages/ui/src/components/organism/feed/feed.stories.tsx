@@ -4,7 +4,7 @@ import { expect, within } from 'storybook/test';
 import Link from 'next/link';
 
 import Feed from './feed';
-import FeedLatest from "./feedLastest";
+import FeedLatest from "./feedLatest";
 
 const meta = {
     title: 'Organism/Feed',

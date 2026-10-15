@@ -53,7 +53,7 @@ export default function Home({ news }: { news: NewsCard }) {
     const closingNewsletter = () => {
         setNewsletter('false');
     };*/
-    let fragmentPassion = <section className={'l-homepage__o-passions'}>
+    let fragmentPassion = <section id={'passions'} data-quicknav={'Passions'} className={'l-homepage__o-passions'}>
         <CardListText
             details={[
                 'Philosophy',
@@ -121,7 +121,7 @@ export default function Home({ news }: { news: NewsCard }) {
 
             <ApolloProvider client={client}>
                 <div className={'l-main__o-global l-homepage'}>
-                    <section className={'l-homepage__o-main'}>
+                    <section id={'intro'} data-quicknav={'Introduction'} className={'l-homepage__o-main'}>
                         <TextH1 classname={'l-homepage__o-mainTitle'}>Manon Salsou</TextH1>
                         {statusAOS && (
                             <CardXL
@@ -135,7 +135,7 @@ export default function Home({ news }: { news: NewsCard }) {
                             )
                         }
                     </section>
-                    <section className={'l-homepage__o-profile'}>
+                    <section id={'profile'} data-quicknav={'Profile and skills'} className={'l-homepage__o-profile'}>
                         {statusAOS && (
                             <>
                                 <CardStatus
@@ -262,7 +262,7 @@ export default function Home({ news }: { news: NewsCard }) {
                             </>
                         )}
                     </section>
-                    <section className={'l-homepage__o-infos'}>
+                    <section id={'news'} data-quicknav={'News'} className={'l-homepage__o-infos'}>
                         {statusAOS && (
                             <CardInfos
                                 date={`${news.date}T00:00:00`}
@@ -273,7 +273,7 @@ export default function Home({ news }: { news: NewsCard }) {
                             </CardInfos>
                         )}
                     </section>
-                    <section className={'l-homepage__o-latestArticles'}>
+                    <section id={'articles'} data-quicknav={'Latest articles'} className={'l-homepage__o-latestArticles'}>
                         <section className={'l-homepage__o-latestArticles'}>
                             <CardNews
                                 article={articles}
@@ -290,13 +290,13 @@ export default function Home({ news }: { news: NewsCard }) {
                             {fragmentPassion}
                         </>
                     )}
-                    <section className={'l-homepage__o-contact'}>
+                    <section id={'contact'} data-quicknav={'Contact'} className={'l-homepage__o-contact'}>
                         {statusAOS && size.width  && (
                         <WidgetContact
                             contacts={[
                                 {
                                     name: 'Email',
-                                    url: 'mailto:jouskaio.me@gmail.com',
+                                    url: 'mailto:manon.salsou@icloud.com',
                                     description: "Send me an email for collaborations or inquiries."
                                 },
                                 {

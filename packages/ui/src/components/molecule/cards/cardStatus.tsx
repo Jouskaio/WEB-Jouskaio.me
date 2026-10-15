@@ -1,6 +1,6 @@
 import React, { type CSSProperties } from 'react';
 
-import TextDefault from '../../atom/text/TextDefault';
+import TextDefault from '../../atom/text/textDefault';
 import TextH4 from '../../atom/text/textH4';
 
 /**

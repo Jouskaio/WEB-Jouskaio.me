@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import TextH1 from '../../atom/text/textH1';
 import TextH4 from '../../atom/text/textH4';
-import TextDefault from '../../atom/text/TextDefault';
+import TextDefault from '../../atom/text/textDefault';
 
 /**
  * Properties of the CardHeroAbout component.

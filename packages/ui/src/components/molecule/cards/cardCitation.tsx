@@ -1,7 +1,7 @@
 import React, { type CSSProperties, type ReactNode } from 'react';
 
 import Media from '../../atom/media/media';
-import TextDefault from '../../atom/text/TextDefault';
+import TextDefault from '../../atom/text/textDefault';
 import TextSpanXS from '../../atom/text/textSpanXS';
 
 /**
