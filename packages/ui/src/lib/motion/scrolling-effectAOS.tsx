@@ -9,7 +9,10 @@ export const useScrollingAOS = () => {
         // only execute all the code below on the client side
         if (typeof window !== 'undefined') {
             // Initialize AOS when the component mounts
-            AOS.init();
+            // Respect the system setting "reduce motion": elements are shown without animation
+            AOS.init({
+                disable: () => window.matchMedia('(prefers-reduced-motion: reduce)').matches,
+            });
             AOS.refresh();
             setScrollAOS(AOS);
 
