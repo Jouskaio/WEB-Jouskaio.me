@@ -140,14 +140,15 @@
   &__m-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
   }
 
   &__a-tag {
-    padding: 2px 12px;
+    padding: 6px 14px;
     border: 1px solid currentColor;
-    border-radius: 12px;
+    border-radius: 16px;
     font-size: var(--font-size-S);
+    line-height: 1.2;
   }
 
   &__m-section {

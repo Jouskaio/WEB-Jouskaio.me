@@ -43,6 +43,7 @@
     background: var(--surface-translucent);
     font-family: var(--font-family-main);
     font-size: var(--font-size-M);
+    line-height: 1.5;
     color: var(--text-on-translucent);
     text-decoration: none;
     transition: transform 0.25s ease;
@@ -79,14 +80,16 @@
   &__m-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: 8px;
+    margin-top: 12px;
   }
 
   &__a-tag {
-    padding: 2px 12px;
+    padding: 6px 14px;
     border: 1px solid currentColor;
-    border-radius: 12px;
+    border-radius: 16px;
     font-size: var(--font-size-S);
+    line-height: 1.2;
   }
 
   &__a-more {
