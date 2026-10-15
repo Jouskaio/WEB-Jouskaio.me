@@ -28,6 +28,10 @@ export type Project = {
     icon?: string;
     features: ProjectFeature[];
     /**
+     * Screenshots of the project (without third-party artwork).
+     */
+    screens?: { src: string; width: number; height: number; alt: string; caption: string }[];
+    /**
      * Title and short points of the "how it is built" section.
      */
     how: { title: string; points: string[]; command?: string };
@@ -45,6 +49,29 @@ export const projects: Project[] = [
         status: 'In development (app 0.60)',
         stack: ['Flutter', 'FastAPI', 'Dart', 'Python', 'OpenAPI', 'Docker'],
         icon: '/images/work/babel-icon.svg',
+        screens: [
+            {
+                src: '/images/work/babel-home.jpg',
+                width: 1401,
+                height: 840,
+                alt: 'The home screen of Babel: recommendations by genre, reading level and challenges, and moods to explore.',
+                caption: 'Home: recommendations from what you read, your progress and moods to explore.',
+            },
+            {
+                src: '/images/work/babel-library.jpg',
+                width: 1401,
+                height: 840,
+                alt: 'The library screen of Babel: a shelf of books with their format and reading status.',
+                caption: 'The library: paper books and ebooks side by side, with their status (to read, reading, read).',
+            },
+            {
+                src: '/images/work/babel-profile.jpg',
+                width: 1401,
+                height: 840,
+                alt: 'The profile screen of Babel: reading level, challenges of the month and badges.',
+                caption: 'The profile: level, challenges and badges that follow your reading.',
+            },
+        ],
         features: [
             {
                 title: 'Everything in one place',
