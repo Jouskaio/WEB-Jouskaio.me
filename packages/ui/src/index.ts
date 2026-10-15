@@ -19,6 +19,8 @@ export { default as Tag } from './components/atom/text/tag';
 // Molecules
 export { default as Alert } from './components/molecule/navigation/alert';
 export { default as CardCitation } from './components/molecule/cards/cardCitation';
+export { default as Citation } from './components/atom/text/Citation';
+export { default as PluginAudio } from './components/molecule/plugins/pluginAudio';
 export { default as CardExperience } from './components/molecule/cards/cardExperience';
 export { default as CardHeroAbout } from './components/molecule/cards/cardHeroAbout';
 export { default as CardInfos } from './components/molecule/cards/cardInfos';
