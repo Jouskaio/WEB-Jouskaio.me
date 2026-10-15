@@ -85,7 +85,7 @@
     width: 56px;
     height: 56px;
     border-radius: 18px;
-    background: var(--background-color);
+    background: var(--container-color);
     font-size: var(--font-size-L);
     font-weight: var(--font-weight-semibold);
   }
@@ -206,6 +206,11 @@
     border: 1px solid var(--container-color);
     border-radius: 50%;
     transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+
+    // The icons are light: in the light theme they are inverted to stay visible
+    [data-theme="light"] & img {
+      filter: invert(1);
+    }
 
     &:hover {
       transform: translateY(-4px) rotate(-6deg);

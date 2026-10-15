@@ -149,6 +149,46 @@ This file is used after _colors and _fonts: same specificity, so these rules win
   --surface-translucent: #5A2142;
 }
 
+// Light theme with a palette: pastel glass. Translucent tinted cards (blurred page behind them) with dark text,
+// over a soft wash of the palette.
+[data-palette="ocean"][data-theme="light"]:not([data-contrast="high"]) {
+  --surface-a: rgba(214,232,247,0.62);
+  --surface-b: rgba(160,201,234,0.62);
+  --surface-translucent: rgba(214,232,247,0.62);
+  --text-on-translucent: #1B1B22;
+  --accent-color-surface: #1F5A85;
+  --glass-wash-a: #CFE5F7;
+  --glass-wash-b: #E8F2FB;
+}
+
+[data-palette="forest"][data-theme="light"]:not([data-contrast="high"]) {
+  --surface-a: rgba(214,239,224,0.62);
+  --surface-b: rgba(160,212,182,0.62);
+  --surface-translucent: rgba(214,239,224,0.62);
+  --text-on-translucent: #1B1B22;
+  --accent-color-surface: #2C6B45;
+  --glass-wash-a: #CDEBD8;
+  --glass-wash-b: #E7F5EC;
+}
+
+[data-palette="multicolor"][data-theme="light"]:not([data-contrast="high"]) {
+  --surface-a: rgba(250,218,234,0.62);
+  --surface-b: rgba(250,230,192,0.62);
+  --surface-translucent: rgba(250,218,234,0.62);
+  --text-on-translucent: #1B1B22;
+  --accent-color-surface: #8D3F66;
+  --glass-wash-a: #F8D9E8;
+  --glass-wash-b: #FBEBD0;
+}
+
+[data-palette][data-theme="light"]:not([data-contrast="high"]) {
+  background:
+    radial-gradient(circle at 12% 8%, var(--glass-wash-a), transparent 45%),
+    radial-gradient(circle at 88% 55%, var(--glass-wash-b), transparent 50%),
+    var(--background-color);
+  background-attachment: fixed;
+}
+
 // Text size: every --font-size-* follows --text-scale
 [data-text-size="large"] {
   --text-scale: 1.15;
