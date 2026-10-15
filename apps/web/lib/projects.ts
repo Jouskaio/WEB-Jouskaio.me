@@ -59,8 +59,8 @@ export const projects: Project[] = [
                 text: 'Kobo sync and KOReader or Boox progress. A book can be on paper and on your e-reader with the "On my e-reader" switch.',
             },
             {
-                title: 'Shelves offline',
-                text: 'Keep shelves available without a connection. A clear "No connection" screen offers a retry instead of crashing.',
+                title: 'Resilient to network loss',
+                text: 'In the metro or a bookshop, scans, searches, additions, progress and notes wait in a queue and are replayed when the network is back, without duplicates. Shelves stay readable offline, with a clear "No connection" screen and a retry.',
             },
             {
                 title: 'Statistics and Wraps',
@@ -81,6 +81,7 @@ export const projects: Project[] = [
                 'The app is a pure client: it shows data and sends requests, with no secret and no server logic.',
                 'One OpenAPI contract: the Dart client is generated from it, so the app and the API cannot drift apart.',
                 'Every route is versioned under /v1: a breaking change opens /v2 and older installed apps keep working.',
+                'Offline first: actions are stored in a persistent outbox and replayed in order with backoff. Every write carries an idempotency key, so a replay never creates a duplicate.',
                 'Each source is an isolated connector with its own cache and switch: one failing source never breaks the API.',
                 'API and app ship independently, with their own CI, versions and tags, following git flow.',
             ],
