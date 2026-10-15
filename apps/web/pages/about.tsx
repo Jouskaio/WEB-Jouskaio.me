@@ -125,7 +125,7 @@ export default function AboutPage() {
                                 text: "My background combines engineering, digital project management, and product sensitivity, which allows me to approach a project from multiple angles: architecture, usability, performance, security, and scalability. I enjoy turning technical complexity into something readable, durable, and well designed. For me, good technology is never only functional — it should also be coherent, elegant, and grounded in real needs."
                             }
                         ]}
-                        color="#656DB6"
+                        color="var(--accent-color)"
                         aosDuration={1000}
                         aosEffect="fade-up"
                     />
@@ -207,7 +207,7 @@ export default function AboutPage() {
                         key={index}
                         title={skill.title}
                         text={skill.text}
-                        color="#656DB6"
+                        color="var(--accent-color)"
                         aosDuration={1000 + index * 100}
                         aosEffect="fade-up"
                     />
@@ -222,7 +222,7 @@ export default function AboutPage() {
                         key={index + 4}
                         title={skill.title}
                         text={skill.text}
-                        color="#656DB6"
+                        color="var(--accent-color)"
                         aosDuration={1000 + (index + 4) * 100}
                         aosEffect="fade-up"
                     />
@@ -250,7 +250,7 @@ export default function AboutPage() {
                 <CardStatus
                     title="What I’m looking for"
                     text="I’m drawn to projects where technology meets real-world impact — especially in software engineering, embedded systems, IoT, immersive applications, and secure digital ecosystems. I value environments where curiosity, quality, and long-term thinking matter just as much as delivery."
-                    color="#656DB6"
+                    color="var(--accent-color)"
                     aosDuration={1000}
                     aosEffect="fade-up"
                 />

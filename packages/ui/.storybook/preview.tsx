@@ -42,10 +42,11 @@ const preview: Preview = {
 
             React.useEffect(() => {
                 const root = document.documentElement;
-                const { siteTheme, siteContrast, siteTextSize, siteFont, siteMotion } = context.globals;
+                const { siteTheme, sitePalette, siteContrast, siteTextSize, siteFont, siteMotion } = context.globals;
                 const set = (name: string, value: string, defaultValue: string) =>
                     value === defaultValue ? root.removeAttribute(name) : root.setAttribute(name, value);
                 set('data-theme', siteTheme, 'dark');
+                set('data-palette', sitePalette, 'violet');
                 set('data-contrast', siteContrast, 'normal');
                 set('data-text-size', siteTextSize, 'normal');
                 set('data-font', siteFont, 'default');
@@ -78,6 +79,20 @@ const preview: Preview = {
                 items: [
                     { value: 'dark', title: 'Dark theme' },
                     { value: 'light', title: 'Light theme' },
+                ],
+            },
+        },
+        sitePalette: {
+            description: 'Color palette of the site',
+            toolbar: {
+                title: 'Palette',
+                icon: 'paintbrush',
+                dynamicTitle: true,
+                items: [
+                    { value: 'violet', title: 'Violet' },
+                    { value: 'ocean', title: 'Ocean' },
+                    { value: 'forest', title: 'Forest' },
+                    { value: 'multicolor', title: 'Rose and amber' },
                 ],
             },
         },
@@ -133,6 +148,7 @@ const preview: Preview = {
     },
     initialGlobals: {
         siteTheme: 'dark',
+        sitePalette: 'violet',
         siteContrast: 'normal',
         siteTextSize: 'normal',
         siteFont: 'default',

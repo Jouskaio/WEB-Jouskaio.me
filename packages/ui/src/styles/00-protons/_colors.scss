@@ -20,9 +20,11 @@ Theme color setup:
 
   // Colors that depend on the display settings (see _accessibility.scss); these values are the default look
   --surface-translucent: rgba(217, 217, 217, 0.30);   // translucent grey cards (skills, passions, header)
-  --text-on-accent: var(--text-color);                // text on a block filled with the accent color
+  --text-on-accent: #FFFFFF;                          // text on a block filled with the accent color
   --accent-color-surface: var(--accent-color);        // accent text on a card (the cards are light in the default theme)
   --text-on-translucent: var(--primary-lightest);     // text on the translucent grey cards that show a picture
+  --surface-a: var(--surface-translucent);            // the two ends of the gradient of the grey cards; a palette gives them
+  --surface-b: var(--surface-translucent);            // its own tones (see _accessibility.scss), the default look stays flat
   --border-radius: 16px;
 
   // Primary P palette

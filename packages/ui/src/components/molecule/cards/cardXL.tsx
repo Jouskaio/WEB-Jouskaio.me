@@ -1,6 +1,5 @@
 import React, { useEffect, useState, type CSSProperties, Suspense, lazy } from 'react';
 
-import Image from 'next/image';
 import { useReducedMotion } from '../../../lib/accessibility/useReducedMotion';
 
 const ReactPlayer = lazy(() => 
@@ -130,11 +129,9 @@ export default function CardXL({
                 }
                 aria-pressed={isPlaying}
             >
-                <Image
-                    src={isPlaying ? '/icons/pause.svg' : '/icons/play.svg'}
-                    alt=""
-                    width={24}
-                    height={24}
+                <span
+                    className="m-cardXL__a-playIcon"
+                    style={{ '--icon': `url(${isPlaying ? '/icons/pause.svg' : '/icons/play.svg'})` } as React.CSSProperties}
                     aria-hidden="true"
                 />
             </button>

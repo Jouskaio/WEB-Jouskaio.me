@@ -141,7 +141,7 @@ export default function Home({ news }: { news: NewsCard }) {
                                 <CardStatus
                                     title={'Mobile / Web developer and IoT software engineer'}
                                     text={'Currently developing AR and VR applications at home'}
-                                    color={'#656DB6'}
+                                    color={'var(--accent-color)'}
                                     classname={'l-homepage__o-profile--status'}
                                     aosDuration={1000}
                                     aosEffect={size.width <= 768 ? "fade-up" : "fade-left"}

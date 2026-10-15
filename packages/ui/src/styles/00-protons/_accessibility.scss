@@ -114,6 +114,41 @@ This file is used after _colors and _fonts: same specificity, so these rules win
   --accent-color-surface: #D694B5;
 }
 
+// Light theme: the dark boxes take the tint of the palette
+[data-palette="ocean"][data-theme="light"]:not([data-contrast="high"]) {
+  --primary-lightest: #132532;
+  --primary-lightest-rgb: 19, 37, 50;
+}
+
+[data-palette="forest"][data-theme="light"]:not([data-contrast="high"]) {
+  --primary-lightest: #13281B;
+  --primary-lightest-rgb: 19, 40, 27;
+}
+
+[data-palette="multicolor"][data-theme="light"]:not([data-contrast="high"]) {
+  --primary-lightest: #2E1424;
+  --primary-lightest-rgb: 46, 20, 36;
+}
+
+// Palettes: the cards take a gradient of tones of the palette (white text on every step, AA)
+[data-palette="ocean"]:not([data-contrast="high"]) {
+  --surface-a: #1F3342;
+  --surface-b: #2F6485;
+  --surface-translucent: #1F3342;
+}
+
+[data-palette="forest"]:not([data-contrast="high"]) {
+  --surface-a: #1F3A2A;
+  --surface-b: #3A7A52;
+  --surface-translucent: #1F3A2A;
+}
+
+[data-palette="multicolor"]:not([data-contrast="high"]) {
+  --surface-a: #5A2142;
+  --surface-b: #8A5226;
+  --surface-translucent: #5A2142;
+}
+
 // Text size: every --font-size-* follows --text-scale
 [data-text-size="large"] {
   --text-scale: 1.15;
