@@ -261,7 +261,7 @@ export default function AboutPage() {
                     contacts={[
                         {
                             name: 'Email',
-                            url: 'mailto:jouskaio.me@gmail.com',
+                            url: 'mailto:manon.salsou@icloud.com',
                             description: "If you’re building something thoughtful, technical, and forward-looking, I’d be happy to hear about it."
                         },
                         {

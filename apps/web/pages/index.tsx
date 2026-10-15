@@ -296,7 +296,7 @@ export default function Home({ news }: { news: NewsCard }) {
                             contacts={[
                                 {
                                     name: 'Email',
-                                    url: 'mailto:jouskaio.me@gmail.com',
+                                    url: 'mailto:manon.salsou@icloud.com',
                                     description: "Send me an email for collaborations or inquiries."
                                 },
                                 {
