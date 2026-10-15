@@ -105,6 +105,28 @@
     }
   }
 
+  // Colors: a dot of the palette before its name
+  &__m-group--palette &__a-option::before {
+    content: '';
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: #656db6;
+  }
+
+  &__m-group--palette &__a-option[data-value='ocean']::before {
+    background: #3e79a3;
+  }
+
+  &__m-group--palette &__a-option[data-value='forest']::before {
+    background: #477e59;
+  }
+
+  &__m-group--palette &__a-option[data-value='multicolor']::before {
+    background: #b25382;
+  }
+
   &__a-reset {
     align-self: flex-start;
     min-height: 44px;

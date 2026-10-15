@@ -7,10 +7,12 @@ export type Theme = 'dark' | 'light' | 'system';
 export type TextSize = 'normal' | 'large' | 'xlarge';
 export type Contrast = 'normal' | 'high';
 export type FontChoice = 'default' | 'readable';
+export type Palette = 'violet' | 'ocean' | 'forest' | 'multicolor';
 export type Motion = 'system' | 'reduced';
 
 export type DisplaySettings = {
     theme: Theme;
+    palette: Palette;
     textSize: TextSize;
     contrast: Contrast;
     font: FontChoice;
@@ -19,6 +21,7 @@ export type DisplaySettings = {
 
 export const DEFAULT_DISPLAY_SETTINGS: DisplaySettings = {
     theme: 'dark',
+    palette: 'violet',
     textSize: 'normal',
     contrast: 'normal',
     font: 'default',
@@ -39,6 +42,15 @@ export const DISPLAY_OPTIONS: {
             { value: 'dark', label: 'Dark' },
             { value: 'light', label: 'Light' },
             { value: 'system', label: 'Same as my device' },
+        ],
+    },
+    palette: {
+        legend: 'Colors',
+        options: [
+            { value: 'violet', label: 'Violet' },
+            { value: 'ocean', label: 'Ocean' },
+            { value: 'forest', label: 'Forest' },
+            { value: 'multicolor', label: 'Rose and amber' },
         ],
     },
     textSize: {
@@ -81,7 +93,7 @@ export function sanitizeDisplaySettings(value: unknown): DisplaySettings {
         const allowed = DISPLAY_OPTIONS[key].options.map((option) => option.value) as unknown[];
         return allowed.includes(stored[key]) ? (stored[key] as DisplaySettings[K]) : DEFAULT_DISPLAY_SETTINGS[key];
     };
-    return { theme: pick('theme'), textSize: pick('textSize'), contrast: pick('contrast'), font: pick('font'), motion: pick('motion') };
+    return { theme: pick('theme'), palette: pick('palette'), textSize: pick('textSize'), contrast: pick('contrast'), font: pick('font'), motion: pick('motion') };
 }
 
 export function readStoredDisplaySettings(): DisplaySettings {
@@ -125,6 +137,7 @@ export function applyStoredDisplaySettings(): void {
         }
         var values: { [name: string]: string | null } = {
             'data-theme': theme === 'light' || theme === 'dark' ? theme : null,
+            'data-palette': stored.palette === 'ocean' || stored.palette === 'forest' || stored.palette === 'multicolor' ? stored.palette : null,
             'data-text-size': stored.textSize === 'large' || stored.textSize === 'xlarge' ? stored.textSize : null,
             'data-contrast': stored.contrast === 'high' ? 'high' : null,
             'data-font': stored.font === 'readable' ? 'readable' : null,

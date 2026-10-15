@@ -67,6 +67,53 @@ This file is used after _colors and _fonts: same specificity, so these rules win
   --text-on-translucent: #FFFFFF;
 }
 
+// Color palettes: only the accents change. Each one keeps the luminance of the violet it replaces, so the
+// contrast of every pair stays the same. The high contrast setting has its own colors and wins over them.
+[data-palette="ocean"]:not([data-theme="light"]):not([data-contrast="high"]) {
+  --accent-purple-dark: #3E79A3;
+  --accent-purple-light: #6BA8D4;
+  --accent-blue: #48A898;
+  --accent-yellow: #E4D195;
+}
+
+[data-palette="ocean"][data-theme="light"]:not([data-contrast="high"]) {
+  --accent-purple-dark: #305F80;
+  --accent-purple-light: #75AED7;
+  --accent-blue: #317267;
+  --accent-yellow: #584716;
+  --accent-color-surface: #75AED7;
+}
+
+[data-palette="forest"]:not([data-theme="light"]):not([data-contrast="high"]) {
+  --accent-purple-dark: #477E59;
+  --accent-purple-light: #5FB27B;
+  --accent-blue: #55A6AD;
+  --accent-yellow: #CAD99B;
+}
+
+[data-palette="forest"][data-theme="light"]:not([data-contrast="high"]) {
+  --accent-purple-dark: #376245;
+  --accent-purple-light: #6BB885;
+  --accent-blue: #387075;
+  --accent-yellow: #424E1D;
+  --accent-color-surface: #6BB885;
+}
+
+[data-palette="multicolor"]:not([data-theme="light"]):not([data-contrast="high"]) {
+  --accent-purple-dark: #B25382;
+  --accent-purple-light: #D48CB0;
+  --accent-blue: #C38F62;
+  --accent-yellow: #B2DACC;
+}
+
+[data-palette="multicolor"][data-theme="light"]:not([data-contrast="high"]) {
+  --accent-purple-dark: #8D3F66;
+  --accent-purple-light: #D694B5;
+  --accent-blue: #8B5D35;
+  --accent-yellow: #264F41;
+  --accent-color-surface: #D694B5;
+}
+
 // Text size: every --font-size-* follows --text-scale
 [data-text-size="large"] {
   --text-scale: 1.15;
