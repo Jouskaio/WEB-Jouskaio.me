@@ -16,3 +16,82 @@
     margin: 0 auto;
   }
 }
+
+// List of the projects
+.l-works {
+  &__m-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 0 120px;
+    list-style: none;
+
+    @include medium {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__m-card {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    height: 100%;
+    padding: 24px;
+    border-radius: var(--border-radius);
+    background: var(--surface-translucent);
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-M);
+    color: var(--text-on-translucent);
+    text-decoration: none;
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+    }
+
+    &:hover .l-works__a-more {
+      text-decoration: underline;
+    }
+  }
+
+  &__a-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 20px;
+    background: var(--container-color);
+
+    &--letter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-L);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+
+  &__a-name {
+    font-size: var(--font-size-L);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__m-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__a-tag {
+    padding: 2px 12px;
+    border: 1px solid currentColor;
+    border-radius: 12px;
+    font-size: var(--font-size-S);
+  }
+
+  &__a-more {
+    margin-top: auto;
+    padding-top: 8px;
+    text-underline-offset: 4px;
+  }
+}

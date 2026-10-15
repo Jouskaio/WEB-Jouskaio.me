@@ -1,0 +1,222 @@
+@use "../00-protons/mixins" as *;
+
+// Page of a project (case study)
+.l-project {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 24px 0 120px;
+  font-family: var(--font-family-main);
+  color: var(--text-color);
+
+  &__a-back {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 44px;
+    color: var(--text-color);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    &:hover {
+      color: var(--accent-color-secondary);
+    }
+  }
+
+  &__m-hero {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  &__a-icon {
+    flex: none;
+    width: 96px;
+    height: 96px;
+    border-radius: 28px;
+    background: var(--container-color);
+
+    &--letter {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-XL);
+      font-weight: var(--font-weight-semibold);
+    }
+  }
+
+  &__a-title {
+    margin: 0;
+  }
+
+  &__a-tagline {
+    margin: 4px 0 0;
+    font-size: var(--font-size-L);
+  }
+
+  &__a-summary {
+    max-width: 720px;
+  }
+
+  &__m-links,
+  &__m-tags,
+  &__m-features,
+  &__m-points {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__m-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  &__a-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    min-height: 48px;
+    padding: 0 24px;
+    border: 1px solid var(--accent-color);
+    border-radius: 24px;
+    background: var(--accent-color);
+    color: var(--text-on-accent);
+    text-decoration: none;
+    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      background: var(--text-color);
+      border-color: var(--text-color);
+      color: var(--background-color);
+    }
+
+    &--outline {
+      background: none;
+      border-color: var(--text-color);
+      color: var(--text-color);
+    }
+  }
+
+  &__a-hint {
+    font-size: var(--font-size-S);
+  }
+
+  &__m-facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 12px;
+    margin: 0;
+
+    @include medium {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__m-fact {
+    padding: 16px 20px;
+    border-radius: var(--border-radius);
+    background: var(--surface-translucent);
+
+    dt {
+      margin-bottom: 8px;
+      font-size: var(--font-size-S);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-on-translucent);
+    }
+
+    dd {
+      margin: 0;
+      color: var(--text-on-translucent);
+    }
+  }
+
+  &__m-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  &__a-tag {
+    padding: 2px 12px;
+    border: 1px solid currentColor;
+    border-radius: 12px;
+    font-size: var(--font-size-S);
+  }
+
+  &__m-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  &__m-features {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include medium {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__m-feature {
+    padding: 20px;
+    border-radius: var(--border-radius);
+    background: var(--surface-translucent);
+    color: var(--text-on-translucent);
+    transition: transform 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
+  }
+
+  &__a-featureTitle {
+    margin: 0 0 8px;
+    font-size: var(--font-size-M);
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__a-featureText {
+    margin: 0;
+  }
+
+  &__a-code {
+    margin: 0;
+    padding: 16px 20px;
+    overflow-x: auto;
+    border-radius: var(--border-radius);
+    background: var(--container-color);
+    font-size: var(--font-size-S);
+  }
+
+  &__m-points {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+
+    li {
+      position: relative;
+      padding-left: 20px;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0.7em;
+        left: 0;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: var(--accent-color);
+      }
+    }
+  }
+}
