@@ -83,6 +83,27 @@ export default function ProjectPage({ project }: { project: Project }) {
                 </div>
             </dl>
 
+            {project.screens && project.screens.length > 0 && (
+                <section aria-labelledby="project-screens" className="l-project__m-section">
+                    <h2 id="project-screens" className="a-titleH2 l-project__a-heading">
+                        In the app
+                    </h2>
+                    {project.screens.map((screen) => (
+                        <figure key={screen.src} className="l-project__m-screen">
+                            <img
+                                className="l-project__a-screen"
+                                src={screen.src}
+                                alt={screen.alt}
+                                width={screen.width}
+                                height={screen.height}
+                                loading="lazy"
+                            />
+                            <figcaption className="l-project__a-caption">{screen.caption}</figcaption>
+                        </figure>
+                    ))}
+                </section>
+            )}
+
             <section aria-labelledby="project-features" className="l-project__m-section">
                 <h2 id="project-features" className="a-titleH2 l-project__a-heading">
                     Features
