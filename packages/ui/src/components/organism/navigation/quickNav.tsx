@@ -1,18 +1,51 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
+import { socialLinks } from '../../../lib/socialLinks';
+
 /**
- * A link of the quick navigation.
+ * A case study shown as a card.
  */
-export type QuickNavLink = {
+export type QuickNavProject = {
+    /**
+     * Name of the project.
+     */
+    name: string;
+    /**
+     * One line describing the project.
+     */
+    tagline: string;
+    /**
+     * Destination URL.
+     */
+    url: string;
+    /**
+     * Technologies of the project.
+     */
+    tags?: string[];
+    /**
+     * Icon of the project (served by the website).
+     */
+    icon?: string;
+};
+
+/**
+ * A downloadable file (my CV in one language).
+ */
+export type QuickNavDownload = {
     /**
      * Displayed name.
      */
     name: string;
     /**
-     * Destination URL (internal or external).
+     * File URL.
      */
     url: string;
+    /**
+     * Language of the file (e.g., "fr").
+     */
+    lang: string;
 };
 
 /**
@@ -20,13 +53,17 @@ export type QuickNavLink = {
  */
 export type QuickNavProps = {
     /**
-     * Pages of the website.
+     * Case studies, shown as cards.
      */
-    pages: QuickNavLink[];
+    projects: QuickNavProject[];
     /**
-     * Profiles to contact me on.
+     * Page listing all my work.
      */
-    contacts: QuickNavLink[];
+    workUrl: string;
+    /**
+     * CVs to download, one per language.
+     */
+    resumes: QuickNavDownload[];
     /**
      * Email address the visitor can copy.
      */
@@ -41,41 +78,20 @@ export type QuickNavProps = {
     classname?: string;
 };
 
-type Section = { id: string; label: string };
-
-const isExternal = (url: string) => url.startsWith('http');
-
 /**
  * Organism Component: QuickNav
- * Quick navigation: the sections of the current page (elements marked with `id` and `data-quicknav`),
- * the pages of the website, quick ways to get in touch and a way back to the top.
+ * Quick navigation: the case studies, the way to get in touch (email, CV to download), my social
+ * networks and a way back to the top.
  */
-export default function QuickNav({ pages, contacts, email, onNavigate, classname = '' }: QuickNavProps) {
-    const [sections, setSections] = useState<Section[]>([]);
+export default function QuickNav({
+    projects,
+    workUrl,
+    resumes,
+    email,
+    onNavigate,
+    classname = '',
+}: QuickNavProps) {
     const [copied, setCopied] = useState(false);
-
-    useEffect(() => {
-        const marked = Array.from(document.querySelectorAll<HTMLElement>('[data-quicknav]'));
-        setSections(
-            marked
-                .filter((element) => element.id)
-                .map((element) => ({ id: element.id, label: element.dataset.quicknav || element.id })),
-        );
-    }, []);
-
-    const goToSection = (event: React.MouseEvent, id: string) => {
-        event.preventDefault();
-        onNavigate?.();
-        // The dialog gives the focus back to its button when it closes: move it to the section afterwards
-        requestAnimationFrame(() => {
-            const section = document.getElementById(id);
-            if (section) {
-                section.setAttribute('tabindex', '-1');
-                section.focus({ preventScroll: true });
-                section.scrollIntoView();
-            }
-        });
-    };
 
     const goToTop = () => {
         onNavigate?.();
@@ -86,76 +102,110 @@ export default function QuickNav({ pages, contacts, email, onNavigate, classname
         try {
             await navigator.clipboard.writeText(email as string);
             setCopied(true);
+            setTimeout(() => setCopied(false), 2500);
         } catch (error) {
             setCopied(false);
         }
     };
 
-    const renderLink = (link: QuickNavLink) =>
-        isExternal(link.url) ? (
-            <a href={link.url} className="o-quickNav__a-link" target="_blank" rel="noreferrer">
-                {link.name}
-                <span className="o-quickNav__a-hint"> (new tab)</span>
-            </a>
-        ) : (
-            <Link href={link.url} legacyBehavior>
-                <a className="o-quickNav__a-link" onClick={onNavigate}>
-                    {link.name}
-                </a>
-            </Link>
-        );
-
     return (
         <nav className={`o-quickNav ${classname}`.trim()} aria-label="Quick navigation">
-            {sections.length > 0 && (
-                <section className="o-quickNav__m-block">
-                    <h3 className="o-quickNav__a-heading">On this page</h3>
-                    <ul className="o-quickNav__a-list">
-                        {sections.map((section) => (
-                            <li key={section.id}>
-                                <a
-                                    href={`#${section.id}`}
-                                    className="o-quickNav__a-link"
-                                    onClick={(event) => goToSection(event, section.id)}
-                                >
-                                    {section.label}
+            <section className="o-quickNav__m-block" aria-labelledby="quicknav-work">
+                <h3 id="quicknav-work" className="o-quickNav__a-heading">
+                    Case studies
+                </h3>
+                <ul className="o-quickNav__m-cards">
+                    {projects.map((project, index) => (
+                        <li key={project.url + project.name} style={{ '--i': index } as React.CSSProperties}>
+                            <Link href={project.url} legacyBehavior>
+                                <a className="o-quickNav__m-card" onClick={onNavigate}>
+                                    <span className="o-quickNav__a-cardIcon" aria-hidden="true">
+                                        {project.icon ? (
+                                            <Image src={project.icon} alt="" width={40} height={40} />
+                                        ) : (
+                                            project.name.charAt(0)
+                                        )}
+                                    </span>
+                                    <span className="o-quickNav__m-cardText">
+                                        <span className="o-quickNav__a-cardName">{project.name}</span>
+                                        <span className="o-quickNav__a-cardTagline">{project.tagline}</span>
+                                        {project.tags && (
+                                            <span className="o-quickNav__m-tags">
+                                                {project.tags.map((tag) => (
+                                                    <span key={tag} className="o-quickNav__a-tag">
+                                                        {tag}
+                                                    </span>
+                                                ))}
+                                            </span>
+                                        )}
+                                    </span>
+                                    <span className="o-quickNav__a-arrow" aria-hidden="true">
+                                        →
+                                    </span>
                                 </a>
-                            </li>
-                        ))}
-                    </ul>
-                </section>
-            )}
-
-            <section className="o-quickNav__m-block">
-                <h3 className="o-quickNav__a-heading">Pages</h3>
-                <ul className="o-quickNav__a-list">
-                    {pages.map((page) => (
-                        <li key={page.url}>{renderLink(page)}</li>
+                            </Link>
+                        </li>
                     ))}
                 </ul>
+                <Link href={workUrl} legacyBehavior>
+                    <a className="o-quickNav__a-more" onClick={onNavigate}>
+                        All work <span aria-hidden="true">→</span>
+                    </a>
+                </Link>
             </section>
 
-            <section className="o-quickNav__m-block">
-                <h3 className="o-quickNav__a-heading">Contact</h3>
-                <ul className="o-quickNav__a-list">
-                    {email && (
-                        <li>
-                            <button type="button" className="o-quickNav__a-button" onClick={copyEmail}>
-                                Copy my email address
-                            </button>
-                        </li>
-                    )}
-                    {contacts.map((contact) => (
-                        <li key={contact.url}>{renderLink(contact)}</li>
-                    ))}
-                </ul>
+            <section className="o-quickNav__m-block" aria-labelledby="quicknav-contact">
+                <h3 id="quicknav-contact" className="o-quickNav__a-heading">
+                    Get in touch
+                </h3>
+                {email && (
+                    <button type="button" className="o-quickNav__a-button" onClick={copyEmail}>
+                        {copied ? 'Email address copied' : 'Copy my email address'}
+                    </button>
+                )}
                 <p className="o-quickNav__a-status" role="status">
                     {copied ? 'Email address copied.' : ''}
                 </p>
+                <ul className="o-quickNav__m-downloads">
+                    {resumes.map((resume) => (
+                        <li key={resume.url}>
+                            <a
+                                href={resume.url}
+                                className="o-quickNav__a-button o-quickNav__a-button--outline"
+                                download
+                                lang={resume.lang}
+                            >
+                                {resume.name} <span aria-hidden="true">↓</span>
+                                <span className="o-quickNav__a-hint"> (PDF)</span>
+                            </a>
+                        </li>
+                    ))}
+                </ul>
             </section>
 
-            <button type="button" className="o-quickNav__a-button" onClick={goToTop}>
-                Back to the top
+            <section className="o-quickNav__m-block" aria-labelledby="quicknav-follow">
+                <h3 id="quicknav-follow" className="o-quickNav__a-heading">
+                    Follow
+                </h3>
+                <ul className="o-quickNav__m-socials">
+                    {socialLinks.map((link, index) => (
+                        <li key={link.href} style={{ '--i': index } as React.CSSProperties}>
+                            <a
+                                href={link.href}
+                                className="o-quickNav__a-social"
+                                target="_blank"
+                                rel="noreferrer"
+                                aria-label={`${link.alt} (new tab)`}
+                            >
+                                <Image src={link.icon} alt="" width={24} height={24} />
+                            </a>
+                        </li>
+                    ))}
+                </ul>
+            </section>
+
+            <button type="button" className="o-quickNav__a-top" onClick={goToTop}>
+                Back to the top <span aria-hidden="true">↑</span>
             </button>
         </nav>
     );
