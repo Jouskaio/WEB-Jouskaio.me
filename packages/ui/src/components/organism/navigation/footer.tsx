@@ -1,6 +1,7 @@
 import TextDefault from '../../atom/text/textDefault';
 import TextH3 from '../../atom/text/textH3';
 import Image from 'next/image';
+import { socialLinks } from '../../../lib/socialLinks';
 
 /**
  * Properties of the Footer component.
@@ -17,39 +18,6 @@ export type FooterProps = {
  * The website footer containing social media links and contact information.
  */
 export default function Footer({ classname = '' }: FooterProps) {
-    const socialLinks = [
-        {
-            href: 'https://www.pinterest.fr/jouskaio/',
-            icon: '/icons/pinterest.png',
-            alt: 'Pinterest',
-        },
-        {
-            href: 'https://twitter.com/Jouskaio_',
-            icon: '/icons/twitter.png',
-            alt: 'Twitter',
-        },
-        {
-            href: 'https://www.instagram.com/jouskaio/',
-            icon: '/icons/instagram.png',
-            alt: 'Instagram',
-        },
-        {
-            href: 'https://github.com/Jouskaio',
-            icon: '/icons/github.png',
-            alt: 'GitHub',
-        },
-        {
-            href: 'https://www.linkedin.com/in/manonsalsou/',
-            icon: '/icons/linkedin.png',
-            alt: 'LinkedIn',
-        },
-        {
-            href: 'https://open.spotify.com/user/desespery?si=ac027624ff264504&nd=1',
-            icon: '/icons/spotify.png',
-            alt: 'Spotify',
-        },
-    ];
-
     return (
         <div
             className={`o-footer ${classname}`.trim()}
