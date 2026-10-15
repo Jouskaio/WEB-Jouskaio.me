@@ -1,23 +1,26 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 
 import { useDisplaySettings } from '../../../lib/accessibility/useDisplaySettings';
 import Dialog from '../../molecule/dialog/dialog';
 import DisplayPanel from '../interaction/displayPanel';
-import QuickNav, { type QuickNavLink } from './quickNav';
+import QuickNav, { type QuickNavDownload, type QuickNavProject } from './quickNav';
 
 /**
  * Properties of the Toolbar component.
  */
 export type ToolbarProps = {
     /**
-     * Pages of the website, for the quick navigation.
+     * Case studies of the quick navigation.
      */
-    pages: QuickNavLink[];
+    projects: QuickNavProject[];
     /**
-     * Profiles to contact me on, for the quick navigation.
+     * Page listing all my work.
      */
-    contacts: QuickNavLink[];
+    workUrl: string;
+    /**
+     * CVs to download, one per language.
+     */
+    resumes: QuickNavDownload[];
     /**
      * Email address the visitor can copy.
      */
@@ -42,8 +45,9 @@ export type ToolbarProps = {
  * each opening its dialog.
  */
 export default function Toolbar({
-    pages,
-    contacts,
+    projects,
+    workUrl,
+    resumes,
     email,
     menuClassName = '',
     settingsClassName = '',
@@ -64,7 +68,7 @@ export default function Toolbar({
                 data-aos={aosEffect || undefined}
                 data-aos-duration={1000}
             >
-                <Image src="/icons/more.svg" alt="" height={16} width={16} />
+                <span className="l-main__a-icon" style={{ '--icon': 'url(/icons/more.svg)' } as React.CSSProperties} />
             </button>
             <button
                 type="button"
@@ -75,14 +79,15 @@ export default function Toolbar({
                 data-aos={aosEffect || undefined}
                 data-aos-duration={1200}
             >
-                <Image src="/icons/params.svg" alt="" height={16} width={16} />
+                <span className="l-main__a-icon" style={{ '--icon': 'url(/icons/params.svg)' } as React.CSSProperties} />
             </button>
 
-            <Dialog open={menuOpen} onClose={() => setMenuOpen(false)} title="Quick navigation">
+            <Dialog open={menuOpen} onClose={() => setMenuOpen(false)} title="Menu" variant="drawer">
                 {menuOpen && (
                     <QuickNav
-                        pages={pages}
-                        contacts={contacts}
+                        projects={projects}
+                        workUrl={workUrl}
+                        resumes={resumes}
                         email={email}
                         onNavigate={() => setMenuOpen(false)}
                     />
@@ -92,6 +97,7 @@ export default function Toolbar({
                 open={settingsOpen}
                 onClose={() => setSettingsOpen(false)}
                 title="Display and accessibility"
+                variant="drawer"
             >
                 <DisplayPanel settings={settings} onChange={update} onReset={reset} />
             </Dialog>

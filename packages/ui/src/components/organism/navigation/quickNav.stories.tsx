@@ -1,6 +1,5 @@
 // @ts-ignore
 import type { Meta, StoryObj } from '@storybook/react';
-import React from 'react';
 import QuickNav from './quickNav';
 
 const meta: Meta<typeof QuickNav> = {
@@ -11,34 +10,22 @@ const meta: Meta<typeof QuickNav> = {
         docs: {
             description: {
                 component:
-                    'Quick navigation: the sections of the page (elements with an `id` and a `data-quicknav` label), the pages, ways to get in touch and a way back to the top.',
+                    'Menu: the case studies, ways to get in touch (email, CV to download), the social networks and a way back to the top.',
             },
         },
     },
     args: {
-        pages: [
-            { name: 'Home', url: '/' },
-            { name: 'About', url: '/about' },
-            { name: 'Work', url: '/work' },
-            { name: 'Blog', url: 'https://blog.jouskaio.me' },
+        projects: [
+            { name: 'Babel', tagline: 'Library, reading and notes', url: '/work', tags: ['Flutter', 'FastAPI'] },
+            { name: 'Toolkit', tagline: 'SSH and server toolkit', url: '/work', tags: ['Bash', 'jq'] },
         ],
-        contacts: [
-            { name: 'GitHub', url: 'https://github.com/Jouskaio' },
-            { name: 'LinkedIn', url: 'https://www.linkedin.com/in/manonsalsou/' },
+        workUrl: '/work',
+        resumes: [
+            { name: 'CV (français)', url: '/cv/manon-salsou-cv-fr.pdf', lang: 'fr' },
+            { name: 'Resume (English)', url: '/cv/manon-salsou-cv-en.pdf', lang: 'en' },
         ],
         email: 'contact@example.com',
     },
-    decorators: [
-        (Story) => (
-            <>
-                {/* The sections of the "page", found by the navigation through data-quicknav */}
-                <section id="intro" data-quicknav="Introduction" />
-                <section id="skills" data-quicknav="Skills" />
-                <section id="contact" data-quicknav="Contact" />
-                <Story />
-            </>
-        ),
-    ],
 };
 
 export default meta;

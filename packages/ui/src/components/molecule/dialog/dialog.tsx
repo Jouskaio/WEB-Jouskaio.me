@@ -21,6 +21,10 @@ export type DialogProps = {
      */
     children: ReactNode;
     /**
+     * "drawer" slides in from the right (a bottom sheet on small screens); "modal" is a centered window.
+     */
+    variant?: 'modal' | 'drawer';
+    /**
      * Additional CSS classes.
      */
     classname?: string;
@@ -31,7 +35,7 @@ export type DialogProps = {
  * A modal window built on the native <dialog> element: the browser keeps the focus inside it, closes it
  * with Escape, hides the page from assistive technologies and gives the focus back when it closes.
  */
-export default function Dialog({ open, onClose, title, children, classname = '' }: DialogProps) {
+export default function Dialog({ open, onClose, title, children, variant = 'modal', classname = '' }: DialogProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const titleId = useId();
 
@@ -50,7 +54,7 @@ export default function Dialog({ open, onClose, title, children, classname = '' 
     return (
         <dialog
             ref={dialogRef}
-            className={`m-dialog ${classname}`.trim()}
+            className={`m-dialog m-dialog--${variant} ${classname}`.trim()}
             aria-labelledby={titleId}
             onClose={onClose}
             onClick={(event) => {

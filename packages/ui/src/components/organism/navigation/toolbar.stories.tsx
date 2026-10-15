@@ -15,12 +15,15 @@ const meta: Meta<typeof Toolbar> = {
         },
     },
     args: {
-        pages: [
-            { name: 'Home', url: '/' },
-            { name: 'About', url: '/about' },
-            { name: 'Work', url: '/work' },
+        projects: [
+            { name: 'Babel', tagline: 'Library, reading and notes', url: '/work', tags: ['Flutter', 'FastAPI'] },
+            { name: 'Toolkit', tagline: 'SSH and server toolkit', url: '/work', tags: ['Bash', 'jq'] },
         ],
-        contacts: [{ name: 'GitHub', url: 'https://github.com/Jouskaio' }],
+        workUrl: '/work',
+        resumes: [
+            { name: 'CV (français)', url: '/cv/manon-salsou-cv-fr.pdf', lang: 'fr' },
+            { name: 'Resume (English)', url: '/cv/manon-salsou-cv-en.pdf', lang: 'en' },
+        ],
         email: 'contact@example.com',
         menuClassName: 'l-main__a-moreMenu',
         settingsClassName: 'l-main__a-param',

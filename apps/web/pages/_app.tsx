@@ -4,7 +4,7 @@ import React, {useState} from "react";
 import { Footer, Header, Alert, Toolbar, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
 
 
-// Shown in the header and in the quick navigation of the toolbar
+// Shown in the header
 const pages = [
     { name: "home.", url: "/" },
     { name: "about.", url: "/about" },
@@ -12,9 +12,15 @@ const pages = [
     { name: "blog.", url: "https://blog.jouskaio.me" },
 ];
 
-const contacts = [
-    { name: "LinkedIn", url: "https://www.linkedin.com/in/manonsalsou/" },
-    { name: "GitHub", url: "https://github.com/Jouskaio" },
+// Case studies and CVs of the menu
+const projects = [
+    { name: "Babel", tagline: "Library, reading and notes", url: "/work", icon: "/images/work/babel-icon.svg", tags: ["Flutter", "FastAPI"] },
+    { name: "Toolkit", tagline: "SSH and server toolkit", url: "/work", tags: ["Bash", "jq"] },
+];
+
+const resumes = [
+    { name: "CV (français)", url: "/cv/manon-salsou-cv-fr.pdf", lang: "fr" },
+    { name: "Resume (English)", url: "/cv/manon-salsou-cv-en.pdf", lang: "en" },
 ];
 
 // Same address as the footer
@@ -48,8 +54,9 @@ function MyApp({ Component, pageProps }) {
               <div className={"l-main__o-paramsDiv"}>
                   {sizeAOS && (
                       <Toolbar
-                          pages={pages.map((page) => ({ name: page.name.replace(/\.$/, ""), url: page.url }))}
-                          contacts={contacts}
+                          projects={projects}
+                          workUrl="/work"
+                          resumes={resumes}
                           email={EMAIL}
                           menuClassName={"l-main__a-moreMenu"}
                           settingsClassName={"l-main__a-param"}

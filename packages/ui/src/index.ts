@@ -69,3 +69,4 @@ export {
     DISPLAY_OPTIONS,
     type DisplaySettings,
 } from './lib/accessibility/displaySettings';
+export { socialLinks, type SocialLink } from './lib/socialLinks';

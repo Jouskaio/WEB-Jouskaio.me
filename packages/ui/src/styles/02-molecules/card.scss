@@ -53,6 +53,17 @@
     }
   }
 
+  // The icon is a mask painted with the accent color, so it follows the accent
+  &__a-playIcon {
+    display: block;
+    width: 24px;
+    height: 24px;
+    margin: auto;
+    background: var(--accent-color);
+    mask: var(--icon) center / contain no-repeat;
+    -webkit-mask: var(--icon) center / contain no-repeat;
+  }
+
   &__a-play {
     mix-blend-mode: normal;
     transform: translateZ(0);
@@ -66,9 +77,9 @@
     width: 54px;
     height: 54px;
     position: absolute;
-    bottom: 8px;
-    right: 8px;
-    &--play > img {
+    bottom: 16px;
+    right: 16px;
+    &--play > span {
       margin-left: 3px;
     }
   }
@@ -130,6 +141,7 @@
 
 // CARDLISTICONS
 .m-cardListIcons {
+
   position: relative;
   display: block;
   perspective: 1000px;

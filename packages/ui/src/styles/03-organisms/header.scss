@@ -34,5 +34,10 @@
     font-family: var(--font-family-main);
     font-size: var(--font-size-XS);
     font-weight: lighter;
+    transition: transform 0.25s ease, background 0.25s ease;
+
+    &:hover {
+      transform: translateY(-3px);
+    }
   }
 }
