@@ -40,10 +40,11 @@ export default function DisplayPanel({ settings, onChange, onReset, classname = 
             <p className="o-displayPanel__a-intro">Your choices are saved on this device.</p>
 
             {SETTINGS.map((key) => (
-                <fieldset key={key} className="o-displayPanel__m-group">
+                <fieldset key={key} className={`o-displayPanel__m-group o-displayPanel__m-group--${key}`}>
                     <legend className="o-displayPanel__a-legend">{DISPLAY_OPTIONS[key].legend}</legend>
+                    <div className="o-displayPanel__m-options">
                     {DISPLAY_OPTIONS[key].options.map((option) => (
-                        <label key={option.value} className="o-displayPanel__a-option">
+                        <label key={option.value} className="o-displayPanel__a-option" data-value={option.value}>
                             <input
                                 type="radio"
                                 name={`display-${key}`}
@@ -54,6 +55,7 @@ export default function DisplayPanel({ settings, onChange, onReset, classname = 
                             <span>{option.label}</span>
                         </label>
                     ))}
+                    </div>
                 </fieldset>
             ))}
 

@@ -54,9 +54,22 @@
     height: 50px;
     width: 50px;
     border: 1px solid var(--text-color);
+    color: var(--text-color);
+  }
+
+  // The icons are masks painted with the text color: they stay readable in every theme
+  &__a-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+    background: currentColor;
+    mask: var(--icon) center / contain no-repeat;
+    -webkit-mask: var(--icon) center / contain no-repeat;
   }
 
   &__a-param {
+    color: var(--accent-color-surface);
     background: var(--primary-light);
     border-radius: 50%;
     height: 50px;

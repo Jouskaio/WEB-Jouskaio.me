@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import Image from 'next/image';
 
 import { useDisplaySettings } from '../../../lib/accessibility/useDisplaySettings';
 import Dialog from '../../molecule/dialog/dialog';
@@ -69,7 +68,7 @@ export default function Toolbar({
                 data-aos={aosEffect || undefined}
                 data-aos-duration={1000}
             >
-                <Image src="/icons/more.svg" alt="" height={16} width={16} />
+                <span className="l-main__a-icon" style={{ '--icon': 'url(/icons/more.svg)' } as React.CSSProperties} />
             </button>
             <button
                 type="button"
@@ -80,7 +79,7 @@ export default function Toolbar({
                 data-aos={aosEffect || undefined}
                 data-aos-duration={1200}
             >
-                <Image src="/icons/params.svg" alt="" height={16} width={16} />
+                <span className="l-main__a-icon" style={{ '--icon': 'url(/icons/params.svg)' } as React.CSSProperties} />
             </button>
 
             <Dialog open={menuOpen} onClose={() => setMenuOpen(false)} title="Menu" variant="drawer">
