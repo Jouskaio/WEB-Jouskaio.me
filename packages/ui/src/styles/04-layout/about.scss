@@ -1,8 +1,6 @@
 @use "../00-protons/mixins" as *;
 
-// About page: a hero, short glass cards, a timeline of experiences, skills as chips, a quote and a contact block.
-// The cards are glass in the light and dark themes (see glass.scss); the high contrast setting keeps solid cards.
-
+// About page layout: the order and the spacing of the sections. The cards, the chips and the timeline are components.
 .l-about {
   display: flex;
   flex-direction: column;
@@ -20,133 +18,28 @@
     padding: 0 0 160px;
   }
 
-  p {
-    margin: 0;
-  }
-
-  // ---------- Hero ----------
-  &__hero {
+  &__section {
     display: flex;
-    flex-direction: column;
-    gap: 32px;
-
-    @include medium {
-      flex-direction: row;
-      align-items: flex-start;
-      gap: 48px;
-    }
-  }
-
-  &__photo {
-    flex: none;
-    width: 100%;
-    max-width: 420px;
-    overflow: hidden;
-    border-radius: 36px;
-
-    img {
-      display: block;
-      width: 100%;
-      height: auto;
-    }
-  }
-
-  &__heroText {
-    display: flex;
-    flex: 1;
     flex-direction: column;
     gap: 20px;
-    min-width: 0;
   }
 
-  &__eyebrow {
-    font-size: var(--font-size-XS);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--accent-text);
-  }
-
-  &__headline {
+  &__a-title {
     margin: 0;
-    font-size: clamp(30px, 5vw, 44px);
+    font-size: var(--font-size-XL);
     font-weight: var(--font-weight-semibold);
-    line-height: 1.14;
-    letter-spacing: -0.01em;
+    line-height: 1.15;
   }
 
-  &__hi {
-    font-size: var(--font-size-L);
-    font-weight: var(--font-weight-semibold);
-    color: var(--accent-text);
-  }
-
-  &__lead {
+  &__a-text {
+    max-width: 720px;
+    margin: 0;
     font-size: calc(17px * var(--text-scale));
     line-height: 1.65;
-    max-width: 640px;
   }
 
-  &__pills,
-  &__chips {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  &__pill,
-  &__chip {
-    padding: 6px 14px;
-    border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
-    border-radius: 16px;
-    background: color-mix(in srgb, currentColor 6%, transparent);
-    font-size: var(--font-size-S);
-    line-height: 1.2;
-  }
-
-  &__actions {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-top: 4px;
-  }
-
-  &__button {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    min-height: 48px;
-    padding: 0 24px;
-    border: 1px solid var(--accent-color);
-    border-radius: 24px;
-    background: var(--accent-color);
-    color: var(--text-on-accent);
-    text-decoration: none;
-    transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
-
-    &:hover {
-      transform: translateY(-2px);
-      background: var(--text-color);
-      border-color: var(--text-color);
-      color: var(--background-color);
-    }
-
-    &--outline {
-      background: none;
-      border-color: currentColor;
-      color: inherit;
-    }
-  }
-
-  &__hint {
-    font-size: var(--font-size-S);
-  }
-
-  // ---------- Cards ----------
-  &__duo {
+  // Two cards side by side on a wide screen
+  &__m-duo {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
@@ -157,65 +50,8 @@
     }
   }
 
-  &__card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-    padding: 28px;
-    border-radius: 28px;
-    background: var(--primary-lightest);
-    color: var(--background-color);
-    line-height: 1.65;
-
-    @include medium {
-      padding: 32px;
-    }
-
-    // A short accent bar above the title
-    &::before {
-      content: '';
-      width: 36px;
-      height: 4px;
-      border-radius: 2px;
-      background: var(--accent-color);
-    }
-
-    a {
-      color: inherit;
-      text-underline-offset: 3px;
-    }
-  }
-
-  &__cardTitle {
-    margin: 0;
-    font-size: var(--font-size-L);
-    font-weight: var(--font-weight-semibold);
-    line-height: 1.2;
-  }
-
-  // ---------- Sections ----------
-  &__section {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-
-  &__title {
-    margin: 0;
-    font-size: var(--font-size-XL);
-    font-weight: var(--font-weight-semibold);
-    line-height: 1.15;
-  }
-
-  &__sectionText {
-    max-width: 720px;
-    font-size: calc(17px * var(--text-scale));
-    line-height: 1.65;
-  }
-
-  // ---------- At a glance ----------
-  &__glance {
+  // The map and four tiles
+  &__m-glance {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
@@ -226,7 +62,7 @@
     }
   }
 
-  &__map {
+  &__m-map {
     min-height: 300px;
     overflow: hidden;
     border-radius: 28px;
@@ -267,7 +103,7 @@
     }
   }
 
-  &__facts {
+  &__m-facts {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
@@ -278,121 +114,15 @@
     @include medium {
       grid-template-columns: repeat(2, 1fr);
     }
-  }
 
-  &__tile {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 24px;
-    border-radius: 24px;
-    background: var(--primary-lightest);
-    color: var(--background-color);
-    line-height: 1.5;
-  }
-
-  &__tileLabel {
-    font-size: var(--font-size-XS);
-    font-weight: var(--font-weight-semibold);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--accent-text);
-  }
-
-  // ---------- Timeline of the experiences ----------
-  &__timeline {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-
-  &__step {
-    display: grid;
-    grid-template-columns: 20px 1fr;
-    column-gap: 16px;
-
-    @include medium {
-      grid-template-columns: 110px 28px 1fr;
-      column-gap: 20px;
+    // The four tiles of a row have the same height
+    > li > * {
+      height: 100%;
     }
   }
 
-  &__year {
-    display: none;
-
-    @include medium {
-      display: block;
-      padding-top: 30px;
-      text-align: right;
-      font-size: var(--font-size-L);
-      font-weight: var(--font-weight-semibold);
-      color: var(--accent-text);
-    }
-  }
-
-  // The dot and the line that links an experience to the next one
-  &__node {
-    position: relative;
-
-    &::before {
-      content: '';
-      position: absolute;
-      top: 38px;
-      left: 50%;
-      width: 12px;
-      height: 12px;
-      border: 2px solid var(--accent-text);
-      border-radius: 50%;
-      background: var(--background-color);
-      transform: translateX(-50%);
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      top: 56px;
-      bottom: -42px;
-      left: 50%;
-      width: 2px;
-      background: color-mix(in srgb, var(--accent-text) 40%, transparent);
-      transform: translateX(-50%);
-    }
-  }
-
-  &__step:last-child &__node::after {
-    display: none;
-  }
-
-  &__experience {
-    min-width: 0;
-  }
-
-  &__experienceHead {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  &__logo {
-    flex: none;
-    width: 48px;
-    height: 48px;
-    padding: 4px;
-    border-radius: 12px;
-    background: #fff;
-    object-fit: contain;
-  }
-
-  &__meta {
-    font-size: var(--font-size-S);
-    opacity: 0.85;
-  }
-
-  // ---------- Skills ----------
-  &__skills {
+  // Skills: three cards, then two and two, on a wide screen
+  &__m-skills {
     display: grid;
     grid-template-columns: 1fr;
     gap: 16px;
@@ -400,58 +130,14 @@
     @include medium {
       grid-template-columns: repeat(6, 1fr);
       gap: 24px;
-    }
-  }
 
-  &__skill {
-    @include medium {
-      grid-column: span 2;
+      > * {
+        grid-column: span 2;
 
-      &:nth-child(n + 4) {
-        grid-column: span 3;
+        &:nth-child(n + 4) {
+          grid-column: span 3;
+        }
       }
     }
-  }
-
-  // ---------- Recommendation ----------
-  &__quote {
-    // No accent bar here: the avatar is the visual anchor of the quote
-    &::before {
-      display: none;
-    }
-
-    flex-direction: column;
-    gap: 24px;
-    margin: 0;
-
-    @include medium {
-      flex-direction: row;
-      align-items: center;
-      gap: 40px;
-      padding: 40px;
-    }
-
-    blockquote {
-      margin: 0 0 16px;
-    }
-
-    blockquote p {
-      font-size: clamp(20px, 2.4vw, 28px);
-      font-style: italic;
-      line-height: 1.4;
-    }
-  }
-
-  &__avatar {
-    flex: none;
-    width: 96px;
-    height: 96px;
-    border-radius: 50%;
-    object-fit: cover;
-  }
-
-  // ---------- Contact ----------
-  &__duo--contact &__card:last-child {
-    justify-content: space-between;
   }
 }

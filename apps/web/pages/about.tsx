@@ -1,7 +1,16 @@
 import React from "react";
 import Head from "next/head";
-import Image from "next/image";
-import { CardMap, useWindowSize } from "@jouskaio/ui";
+import {
+    Button,
+    CardCitation,
+    CardFact,
+    CardHeroAbout,
+    CardMap,
+    CardSkill,
+    CardText,
+    ExperienceTimeline,
+    useWindowSize,
+} from "@jouskaio/ui";
 
 import { gridEffect } from "../lib/aos";
 
@@ -91,53 +100,51 @@ export default function AboutPage() {
                 <link rel="canonical" href="https://jouskaio.me/about" />
             </Head>
 
-            <header className="l-about__hero">
-                <div className="l-about__photo" data-aos={twoColumns ? "fade-right" : "fade-down"} data-aos-duration={900}>
-                    <Image src="/images/me.png" alt="Manon" width={840} height={1120} priority />
-                </div>
-                <div className="l-about__heroText" data-aos={twoColumns ? "fade-left" : "fade-up"} data-aos-duration={900}>
-                    <p className="l-about__eyebrow">About me</p>
-                    <h1 className="l-about__headline">Engineering thoughtful technology across software, connected systems, and immersive experiences.</h1>
-                    <p className="l-about__hi">Hi, I’m Manon.</p>
-                    <p className="l-about__lead">I’m a software engineer with a multidisciplinary background spanning embedded systems, IoT, mobile and web development, AR, and cybersecurity. My work lives at the intersection of technology, product thinking, and real-world problem solving. I’m especially drawn to projects that connect software and physical environments — from connected devices and cloud-backed systems to immersive mobile experiences and secure digital infrastructures.</p>
-                    <ul className="l-about__pills" aria-label="Areas">
-                        {["Paris", "Software", "IoT", "Mobile & web", "AR", "Cybersecurity"].map((pill) => (
-                            <li key={pill} className="l-about__pill">{pill}</li>
-                        ))}
-                    </ul>
-                    <div className="l-about__actions">
-                        <a className="l-about__button" href="/cv/manon-salsou-cv-fr.pdf" download lang="fr">
-                            Download my CV (FR) <span aria-hidden="true">↓</span>
-                        </a>
-                        <a className="l-about__button l-about__button--outline" href="/cv/manon-salsou-cv-en.pdf" download lang="en">
-                            Resume (EN) <span aria-hidden="true">↓</span>
-                        </a>
-                    </div>
-                </div>
-            </header>
+            <CardHeroAbout
+                title="About me"
+                subtitle="Engineering thoughtful technology across software, connected systems, and immersive experiences."
+                introTitle="Hi, I’m Manon."
+                introText="I’m a software engineer with a multidisciplinary background spanning embedded systems, IoT, mobile and web development, AR, and cybersecurity. My work lives at the intersection of technology, product thinking, and real-world problem solving. I’m especially drawn to projects that connect software and physical environments — from connected devices and cloud-backed systems to immersive mobile experiences and secure digital infrastructures."
+                imageSrc="/images/me.png"
+                imageAlt="Manon"
+                pills={["Paris", "Software", "IoT", "Mobile & web", "AR", "Cybersecurity"]}
+                aosDuration={900}
+                imageAosEffect={twoColumns ? "fade-right" : "fade-down"}
+                textAosEffect={twoColumns ? "fade-left" : "fade-up"}
+            >
+                <Button src="/cv/manon-salsou-cv-fr.pdf" download lang="fr">
+                    Download my CV (FR) <span aria-hidden="true">↓</span>
+                </Button>
+                <Button src="/cv/manon-salsou-cv-en.pdf" download lang="en" variant="outline">
+                    Resume (EN) <span aria-hidden="true">↓</span>
+                </Button>
+            </CardHeroAbout>
 
-            <section className="l-about__duo" aria-label="What I build and how I think">
-                <div className="l-about__card" data-aos={gridEffect(0, twoColumns)} data-aos-duration={900}>
-                    <h2 className="l-about__cardTitle">What I build</h2>
-                    <p>I build digital experiences and technical systems that are meant to last — not just to work. I care about quality, clarity, reliability, and long-term maintainability as much as I care about innovation. Whether I’m working on a mobile application, an IoT ecosystem, a web platform, or a more infrastructure-oriented subject, I aim to create solutions that feel both precise and useful.</p>
-                </div>
-                <div className="l-about__card" data-aos={gridEffect(1, twoColumns)} data-aos-duration={900}>
-                    <h2 className="l-about__cardTitle">How I think</h2>
-                    <p>My background combines engineering, digital project management, and product sensitivity, which allows me to approach a project from multiple angles: architecture, usability, performance, security, and scalability. I enjoy turning technical complexity into something readable, durable, and well designed. For me, good technology is never only functional — it should also be coherent, elegant, and grounded in real needs.</p>
-                </div>
+            <section className="l-about__m-duo" aria-label="What I build and how I think">
+                <CardText
+                    title="What I build"
+                    text="I build digital experiences and technical systems that are meant to last — not just to work. I care about quality, clarity, reliability, and long-term maintainability as much as I care about innovation. Whether I’m working on a mobile application, an IoT ecosystem, a web platform, or a more infrastructure-oriented subject, I aim to create solutions that feel both precise and useful."
+                    aosEffect={gridEffect(0, twoColumns)}
+                    aosDuration={900}
+                />
+                <CardText
+                    title="How I think"
+                    text="My background combines engineering, digital project management, and product sensitivity, which allows me to approach a project from multiple angles: architecture, usability, performance, security, and scalability. I enjoy turning technical complexity into something readable, durable, and well designed. For me, good technology is never only functional — it should also be coherent, elegant, and grounded in real needs."
+                    aosEffect={gridEffect(1, twoColumns)}
+                    aosDuration={900}
+                />
             </section>
 
             <section className="l-about__section" aria-labelledby="about-glance">
-                <h2 id="about-glance" className="l-about__title">At a glance</h2>
-                <div className="l-about__glance">
-                    <div className="l-about__map" data-aos={twoColumns ? "fade-right" : "fade-up"} data-aos-duration={900}>
+                <h2 id="about-glance" className="l-about__a-title">At a glance</h2>
+                <div className="l-about__m-glance">
+                    <div className="l-about__m-map" data-aos={twoColumns ? "fade-right" : "fade-up"} data-aos-duration={900}>
                         <CardMap lat={48.8566} lng={2.3522} zoom={2} markerLabel="Here !" title="Paris, France" />
                     </div>
-                    <ul className="l-about__facts">
+                    <ul className="l-about__m-facts">
                         {facts.map((fact, index) => (
-                            <li key={fact.label} className="l-about__tile" data-aos={gridEffect(index, twoColumns)} data-aos-duration={900}>
-                                <span className="l-about__tileLabel">{fact.label}</span>
-                                <span>{fact.text}</span>
+                            <li key={fact.label}>
+                                <CardFact {...fact} aosEffect={gridEffect(index, twoColumns)} aosDuration={900} />
                             </li>
                         ))}
                     </ul>
@@ -145,84 +152,57 @@ export default function AboutPage() {
             </section>
 
             <section className="l-about__section" aria-labelledby="about-experiences">
-                <h2 id="about-experiences" className="l-about__title">Experiences</h2>
-                <p className="l-about__sectionText">My path has taken me across augmented reality, telecom, IoT experimentation, embedded thinking, cloud systems, and cybersecurity. Each experience helped me build a broader and more connected view of technology.</p>
-                <ol className="l-about__timeline">
-                    {experiences.map((exp, index) => (
-                        <li key={exp.company} className="l-about__step">
-                            <span className="l-about__year" aria-hidden="true">{exp.year}</span>
-                            <span className="l-about__node" aria-hidden="true" />
-                            <article className="l-about__card l-about__experience" data-aos="fade-up" data-aos-duration={900} data-aos-delay={Math.min(index, 2) * 80}>
-                                <div className="l-about__experienceHead">
-                                    <img className="l-about__logo" src={exp.logoUrl} alt="" width={48} height={48} />
-                                    <div>
-                                        <h3 className="l-about__cardTitle">{exp.title}</h3>
-                                        <p className="l-about__meta">
-                                            <a href={exp.companyUrl} target="_blank" rel="noreferrer">{exp.company}</a> · {exp.period}
-                                        </p>
-                                    </div>
-                                </div>
-                                <p>{exp.description}</p>
-                                <ul className="l-about__chips" aria-label="Technologies">
-                                    {exp.technologies.map((tech) => (
-                                        <li key={tech} className="l-about__chip">{tech}</li>
-                                    ))}
-                                </ul>
-                            </article>
-                        </li>
-                    ))}
-                </ol>
+                <h2 id="about-experiences" className="l-about__a-title">Experiences</h2>
+                <p className="l-about__a-text">My path has taken me across augmented reality, telecom, IoT experimentation, embedded thinking, cloud systems, and cybersecurity. Each experience helped me build a broader and more connected view of technology.</p>
+                <ExperienceTimeline items={experiences} />
             </section>
 
             <section className="l-about__section" aria-labelledby="about-skills">
-                <h2 id="about-skills" className="l-about__title">Hard Skills</h2>
-                <p className="l-about__sectionText">My technical profile is shaped by a mix of software engineering, connected systems, mobile development, web technologies, and infrastructure-aware thinking.</p>
-                <div className="l-about__skills">
+                <h2 id="about-skills" className="l-about__a-title">Hard Skills</h2>
+                <p className="l-about__a-text">My technical profile is shaped by a mix of software engineering, connected systems, mobile development, web technologies, and infrastructure-aware thinking.</p>
+                <div className="l-about__m-skills">
                     {skills.map((skill, index) => (
-                        <article key={skill.title} className="l-about__card l-about__skill" data-aos="fade-up" data-aos-duration={900} data-aos-delay={(index % 3) * 80}>
-                            <h3 className="l-about__cardTitle">{skill.title}</h3>
-                            <ul className="l-about__chips">
-                                {skill.chips.map((chip) => (
-                                    <li key={chip} className="l-about__chip">{chip}</li>
-                                ))}
-                            </ul>
-                        </article>
+                        <CardSkill key={skill.title} title={skill.title} skills={skill.chips} aosEffect="fade-up" aosDuration={900} aosDelay={(index % 3) * 80} />
                     ))}
                 </div>
             </section>
 
             <section className="l-about__section" aria-labelledby="about-recommendation">
-                <h2 id="about-recommendation" className="l-about__title">Recommendation</h2>
-                <figure className="l-about__card l-about__quote" data-aos="fade-up" data-aos-duration={900}>
-                    <Image className="l-about__avatar" src="/images/jean-camille-sormain.png" alt="" width={192} height={108} />
-                    <div>
-                        <blockquote>
-                            <p>“Manon stands out for her intelligence, strong work ethic, and the seriousness she brings to everything she does.”</p>
-                        </blockquote>
-                        <figcaption>
-                            <a href="https://www.linkedin.com/in/jean-camille-sormain-65779924/" target="_blank" rel="noreferrer">Jean-Camille Sormain</a>
-                            <span> · Novae Memorae CEO</span>
-                        </figcaption>
-                    </div>
-                </figure>
+                <h2 id="about-recommendation" className="l-about__a-title">Recommendation</h2>
+                <CardCitation
+                    urlSource="https://www.linkedin.com/posts/jean-camille-sormain-65779924_eemi-arkit-docker-activity-6734857664557264896-onQ8?utm_source=share&utm_medium=member_desktop"
+                    nameProfile="Jean-Camille Sormain"
+                    descriptionProfile="Novae Memorae CEO"
+                    urlProfile="https://www.linkedin.com/in/jean-camille-sormain-65779924/"
+                    urlPhotoProfile="/images/jean-camille-sormain.png"
+                    aosEffect="fade-up"
+                    aosDuration={900}
+                >
+                    Manon stands out for her intelligence, strong work ethic, and the seriousness she brings to everything she does.
+                </CardCitation>
             </section>
 
-            <section className="l-about__duo l-about__duo--contact" aria-label="What I’m looking for and contact">
-                <div className="l-about__card" data-aos={gridEffect(0, twoColumns)} data-aos-duration={900}>
-                    <h2 className="l-about__cardTitle">What I’m looking for</h2>
-                    <p>I’m drawn to projects where technology meets real-world impact — especially in software engineering, embedded systems, IoT, immersive applications, and secure digital ecosystems. I value environments where curiosity, quality, and long-term thinking matter just as much as delivery.</p>
-                </div>
-                <div className="l-about__card" data-aos={gridEffect(1, twoColumns)} data-aos-duration={900}>
-                    <h2 className="l-about__cardTitle">Let’s connect</h2>
-                    <p>If you’re building something thoughtful, technical, and forward-looking, I’d be happy to hear about it.</p>
-                    <div className="l-about__actions">
-                        <a className="l-about__button" href="mailto:manon.salsou@icloud.com">Email me</a>
-                        <a className="l-about__button l-about__button--outline" href="https://www.linkedin.com/in/manonsalsou/" target="_blank" rel="noreferrer">
-                            LinkedIn <span aria-hidden="true">↗</span>
-                            <span className="l-about__hint"> (new tab)</span>
-                        </a>
-                    </div>
-                </div>
+            <section className="l-about__m-duo" aria-label="What I’m looking for and contact">
+                <CardText
+                    title="What I’m looking for"
+                    text="I’m drawn to projects where technology meets real-world impact — especially in software engineering, embedded systems, IoT, immersive applications, and secure digital ecosystems. I value environments where curiosity, quality, and long-term thinking matter just as much as delivery."
+                    aosEffect={gridEffect(0, twoColumns)}
+                    aosDuration={900}
+                />
+                <CardText
+                    title="Let’s connect"
+                    text="If you’re building something thoughtful, technical, and forward-looking, I’d be happy to hear about it."
+                    aosEffect={gridEffect(1, twoColumns)}
+                    aosDuration={900}
+                    actions={
+                        <>
+                            <Button src="mailto:manon.salsou@icloud.com">Email me</Button>
+                            <Button src="https://www.linkedin.com/in/manonsalsou/" external variant="outline">
+                                LinkedIn <span aria-hidden="true">↗</span>
+                            </Button>
+                        </>
+                    }
+                />
             </section>
         </article>
     );

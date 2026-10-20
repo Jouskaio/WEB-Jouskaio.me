@@ -1,0 +1,69 @@
+@use "../00-protons/mixins" as *;
+
+// Experience timeline: the year on the left, a dot on a vertical line, and the card of the experience.
+.o-experienceTimeline {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+
+  &__m-step {
+    display: grid;
+    grid-template-columns: 20px 1fr;
+    column-gap: 16px;
+
+    @include medium {
+      grid-template-columns: 110px 28px 1fr;
+      column-gap: 20px;
+    }
+  }
+
+  &__a-year {
+    display: none;
+
+    @include medium {
+      display: block;
+      padding-top: 30px;
+      text-align: right;
+      font-family: var(--font-family-main);
+      font-size: var(--font-size-L);
+      font-weight: var(--font-weight-semibold);
+      color: var(--accent-text);
+    }
+  }
+
+  // The dot and the line that links an experience to the next one
+  &__a-node {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: 50%;
+      width: 12px;
+      height: 12px;
+      border: 2px solid var(--accent-text);
+      border-radius: 50%;
+      background: var(--background-color);
+      transform: translateX(-50%);
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 56px;
+      bottom: -42px;
+      left: 50%;
+      width: 2px;
+      background: color-mix(in srgb, var(--accent-text) 40%, transparent);
+      transform: translateX(-50%);
+    }
+  }
+
+  &__m-step:last-child &__a-node::after {
+    display: none;
+  }
+}

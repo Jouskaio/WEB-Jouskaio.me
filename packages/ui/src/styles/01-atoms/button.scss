@@ -84,3 +84,36 @@
     width: 16px;
   }
 }
+// Button: a link that looks like a button. Solid with the accent color, or outline.
+.a-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 48px;
+  padding: 0 24px;
+  border: 1px solid var(--accent-color);
+  border-radius: 24px;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+  text-decoration: none;
+  transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    border-color: var(--text-color);
+    background: var(--text-color);
+    color: var(--background-color);
+  }
+
+  &--outline {
+    border-color: currentColor;
+    background: none;
+    color: inherit;
+  }
+
+  &__a-hint {
+    font-size: var(--font-size-S);
+  }
+}
