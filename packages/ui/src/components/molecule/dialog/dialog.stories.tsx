@@ -31,6 +31,17 @@ type Story = StoryObj<typeof Dialog>;
 
 export const Open: Story = {};
 
+export const Drawer: Story = {
+    args: { variant: 'drawer', title: 'Menu' },
+    parameters: {
+        docs: {
+            description: {
+                story: 'Slides in from the right on a wide screen, rises from the bottom as a sheet on a small one. The menu and the display settings use it.',
+            },
+        },
+    },
+};
+
 export const Interactive: Story = {
     args: { open: false },
     render: (args) => {

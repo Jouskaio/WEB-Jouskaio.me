@@ -28,8 +28,9 @@
   .l-project__m-fact,
   .l-project__m-feature,
   .l-works__m-card,
-  .l-about__card,
-  .l-about__tile,
+  .m-cardText,
+  .m-cardFact,
+  .m-cardSkill,
   .o-header {
     --background-color: #{$text}; // the text of these cards
     --text-on-translucent: #{$text};
@@ -45,7 +46,6 @@
   }
 
   // Children that had their own color for the former cards
-  .m-cardCitation > *,
   .m-widgetContact label {
     color: $accent-text;
   }

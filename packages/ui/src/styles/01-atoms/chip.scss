@@ -1,0 +1,11 @@
+// Chip: a small rounded label. It takes the color of the text around it, so it follows the theme.
+.a-chip {
+  display: inline-block;
+  padding: 6px 14px;
+  border: 1px solid color-mix(in srgb, currentColor 28%, transparent);
+  border-radius: 16px;
+  background: color-mix(in srgb, currentColor 6%, transparent);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-S);
+  line-height: 1.2;
+}

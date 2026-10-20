@@ -1,0 +1,49 @@
+@use "../00-protons/mixins" as *;
+
+// Card Text: a card with a short accent bar, a title and a text. Glass in the light and dark themes (see 04-layout/glass.scss),
+// solid with the high contrast setting.
+.m-cardText {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 28px;
+  background: var(--primary-lightest);
+  color: var(--background-color);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+  line-height: 1.65;
+
+  @include medium {
+    padding: 32px;
+  }
+
+  // A short accent bar above the title
+  &::before {
+    content: '';
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent-color);
+  }
+
+  &__a-title {
+    margin: 0;
+    font-size: var(--font-size-L);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+  }
+
+  &__a-text {
+    margin: 0;
+  }
+
+  &__m-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: auto;
+    padding-top: 6px;
+  }
+}

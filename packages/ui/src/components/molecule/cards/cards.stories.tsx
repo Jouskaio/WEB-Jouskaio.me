@@ -3,12 +3,15 @@ import type { Meta, StoryObj } from '@storybook/react';
 
 import CardCitation from './cardCitation';
 import CardExperience from './cardExperience';
+import CardFact from './cardFact';
 import CardInfos from './cardInfos';
 import CardListIcons from './cardListIcons';
 import CardListText from './cardListText';
 import CardMap from './cardMap';
 import CardMultiStatus from './cardMultiStatus';
 import CardNews from './cardNews';
+import CardSkill from './cardSkill';
+import CardText from './cardText';
 import CardStatus from './cardStatus';
 import CardXL from './cardXL';
 
@@ -181,6 +184,48 @@ export const Citation: StoryObj<typeof CardCitation> = {
 export const Experience: StoryObj<typeof CardExperience> = {
     render: (args) => <CardExperience {...args} style={{ width: 500, ...args.style }} />,
     args: experienceArgs,
+};
+
+export const Text: StoryObj<typeof CardText> = {
+    render: (args) => <CardText {...args} style={{ width: 480, ...args.style }} />,
+    args: {
+        title: 'What I build',
+        text: 'I build digital experiences and technical systems that are meant to last — not just to work. I care about quality, clarity, reliability, and long-term maintainability.',
+    },
+};
+
+export const TextWithActions: StoryObj<typeof CardText> = {
+    render: (args) => <CardText {...args} style={{ width: 480, ...args.style }} />,
+    args: {
+        title: 'Let’s connect',
+        text: 'If you’re building something thoughtful, technical, and forward-looking, I’d be happy to hear about it.',
+        actions: (
+            <>
+                <a className="a-button" href="mailto:contact@example.com">
+                    Email me
+                </a>
+                <a className="a-button a-button--outline" href="https://www.linkedin.com/in/manonsalsou/">
+                    LinkedIn ↗
+                </a>
+            </>
+        ),
+    },
+};
+
+export const Fact: StoryObj<typeof CardFact> = {
+    render: (args) => <CardFact {...args} style={{ width: 260, ...args.style }} />,
+    args: {
+        label: 'Focus',
+        text: 'Focused on software, embedded systems, IoT, and cybersecurity',
+    },
+};
+
+export const Skill: StoryObj<typeof CardSkill> = {
+    render: (args) => <CardSkill {...args} style={{ width: 420, ...args.style }} />,
+    args: {
+        title: 'Web Development',
+        skills: ['PHP', 'Symfony', 'Python', 'Node.js', 'Java', 'JavaScript', 'React', 'Next.js', 'HTML', 'CSS/SCSS'],
+    },
 };
 
 export const Infos: StoryObj<typeof CardInfos> = {

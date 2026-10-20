@@ -1,8 +1,6 @@
 import React, { type CSSProperties, type ReactNode } from 'react';
 
 import Media from '../../atom/media/media';
-import TextDefault from '../../atom/text/textDefault';
-import TextSpanXS from '../../atom/text/textSpanXS';
 
 /**
  * Properties of the CardCitation component.
@@ -52,7 +50,7 @@ export type CardCitationProps = {
 
 /**
  * Molecule Component: Card Citation
- * A card displaying a citation with the photo and profile of its author.
+ * A glass card displaying a quote, with the photo and the name of its author.
  */
 export default function CardCitation({
                                          classname = '',
@@ -67,40 +65,31 @@ export default function CardCitation({
                                          aosEffect,
                                      }: CardCitationProps) {
     return (
-        <div
+        <figure
             className={`m-cardCitation ${classname}`.trim()}
             style={style}
             data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
-            <div className="m-cardCitation__m-divImage">
-                <Media
-                    style={{ objectFit: 'cover' }}
-                    src={urlPhotoProfile}
-                    alt={
-                        nameProfile
-                            ? `Profile picture of ${nameProfile}`
-                            : 'Profile picture'
-                    }
-                    height="100"
-                    width="100"
-                    classname="m-cardCitation__m-profilDivImg"
-                />
+            <Media
+                style={{ objectFit: 'cover' }}
+                src={urlPhotoProfile}
+                alt=""
+                height="96"
+                width="96"
+                classname="m-cardCitation__a-avatar"
+            />
+            <div className="m-cardCitation__m-body">
+                <blockquote className="m-cardCitation__a-quote">
+                    <p>
+                        <a href={urlSource}>“{children}”</a>
+                    </p>
+                </blockquote>
+                <figcaption className="m-cardCitation__a-author">
+                    <a href={urlProfile}>{nameProfile}</a>
+                    {descriptionProfile && <span> · {descriptionProfile}</span>}
+                </figcaption>
             </div>
-
-            <a href={urlSource} className="m-cardCitation__a-content">
-                <TextDefault>“{children}”</TextDefault>
-            </a>
-
-            <a href={urlProfile} className="m-cardCitation__m-profilDiv">
-                <div className="m-cardCitation__m-profilDivText">
-                    <TextDefault classname="m-cardCitation__m-profilDivText--title">
-                        {nameProfile}
-                    </TextDefault>
-
-                    <TextSpanXS>{descriptionProfile}</TextSpanXS>
-                </div>
-            </a>
-        </div>
+        </figure>
     );
 }
