@@ -21,6 +21,7 @@ This file is used after _colors and _fonts: same specificity, so these rules win
 
   --surface-translucent: rgba(27, 27, 34, 0.72);
   --text-on-accent: #FFFFFF;
+  --accent-text: var(--accent-purple-dark);
   --accent-color-surface: #9AA2F0;
   --text-on-translucent: #F4F4F6;
 }
@@ -40,6 +41,7 @@ This file is used after _colors and _fonts: same specificity, so these rules win
 
   --surface-translucent: rgba(255, 255, 255, 0.90);
   --text-on-accent: #000000;
+  --accent-text: var(--accent-purple-dark);
   --accent-color-surface: #2A2F80;
   --text-on-translucent: #000000;
 
@@ -63,6 +65,7 @@ This file is used after _colors and _fonts: same specificity, so these rules win
 
   --surface-translucent: rgba(0, 0, 0, 0.90);
   --text-on-accent: #FFFFFF;
+  --accent-text: var(--accent-purple-dark);
   --accent-color-surface: #B3BAFF;
   --text-on-translucent: #FFFFFF;
 }
