@@ -60,3 +60,28 @@ export const Primary: Story = {
         expect(button).toHaveAttribute('href', '/');
     },
 };
+
+export const Outline: Story = {
+    args: {
+        src: '/',
+        variant: 'outline',
+        children: 'Outline button',
+    },
+};
+
+export const Download: Story = {
+    args: {
+        src: '/cv/manon-salsou-cv-en.pdf',
+        download: true,
+        variant: 'outline',
+        children: 'Resume (EN) ↓',
+    },
+};
+
+export const External: Story = {
+    args: {
+        src: 'https://github.com/Jouskaio',
+        external: true,
+        children: 'GitHub ↗',
+    },
+};

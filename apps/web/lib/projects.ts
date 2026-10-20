@@ -10,6 +10,10 @@ export type ProjectLink = {
  * A feature of a project, shown as a card.
  */
 export type ProjectFeature = {
+    /**
+     * Optional theme: the features of a project with many of them are shown under a heading per group.
+     */
+    group?: string;
     title: string;
     text: string;
 };
@@ -74,82 +78,102 @@ export const projects: Project[] = [
         ],
         features: [
             {
+                group: 'Your library',
                 title: 'Everything in one place',
                 text: 'Paper books, ebooks, audiobooks, comics and fanfiction on the same shelves. Import your own EPUB, PDF, CBZ and M4B files.',
             },
             {
+                group: 'Your library',
                 title: 'Your sources, everywhere',
                 text: 'Connect your own sources: GitHub, OPDS, WebDAV, Nextcloud, AO3 and more, with encrypted tokens. Metadata comes from Hardcover, Open Library, Wikidata, TMDB, Goodreads, Booknode and Pagebound.',
             },
             {
+                group: 'Your library',
                 title: 'Import by link or share',
                 text: 'Paste or share a link (AO3, Gutenberg, a direct file), or use "Open with Babel" from Android, iPhone, Mac or the web app.',
             },
             {
+                group: 'Your library',
                 title: 'Fanfictions that follow you',
                 text: 'Follow ongoing AO3 fanfictions: a daily check updates the book when a chapter appears, a cover is generated when there is none, and a push alert tells you.',
             },
             {
-                title: 'Scan and search',
-                text: 'Search by title, author or tag. Scan an ISBN barcode (cover recognition is experimental), even with a webcam, scan a stack of paper books in a row, or add one by hand.',
-            },
-            {
-                title: 'Notes in the margin',
-                text: 'Highlight, comment and find your favourite passages again. Comments appear at the page where they were written, friends first.',
-            },
-            {
-                title: 'Reviews and friends',
-                text: 'Read, write and answer reviews. Find readers in the directory, follow them and see what they read, their notes, their library and their recommendations.',
-            },
-            {
-                title: 'Your reading, in numbers',
-                text: 'Statistics, goals, XP, levels and badges, plus monthly and yearly Wraps you can share as an image.',
-            },
-            {
-                title: 'Challenges of the month',
-                text: 'A genre challenge and literary prizes from Wikidata, subjects from Open Library, a variety of authors and countries, and daily updates of prizes and playlists.',
-            },
-            {
-                title: 'Comics, manga and webtoons',
-                text: 'CBZ reading left to right, or right to left for manga (ComicInfo), a vertical mode for webtoons, zoom, and notes on a single panel you can share.',
-            },
-            {
-                title: 'Reading comfort',
-                text: 'Light, dark, e-ink and Art deco or Art nouveau themes. Dyslexia-friendly fonts (Lexend, Atkinson Hyperlegible), size, line spacing and contrast. E-ink mode switches itself on for a BOOX.',
-            },
-            {
-                title: 'E-reader sync',
-                text: 'KOReader and BOOX sync your progress (kosync) and your books through WebDAV. Kobo support is planned. A book can be on paper and on your e-reader with the "On my e-reader" switch.',
-            },
-            {
-                title: 'Translation',
-                text: 'Translate a passage or a whole book from the reader, with a self-hosted LibreTranslate and MyMemory for excerpts. The translated book joins your library.',
-            },
-            {
-                title: 'Resilient to network loss',
-                text: 'In the metro or a bookshop, scans, searches, additions, progress and notes wait in a queue and are replayed when the network is back, without duplicates. Your library and shelves stay readable offline, and each device keeps its own offline copy.',
-            },
-            {
-                title: 'Clean up what you finished',
-                text: 'Delete the file of a book you read and keep your stats, notes and reviews. Clean several books in one go.',
-            },
-            {
-                title: 'One app everywhere',
-                text: 'Phone, tablet, desktop, web and BOOX from a single Flutter client. Features are enabled per device, and the ones a device cannot do are greyed out.',
-            },
-            {
-                title: 'Apps to download',
-                text: 'A download page for the Android app and the Mac app, with updates offered along with the list of what is new. iOS follows with the App Store.',
-            },
-            {
-                title: 'Books and their adaptations',
-                text: 'Wikidata and TMDB link a book to its adaptations, related works, films and series, with posters.',
-            },
-            {
+                group: 'Your library',
                 title: 'Files stored once',
                 text: 'A single copy of each file, identified by its SHA-256 fingerprint: if a book is already on Babel, it downloads directly instead of being uploaded again.',
             },
             {
+                group: 'Your library',
+                title: 'Clean up what you finished',
+                text: 'Delete the file of a book you read and keep your stats, notes and reviews. Clean several books in one go.',
+            },
+            {
+                group: 'Find and read',
+                title: 'Scan and search',
+                text: 'Search by title, author or tag. Scan an ISBN barcode (cover recognition is experimental), even with a webcam, scan a stack of paper books in a row, or add one by hand.',
+            },
+            {
+                group: 'Find and read',
+                title: 'Comics, manga and webtoons',
+                text: 'CBZ reading left to right, or right to left for manga (ComicInfo), a vertical mode for webtoons, zoom, and notes on a single panel you can share.',
+            },
+            {
+                group: 'Find and read',
+                title: 'Reading comfort',
+                text: 'Light, dark, e-ink and Art deco or Art nouveau themes. Dyslexia-friendly fonts (Lexend, Atkinson Hyperlegible), size, line spacing and contrast. E-ink mode switches itself on for a BOOX.',
+            },
+            {
+                group: 'Find and read',
+                title: 'Translation',
+                text: 'Translate a passage or a whole book from the reader, with a self-hosted LibreTranslate and MyMemory for excerpts. The translated book joins your library.',
+            },
+            {
+                group: 'Find and read',
+                title: 'Books and their adaptations',
+                text: 'Wikidata and TMDB link a book to its adaptations, related works, films and series, with posters.',
+            },
+            {
+                group: 'Share and follow your reading',
+                title: 'Notes in the margin',
+                text: 'Highlight, comment and find your favourite passages again. Comments appear at the page where they were written, friends first.',
+            },
+            {
+                group: 'Share and follow your reading',
+                title: 'Reviews and friends',
+                text: 'Read, write and answer reviews. Find readers in the directory, follow them and see what they read, their notes, their library and their recommendations.',
+            },
+            {
+                group: 'Share and follow your reading',
+                title: 'Your reading, in numbers',
+                text: 'Statistics, goals, XP, levels and badges, plus monthly and yearly Wraps you can share as an image.',
+            },
+            {
+                group: 'Share and follow your reading',
+                title: 'Challenges of the month',
+                text: 'A genre challenge and literary prizes from Wikidata, subjects from Open Library, a variety of authors and countries, and daily updates of prizes and playlists.',
+            },
+            {
+                group: 'On every device',
+                title: 'E-reader sync',
+                text: 'KOReader and BOOX sync your progress (kosync) and your books through WebDAV. Kobo support is planned. A book can be on paper and on your e-reader with the "On my e-reader" switch.',
+            },
+            {
+                group: 'On every device',
+                title: 'Resilient to network loss',
+                text: 'In the metro or a bookshop, scans, searches, additions, progress and notes wait in a queue and are replayed when the network is back, without duplicates. Your library and shelves stay readable offline, and each device keeps its own offline copy.',
+            },
+            {
+                group: 'On every device',
+                title: 'One app everywhere',
+                text: 'Phone, tablet, desktop, web and BOOX from a single Flutter client. Features are enabled per device, and the ones a device cannot do are greyed out.',
+            },
+            {
+                group: 'On every device',
+                title: 'Apps to download',
+                text: 'A download page for the Android app and the Mac app, with updates offered along with the list of what is new. iOS follows with the App Store.',
+            },
+            {
+                group: 'On every device',
                 title: 'Yours to run',
                 text: 'Accounts with roles (admin, premium, public) and invitations, plugins the admin installs and each user activates, quotas, connectors switched on or off, and the health of each source.',
             },

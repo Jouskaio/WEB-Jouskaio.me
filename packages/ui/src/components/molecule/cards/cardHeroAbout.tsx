@@ -1,19 +1,17 @@
 import React from 'react';
 import Image from 'next/image';
-import TextH1 from '../../atom/text/textH1';
-import TextH4 from '../../atom/text/textH4';
-import TextDefault from '../../atom/text/textDefault';
+import Chip from '../../atom/chip/chip';
 
 /**
  * Properties of the CardHeroAbout component.
  */
 export type CardHeroAboutProps = {
     /**
-     * Hero title.
+     * Small label above the headline (e.g., "About me").
      */
     title: string;
     /**
-     * Hero subtitle.
+     * Headline: the main title (h1) of the page.
      */
     subtitle: string;
     /**
@@ -33,7 +31,16 @@ export type CardHeroAboutProps = {
      */
     imageAlt?: string;
     /**
-     * Additional content to display in the text container.
+     * Short labels shown as chips under the text (e.g., "Paris", "IoT").
+     */
+    pills?: string[];
+    /**
+     * Width and height of the image, to reserve its place (portrait 3:4 by default).
+     */
+    imageWidth?: number;
+    imageHeight?: number;
+    /**
+     * Actions shown at the end of the text (buttons).
      */
     children?: React.ReactNode;
     /**
@@ -45,14 +52,18 @@ export type CardHeroAboutProps = {
      */
     aosDuration?: number;
     /**
-     * AOS animation effect (e.g., "fade-up").
+     * AOS animation effect of the image (e.g., "fade-right").
      */
-    aosEffect?: string;
+    imageAosEffect?: string;
+    /**
+     * AOS animation effect of the text (e.g., "fade-left").
+     */
+    textAosEffect?: string;
 };
 
 /**
  * Molecule Component: Card Hero About
- * A hero section specifically designed for the About page, featuring a large responsive image and text.
+ * The hero of the About page: a portrait on one side, the headline, an introduction, chips and actions on the other.
  */
 export default function CardHeroAbout({
                                             title,
@@ -61,53 +72,51 @@ export default function CardHeroAbout({
                                             introText,
                                             imageSrc,
                                             imageAlt = '',
+                                            pills = [],
+                                            imageWidth = 840,
+                                            imageHeight = 1120,
                                             children,
                                             classname = '',
                                             aosDuration,
-                                            aosEffect,
+                                            imageAosEffect,
+                                            textAosEffect,
                                         }: CardHeroAboutProps) {
     return (
-        <div
-            className={`m-cardHeroAbout ${classname}`.trim()}
-            data-aos={aosEffect || undefined}
-            data-aos-duration={aosDuration}
-        >
-            <div className="m-cardHeroAbout__title-container">
-                <TextH1 classname="m-cardHeroAbout__a-title">{title}</TextH1>
-            </div>
-            <div className="m-cardHeroAbout__image-container">
+        <header className={`m-cardHeroAbout ${classname}`.trim()}>
+            <div
+                className="m-cardHeroAbout__m-image"
+                data-aos={imageAosEffect || undefined}
+                data-aos-duration={aosDuration}
+            >
                 <Image
                     src={imageSrc}
                     alt={imageAlt}
-                    fill
+                    width={imageWidth}
+                    height={imageHeight}
                     priority
-                    className="a-image"
+                    className="m-cardHeroAbout__a-image"
                 />
             </div>
-            <div className="m-cardHeroAbout__text-container">
-                <div className="m-cardHeroAbout__subtitle">
-                    <TextH4>{subtitle}</TextH4>
-                </div>
-                {(introTitle || introText) && (
-                    <div className="m-cardHeroAbout__intro">
-                        {introTitle && (
-                            <TextH4 classname="m-cardHeroAbout__intro-title">
-                                {introTitle}
-                            </TextH4>
-                        )}
-                        {introText && (
-                            <TextDefault classname="m-cardHeroAbout__intro-text">
-                                {introText}
-                            </TextDefault>
-                        )}
-                    </div>
+            <div
+                className="m-cardHeroAbout__m-text"
+                data-aos={textAosEffect || undefined}
+                data-aos-duration={aosDuration}
+            >
+                <p className="m-cardHeroAbout__a-eyebrow">{title}</p>
+                <h1 className="m-cardHeroAbout__a-headline">{subtitle}</h1>
+                {introTitle && <p className="m-cardHeroAbout__a-introTitle">{introTitle}</p>}
+                {introText && <p className="m-cardHeroAbout__a-introText">{introText}</p>}
+                {pills.length > 0 && (
+                    <ul className="m-cardHeroAbout__m-pills" aria-label="Areas">
+                        {pills.map((pill) => (
+                            <li key={pill}>
+                                <Chip>{pill}</Chip>
+                            </li>
+                        ))}
+                    </ul>
                 )}
-                {children && (
-                    <div className="m-cardHeroAbout__extra">
-                        {children}
-                    </div>
-                )}
+                {children && <div className="m-cardHeroAbout__m-actions">{children}</div>}
             </div>
-        </div>
+        </header>
     );
 }

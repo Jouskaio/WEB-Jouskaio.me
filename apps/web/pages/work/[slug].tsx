@@ -14,6 +14,17 @@ export default function ProjectPage({ project }: { project: Project }) {
     const twoColumns = !!size && size.width !== undefined && size.width >= 768;
     const title = `${project.name} – Jouskaio`;
     const url = `${SITE}/work/${project.slug}`;
+    // The features keep their order; consecutive ones with the same group share a heading
+    const groups = project.features.reduce<{ name: string; features: Project["features"] }[]>((list, feature) => {
+        const name = feature.group || "";
+        const last = list[list.length - 1];
+        if (last && last.name === name) {
+            last.features.push(feature);
+        } else {
+            list.push({ name, features: [feature] });
+        }
+        return list;
+    }, []);
 
     return (
         <article className="l-project">
@@ -111,20 +122,29 @@ export default function ProjectPage({ project }: { project: Project }) {
                 <h2 id="project-features" className="a-titleH2 l-project__a-heading">
                     Features
                 </h2>
-                <ul className="l-project__m-features">
-                    {project.features.map((feature, index) => (
-                        <li
-                            key={feature.title}
-                            className="l-project__m-feature"
-                            data-aos={gridEffect(index, twoColumns)}
-                            data-aos-duration={700}
-                            data-aos-delay={Math.min(Math.floor(index / 2), 3) * 80}
-                        >
-                            <h3 className="l-project__a-featureTitle">{feature.title}</h3>
-                            <p className="l-project__a-featureText">{feature.text}</p>
-                        </li>
-                    ))}
-                </ul>
+                {groups.map((group) => {
+                    // Without a group heading, the title of a card is directly under the section heading
+                    const CardTitle = group.name ? "h4" : "h3";
+                    return (
+                    <div key={group.name} className="l-project__m-group">
+                        {group.name && <h3 className="l-project__a-groupTitle">{group.name}</h3>}
+                        <ul className="l-project__m-features">
+                            {group.features.map((feature, index) => (
+                                <li
+                                    key={feature.title}
+                                    className="l-project__m-feature"
+                                    data-aos={gridEffect(index, twoColumns)}
+                                    data-aos-duration={700}
+                                    data-aos-delay={Math.min(Math.floor(index / 2), 3) * 80}
+                                >
+                                    <CardTitle className="l-project__a-featureTitle">{feature.title}</CardTitle>
+                                    <p className="l-project__a-featureText">{feature.text}</p>
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+                    );
+                })}
             </section>
 
             <section aria-labelledby="project-how" className="l-project__m-section">

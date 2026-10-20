@@ -55,6 +55,39 @@
     width: 50px;
     border: 1px solid var(--text-color);
     color: var(--text-color);
+    cursor: pointer;
+    transition: transform 0.25s ease, background 0.25s ease, color 0.25s ease, box-shadow 0.25s ease;
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      background: var(--text-color);
+      color: var(--background-color);
+      box-shadow: 0 6px 18px var(--shadow);
+    }
+
+    // The four dots join in the middle and come back, once per hover, focus or tap
+    &:hover .l-main__a-dots circle,
+    &:focus-visible .l-main__a-dots circle,
+    &:active .l-main__a-dots circle {
+      animation: l-main-dotsJoin 0.9s ease-in-out;
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
+  }
+
+  &__a-dots {
+    display: block;
+    margin: auto;
+    fill: currentColor;
+    overflow: visible;
+
+    circle {
+      transform-box: fill-box;
+      transform-origin: center;
+    }
   }
 
   // The icons are masks painted with the text color: they stay readable in every theme
@@ -75,5 +108,42 @@
     height: 50px;
     width: 50px;
     border: 1px solid var(--primary-light);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+    // The gear turns while the pointer is on it (and while a finger is down on a phone)
+    .l-main__a-icon {
+      transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.2, 1);
+    }
+
+    &:hover,
+    &:focus-visible,
+    &:active {
+      box-shadow: 0 6px 18px var(--shadow);
+
+      .l-main__a-icon {
+        transform: rotate(180deg);
+      }
+    }
+
+    &:active {
+      transform: scale(0.92);
+    }
   }
 }
+
+@keyframes l-main-dotsJoin {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  45% {
+    transform: translate(var(--join-x, 0), var(--join-y, 0)) scale(1.25);
+  }
+}
+
+// Each dot moves towards the center of the 16px icon
+.l-main__a-dots circle:nth-child(1) { --join-x: 4.5px; --join-y: 4.5px; }
+.l-main__a-dots circle:nth-child(2) { --join-x: -4.5px; --join-y: 4.5px; }
+.l-main__a-dots circle:nth-child(3) { --join-x: 4.5px; --join-y: -4.5px; }
+.l-main__a-dots circle:nth-child(4) { --join-x: -4.5px; --join-y: -4.5px; }

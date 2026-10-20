@@ -1,80 +1,87 @@
 @use "../00-protons/mixins" as *;
 
+// Card Hero About: a portrait, the headline, an introduction, chips and actions.
 .m-cardHeroAbout {
-  margin-bottom: 32px;
   display: flex;
   flex-direction: column;
-  gap: 24px;
-  align-items: flex-start;
- 
+  gap: 32px;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+  color: var(--text-color);
+
   @include medium {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    grid-template-areas:
-      "img title"
-      "img text";
-    grid-template-rows: auto 1fr;
-    column-gap: 40px;
+    flex-direction: row;
     align-items: flex-start;
+    gap: 48px;
   }
- 
-  &__title-container {
-    grid-area: title;
+
+  &__m-image {
+    flex: none;
     width: 100%;
- 
-    .m-cardHeroAbout__a-title {
-      margin-bottom: 8px;
-    }
-  }
- 
-  &__image-container {
-    grid-area: img;
-    align-self: center;
-    position: relative;
-    width: 100%;
-    aspect-ratio: 1 / 1;
-    flex-shrink: 0;
-    border-radius: 24px;
+    max-width: 420px;
     overflow: hidden;
-
-    @include medium {
-      align-self: stretch;
-      aspect-ratio: auto;
-      height: 100%;
-    }
-
-    .a-image {
-      object-fit: cover;
-    }
+    border-radius: 36px;
   }
- 
-  &__text-container {
-    grid-area: text;
+
+  &__a-image {
+    display: block;
     width: 100%;
- 
-    @include medium {
-        margin-top: 0;
-    }
+    height: auto;
   }
- 
-  &__subtitle {
-    margin-bottom: 24px;
-  }
- 
-  &__intro {
-    &-title {
-      margin-bottom: 12px;
-      color: var(--accent-purple-dark);
-    }
- 
-    &-text {
-      line-height: 1.6;
-      opacity: 0.9;
+
+  &__m-text {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 20px;
+    min-width: 0;
+
+    p {
+      margin: 0;
     }
   }
 
-  &__extra {
-    margin-top: 32px;
-    width: 100%;
+  &__a-eyebrow {
+    font-size: var(--font-size-XS);
+    font-weight: var(--font-weight-semibold);
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent-text);
+  }
+
+  &__a-headline {
+    margin: 0;
+    font-size: clamp(30px, 5vw, 44px);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.14;
+    letter-spacing: -0.01em;
+  }
+
+  &__a-introTitle {
+    font-size: var(--font-size-L);
+    font-weight: var(--font-weight-semibold);
+    color: var(--accent-text);
+  }
+
+  &__a-introText {
+    max-width: 640px;
+    font-size: calc(17px * var(--text-scale));
+    line-height: 1.65;
+  }
+
+  &__m-pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__m-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 4px;
   }
 }

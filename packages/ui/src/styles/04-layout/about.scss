@@ -1,129 +1,143 @@
 @use "../00-protons/mixins" as *;
 
+// About page layout: the order and the spacing of the sections. The cards, the chips and the timeline are components.
 .l-about {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  margin-top: 16px;
-  padding: 0 16px;
+  flex-direction: column;
+  gap: 72px;
+  max-width: 1120px;
+  margin: 16px auto 0;
+  padding: 0 16px 140px;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+  color: var(--text-color);
 
   @include medium {
-    display: grid;
+    gap: 96px;
     margin-top: 50px;
-    padding: 0;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 16px;
+    padding: 0 0 160px;
   }
 
-  &__widget {
-    width: 100%;
-    margin-bottom: 16px;
-    @include medium {
-      width: auto;
-      margin-bottom: 0;
-    }
-
-    &--full {
-      @include medium {
-        grid-column: 1 / 7;
-      }
-    }
-
-    &--half {
-      @include medium {
-        grid-column: span 3;
-      }
-    }
-
-    &--third {
-      @include medium {
-        grid-column: span 2;
-      }
-    }
-
-    &--two-thirds {
-      @include medium {
-        grid-column: span 4;
-      }
-    }
-  }
-
-  &__section-title {
-    margin-top: 40px;
-    margin-bottom: 16px;
-    @include medium {
-      grid-column: 1 / 7;
-    }
-  }
-
-  &__experience-wrapper {
-    width: 100%;
+  &__section {
     display: flex;
     flex-direction: column;
-    gap: 24px;
-    @include medium {
-      display: grid;
-      grid-template-columns: 1fr 180px;
-      grid-column: 1 / 7;
-      gap: 32px;
-      align-items: flex-start;
-    }
+    gap: 20px;
   }
 
-  &__experience-main {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+  &__a-title {
+    margin: 0;
+    font-size: var(--font-size-XL);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.15;
   }
 
-  &__experience-intro {
-      margin-bottom: 24px;
-      width: 100%;
+  &__a-text {
+    max-width: 720px;
+    margin: 0;
+    font-size: calc(17px * var(--text-scale));
+    line-height: 1.65;
   }
 
-  &__skills-intro {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      margin-bottom: 16px;
-
-      @include medium {
-          grid-column: span 2;
-          margin-bottom: 0;
-          padding: 0 24px;
-      }
-
-      .a-text {
-          font-size: 1.1rem;
-          line-height: 1.6;
-          opacity: 0.9;
-      }
-  }
-
-  &__experience-grid, &__skills-grid {
-    display: flex;
-    flex-direction: column;
+  // Two cards side by side on a wide screen
+  &__m-duo {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: 16px;
-    width: 100%;
+
     @include medium {
-      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+  }
+
+  // The map and four tiles
+  &__m-glance {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include medium {
+      grid-template-columns: 1.15fr 1fr;
+      gap: 24px;
+    }
+  }
+
+  &__m-map {
+    min-height: 300px;
+    overflow: hidden;
+    border-radius: 28px;
+
+    // The map is glass too: a frosted tile with the neighbors in a faint tone and France in the accent
+    .m-cardMap {
+      height: 100%;
+      background: color-mix(in srgb, var(--text-color) 6%, transparent);
+      color: var(--text-color);
+      box-shadow: none;
+
+      &:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .rsm-geography--neighbor {
+      fill: var(--text-color);
+      fill-opacity: 0.1;
+      stroke: var(--text-color);
+      stroke-opacity: 0.12;
+    }
+
+    .rsm-geography--france {
+      stroke: color-mix(in srgb, var(--text-color) 25%, transparent);
+    }
+
+    .rsm-marker circle {
+      stroke: var(--text-color);
+    }
+
+    .m-cardMap__a-title,
+    .m-cardMap__marker-label {
+      background: color-mix(in srgb, var(--background-color) 80%, transparent);
+      color: var(--text-color);
+      backdrop-filter: blur(8px);
+    }
+  }
+
+  &__m-facts {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include medium {
       grid-template-columns: repeat(2, 1fr);
     }
-  }
 
-  &__experience-timeline {
-    display: none;
-    @include medium {
-      display: block;
-      position: sticky;
-      top: 100px;
+    // The four tiles of a row have the same height
+    > li > * {
+      height: 100%;
     }
   }
 
-  &__skills-grid {
-      @include medium {
-          grid-template-columns: repeat(3, 1fr);
-          grid-column: 1 / 7;
+  // Skills: three cards, then two and two, on a wide screen
+  &__m-skills {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+
+    @include medium {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 24px;
+
+      > * {
+        grid-column: span 2;
+
+        &:nth-child(n + 4) {
+          grid-column: span 3;
+        }
       }
+    }
   }
 }

@@ -1,0 +1,127 @@
+// Glassmorphism, in the light theme and in the dark one: a soft wash of color behind frosted translucent cards.
+// The high contrast setting keeps its solid colors.
+
+@mixin glass(
+  $wash,        // the background of the page: a list of radial gradients
+  $card,        // the color of a frosted card
+  $text,        // the text on a card
+  $accent-text, // the accent color used for text on a card
+  $edge,        // the light edge on top of a card
+  $shadow,      // the faint shadow of a card
+  $bubble,      // the page bubbles of the header
+  $veil         // the veil over the picture of a passion card
+) {
+  background: $wash, var(--background-color);
+  background-attachment: fixed;
+
+  .m-cardStatus,
+  .m-cardInfos,
+  .m-cardNews,
+  .m-cardCitation,
+  .m-cardListText,
+  .m-cardListIcons__a-div,
+  .m-cardListIcons--background,
+  .m-cardMultiStatus,
+  .m-cardExperience,
+  .m-widgetContact,
+  .m-widgetTimeline,
+  .l-project__m-fact,
+  .l-project__m-feature,
+  .l-works__m-card,
+  .m-cardText,
+  .m-cardFact,
+  .m-cardSkill,
+  .o-header {
+    --background-color: #{$text}; // the text of these cards
+    --text-on-translucent: #{$text};
+    --accent-color-surface: #{$accent-text};
+    background: $card !important;
+    backdrop-filter: blur(22px) saturate(1.6);
+    -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    border: 0;
+    // A light edge on top and a faint, even shadow: no outline, no visible band under the cards
+    box-shadow: inset 0 1px 0 $edge, $shadow;
+    color: $text;
+    text-shadow: none;
+  }
+
+  // Children that had their own color for the former cards
+  .m-widgetContact label {
+    color: $accent-text;
+  }
+
+  // The picture of a passion card stays under the glass, blurred, and sharpens a little on hover
+  .m-cardListText {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: -24px;
+      z-index: -1;
+      background: linear-gradient($veil, $veil), var(--media) center / cover no-repeat;
+      filter: blur(14px) saturate(1.4);
+      opacity: 0.8;
+      transition: filter 0.4s ease, opacity 0.4s ease;
+    }
+
+    &:hover::before {
+      filter: blur(3px) saturate(1.3);
+      opacity: 0.9;
+    }
+  }
+
+  .m-cardListText__content {
+    text-shadow: none;
+  }
+
+  .o-header__page {
+    background: $bubble;
+    color: $text;
+  }
+
+  .m-dialog::backdrop {
+    backdrop-filter: blur(6px);
+  }
+}
+
+:root[data-theme="light"]:not([data-contrast="high"]) {
+  @include glass(
+    (
+      radial-gradient(60% 50% at 10% 5%, #d8d9fa 0, transparent 70%),
+      radial-gradient(50% 45% at 92% 35%, #c6e8f3 0, transparent 70%),
+      radial-gradient(55% 50% at 30% 95%, #f8dcd3 0, transparent 70%)
+    ),
+    rgba(255, 255, 255, 0.45),
+    #1b1b22,
+    var(--accent-color),
+    rgba(255, 255, 255, 0.85),
+    0 4px 24px rgba(70, 80, 140, 0.1),
+    rgba(101, 109, 182, 0.16),
+    rgba(255, 255, 255, 0.45)
+  );
+
+  // A light picture needs a brighter, whiter veil than the dark one
+  .m-cardListText::before {
+    filter: blur(14px) saturate(1.4) brightness(1.7);
+  }
+}
+
+:root:not([data-theme="light"]):not([data-contrast="high"]) {
+  @include glass(
+    (
+      radial-gradient(60% 50% at 8% 4%, rgba(101, 109, 182, 0.32) 0, transparent 70%),
+      radial-gradient(50% 45% at 94% 38%, rgba(60, 140, 170, 0.2) 0, transparent 70%),
+      radial-gradient(55% 50% at 28% 98%, rgba(150, 70, 100, 0.2) 0, transparent 70%)
+    ),
+    rgba(255, 255, 255, 0.07),
+    #ececf1,
+    var(--accent-purple-light),
+    rgba(255, 255, 255, 0.14),
+    0 8px 32px rgba(0, 0, 0, 0.25),
+    rgba(255, 255, 255, 0.1),
+    rgba(10, 10, 13, 0.5)
+  );
+}

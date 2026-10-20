@@ -1,0 +1,42 @@
+@use "../00-protons/mixins" as *;
+
+// Card Skill: a card that names a group of skills and lists them as chips.
+.m-cardSkill {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 28px;
+  border-radius: 28px;
+  background: var(--primary-lightest);
+  color: var(--background-color);
+  font-family: var(--font-family-main);
+
+  @include medium {
+    padding: 32px;
+  }
+
+  &::before {
+    content: '';
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent-color);
+  }
+
+  &__a-title {
+    margin: 0;
+    font-size: var(--font-size-L);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+  }
+
+  &__m-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+}

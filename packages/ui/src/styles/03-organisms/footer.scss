@@ -62,3 +62,12 @@
     text-align: right;
   }
 }
+// The social icons are light: in the light theme they are inverted to stay visible
+:root[data-theme="light"] .o-footer__a-icons--img {
+  filter: invert(1);
+
+  &:hover,
+  &:focus {
+    filter: var(--accent-yellow-filter);
+  }
+}

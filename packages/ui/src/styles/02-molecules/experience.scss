@@ -1,160 +1,77 @@
 @use "../00-protons/mixins" as *;
 
+// Card Experience: logo, title, company and period, description and technologies.
+// Glass in the light and dark themes (see 04-layout/glass.scss), solid with the high contrast setting.
 .m-cardExperience {
-  background-color: var(--primary-lightest);
-  border-radius: var(--border-radius);
-  padding: 24px;
-  margin-bottom: 20px;
-  color: var(--background-color);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
-  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  min-width: 0;
+  padding: 28px;
+  border-radius: 28px;
+  background: var(--primary-lightest);
+  color: var(--background-color);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+  line-height: 1.65;
 
-  &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  @include medium {
+    padding: 32px;
   }
 
-  &__header {
-    margin-bottom: 16px;
+  &::before {
+    content: '';
+    width: 36px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--accent-color);
+  }
+
+  &__m-header {
     display: flex;
     align-items: center;
     gap: 16px;
   }
 
-  &__logo {
-    flex-shrink: 0;
+  &__a-logo {
+    flex: none;
     width: 48px;
     height: 48px;
-    border-radius: 12px;
-    overflow: hidden;
-    background-color: white; // Or another neutral color for contrast
-    display: flex;
-    align-items: center;
-    justify-content: center;
     padding: 4px;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-
-    img {
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-    }
-  }
-
-  &__header-content {
-    flex: 1;
-  }
-
-  &__title {
-    color: var(--background-color);
-    margin-bottom: 4px;
-  }
-
-  &__info {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    color: var(--background-color);
-    opacity: 0.8;
-    font-size: var(--font-size-S) !important;
-  }
-
-  &__company {
-    font-weight: var(--font-weight-semibold);
-  }
-
-  &__period {
-    font-style: italic;
-  }
-
-  &__description {
-    line-height: 1.6;
-    color: var(--background-color);
-    margin-bottom: 20px;
-  }
-
-  &__tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-    margin-top: 16px;
-  }
-
-  &__tag {
-    font-size: 0.75rem !important;
-  }
-}
-
-// Timeline layout for About page
-.l-about {
-  &__experience-list {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-top: 40px;
-  }
-
-  &__skills-section {
-    margin-top: 60px;
-    margin-bottom: 60px;
-  }
-
-  &__recommendations-section {
-    margin-top: 60px;
-    margin-bottom: 60px;
-  }
-
-  &__recommendations-list {
-    margin-top: 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-
-    & > .l-about__recommendation-item {
-      width: 100%;
-      @include large {
-        width: 65%;
-      }
-    }
-
-    & > .l-about__recommendation-item:nth-child(2n) {
-      align-self: flex-end;
-    }
-  }
-
-  &__contact-section {
-    margin-top: 60px;
-    margin-bottom: 60px;
-  }
-
-  &__m-socials {
-    display: flex;
-    gap: 20px;
-    margin-top: 30px;
-
-    a {
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      &:hover {
-        transform: translateY(-5px) scale(1.1);
-      }
-    }
-
-    img {
-      filter: grayscale(1) brightness(1.5);
-      transition: filter 0.3s ease;
-
-      &:hover {
-        filter: grayscale(0) brightness(1);
-      }
-    }
+    border-radius: 12px;
+    background: #fff;
+    object-fit: contain;
   }
 
   &__a-title {
-    margin-bottom: 30px;
+    margin: 0;
+    font-size: var(--font-size-L);
+    font-weight: var(--font-weight-semibold);
+    line-height: 1.2;
+  }
+
+  &__a-info {
+    margin: 4px 0 0;
+    font-size: var(--font-size-S);
+    opacity: 0.85;
+
+    a {
+      color: inherit;
+      text-underline-offset: 3px;
+    }
+  }
+
+  &__a-description {
+    margin: 0;
+  }
+
+  &__m-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 }

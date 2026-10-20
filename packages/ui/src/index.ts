@@ -70,3 +70,8 @@ export {
     type DisplaySettings,
 } from './lib/accessibility/displaySettings';
 export { socialLinks, type SocialLink } from './lib/socialLinks';
+export { default as Chip } from './components/atom/chip/chip';
+export { default as CardText } from './components/molecule/cards/cardText';
+export { default as CardFact } from './components/molecule/cards/cardFact';
+export { default as CardSkill } from './components/molecule/cards/cardSkill';
+export { default as ExperienceTimeline, type ExperienceTimelineItem } from './components/organism/about/experienceTimeline';

@@ -13,6 +13,7 @@
 // Atoms
 @use "01-atoms/text";
 @use "01-atoms/button";
+@use "01-atoms/chip";
 @use "01-atoms/code";
 
 // Molecules
@@ -27,6 +28,10 @@
 @use "02-molecules/alert";
 @use "02-molecules/dialog";
 @use "02-molecules/experience";
+@use "02-molecules/cardCitation";
+@use "02-molecules/cardText";
+@use "02-molecules/cardFact";
+@use "02-molecules/cardSkill";
 @use "02-molecules/plugins/audio";
 @use "02-molecules/table";
 @use "02-molecules/plugins/carousel";
@@ -38,6 +43,7 @@
 @use "03-organisms/processor";
 @use "03-organisms/displayPanel";
 @use "03-organisms/quickNav";
+@use "03-organisms/experienceTimeline";
 
 // Layout
 @use "04-layout/main";
@@ -46,4 +52,4 @@
 @use "04-layout/works";
 @use "04-layout/project";
 @use "04-layout/about";
-@use "04-layout/lightGlass";
+@use "04-layout/glass";

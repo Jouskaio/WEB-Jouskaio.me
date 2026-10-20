@@ -21,6 +21,22 @@ export type ButtonProps = {
      * Button content (text, icon, etc.).
      */
     children?: ReactNode;
+    /**
+     * "solid" (default) is filled with the accent color, "outline" only has a border.
+     */
+    variant?: 'solid' | 'outline';
+    /**
+     * The file is downloaded instead of opened.
+     */
+    download?: boolean;
+    /**
+     * The link opens in a new tab (and a plain `<a>` is used instead of the router link).
+     */
+    external?: boolean;
+    /**
+     * Language of the destination, when it differs from the page (e.g., "fr").
+     */
+    lang?: string;
 };
 
 /**
@@ -33,10 +49,36 @@ export default function Button({
                                    onClick,
                                    classname = '',
                                    children,
+                                   variant = 'solid',
+                                   download = false,
+                                   external = false,
+                                   lang,
                                }: ButtonProps) {
+    const className = `a-button ${variant === 'outline' ? 'a-button--outline' : ''} ${classname}`
+        .replace(/\s+/g, ' ')
+        .trim();
+
+    // A file, an address that is not a page of the site or a new tab: a plain link, the router has nothing to do
+    if (download || external || /^(https?:|mailto:|tel:)/.test(src)) {
+        return (
+            <a
+                href={src}
+                onClick={onClick}
+                className={className}
+                lang={lang}
+                download={download || undefined}
+                target={external ? '_blank' : undefined}
+                rel={external ? 'noreferrer' : undefined}
+            >
+                {children}
+                {external && <span className="a-button__a-hint"> (new tab)</span>}
+            </a>
+        );
+    }
+
     return (
         <Link href={src} legacyBehavior>
-            <a onClick={onClick} className={`a-button ${classname}`.trim()}>
+            <a onClick={onClick} className={className} lang={lang}>
                 {children}
             </a>
         </Link>
