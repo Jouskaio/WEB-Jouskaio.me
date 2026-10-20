@@ -28,29 +28,36 @@ export const DEFAULT_DISPLAY_SETTINGS: DisplaySettings = {
 export const DISPLAY_SETTINGS_STORAGE_KEY = 'jouskaio:display';
 
 /**
- * Allowed values of each setting, with the label shown in the display panel.
+ * Allowed values of each setting, with the labels of the display panel: `label` is the full name (read by assistive
+ * technologies), `short` the word shown on a tile or a button, `switchLabel` the text of a setting with two values,
+ * shown as a switch (on = the second value).
  */
 export const DISPLAY_OPTIONS: {
-    [K in keyof DisplaySettings]: { legend: string; options: { value: DisplaySettings[K]; label: string }[] };
+    [K in keyof DisplaySettings]: {
+        legend: string;
+        switchLabel?: string;
+        options: { value: DisplaySettings[K]; label: string; short?: string }[];
+    };
 } = {
     theme: {
         legend: 'Theme',
         options: [
-            { value: 'dark', label: 'Dark' },
-            { value: 'light', label: 'Light' },
-            { value: 'system', label: 'Same as my device' },
+            { value: 'dark', label: 'Dark', short: 'Dark' },
+            { value: 'light', label: 'Light', short: 'Light' },
+            { value: 'system', label: 'Same as my device', short: 'Auto' },
         ],
     },
     textSize: {
         legend: 'Text size',
         options: [
-            { value: 'normal', label: 'Normal' },
-            { value: 'large', label: 'Large' },
-            { value: 'xlarge', label: 'Very large' },
+            { value: 'normal', label: 'Normal text size', short: 'A' },
+            { value: 'large', label: 'Large text size', short: 'A' },
+            { value: 'xlarge', label: 'Very large text size', short: 'A' },
         ],
     },
     contrast: {
         legend: 'Contrast',
+        switchLabel: 'High contrast',
         options: [
             { value: 'normal', label: 'Standard' },
             { value: 'high', label: 'High' },
@@ -58,6 +65,7 @@ export const DISPLAY_OPTIONS: {
     },
     font: {
         legend: 'Font',
+        switchLabel: 'Easy-to-read font',
         options: [
             { value: 'default', label: 'Default' },
             { value: 'readable', label: 'Easy to read (wider spacing)' },
@@ -65,6 +73,7 @@ export const DISPLAY_OPTIONS: {
     },
     motion: {
         legend: 'Animations',
+        switchLabel: 'Reduce animations',
         options: [
             { value: 'system', label: 'Same as my device' },
             { value: 'reduced', label: 'Reduce them' },
