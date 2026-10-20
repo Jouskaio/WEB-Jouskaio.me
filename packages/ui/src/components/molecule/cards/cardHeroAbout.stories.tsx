@@ -9,7 +9,8 @@ const meta = {
     parameters: {
         docs: {
             description: {
-                component: "Hero card for the About page with a responsive image.",
+                component:
+                    'The hero of the About page: a portrait, the headline (the h1 of the page), an introduction, chips and actions.',
             },
         },
         layout: 'fullscreen',
@@ -22,11 +23,22 @@ type Story = StoryObj<typeof CardHeroAbout>;
 
 export const Default: Story = {
     args: {
-        title: 'About Me',
+        title: 'About me',
         subtitle: 'Engineering thoughtful technology across software, connected systems, and immersive experiences.',
         introTitle: "Hi, I’m Manon.",
         introText: "I’m a software engineer with a multidisciplinary background spanning embedded systems, IoT, mobile and web development, AR, and cybersecurity. My work lives at the intersection of technology, product thinking, and real-world problem solving. I’m especially drawn to projects that connect software and physical environments — from connected devices and cloud-backed systems to immersive mobile experiences and secure digital infrastructures.",
         imageSrc: '/images/me.png',
         imageAlt: 'Manon',
+        pills: ['Paris', 'Software', 'IoT', 'Mobile & web', 'AR', 'Cybersecurity'],
+        children: (
+            <>
+                <a className="a-button" href="/cv/manon-salsou-cv-fr.pdf">
+                    Download my CV (FR) ↓
+                </a>
+                <a className="a-button a-button--outline" href="/cv/manon-salsou-cv-en.pdf">
+                    Resume (EN) ↓
+                </a>
+            </>
+        ),
     },
 };
