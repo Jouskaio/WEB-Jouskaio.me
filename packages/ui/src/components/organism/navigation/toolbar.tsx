@@ -68,7 +68,12 @@ export default function Toolbar({
                 data-aos={aosEffect || undefined}
                 data-aos-duration={1000}
             >
-                <span className="l-main__a-icon" style={{ '--icon': 'url(/icons/more.svg)' } as React.CSSProperties} />
+                <svg className="l-main__a-dots" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" focusable="false">
+                    <circle cx="2" cy="2" r="2" />
+                    <circle cx="14" cy="2" r="2" />
+                    <circle cx="2" cy="14" r="2" />
+                    <circle cx="14" cy="14" r="2" />
+                </svg>
             </button>
             <button
                 type="button"
