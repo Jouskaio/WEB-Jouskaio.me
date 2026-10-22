@@ -3,6 +3,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import { socialLinks } from '../../../lib/socialLinks';
+import Button from '../../atom/button/button';
 
 /**
  * A case study shown as a card.
@@ -160,9 +161,9 @@ export default function QuickNav({
                     Get in touch
                 </h3>
                 {email && (
-                    <button type="button" className="o-quickNav__a-button" onClick={copyEmail}>
+                    <Button onClick={copyEmail}>
                         {copied ? 'Email address copied' : 'Copy my email address'}
-                    </button>
+                    </Button>
                 )}
                 <p className="o-quickNav__a-status" role="status">
                     {copied ? 'Email address copied.' : ''}
@@ -170,15 +171,10 @@ export default function QuickNav({
                 <ul className="o-quickNav__m-downloads">
                     {resumes.map((resume) => (
                         <li key={resume.url}>
-                            <a
-                                href={resume.url}
-                                className="o-quickNav__a-button o-quickNav__a-button--outline"
-                                download
-                                lang={resume.lang}
-                            >
+                            <Button src={resume.url} variant="outline" download lang={resume.lang}>
                                 {resume.name} <span aria-hidden="true">↓</span>
-                                <span className="o-quickNav__a-hint"> (PDF)</span>
-                            </a>
+                                <span className="a-button__a-hint"> (PDF)</span>
+                            </Button>
                         </li>
                     ))}
                 </ul>

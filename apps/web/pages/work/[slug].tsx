@@ -2,7 +2,7 @@ import React from "react";
 import Head from "next/head";
 import Link from "next/link";
 import type { GetStaticPaths, GetStaticProps } from "next";
-import { TextH1, TextDefault, useWindowSize } from "@jouskaio/ui";
+import { Button, TextH1, TextDefault, useWindowSize } from "@jouskaio/ui";
 
 import { gridEffect } from "../../lib/aos";
 import { getProject, projects, type Project } from "../../lib/projects";
@@ -61,15 +61,9 @@ export default function ProjectPage({ project }: { project: Project }) {
             <ul className="l-project__m-links">
                 {project.links.map((link, index) => (
                     <li key={link.url}>
-                        <a
-                            href={link.url}
-                            className={`l-project__a-button${index > 0 ? " l-project__a-button--outline" : ""}`}
-                            target="_blank"
-                            rel="noreferrer"
-                        >
+                        <Button src={link.url} external variant={index > 0 ? "outline" : "solid"}>
                             {link.name} <span aria-hidden="true">↗</span>
-                            <span className="l-project__a-hint"> (new tab)</span>
-                        </a>
+                        </Button>
                     </li>
                 ))}
             </ul>

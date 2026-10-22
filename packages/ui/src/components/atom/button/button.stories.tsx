@@ -85,3 +85,14 @@ export const External: Story = {
         children: 'GitHub ↗',
     },
 };
+
+export const Action: Story = {
+    args: {
+        src: undefined,
+        children: 'Copy my email address',
+    },
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        expect(canvas.getByRole('button', { name: 'Copy my email address' })).toBeInTheDocument();
+    },
+};

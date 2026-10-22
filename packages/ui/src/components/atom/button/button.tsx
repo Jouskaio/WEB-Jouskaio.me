@@ -6,13 +6,13 @@ import type { MouseEventHandler, ReactNode } from 'react';
  */
 export type ButtonProps = {
     /**
-     * Destination URL of the link.
+     * Destination URL of the link. Without it, a real `<button>` is rendered (for an action, e.g. copying).
      */
-    src: string;
+    src?: string;
     /**
      * Function called when the button is clicked.
      */
-    onClick?: MouseEventHandler<HTMLAnchorElement>;
+    onClick?: MouseEventHandler<HTMLAnchorElement | HTMLButtonElement>;
     /**
      * Additional CSS classes.
      */
@@ -42,7 +42,8 @@ export type ButtonProps = {
 /**
  * Atom Component: Button
  *
- * A styled button that acts as an internal or external link via Next.js Link.
+ * A styled button that acts as an internal or external link via Next.js Link, or as an action
+ * (`<button>`) when it has no destination.
  */
 export default function Button({
                                    src,
@@ -57,6 +58,14 @@ export default function Button({
     const className = `a-button ${variant === 'outline' ? 'a-button--outline' : ''} ${classname}`
         .replace(/\s+/g, ' ')
         .trim();
+
+    if (src === undefined) {
+        return (
+            <button type="button" onClick={onClick} className={className}>
+                {children}
+            </button>
+        );
+    }
 
     // A file, an address that is not a page of the site or a new tab: a plain link, the router has nothing to do
     if (download || external || /^(https?:|mailto:|tel:)/.test(src)) {
