@@ -6,6 +6,27 @@
   position: relative;
   overflow: hidden;
 
+  // Until the video is ready: a glass block with a soft light sweeping over it, in place of an empty card
+  &--waiting {
+    min-height: 220px;
+  }
+
+  &__m-placeholder {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    border-radius: var(--border-radius);
+    background:
+      linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%) 0 0 / 200% 100%,
+      var(--surface-translucent);
+    text-align: center;
+    animation: m-cardXL-sweep 1.8s ease-in-out infinite;
+  }
+
   &__a-media-wrapper {
     position: relative;
     width: 100%;
@@ -313,4 +334,23 @@
   &__a-title {
     margin-bottom: 16px;
   }
+}
+
+@keyframes m-cardXL-sweep {
+  from {
+    background-position: 200% 0, 0 0;
+  }
+  to {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .m-cardXL__m-placeholder {
+    animation: none;
+  }
+}
+
+[data-motion="reduced"] .m-cardXL__m-placeholder {
+  animation: none !important;
 }
