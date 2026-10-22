@@ -1,0 +1,29 @@
+// SkipLink: the first link of the page, shown only when it has the keyboard focus.
+.a-skipLink {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  z-index: 10000;
+  padding: 12px 20px;
+  border-radius: 24px;
+  background: var(--accent-color);
+  color: var(--text-on-accent);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-M);
+  text-decoration: none;
+  transform: translateY(-200%);
+  transition: transform 0.2s ease;
+
+  &:focus,
+  &:focus-visible {
+    transform: translateY(0);
+  }
+
+  // Where the content starts: nothing to see, it only receives the focus
+  &__a-target {
+    position: absolute;
+    width: 0;
+    height: 0;
+    outline: none;
+  }
+}
