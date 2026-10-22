@@ -1,5 +1,5 @@
 // @ts-ignore
-import { TextH1, CardXL, CardStatus, CardListIcons, TextDefault, CardInfos, CardNews, CardListText, TextH5, WidgetContact, client, useWindowSize, fetchLatestArticles } from '@jouskaio/ui';
+import { TextH1, CardXL, CardStatus, CardListIcons, CardInfos, CardNews, CardListText, Loader, TextH5, WidgetContact, client, useWindowSize, fetchLatestArticles } from '@jouskaio/ui';
 import Head from 'next/head';
 import React, {useEffect, useState} from 'react';
 import { ApolloProvider } from '@apollo/client';
@@ -42,8 +42,7 @@ export default function Home({ news }: { news: NewsCard }) {
     }, []);
 
     if (!client) {
-        // TODO: Do progress bar
-        return <TextDefault>Loading</TextDefault>;
+        return <Loader fullPage label="Loading" />;
     }
 
     /*const displayingNewsletter = () => {

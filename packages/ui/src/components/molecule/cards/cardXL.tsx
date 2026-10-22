@@ -1,6 +1,8 @@
 import React, { useEffect, useState, type CSSProperties, Suspense, lazy } from 'react';
 
 import { useReducedMotion } from '../../../lib/accessibility/useReducedMotion';
+import Loader from '../../atom/loader/loader';
+import TextDefault from '../../atom/text/textDefault';
 
 const ReactPlayer = lazy(() => 
     import('react-player/lazy').then((mod) => {
@@ -70,7 +72,7 @@ export default function CardXL({
                                    article,
                                }: CardXLProps) {
     const [isPlaying, setIsPlaying] = useState(false);
-    const [isReady, setIsReady] = useState(false);
+    const [status, setStatus] = useState<'loading' | 'ready' | 'error'>('loading');
 
     const reducedMotion = useReducedMotion();
 
@@ -85,14 +87,21 @@ export default function CardXL({
 
     return (
         <div
-            className={`m-cardXL ${classname}`.trim()}
+            className={`m-cardXL ${status === 'ready' ? '' : 'm-cardXL--waiting'} ${classname}`
+                .replace(/\s+/g, ' ')
+                .trim()}
             style={style}
             data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
         >
-            {!isReady && (
-                <div className="video-loader" role="status">
-                    Loading...
+            {status === 'loading' && (
+                <div className="m-cardXL__m-placeholder">
+                    <Loader label="Loading video" />
+                </div>
+            )}
+            {status === 'error' && (
+                <div className="m-cardXL__m-placeholder" role="status">
+                    <TextDefault>The video could not be loaded.</TextDefault>
                 </div>
             )}
 
@@ -107,8 +116,11 @@ export default function CardXL({
                         width="100%"
                         height="100%"
                         loop
-                        onReady={() => setIsReady(true)}
-                        onError={(e: any) => console.error('ReactPlayer Error:', e)}
+                        onReady={() => setStatus('ready')}
+                        onError={(e: any) => {
+                            console.error('ReactPlayer Error:', e);
+                            setStatus('error');
+                        }}
                     />
                 </div>
             </Suspense>

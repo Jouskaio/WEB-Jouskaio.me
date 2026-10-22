@@ -2,6 +2,7 @@
 export { default as Button } from './components/atom/button/button';
 export { default as Code } from './components/atom/code/code';
 export { default as Icon } from './components/atom/icon/icon';
+export { default as Loader } from './components/atom/loader/loader';
 export { default as Media } from './components/atom/media/media';
 export { default as Switch } from './components/atom/switch/switch';
 export { default as TextDefault } from './components/atom/text/textDefault';
