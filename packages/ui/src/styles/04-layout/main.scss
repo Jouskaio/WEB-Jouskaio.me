@@ -3,6 +3,8 @@
 .l-main {
   display: grid;
   grid-template-rows: auto auto auto;
+  // A wide child must not widen the whole page on a narrow screen
+  grid-template-columns: minmax(0, 1fr);
   width: 100%;
   padding-top: 24px;
   padding-right: 16px;

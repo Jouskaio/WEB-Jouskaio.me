@@ -1,0 +1,69 @@
+// StatusBadge: a pill with a green dot. The text wraps on a narrow screen.
+.a-statusBadge {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 2px 10px;
+  // Goes to the next line of a row of buttons instead of being squeezed
+  min-width: min(100%, 220px);
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 8px 18px;
+  border: 1px solid var(--accent-color);
+  border-radius: 24px;
+  background: var(--surface-translucent);
+  color: var(--text-on-translucent);
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-S);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+  text-align: left;
+  text-decoration: none;
+
+  &--link {
+    transition: transform 0.2s ease, border-color 0.2s ease;
+
+    &:hover {
+      transform: translateY(-2px);
+      border-color: var(--text-color);
+    }
+  }
+
+  &__a-dot {
+    flex: none;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #22c55e;
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+    animation: a-statusBadge-pulse 2s ease-out infinite;
+  }
+
+  &__a-label {
+    font-weight: var(--font-weight-semibold);
+  }
+
+  &__a-detail {
+    opacity: 0.8;
+  }
+}
+
+@keyframes a-statusBadge-pulse {
+  70% {
+    box-shadow: 0 0 0 8px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+// A steady dot instead of a pulsing one
+@media (prefers-reduced-motion: reduce) {
+  .a-statusBadge__a-dot {
+    animation: none;
+  }
+}
+
+[data-motion="reduced"] .a-statusBadge__a-dot {
+  animation: none !important;
+}

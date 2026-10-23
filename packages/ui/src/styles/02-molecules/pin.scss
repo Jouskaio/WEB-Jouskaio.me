@@ -155,6 +155,10 @@
   justify-content: space-between;
   margin-bottom: 24px;
   &__a-image {
+    // If the image cannot load, its alt text must not push the page wider than the screen
+    flex: none;
+    max-width: 100px;
+    overflow: hidden;
     object-fit: cover;
     margin-right: calc(40px - 16px);
     margin-left: 8px;
