@@ -2,7 +2,7 @@
 import React, {useState} from "react";
 
 import { projects as projectList } from "../lib/projects";
-import { Footer, Header, Alert, Toolbar, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
+import { Footer, Header, Alert, SkipLink, SkipLinkTarget, Toolbar, useWindowSize, JouskaioProvider } from "@jouskaio/ui";
 
 
 // Shown in the header
@@ -50,6 +50,7 @@ function MyApp({ Component, pageProps }) {
 
     return (
       <JouskaioProvider>
+          <SkipLink />
           <main className={"l-main"}>
               <Header
                   pages={pages.map((page) => ({ name: page.name, source: page.url, class: "o-header__page" }))}
@@ -68,6 +69,7 @@ function MyApp({ Component, pageProps }) {
                       />
                   )}
               </div>
+              <SkipLinkTarget />
               <Component {...pageProps} alert={alert} />
               {showAlert && (
                   <Alert classname={"l-main__o-alert"}>

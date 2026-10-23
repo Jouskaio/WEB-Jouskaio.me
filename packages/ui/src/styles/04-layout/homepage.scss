@@ -6,7 +6,7 @@
   flex-wrap: nowrap;
   margin-top: 16px;
 
-  @include medium {
+  @include wide {
     display: grid;
     margin-top: 50px;
     grid-template-columns: 1fr 1fr 1fr 1fr auto auto;
@@ -17,14 +17,26 @@
     text-align: center;
     margin-bottom: 24px;
 
-    @include medium {
+    @include wide {
       margin-bottom: 30px;
       text-align: left;
     }
   }
 
+  // The "open to opportunities" badge, under the title
+  &__m-availability {
+    display: flex;
+    justify-content: center;
+    margin: -8px 0 24px;
+
+    @include wide {
+      justify-content: flex-start;
+      margin-bottom: 30px;
+    }
+  }
+
   &__o-main {
-    @include medium {
+    @include wide {
       grid-column: 1 / 5;
       grid-row: 1 / 5;
     }
@@ -36,7 +48,7 @@
     display: flex;
     flex-wrap: nowrap;
 
-    @include medium {
+    @include wide {
       margin-left: 8px;
       margin-top: 66px;
       grid-column: 5 / 7;
@@ -58,7 +70,7 @@
     width: 100%;
     margin-top: 8px;
 
-    @include medium {
+    @include wide {
       max-width: 450px;
       margin-left: 8px;
       grid-column: 5 / 7;
@@ -69,7 +81,7 @@
   &__o-latestArticles {
     margin-top: 4px;
 
-    @include medium {
+    @include wide {
       max-width: 450px;
       margin-left: 4px;
       grid-column: 5 / 7;
@@ -83,7 +95,7 @@
     width: 100% !important;
     margin-top: 8px;
     justify-content: space-between;
-    @include medium {
+    @include wide {
       flex-direction: row;
       flex-wrap: nowrap;
       justify-content: unset;
@@ -93,32 +105,32 @@
       max-width: calc(50% - 8px);
       margin-bottom: 8px;
 
-      @include medium {
+      @include wide {
         max-width: 100%;
       }
 
       &:nth-child(1) {
-        @include medium {
+        @include wide {
           max-width: 25%;
         }
       }
 
       &:nth-child(2) {
-        @include medium {
+        @include wide {
           max-width: 25%;
           margin-left: 8px;
         }
       }
 
       &:nth-child(3) {
-        @include medium {
+        @include wide {
           max-width: 25%;
           margin-left: 8px;
         }
       }
 
       &:nth-child(4) {
-        @include medium {
+        @include wide {
           max-width: 25%;
           margin-left: 8px;
         }
@@ -127,7 +139,7 @@
       &:nth-child(5) {
         align-self: flex-start !important;
 
-        @include medium {
+        @include wide {
           max-width: 25%;
           margin-left: 8px;
         }
@@ -143,7 +155,7 @@
     color: var(--text-color);
     text-transform: lowercase;
 
-    @include medium {
+    @include wide {
       display: none;
     }
   }
@@ -152,7 +164,7 @@
     width: 100%;
     margin-top: 8px;
 
-    @include medium {
+    @include wide {
       max-width: 450px;
       margin-left: 8px;
       grid-column: 5 / 7;

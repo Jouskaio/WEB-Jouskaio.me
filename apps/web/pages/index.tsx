@@ -1,8 +1,9 @@
 // @ts-ignore
-import { TextH1, CardXL, CardStatus, CardListIcons, CardInfos, CardNews, CardListText, Loader, TextH5, WidgetContact, client, useWindowSize, fetchLatestArticles } from '@jouskaio/ui';
+import { TextH1, CardXL, CardStatus, CardListIcons, CardInfos, CardNews, CardListText, Loader, StatusBadge, TextH5, WidgetContact, client, useWindowSize, fetchLatestArticles } from '@jouskaio/ui';
 import Head from 'next/head';
 import React, {useEffect, useState} from 'react';
 import { ApolloProvider } from '@apollo/client';
+import { AVAILABILITY } from '../lib/availability';
 import { fetchNewsCard, type NewsCard } from '../lib/news-card';
 
 /**
@@ -122,6 +123,13 @@ export default function Home({ news }: { news: NewsCard }) {
                 <div className={'l-main__o-global l-homepage'}>
                     <section id={'intro'} data-quicknav={'Introduction'} className={'l-homepage__o-main'}>
                         <TextH1 classname={'l-homepage__o-mainTitle'}>Manon Salsou</TextH1>
+                        {AVAILABILITY.open && (
+                            <div className={'l-homepage__m-availability'}>
+                                <StatusBadge src={AVAILABILITY.href} detail={AVAILABILITY.detail}>
+                                    {AVAILABILITY.label}
+                                </StatusBadge>
+                            </div>
+                        )}
                         {statusAOS && (
                             <CardXL
                                 media={'/video/landing_page.mp4'}

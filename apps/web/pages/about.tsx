@@ -9,9 +9,11 @@ import {
     CardSkill,
     CardText,
     ExperienceTimeline,
+    StatusBadge,
     useWindowSize,
 } from "@jouskaio/ui";
 
+import { AVAILABILITY } from "../lib/availability";
 import { gridEffect } from "../lib/aos";
 
 const experiences = [
@@ -118,6 +120,11 @@ export default function AboutPage() {
                 <Button src="/cv/manon-salsou-cv-en.pdf" download lang="en" variant="outline">
                     Resume (EN) <span aria-hidden="true">↓</span>
                 </Button>
+                {AVAILABILITY.open && (
+                    <StatusBadge src={AVAILABILITY.href} detail={AVAILABILITY.detail}>
+                        {AVAILABILITY.label}
+                    </StatusBadge>
+                )}
             </CardHeroAbout>
 
             <section className="l-about__m-duo" aria-label="What I build and how I think">
