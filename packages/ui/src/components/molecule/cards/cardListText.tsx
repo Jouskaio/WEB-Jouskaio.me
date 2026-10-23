@@ -20,6 +20,14 @@ export type CardListTextProps = {
      */
     media: string;
     /**
+     * Where the title leads (e.g., the blog category of the topic). Without it, the title is only a text.
+     */
+    href?: string;
+    /**
+     * Text read by screen readers for the link, when the title alone is not clear enough.
+     */
+    linkLabel?: string;
+    /**
      * Additional CSS classes.
      */
     classname?: string;
@@ -45,6 +53,8 @@ export default function CardListText({
                                          details,
                                          title,
                                          media,
+                                         href,
+                                         linkLabel,
                                          classname = '',
                                          style,
                                          aosDuration,
@@ -67,7 +77,17 @@ export default function CardListText({
         >
             <div className="m-cardListText__content">
                 <TextH4 classname="m-cardListText__a-title">
-                    {title}
+                    {href ? (
+                        <a
+                            className="m-cardListText__a-link"
+                            href={href}
+                            aria-label={linkLabel ?? `${title}: read the articles about it`}
+                        >
+                            {title} <span aria-hidden="true">→</span>
+                        </a>
+                    ) : (
+                        title
+                    )}
                 </TextH4>
 
                 {details.map((detail, index) => (

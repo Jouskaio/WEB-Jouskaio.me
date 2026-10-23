@@ -1,0 +1,61 @@
+// Skeleton: a grey shape with a light sweeping over it, while the content loads.
+.a-skeleton {
+  display: block;
+  max-width: 100%;
+  border-radius: 8px;
+  // Neutral greys: visible on the dark theme and on the light one
+  background:
+    linear-gradient(100deg, transparent 30%, rgba(127, 127, 127, 0.28) 50%, transparent 70%) 0 0 / 200% 100%,
+    rgba(127, 127, 127, 0.16);
+  animation: a-skeleton-sweep 1.6s ease-in-out infinite;
+
+  &--text {
+    width: 100%;
+    height: 14px;
+  }
+
+  &--title {
+    width: 80%;
+    height: 20px;
+  }
+
+  &--image {
+    flex: none;
+    width: 100px;
+    height: 55px;
+  }
+
+  &--block {
+    width: 100%;
+    height: 100%;
+  }
+
+  // Only for screen readers: says what is loading
+  &__a-label {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+  }
+}
+
+@keyframes a-skeleton-sweep {
+  from {
+    background-position: 200% 0, 0 0;
+  }
+  to {
+    background-position: -100% 0, 0 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a-skeleton {
+    animation: none;
+  }
+}
+
+[data-motion="reduced"] .a-skeleton {
+  animation: none !important;
+}

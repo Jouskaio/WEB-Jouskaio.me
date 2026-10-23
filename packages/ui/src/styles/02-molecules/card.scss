@@ -354,3 +354,34 @@
 [data-motion="reduced"] .m-cardXL__m-placeholder {
   animation: none !important;
 }
+
+// The skeletons of the latest articles have the layout of a real article
+.m-cardNews__m-skeletonText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+// The title of a card that leads somewhere (the passions of the home page)
+.m-cardListText__a-link {
+  display: inline-flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
+  color: inherit;
+  text-decoration: none;
+
+  span {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover,
+  &:focus-visible {
+    text-decoration: underline;
+    text-underline-offset: 4px;
+
+    span {
+      transform: translateX(4px);
+    }
+  }
+}

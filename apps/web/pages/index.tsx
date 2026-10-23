@@ -38,8 +38,12 @@ export default function Home({ news }: { news: NewsCard }) {
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
     const [articles, setArticles] = useState([]);
+    const [articlesLoading, setArticlesLoading] = useState(true);
     useEffect(() => {
-        fetchLatestArticles().then(setArticles);
+        fetchLatestArticles()
+            .then(setArticles)
+            .catch(() => setArticles([]))
+            .finally(() => setArticlesLoading(false));
     }, []);
 
     if (!client) {
@@ -63,6 +67,8 @@ export default function Home({ news }: { news: NewsCard }) {
                 'Science Fiction',
             ]}
             title={'Reading'}
+            href={'https://blog.jouskaio.me/category/book/'}
+            linkLabel={'Reading: read the book articles on the blog'}
             media={
                 'https://i.pinimg.com/originals/4a/f9/8f/4af98f078ef1d02329e202fa4d6aac17.gif'
             }
@@ -97,6 +103,8 @@ export default function Home({ news }: { news: NewsCard }) {
                 'Realism',
             ]}
             title={'Coding'}
+            href={'https://blog.jouskaio.me/category/technology/code/'}
+            linkLabel={'Coding: read the code articles on the blog'}
             media={'https://media.giphy.com/media/AOSwwqVjNZlDO/giphy.gif'}
             classname={'l-homepage__o-passions--card'}
             aosEffect={"fade-up"}
@@ -284,6 +292,7 @@ export default function Home({ news }: { news: NewsCard }) {
                         <section className={'l-homepage__o-latestArticles'}>
                             <CardNews
                                 article={articles}
+                                loading={articlesLoading}
                                 classname={'l-homepage__o-latestArticles--news'}
                                 aosDuration={1000}
                                 aosEffect={'fade-up'}
@@ -304,17 +313,20 @@ export default function Home({ news }: { news: NewsCard }) {
                                 {
                                     name: 'Email',
                                     url: 'mailto:manon.salsou@icloud.com',
-                                    description: "Send me an email for collaborations or inquiries."
+                                    description: "Send me an email for collaborations or inquiries.",
+                                    action: "Send an email"
                                 },
                                 {
                                     name: 'Twitter',
                                     url: 'https://twitter.com/Jouskaio_',
-                                    description: "Follow me on Twitter for tech updates and news."
+                                    description: "Follow me on Twitter for tech updates and news.",
+                                    action: "Open Twitter"
                                 },
                                 {
                                     name: 'Linkedin',
                                     url: 'https://www.linkedin.com/in/manonsalsou/',
-                                    description: "Connect with me on LinkedIn for professional networking."
+                                    description: "Connect with me on LinkedIn for professional networking.",
+                                    action: "Open LinkedIn"
                                 }
                             ]
                         }

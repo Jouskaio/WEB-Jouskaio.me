@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Switch from '../../../atom/switch/switch';
+import Button from '../../../atom/button/button';
 import TextDefault from '../../../atom/text/textDefault';
 import TextH4 from '../../../atom/text/textH4';
 
@@ -20,6 +20,10 @@ export type Contact = {
      * Description displayed for this contact type.
      */
     description: string;
+    /**
+     * Text of the button for this contact type (default: "Open" and the name).
+     */
+    action?: string;
 };
 
 /**
@@ -50,7 +54,7 @@ export type WidgetContactProps = {
 
 /**
  * Molecule Component: WidgetContact
- * A contact widget that allows choosing a communication method and toggling a switch to open the link.
+ * A contact widget that allows choosing a communication method, then opening it with a labeled button.
  */
 export default function WidgetContact({
                                           contacts,
@@ -62,7 +66,6 @@ export default function WidgetContact({
     const [selectedContact, setSelectedContact] = useState<Contact | null>(
         contacts[0] ?? null
     );
-    const [isEnabled, setIsEnabled] = useState(false);
 
     useEffect(() => {
         setSelectedContact(contacts[0] ?? null);
@@ -70,18 +73,6 @@ export default function WidgetContact({
 
     const handleContactChange = (contact: Contact) => {
         setSelectedContact(contact);
-    };
-
-    const toggleSwitch = (checked: boolean) => {
-        setIsEnabled(checked);
-
-        if (selectedContact?.url) {
-            window.open(selectedContact.url, '_blank', 'noopener,noreferrer');
-        }
-
-        window.setTimeout(() => {
-            setIsEnabled(false);
-        }, 1500);
     };
 
     return (
@@ -114,13 +105,13 @@ export default function WidgetContact({
                 </TextDefault>
             </div>
 
-            <nav className="m-widgetContact__a-switchNav">
-                <Switch
-                    isChecked={isEnabled}
-                    onClick={toggleSwitch}
-                    name="m-widgetContact__a-switch"
-                />
-            </nav>
+            {selectedContact?.url && (
+                <div className="m-widgetContact__m-actions">
+                    <Button src={selectedContact.url} external={/^https?:/.test(selectedContact.url)}>
+                        {selectedContact.action ?? `Open ${selectedContact.name}`}
+                    </Button>
+                </div>
+            )}
         </div>
     );
 }

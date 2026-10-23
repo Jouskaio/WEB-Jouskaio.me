@@ -11,7 +11,7 @@
   color: var(--background-color);
   display: flex;
   flex-wrap: nowrap;
-  flex-direction: row;
+  flex-direction: column;
   &__a-title {
     color: var(--accent-color-surface);
     margin-bottom: 16px;
@@ -21,11 +21,12 @@
     width: 100%;
   }
 
-  &__a-switchNav {
-    transform: rotate(-90deg);
-    margin: 0 auto;
-    justify-content: flex-end;
-    padding-top: 30px;
+  // The button that opens the chosen contact
+  &__m-actions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-top: 8px;
   }
 
   &__a-description {

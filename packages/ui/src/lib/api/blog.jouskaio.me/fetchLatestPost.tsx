@@ -17,11 +17,19 @@ export const fetchLatestArticles = async () => {
             category = categoryData.name;
         }
 
+        // About 200 words a minute, at least one minute
+        const words = String(post.content?.rendered ?? '')
+            .replace(/<[^>]*>/g, ' ')
+            .split(/\s+/)
+            .filter(Boolean).length;
+        const readingTime = Math.max(1, Math.ceil(words / 200));
+
         return {
             title: post.title.rendered,
             text: post.excerpt.rendered,
             media: featuredImageUrl,
             url: post.slug,
+            readingTime,
             tags: category ? [{name: category, color: '', slug: ''}] : [],  // Assuming a single category for simplicity
             classname: undefined,
         };

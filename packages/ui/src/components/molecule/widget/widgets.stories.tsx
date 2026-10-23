@@ -28,11 +28,13 @@ const contactArgs = {
             name: 'Email',
             url: 'mailto:hello@jouskaio.me',
             description: 'Send me an email to discuss a project or ask a question.',
+            action: 'Send an email',
         },
         {
             name: 'LinkedIn',
             url: 'https://www.linkedin.com',
             description: 'Find me on LinkedIn to chat about design and the web.',
+            action: 'Open LinkedIn',
         },
         {
             name: 'GitHub',
@@ -49,6 +51,20 @@ export const ContactList: Story = {
         const canvas = within(canvasElement);
         const emailContact = canvas.getByText('Email');
         expect(emailContact).toBeInTheDocument();
+    },
+};
+
+export const ButtonFollowsTheChoice: Story = {
+    args: contactArgs,
+    play: async ({ canvasElement }) => {
+        const canvas = within(canvasElement);
+        const emailButton = canvas.getByRole('link', { name: 'Send an email' });
+        expect(emailButton).toHaveAttribute('href', 'mailto:hello@jouskaio.me');
+
+        canvas.getByText('LinkedIn').click();
+        const linkedIn = await canvas.findByRole('link', { name: /Open LinkedIn/ });
+        expect(linkedIn).toHaveAttribute('href', 'https://www.linkedin.com');
+        expect(linkedIn).toHaveAttribute('target', '_blank');
     },
 };
 
