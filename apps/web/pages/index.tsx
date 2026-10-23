@@ -67,6 +67,8 @@ export default function Home({ news }: { news: NewsCard }) {
                 'Science Fiction',
             ]}
             title={'Reading'}
+            href={'https://blog.jouskaio.me/category/book/'}
+            linkLabel={'Reading: read the book articles on the blog'}
             media={
                 'https://i.pinimg.com/originals/4a/f9/8f/4af98f078ef1d02329e202fa4d6aac17.gif'
             }
@@ -101,6 +103,8 @@ export default function Home({ news }: { news: NewsCard }) {
                 'Realism',
             ]}
             title={'Coding'}
+            href={'https://blog.jouskaio.me/category/technology/code/'}
+            linkLabel={'Coding: read the code articles on the blog'}
             media={'https://media.giphy.com/media/AOSwwqVjNZlDO/giphy.gif'}
             classname={'l-homepage__o-passions--card'}
             aosEffect={"fade-up"}

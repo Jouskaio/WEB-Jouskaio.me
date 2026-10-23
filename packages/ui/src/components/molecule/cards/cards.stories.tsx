@@ -244,6 +244,11 @@ export const ListText: StoryObj<typeof CardListText> = {
     args: listTextArgs,
 };
 
+export const ListTextWithLink: StoryObj<typeof CardListText> = {
+    render: (args) => <CardListText {...args} style={{ width: 500, ...args.style }} />,
+    args: { ...listTextArgs, title: 'Coding', href: 'https://blog.jouskaio.me/category/technology/code/' },
+};
+
 export const News: StoryObj<typeof CardNews> = {
     render: (args) => <CardNews {...args} style={{ width: 420, ...args.style }} />,
     args: newsArgs,
