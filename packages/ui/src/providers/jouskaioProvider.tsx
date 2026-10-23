@@ -1,4 +1,5 @@
 import React from 'react';
+import { useGlassGlow } from '../lib/motion/glassGlow';
 import { usePageTransitions } from '../lib/motion/pageTransitions';
 import { useScrollingAOS } from '../lib/motion/scrolling-effectAOS';
 import '../styles/globals.scss';
@@ -16,6 +17,8 @@ const JouskaioProvider: React.FC<JouskaioProviderProps> = ({ children }) => {
     useScrollingAOS();
     // Pages that cross-fade instead of cutting
     usePageTransitions();
+    // A soft light follows the pointer on the glass cards
+    useGlassGlow();
 
     return <>{children}</>;
 };

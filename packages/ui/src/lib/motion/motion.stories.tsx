@@ -2,6 +2,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import React from 'react';
 
+import Button from '../../components/atom/button/button';
+import CardFact from '../../components/molecule/cards/cardFact';
+import { useGlassGlow } from './glassGlow';
 import { runWithThemeReveal } from './themeTransition';
 
 const meta: Meta = {
@@ -16,6 +19,8 @@ const meta: Meta = {
                     '',
                     '- **Pages**: the old page fades out, the new one rises a little (View Transitions API). The icon and the name of a project glide from the list to its page. Browsers without the API simply navigate.',
                     '- **Theme**: the new colors are revealed by a circle that grows from the control used.',
+                    '- **Glass cards**: a soft light follows the pointer (mouse or trackpad only).',
+                    '- **Buttons and links**: a button rises on hover and presses on click; the underline of a link draws itself.',
                 ].join('\n'),
             },
         },
@@ -45,4 +50,32 @@ export const ThemeReveal: Story = {
             </button>
         </div>
     ),
+};
+
+export const ButtonsAndLinks: Story = {
+    name: 'Buttons and links',
+    render: () => (
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 16, alignItems: 'flex-start' }}>
+            <Button src="/">A button: it rises on hover, presses on click</Button>
+            <p>
+                A link in a text: its underline <a href="#">draws itself</a> on hover and on focus.
+            </p>
+        </div>
+    ),
+};
+
+function GlowDemo() {
+    // In the pages, the provider does it for every glass card
+    useGlassGlow();
+    return (
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 260px)', gap: 16 }}>
+            <CardFact label="Hover" text="Move the pointer over the card: a soft light follows it." />
+            <CardFact label="Touch" text="Touch screens and reduced motion do not get the light." />
+        </div>
+    );
+}
+
+export const GlassGlow: Story = {
+    name: 'Glass glow',
+    render: () => <GlowDemo />,
 };
