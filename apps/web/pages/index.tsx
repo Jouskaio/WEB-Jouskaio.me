@@ -313,17 +313,20 @@ export default function Home({ news }: { news: NewsCard }) {
                                 {
                                     name: 'Email',
                                     url: 'mailto:manon.salsou@icloud.com',
-                                    description: "Send me an email for collaborations or inquiries."
+                                    description: "Send me an email for collaborations or inquiries.",
+                                    action: "Send an email"
                                 },
                                 {
                                     name: 'Twitter',
                                     url: 'https://twitter.com/Jouskaio_',
-                                    description: "Follow me on Twitter for tech updates and news."
+                                    description: "Follow me on Twitter for tech updates and news.",
+                                    action: "Open Twitter"
                                 },
                                 {
                                     name: 'Linkedin',
                                     url: 'https://www.linkedin.com/in/manonsalsou/',
-                                    description: "Connect with me on LinkedIn for professional networking."
+                                    description: "Connect with me on LinkedIn for professional networking.",
+                                    action: "Open LinkedIn"
                                 }
                             ]
                         }
