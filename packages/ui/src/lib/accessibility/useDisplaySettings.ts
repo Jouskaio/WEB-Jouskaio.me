@@ -8,6 +8,7 @@ import {
     saveDisplaySettings,
     type DisplaySettings,
 } from './displaySettings';
+import { runWithThemeReveal } from '../motion/themeTransition';
 
 /**
  * State of the display settings: read from the browser after the first render (so the server and
@@ -24,7 +25,12 @@ export function useDisplaySettings() {
         const next = { ...settings, [key]: value };
         setSettings(next);
         saveDisplaySettings(next);
-        applyStoredDisplaySettings();
+        // New colors are revealed by a circle that grows from the control; the other settings change at once
+        if (key === 'theme' || key === 'contrast') {
+            runWithThemeReveal(applyStoredDisplaySettings);
+        } else {
+            applyStoredDisplaySettings();
+        }
     };
 
     const reset = () => {

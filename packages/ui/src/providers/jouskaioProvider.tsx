@@ -1,4 +1,5 @@
 import React from 'react';
+import { usePageTransitions } from '../lib/motion/pageTransitions';
 import { useScrollingAOS } from '../lib/motion/scrolling-effectAOS';
 import '../styles/globals.scss';
 
@@ -13,6 +14,8 @@ interface JouskaioProviderProps {
 const JouskaioProvider: React.FC<JouskaioProviderProps> = ({ children }) => {
     // Automatically initialize AOS for scroll animations
     useScrollingAOS();
+    // Pages that cross-fade instead of cutting
+    usePageTransitions();
 
     return <>{children}</>;
 };

@@ -44,14 +44,23 @@ export default function ProjectPage({ project }: { project: Project }) {
             <header className="l-project__m-hero" data-aos="fade-down" data-aos-duration={800}>
                 {project.icon ? (
                     // A plain <img>: a small static file, no need for the image optimizer (which refuses SVG)
-                    <img className="l-project__a-icon" src={project.icon} alt="" width={96} height={96} />
+                    <img
+                        className="l-project__a-icon"
+                        src={project.icon}
+                        alt=""
+                        width={96}
+                        height={96}
+                        style={{ viewTransitionName: `project-icon-${project.slug}` } as React.CSSProperties}
+                    />
                 ) : (
                     <span className="l-project__a-icon l-project__a-icon--letter" aria-hidden="true">
                         {project.name.charAt(0)}
                     </span>
                 )}
                 <div className="l-project__m-heroText">
-                    <TextH1 classname="l-project__a-title">{project.name}</TextH1>
+                    <span style={{ viewTransitionName: `project-name-${project.slug}`, display: "inline-block" } as React.CSSProperties}>
+                        <TextH1 classname="l-project__a-title">{project.name}</TextH1>
+                    </span>
                     <p className="l-project__a-tagline">{project.tagline}</p>
                 </div>
             </header>
