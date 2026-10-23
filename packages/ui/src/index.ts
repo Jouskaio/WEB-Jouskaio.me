@@ -5,6 +5,7 @@ export { default as Icon } from './components/atom/icon/icon';
 export { default as Loader } from './components/atom/loader/loader';
 export { default as Media } from './components/atom/media/media';
 export { default as SkipLink, SkipLinkTarget } from './components/atom/skipLink/skipLink';
+export { default as StatusBadge } from './components/atom/statusBadge/statusBadge';
 export { default as Switch } from './components/atom/switch/switch';
 export { default as TextDefault } from './components/atom/text/textDefault';
 export { default as TextH1 } from './components/atom/text/textH1';
