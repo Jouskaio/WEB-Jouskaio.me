@@ -117,6 +117,7 @@ const newsArgs = {
             text:
                 'Discover how to organize and document reusable React components.',
             url: 'https://blog.jouskaio.me',
+            readingTime: 6,
             tags: [
                 {
                     name: 'Frontend',
@@ -246,6 +247,16 @@ export const ListText: StoryObj<typeof CardListText> = {
 export const News: StoryObj<typeof CardNews> = {
     render: (args) => <CardNews {...args} style={{ width: 420, ...args.style }} />,
     args: newsArgs,
+};
+
+export const NewsLoading: StoryObj<typeof CardNews> = {
+    render: (args) => <CardNews {...args} style={{ width: 420, ...args.style }} />,
+    args: { ...newsArgs, article: [], loading: true },
+};
+
+export const NewsUnavailable: StoryObj<typeof CardNews> = {
+    render: (args) => <CardNews {...args} style={{ width: 420, ...args.style }} />,
+    args: { ...newsArgs, article: [], loading: false },
 };
 
 export const Status: StoryObj<typeof CardStatus> = {

@@ -38,8 +38,12 @@ export default function Home({ news }: { news: NewsCard }) {
     const size = useWindowSize();
     const statusAOS = size && size.width !== undefined;
     const [articles, setArticles] = useState([]);
+    const [articlesLoading, setArticlesLoading] = useState(true);
     useEffect(() => {
-        fetchLatestArticles().then(setArticles);
+        fetchLatestArticles()
+            .then(setArticles)
+            .catch(() => setArticles([]))
+            .finally(() => setArticlesLoading(false));
     }, []);
 
     if (!client) {
@@ -284,6 +288,7 @@ export default function Home({ news }: { news: NewsCard }) {
                         <section className={'l-homepage__o-latestArticles'}>
                             <CardNews
                                 article={articles}
+                                loading={articlesLoading}
                                 classname={'l-homepage__o-latestArticles--news'}
                                 aosDuration={1000}
                                 aosEffect={'fade-up'}

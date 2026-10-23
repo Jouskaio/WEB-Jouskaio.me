@@ -49,6 +49,10 @@ export type PinNewsProps = {
      */
     url: string;
     /**
+     * Reading time of the article, in minutes.
+     */
+    readingTime?: number;
+    /**
      * Additional CSS classes.
      */
     classname?: string;
@@ -68,6 +72,7 @@ export default function PinNews({
                                     text,
                                     media,
                                     url,
+                                    readingTime,
                                     classname = '',
                                     style,
                                 }: PinNewsProps) {
@@ -90,7 +95,7 @@ export default function PinNews({
                     </a>
                 </Link>
 
-                {tags.length > 0 && (
+                {(tags.length > 0 || readingTime) && (
                     <div className="m-pinNews__m-tags">
                         {tags.map((tag, index) => (
                             <Tag
@@ -102,6 +107,9 @@ export default function PinNews({
                                 {tag.name}
                             </Tag>
                         ))}
+                        {readingTime ? (
+                            <span className="m-pinNews__a-reading">{readingTime} min read</span>
+                        ) : null}
                     </div>
                 )}
             </div>

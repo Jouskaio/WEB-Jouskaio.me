@@ -49,6 +49,7 @@ const pinNewsArgs = {
     text: '<p>Using WordPress as a Headless CMS to power a Next.js application.</p>',
     media: 'https://placehold.co/200x110/21759b/ffffff?text=WP',
     url: 'headless-wordpress',
+    readingTime: 5,
     tags: [
         {
             name: 'WordPress',

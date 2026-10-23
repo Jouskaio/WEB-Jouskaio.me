@@ -354,3 +354,10 @@
 [data-motion="reduced"] .m-cardXL__m-placeholder {
   animation: none !important;
 }
+
+// The skeletons of the latest articles have the layout of a real article
+.m-cardNews__m-skeletonText {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
