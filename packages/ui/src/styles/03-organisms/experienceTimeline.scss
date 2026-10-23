@@ -67,3 +67,44 @@
     display: none;
   }
 }
+
+// The line draws itself, and the dot lights up, as the visitor scrolls (scroll-driven animations).
+// Browsers without them, and reduced motion, show the finished line.
+@keyframes o-experienceTimeline-draw {
+  from {
+    transform: translateX(-50%) scaleY(0);
+  }
+  to {
+    transform: translateX(-50%) scaleY(1);
+  }
+}
+
+@keyframes o-experienceTimeline-light {
+  from {
+    background: transparent;
+    transform: translateX(-50%) scale(0.55);
+  }
+  to {
+    background: var(--accent-text);
+    transform: translateX(-50%) scale(1);
+  }
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    :root:not([data-motion="reduced"]) .o-experienceTimeline__a-node {
+      &::after {
+        transform-origin: top;
+        animation: o-experienceTimeline-draw linear both;
+        animation-timeline: view();
+        animation-range: entry 25% cover 60%;
+      }
+
+      &::before {
+        animation: o-experienceTimeline-light linear both;
+        animation-timeline: view();
+        animation-range: entry 5% entry 65%;
+      }
+    }
+  }
+}

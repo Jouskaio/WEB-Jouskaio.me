@@ -1,0 +1,25 @@
+// RevealText: the words of a title rise and appear one after the other.
+.a-revealText {
+  &__a-word {
+    display: inline-block;
+    animation: a-revealText-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    animation-delay: calc(var(--delay, 0ms) + var(--i, 0) * 100ms);
+  }
+}
+
+@keyframes a-revealText-in {
+  from {
+    opacity: 0;
+    transform: translateY(0.45em);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .a-revealText__a-word {
+    animation: none;
+  }
+}
+
+[data-motion="reduced"] .a-revealText__a-word {
+  animation: none !important;
+}
