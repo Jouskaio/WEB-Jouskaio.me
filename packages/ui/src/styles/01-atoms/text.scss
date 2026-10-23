@@ -15,11 +15,12 @@ p {
   font-family: var(--font-family-main);
   color: var(--accent-color);
   text-decoration: none;
-  &:hover, &:focus {
+  // The underline draws itself from the left on hover and on focus
+  background: linear-gradient(currentColor, currentColor) 0 calc(100% - 0.05em) / 0 1.5px no-repeat;
+  transition: background-size 0.3s ease;
+  &:hover, &:focus-visible {
     //color: var(--accent-yellow);
-    text-decoration: underline;
-    text-underline-offset: 0.35em;
-
+    background-size: 100% 1.5px;
   }
 }
 
