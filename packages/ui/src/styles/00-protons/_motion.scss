@@ -1,0 +1,57 @@
+// Motion shared by the whole site: transitions of the pages and of the theme (View Transitions API), and the
+// keyframes the components reuse. Browsers without the API just switch; reduced motion switches too.
+
+@keyframes m-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+@keyframes m-vt-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+}
+
+@keyframes m-vt-out {
+  to {
+    opacity: 0;
+  }
+}
+
+// Between two pages: the old one fades out, the new one rises a little
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-transition])::view-transition-old(root) {
+    animation: 160ms ease both m-vt-out;
+  }
+
+  :root:not([data-transition])::view-transition-new(root) {
+    animation: 320ms ease-out both m-vt-in;
+  }
+
+  // The icon and the name of a project glide from the list to its page
+  ::view-transition-group(*) {
+    animation-duration: 0.45s;
+    animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+  }
+}
+
+// A new theme: no cross-fade, the new colors are revealed by a circle (animated from the script)
+:root[data-transition="theme"]::view-transition-old(root),
+:root[data-transition="theme"]::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+:root[data-transition="theme"]::view-transition-new(root) {
+  z-index: 2;
+}
+
+// The display panel asked for fewer animations
+:root[data-motion="reduced"]::view-transition-group(*),
+:root[data-motion="reduced"]::view-transition-old(*),
+:root[data-motion="reduced"]::view-transition-new(*) {
+  animation: none !important;
+}

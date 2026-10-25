@@ -28,13 +28,25 @@ export default function WorkPage() {
                         <Link href={`/work/${project.slug}`} className="l-works__m-card">
                             {project.icon ? (
                                 // A plain <img>: a small static file, no need for the image optimizer (which refuses SVG)
-                                <img className="l-works__a-icon" src={project.icon} alt="" width={64} height={64} />
+                                <img
+                                    className="l-works__a-icon"
+                                    src={project.icon}
+                                    alt=""
+                                    width={64}
+                                    height={64}
+                                    style={{ viewTransitionName: `project-icon-${project.slug}` } as React.CSSProperties}
+                                />
                             ) : (
                                 <span className="l-works__a-icon l-works__a-icon--letter" aria-hidden="true">
                                     {project.name.charAt(0)}
                                 </span>
                             )}
-                            <span className="l-works__a-name">{project.name}</span>
+                            <span
+                                className="l-works__a-name"
+                                style={{ viewTransitionName: `project-name-${project.slug}` } as React.CSSProperties}
+                            >
+                                {project.name}
+                            </span>
                             <span className="l-works__a-tagline">{project.tagline}</span>
                             <span className="l-works__a-summary">{project.summary}</span>
                             <span className="l-works__m-tags">

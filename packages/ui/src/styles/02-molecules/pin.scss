@@ -166,10 +166,24 @@
   }
 
   &__m-tags {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 4px 0;
     margin-top: 16px;
     & > * {
       color: var(--accent-blue);
     }
+
+    // Same color as the text, it is not a link
+    & > .m-pinNews__a-reading {
+      color: inherit;
+    }
+  }
+
+  &__a-reading {
+    font-size: var(--font-size-S);
+    opacity: 0.8;
   }
 
   &__a-title {
