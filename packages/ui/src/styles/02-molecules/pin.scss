@@ -182,7 +182,9 @@
   }
 
   &__a-reading {
-    font-size: var(--font-size-S);
+    // The font of the category next to it: without it, Safari and Firefox fall back on a serif font
+    font-family: var(--font-family-main);
+    font-size: var(--font-size-XS);
     opacity: 0.8;
   }
 
