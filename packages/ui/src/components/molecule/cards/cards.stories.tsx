@@ -279,6 +279,18 @@ export const Map: StoryObj<typeof CardMap> = {
     args: mapArgs,
 };
 
+export const XLVideoUnavailable: StoryObj<typeof CardXL> = {
+    render: (args) => <CardXL {...args} style={{ width: 800, height: 450, ...args.style }} />,
+    args: { ...xlArgs, media: '/video/does-not-exist.mp4' },
+    parameters: {
+        docs: {
+            description: {
+                story: 'The video cannot be loaded: a message replaces it. If the browser only refuses to start it (low power mode), the video stays and waits for a tap on the play button.',
+            },
+        },
+    },
+};
+
 export const XL: StoryObj<typeof CardXL> = {
     render: (args) => <CardXL {...args} style={{ width: 800, height: 450, ...args.style }} />,
     args: xlArgs,

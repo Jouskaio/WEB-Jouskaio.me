@@ -5,6 +5,11 @@
   width: 100%;
   position: relative;
   overflow: hidden;
+  // Round the card itself and cut what is inside: Safari on iPhone does not round a <video> by itself, it shows
+  // the dark corners of the picture
+  border-radius: var(--border-radius);
+  clip-path: inset(0 round var(--border-radius));
+  isolation: isolate;
 
   // Until the video is ready: a glass block with a soft light sweeping over it, in place of an empty card
   &--waiting {
@@ -19,7 +24,7 @@
     align-items: center;
     justify-content: center;
     padding: 24px;
-    border-radius: var(--border-radius);
+    border-radius: inherit;
     background:
       linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.08) 50%, transparent 70%) 0 0 / 200% 100%,
       var(--surface-translucent);
