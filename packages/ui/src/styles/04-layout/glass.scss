@@ -36,8 +36,10 @@
     --text-on-translucent: #{$text};
     --accent-color-surface: #{$accent-text};
     background: $card !important;
-    backdrop-filter: blur(22px) saturate(1.6);
-    -webkit-backdrop-filter: blur(22px) saturate(1.6);
+    // A light blur and no saturation: a wide blur plus saturate() on a dozen cards made the pages slow
+    // (about 40 images a second instead of 55 on a slow processor, and worse on Safari)
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     border: 0;
     // A light edge on top and a faint, even shadow: no outline, no visible band under the cards
     box-shadow: inset 0 1px 0 $edge, $shadow;
