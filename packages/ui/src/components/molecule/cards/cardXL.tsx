@@ -116,10 +116,20 @@ export default function CardXL({
                         width="100%"
                         height="100%"
                         loop
+                        // iPhones only play a video inside the page with this attribute
+                        playsinline
+                        config={{ file: { attributes: { playsInline: true, disablePictureInPicture: true } } }}
                         onReady={() => setStatus('ready')}
                         onError={(e: any) => {
                             console.error('ReactPlayer Error:', e);
-                            setStatus('error');
+                            // The browser refused to start the video (low power mode, data saver): the video is
+                            // fine, it waits for a tap on the play button
+                            if (e?.name === 'NotAllowedError' || e?.name === 'AbortError') {
+                                setIsPlaying(false);
+                                return;
+                            }
+                            // An error after the video was ready does not hide it
+                            setStatus((previous) => (previous === 'ready' ? previous : 'error'));
                         }}
                     />
                 </div>
