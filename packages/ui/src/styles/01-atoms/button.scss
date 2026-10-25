@@ -109,6 +109,12 @@
     color: var(--background-color);
   }
 
+  // A small press under the finger or the click
+  &:active {
+    transform: translateY(0) scale(0.97);
+    transition-duration: 0.08s;
+  }
+
   &--outline {
     border-color: currentColor;
     background: none;

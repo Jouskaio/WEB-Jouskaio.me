@@ -54,3 +54,20 @@ export default meta;
 type Story = StoryObj<typeof ExperienceTimeline>;
 
 export const Default: Story = {};
+
+export const DrawsOnScroll: Story = {
+    name: 'Draws on scroll',
+    parameters: {
+        docs: {
+            description: {
+                story: 'Scroll: the line draws itself and each dot lights up when its experience arrives (browsers with scroll-driven animations; the others show the finished line).',
+            },
+        },
+    },
+    render: (args) => (
+        <div style={{ padding: '60vh 24px' }}>
+            <ExperienceTimeline {...args} />
+        </div>
+    ),
+};
+

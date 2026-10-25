@@ -8,6 +8,7 @@
 @use "00-protons/mixins" as *;
 @use "00-protons/fonts";
 @use "00-protons/accessibility";
+@use "00-protons/motion";
 @use "00-protons/properties";
 
 // Atoms
@@ -16,6 +17,7 @@
 @use "01-atoms/chip";
 @use "01-atoms/code";
 @use "01-atoms/loader";
+@use "01-atoms/revealText";
 @use "01-atoms/skeleton";
 @use "01-atoms/skipLink";
 @use "01-atoms/statusBadge";
@@ -57,3 +59,4 @@
 @use "04-layout/project";
 @use "04-layout/about";
 @use "04-layout/glass";
+@use "04-layout/glow";

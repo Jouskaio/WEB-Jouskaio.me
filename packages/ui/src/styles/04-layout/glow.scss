@@ -1,0 +1,34 @@
+// A soft light that follows the pointer on the glass cards (the position is set by useGlassGlow).
+// Only for a mouse or a trackpad, with animations allowed and without the high contrast setting.
+$glow-cards: ".m-cardStatus, .m-cardInfos, .m-cardNews, .m-cardCitation, .m-cardListText, .m-cardMultiStatus, .m-cardExperience, .m-widgetContact, .l-project__m-fact, .l-project__m-feature, .l-works__m-card, .m-cardText, .m-cardFact, .m-cardSkill";
+
+@media (hover: hover) and (pointer: fine) {
+  :root:not([data-motion="reduced"]):not([data-contrast="high"]) {
+    // Zero specificity: a card that already has its own position keeps it
+    :where(#{$glow-cards}) {
+      position: relative;
+    }
+
+    #{$glow-cards} {
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+        pointer-events: none;
+        opacity: 0;
+        // The color of the text of the card: a light wash on the dark theme, a dark one on the light theme
+        background: radial-gradient(
+          300px circle at var(--glow-x, 50%) var(--glow-y, 50%),
+          color-mix(in srgb, var(--text-on-translucent, #fff) 17%, transparent),
+          transparent 70%
+        );
+        transition: opacity 0.3s ease;
+      }
+
+      &:hover::after {
+        opacity: 1;
+      }
+    }
+  }
+}
