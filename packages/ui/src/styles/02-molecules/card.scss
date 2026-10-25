@@ -82,9 +82,10 @@
   // The icon is a mask painted with the accent color, so it follows the accent
   &__a-playIcon {
     display: block;
+    flex: none;
     width: 24px;
     height: 24px;
-    margin: auto;
+    margin: 0;
     background: var(--accent-color);
     mask: var(--icon) center / contain no-repeat;
     -webkit-mask: var(--icon) center / contain no-repeat;
@@ -94,9 +95,12 @@
     mix-blend-mode: normal;
     transform: translateZ(0);
     z-index: 100;
-    display: block;
+    // The icon is centered in the round button, whatever its shape
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin: 0;
-    text-align: center;
+    padding: 0;
     background: var(--primary-light);
     border: none;
     border-radius: 50%;
@@ -105,8 +109,13 @@
     position: absolute;
     bottom: 16px;
     right: 16px;
+    // The two bars of "pause" are drawn with a margin on the right in their file
+    & > span {
+      transform: translateX(1px);
+    }
+    // The triangle of "play" looks off-center when it is exactly centered: its weight is on the left
     &--play > span {
-      margin-left: 3px;
+      transform: translateX(3px);
     }
   }
 }
