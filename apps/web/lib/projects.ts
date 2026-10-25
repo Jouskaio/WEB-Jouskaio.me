@@ -50,7 +50,7 @@ export const projects: Project[] = [
         summary:
             'Paper or digital books, comics, audiobooks and fanfiction: organise your whole library, track your reading and share it with your friends. No ads, and your data stays yours.',
         role: 'Design, API, app and deployment',
-        status: 'In development (app 0.60)',
+        status: 'In development (app 0.69)',
         stack: ['Flutter', 'FastAPI', 'Dart', 'Python', 'OpenAPI', 'Docker'],
         icon: '/images/work/babel-icon.svg',
         screens: [
@@ -80,7 +80,7 @@ export const projects: Project[] = [
             {
                 group: 'Your library',
                 title: 'Everything in one place',
-                text: 'Paper books, ebooks, audiobooks, comics and fanfiction on the same shelves. Import your own EPUB, PDF, CBZ and M4B files.',
+                text: 'Paper books, ebooks, audiobooks, comics and fanfiction on the same shelves. Import your own EPUB, PDF, CBZ and M4B files. A book can be both on paper and on your e-reader.',
             },
             {
                 group: 'Your library',
@@ -100,7 +100,12 @@ export const projects: Project[] = [
             {
                 group: 'Your library',
                 title: 'Files stored once',
-                text: 'A single copy of each file, identified by its SHA-256 fingerprint: if a book is already on Babel, it downloads directly instead of being uploaded again.',
+                text: 'A single copy of each file, identified by its SHA-256 fingerprint: if a book is already on Babel, it downloads directly instead of being uploaded again. Downloads get a clean name, such as "Author - Series 02 - Title.epub".',
+            },
+            {
+                group: 'Your library',
+                title: 'Duplicates merged',
+                text: 'Two copies of the same book? Keep one: it takes the status, progress, shelves and paper or e-reader marks of the other, which is removed.',
             },
             {
                 group: 'Your library',
@@ -111,6 +116,11 @@ export const projects: Project[] = [
                 group: 'Find and read',
                 title: 'Scan and search',
                 text: 'Search by title, author or tag. Scan an ISBN barcode (cover recognition is experimental), even with a webcam, scan a stack of paper books in a row, or add one by hand.',
+            },
+            {
+                group: 'Find and read',
+                title: 'Search AO3',
+                text: 'Tick the AO3 source to search fanfiction by tags (all or any, with suggestions, or excluded), fandom, kudos, hits, words, language, status and date, sort the results and save your searches. The app asks AO3 straight from your device and falls back on the server.',
             },
             {
                 group: 'Find and read',
@@ -139,6 +149,11 @@ export const projects: Project[] = [
             },
             {
                 group: 'Share and follow your reading',
+                title: 'A shared library',
+                text: 'Every book readers share can be added to your library without uploading it again (fanfiction only when its reader chooses to). A file can be reported: the admin reviews it, and a kill switch closes the whole library if needed.',
+            },
+            {
+                group: 'Share and follow your reading',
                 title: 'Reviews and friends',
                 text: 'Read, write and answer reviews. Find readers in the directory, follow them and see what they read, their notes, their library and their recommendations.',
             },
@@ -155,7 +170,7 @@ export const projects: Project[] = [
             {
                 group: 'On every device',
                 title: 'E-reader sync',
-                text: 'KOReader and BOOX sync your progress (kosync) and your books through WebDAV. Kobo support is planned. A book can be on paper and on your e-reader with the "On my e-reader" switch.',
+                text: 'The KOReader plugin syncs your progress (kosync) and your books through WebDAV, sends your finished books and highlights to Babel, and downloads the books marked "On my e-reader" as soon as the e-reader is online, with an optional clean-up of finished ones. It installs and updates from the KOReader App Store. Kobo support is planned.',
             },
             {
                 group: 'On every device',
@@ -170,12 +185,12 @@ export const projects: Project[] = [
             {
                 group: 'On every device',
                 title: 'Apps to download',
-                text: 'A download page for the Android app and the Mac app, with updates offered along with the list of what is new. iOS follows with the App Store.',
+                text: 'A download page for the Android app and the Mac app, with updates offered along with the list of what is new, and an install guide for the KOReader plugin. Google Play and the App Stores come later: on iPhone, add the web app to your home screen meanwhile.',
             },
             {
                 group: 'On every device',
                 title: 'Yours to run',
-                text: 'Accounts with roles (admin, premium, public) and invitations, plugins the admin installs and each user activates, quotas, connectors switched on or off, and the health of each source.',
+                text: 'Accounts with roles (admin, premium, public) and invitations, plugins the admin installs and each user activates, quotas, connectors switched on or off, the health of each source, reported files, nightly database backups and an uptime check.',
             },
         ],
         how: {
