@@ -87,9 +87,10 @@ export default function CardXL({
 
     return (
         <div
-            className={`m-cardXL ${status === 'ready' ? '' : 'm-cardXL--waiting'} ${classname}`
-                .replace(/\s+/g, ' ')
-                .trim()}
+            // The state goes in a data attribute, not in the class: the animation library adds its own classes
+            // (aos-animate) to this element, and React would erase them if the class changed
+            className={`m-cardXL ${classname}`.trim()}
+            data-status={status}
             style={style}
             data-aos={aosEffect || undefined}
             data-aos-duration={aosDuration}
