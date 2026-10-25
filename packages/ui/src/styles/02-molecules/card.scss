@@ -5,14 +5,14 @@
   width: 100%;
   position: relative;
   overflow: hidden;
-  // Round the card itself and cut what is inside: Safari on iPhone does not round a <video> by itself, it shows
-  // the dark corners of the picture
+  // Round the card itself. Safari on iPhone does not clip a <video> to a rounded corner by itself (it shows the
+  // dark corners of the picture): the mask below makes it, and it follows the animation of the card, which a
+  // clip-path does not (the video seemed to slide the wrong way and then disappeared)
   border-radius: var(--border-radius);
-  clip-path: inset(0 round var(--border-radius));
-  isolation: isolate;
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
 
   // Until the video is ready: a glass block with a soft light sweeping over it, in place of an empty card
-  &--waiting {
+  &:not([data-status="ready"]) {
     min-height: 220px;
   }
 
